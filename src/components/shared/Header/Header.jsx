@@ -4,7 +4,6 @@ import {
   setGroupType,
   setShowAppPopUp,
   setShowLeftSidebar,
-  setShowNotification,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
@@ -22,12 +21,10 @@ import MobileSearch from "./MobileSearch";
 // import { MobileView, isMobile } from "react-device-detect";
 import AppPopup from "./AppPopUp";
 import MobileHeader from "./MobileHeader";
-import useGetNotification from "../../../hooks/useGetNotification";
-import { RxCross2 } from "react-icons/rx";
-import Marquee from "react-fast-marquee";
 import useLanguage from "../../../hooks/useLanguage";
 import { LanguageKey } from "../../../const";
 import { languageValue } from "../../../utils/language";
+import Notification from "./Notification";
 
 const Header = () => {
   const { valueByLanguage } = useLanguage();
@@ -36,40 +33,11 @@ const Header = () => {
   const [time, setTime] = useState();
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
-  const { notification, isFetchingNotification, isFetched } =
-    useGetNotification();
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showAppPopUp, windowWidth, showNotification } = useSelector(
-    (state) => state?.state
-  );
-  const storedNotification = sessionStorage.getItem("notification");
-
-  useEffect(() => {
-    if (!storedNotification) {
-      dispatch(setShowNotification(true));
-    }
-    if (notification?.length > 0 && storedNotification && !showNotification) {
-      const apiNotification = JSON.stringify(notification);
-      if (apiNotification != storedNotification) {
-        dispatch(setShowNotification(true));
-      }
-    }
-  }, [
-    notification,
-    showNotification,
-    storedNotification,
-    isFetched,
-    isFetchingNotification,
-    dispatch,
-  ]);
-
-  const closeNotification = () => {
-    dispatch(setShowNotification(false));
-    sessionStorage.setItem("notification", JSON.stringify(notification));
-  };
+  const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
 
   useEffect(() => {
     setTimeout(() => {
@@ -110,21 +78,7 @@ const Header = () => {
         className=" fixed top-0 w-full  z-[100]"
         style={{ zIndex: 1000, backgroundColor: "white" }}
       >
-        {showNotification && notification && (
-          <div
-            style={{
-              padding: "2px 5px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "20px",
-              fontSize: "11px",
-            }}
-          >
-            <Marquee>{notification?.[0]} </Marquee>
-            <RxCross2 onClick={closeNotification} size={20} cursor="pointer" />
-          </div>
-        )}
+        <Notification />
         {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
           <AppPopup />
         )}
