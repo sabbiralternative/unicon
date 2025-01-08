@@ -57,8 +57,8 @@ const Events = () => {
       setMatch_odds(filterMatch_odds);
 
       const bookmarkerFilter = events?.filter(
-        (bookmarker) =>
-          bookmarker.btype === "BOOKMAKER" && bookmaker?.visible == true
+        (bookmaker) =>
+          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true
       );
       setBookmaker(bookmarkerFilter);
 

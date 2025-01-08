@@ -50,6 +50,7 @@ const Events = () => {
   useEffect(() => {
     if (data?.result) {
       const events = data?.result;
+
       const filterMatch_odds = events?.filter(
         (match_odd) =>
           match_odd.btype === "MATCH_ODDS" && match_odd?.visible == true
@@ -57,8 +58,8 @@ const Events = () => {
       setMatch_odds(filterMatch_odds);
 
       const bookmarkerFilter = events?.filter(
-        (bookmarker) =>
-          bookmarker.btype === "BOOKMAKER" && bookmaker?.visible == true
+        (bookmaker) =>
+          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true
       );
       setBookmaker(bookmarkerFilter);
 

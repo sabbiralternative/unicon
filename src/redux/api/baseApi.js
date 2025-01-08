@@ -24,7 +24,7 @@ import handleEncryptData from "../../utils/handleEncryptData";
 
 const baseQuery = async (args, api, extraOptions) => {
   const { method, body } = args;
-  const token = api.getState().auth.token;
+  // const token = api.getState().auth.token;
 
   // Inject universal data for POST requests
   if (method === "POST") {
@@ -42,15 +42,23 @@ const baseQuery = async (args, api, extraOptions) => {
   }
 
   // Add authorization header
-  const headers = args.headers || new Headers();
-  if (token) {
-    headers.set("Authorization", `Bearer ${token}`);
-  }
-  args.headers = headers;
+  // const headers = args.headers || new Headers();
+
+  // if (token) {
+  //   headers.set("Authorization", `Bearer ${token}`);
+  // }
+  // args.headers = headers;
 
   // Use fetchBaseQuery to send the request
   return fetchBaseQuery({
     baseUrl: "", // Add your base URL here
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
   })(args, api, extraOptions);
 };
 
