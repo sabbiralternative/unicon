@@ -23,7 +23,7 @@ AxiosInstance.interceptors.request.use(
       if (settings.language) {
         payload.language = localStorage.getItem("language") || "english";
       }
-
+      console.log(payload);
       config.data = payload;
     }
     return config;

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import { FaSpinner } from "react-icons/fa";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
-import { AxiosInstance } from "../../../lib/AxiosInstance";
+import axios from "axios";
 
 const PaymentProof = ({ paymentId, amount }) => {
   const [handleBankDeposit] = useBankMutation();
@@ -24,7 +24,12 @@ const PaymentProof = ({ paymentId, amount }) => {
       const handleSubmitImage = async () => {
         const formData = new FormData();
         formData.append("image", image);
-        const res = await AxiosInstance.post(API.uploadScreenshot, formData);
+        const res = await axios.post(API.uploadScreenshot, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
         const data = res.data;
 
         if (data?.success) {
@@ -197,14 +202,8 @@ const PaymentProof = ({ paymentId, amount }) => {
           )}
           {loading && (
             <div className="w-full mt-2.5 rounded-md bg-bg_Quaternary py-3.5 px-3">
-              <div className="font-lato font-bold text-base leading-5">
-                <FaSpinner
-                  style={{
-                    width: "100%",
-                  }}
-                  className="animate-spin"
-                  size={30}
-                />
+              <div className="font-lato font-bold text-base leading-5 flex items-center w-full justify-center">
+                <FaSpinner className="animate-spin" size={30} />
               </div>
 
               <span></span>
