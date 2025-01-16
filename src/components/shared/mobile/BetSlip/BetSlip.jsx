@@ -14,6 +14,7 @@ import {
   setStake,
 } from "../../../../redux/features/events/eventSlice";
 import useCurrentBets from "../../../../hooks/useCurrentBets";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const BetSlip = ({ setRunnerId }) => {
   const dispatch = useDispatch();
@@ -116,6 +117,47 @@ const BetSlip = ({ setRunnerId }) => {
       }
     }, delay);
   };
+  /* Increase price bets */
+  const handleIncreasePrice = () => {
+    if (price == 1000 || placeBetValues?.isWeak === true) {
+      return;
+    } else if (price > 1.0 && price < 2) {
+      dispatch(setPrice((parseFloat(price) + 0.01).toFixed(2)));
+    } else if (price > 1.99 && price < 3) {
+      dispatch(setPrice((parseFloat(price) + 0.02).toFixed(2)));
+    } else if (price > 2.99 && price < 4) {
+      dispatch(setPrice((parseFloat(price) + 0.05).toFixed(2)));
+    } else if (price > 3.99 && price < 6) {
+      dispatch(setPrice((parseFloat(price) + 0.1).toFixed(1)));
+    } else if (price > 5.99 && price < 10) {
+      dispatch(setPrice((parseFloat(price) + 0.2).toFixed(1)));
+    } else if (price > 9.99 && price < 20) {
+      dispatch(setPrice((parseFloat(price) + 0.5).toFixed(1)));
+    } else {
+      dispatch(setPrice(parseFloat(price) + 1));
+    }
+  };
+
+  /* Decrease price bets */
+  const handleDecreasePrice = () => {
+    if (price < 1.02 || placeBetValues?.isWeak === true) {
+      return;
+    } else if (price < 2) {
+      dispatch(setPrice((parseFloat(price) - 0.01).toFixed(2)));
+    } else if (price > 1.99 && price < 3) {
+      dispatch(setPrice((parseFloat(price) - 0.02).toFixed(2)));
+    } else if (price > 2.99 && price < 4) {
+      dispatch(setPrice((parseFloat(price) - 0.05).toFixed(2)));
+    } else if (price > 3.99 && price < 6) {
+      dispatch(setPrice((parseFloat(price) - 0.1).toFixed(1)));
+    } else if (price > 5.99 && price < 10) {
+      dispatch(setPrice((parseFloat(price) - 0.2).toFixed(1)));
+    } else if (price > 9.99 && price < 20) {
+      dispatch(setPrice((parseFloat(price) - 0.5).toFixed(1)));
+    } else {
+      dispatch(setPrice(parseFloat(price) - 1));
+    }
+  };
 
   return (
     <>
@@ -152,7 +194,7 @@ const BetSlip = ({ setRunnerId }) => {
               </div>
               <span title="Odds" className="col-span-6 pt-1.5 w-full">
                 <div className="grid grid-cols-12 min-h-[35px]">
-                  <span className="col-span-12 h-full pr-1 overflow-hidden">
+                  <span className="col-span-12 h-full pr-1 overflow-hidden relative">
                     <input
                       onChange={(e) => dispatch(setPrice(e.target.value))}
                       id="oddInput"
@@ -160,6 +202,28 @@ const BetSlip = ({ setRunnerId }) => {
                       type="number"
                       value={price}
                     />
+                    {!placeBetValues?.isWeak && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 3,
+                          right: 5,
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <MdKeyboardArrowUp
+                          onClick={handleIncreasePrice}
+                          style={{ cursor: "pointer" }}
+                          size={15}
+                        />
+                        <MdKeyboardArrowDown
+                          onClick={handleDecreasePrice}
+                          style={{ cursor: "pointer" }}
+                          size={15}
+                        />
+                      </div>
+                    )}
                   </span>
                 </div>{" "}
               </span>
