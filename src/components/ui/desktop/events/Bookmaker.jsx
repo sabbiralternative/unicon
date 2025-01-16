@@ -214,7 +214,7 @@ const Bookmaker = ({ bookmaker }) => {
                       <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
                         Cashout
                       </div>
-                      {teamProfitForGame?.profit !== 0 && (
+                      {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
                           <span> : </span>
                           <span className="font-roboto">₹ </span>

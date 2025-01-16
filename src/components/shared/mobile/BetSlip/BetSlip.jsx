@@ -18,6 +18,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const BetSlip = ({ setRunnerId }) => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const { eventId } = useParams();
   const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchBalance } = useBalance();
@@ -90,6 +91,7 @@ const BetSlip = ({ setRunnerId }) => {
         isbetDelay: settings.betDelay,
       },
     ];
+    setLoading(true);
     setBetDelay(placeBetValues?.betDelay);
     const delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
     // Introduce a delay before calling the API
@@ -97,6 +99,7 @@ const BetSlip = ({ setRunnerId }) => {
       try {
         const res = await createOrder(payloadData).unwrap();
         if (res?.success) {
+          setLoading(false);
           refetchExposure();
           refetchBalance();
           setRunnerId("");
@@ -104,6 +107,7 @@ const BetSlip = ({ setRunnerId }) => {
           setBetDelay("");
           toast.success(res?.result?.result?.placed?.[0]?.message);
         } else {
+          setLoading(false);
           toast.error(
             res?.error?.status?.[0]?.description || res?.error?.errorMessage
           );
@@ -161,7 +165,7 @@ const BetSlip = ({ setRunnerId }) => {
 
   return (
     <>
-      {betDelay > 0 && (
+      {loading && (
         <BetLoading
           betDelay={betDelay}
           setBetDelay={setBetDelay}

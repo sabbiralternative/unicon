@@ -157,6 +157,7 @@ const Bookmaker = ({ bookmaker }) => {
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure
         );
+
         return (
           <div key={i} className="py-1.5">
             <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
@@ -211,7 +212,7 @@ const Bookmaker = ({ bookmaker }) => {
                       <div className="text-[10px] md:text-sm text-text_Quaternary whitespace-nowrap font-semibold">
                         Cashout
                       </div>
-                      {teamProfitForGame?.profit !== 0 && (
+                      {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-text_Quaternary whitespace-nowrap font-semibold">
                           <span> : </span>
                           <span className="font-roboto">₹ </span>

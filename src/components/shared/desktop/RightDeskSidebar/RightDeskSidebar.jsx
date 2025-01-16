@@ -31,6 +31,7 @@ const RightDeskSidebar = () => {
   const { refetchCurrentBets } = useCurrentBets(eventId);
   const { refetchExposure } = useExposer(eventId);
   const [betDelay, setBetDelay] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
@@ -103,6 +104,7 @@ const RightDeskSidebar = () => {
         isbetDelay: settings.betDelay,
       },
     ];
+    setLoading(true);
     setBetDelay(placeBetValues?.betDelay);
     const delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
 
@@ -110,6 +112,7 @@ const RightDeskSidebar = () => {
       const res = await createOrder(payloadData).unwrap();
 
       if (res?.success) {
+        setLoading(false);
         refetchExposure();
         refetchBalance();
         refetchCurrentBets();
@@ -117,6 +120,7 @@ const RightDeskSidebar = () => {
         setBetDelay("");
         toast.success(res?.result?.result?.placed?.[0]?.message);
       } else {
+        setLoading(false);
         toast.error(
           res?.error?.status?.[0]?.description || res?.error?.errorMessage
         );
@@ -180,7 +184,7 @@ const RightDeskSidebar = () => {
         <div className="flex p-2 overflow-x-hidden relative no-scrollbar border flex-col w-full rounded-lg bg-bg_Quaternary">
           {token ? (
             <>
-              {betDelay > 0 && (
+              {loading && (
                 <BetLoading
                   absolute={true}
                   betDelay={betDelay}
