@@ -33,7 +33,8 @@
         "format": "png"
       },
       "baseUrl": "",
-      "build": "production"
+      "build": "production",
+      "betDelay": true
     },
 
     "endpoint": {

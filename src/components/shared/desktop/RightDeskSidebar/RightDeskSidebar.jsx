@@ -6,6 +6,7 @@ import useExposer from "../../../../hooks/useExposure";
 import useBalance from "../../../../hooks/useBalance";
 import { settings } from "../../../../api";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 import BetLoading from "../../mobile/BetSlip/BetLoading";
 import {
   setPredictOdd,
@@ -97,27 +98,33 @@ const RightDeskSidebar = () => {
       {
         ...payload,
         site: settings.siteUrl,
+        nounce: uuidv4(),
+        isbetDelay: settings.betDelay,
       },
     ];
     setBetDelay(placeBetValues?.betDelay);
-    const res = await createOrder(payloadData).unwrap();
+    const delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
 
-    if (res?.success) {
-      refetchExposure();
-      refetchBalance();
-      refetchCurrentBets();
-      dispatch(setShowComponent(false));
-      setBetDelay("");
-      toast.success(res?.result?.result?.placed?.[0]?.message);
-    } else {
-      toast.error(
-        res?.error?.status?.[0]?.description || res?.error?.errorMessage
-      );
-      setBetDelay(null);
-      // refetchExposure();
-      // refetchBalance();
-      // refetchCurrentBets();
-    }
+    setTimeout(async () => {
+      const res = await createOrder(payloadData).unwrap();
+
+      if (res?.success) {
+        refetchExposure();
+        refetchBalance();
+        refetchCurrentBets();
+        dispatch(setShowComponent(false));
+        setBetDelay("");
+        toast.success(res?.result?.result?.placed?.[0]?.message);
+      } else {
+        toast.error(
+          res?.error?.status?.[0]?.description || res?.error?.errorMessage
+        );
+        setBetDelay(null);
+        // refetchExposure();
+        // refetchBalance();
+        // refetchCurrentBets();
+      }
+    }, delay);
   };
 
   return (
