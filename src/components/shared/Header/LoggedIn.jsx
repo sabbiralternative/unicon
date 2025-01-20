@@ -42,9 +42,16 @@ const LoggedIn = ({
           Available balance:{" "}
           <span className="font-medium text-text_Quaternary">
             ₹{" "}
-            {bonusToken
-              ? bonusBalance?.availBalance + bonusBalance?.deductedExposure
-              : balance?.availBalance + balance?.deductedExposure}
+            {bonusToken &&
+              bonusBalance &&
+              bonusBalance?.availBalance &&
+              (
+                bonusBalance?.availBalance + bonusBalance?.deductedExposure
+              ).tofixed(2)}
+            {!bonusToken &&
+              balance &&
+              balance?.availBalance &&
+              (balance?.availBalance + balance?.deductedExposure).toFixed(2)}
           </span>
         </div>
       </div>
@@ -250,9 +257,16 @@ cursor-pointer
           >
             <span className="text-xs sm:text-base font-semibold bg-transparent">
               ₹
-              {bonusToken
-                ? bonusBalance?.availBalance + bonusBalance?.deductedExposure
-                : balance?.availBalance + balance?.deductedExposure}
+              {bonusToken &&
+                bonusBalance &&
+                bonusBalance?.availBalance &&
+                (
+                  bonusBalance?.availBalance + bonusBalance?.deductedExposure
+                ).tofixed(2)}
+              {!bonusToken &&
+                balance &&
+                balance?.availBalance &&
+                (balance?.availBalance + balance?.deductedExposure).toFixed(2)}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
