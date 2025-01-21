@@ -91,7 +91,7 @@ const MyBankDetails = () => {
         />
       )}
       <div className="flex flex-col transition-all">
-        <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+        <div className="flex items-start flex-col lg:flex-row justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           <LeftDeskSidebar />
           <div
             onClick={() => navigate(-1)}
@@ -157,10 +157,10 @@ const MyBankDetails = () => {
                   </div>
                   <div
                     className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full  ${
-                      tab === 1 ? "left-0" : "left-[125px] "
+                      tab === 1 ? "left-0" : "left-[105px] md:left-[115px]"
                     }`}
                     style={{
-                      width: "110.234px",
+                      width: tab === 1 ? "90px" : "120px",
                     }}
                   ></div>
                 </div>
