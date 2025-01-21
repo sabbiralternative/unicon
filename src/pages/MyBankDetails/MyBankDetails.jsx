@@ -152,15 +152,15 @@ const MyBankDetails = () => {
                         tab === 2 ? "text-text_Quaternary" : "bg-bg_Quaternary"
                       }`}
                     >
-                      Withdrawal
+                      Deleted
                     </span>
                   </div>
                   <div
                     className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full  ${
-                      tab === 1 ? "left-0" : "left-[105px] md:left-[115px]"
+                      tab === 1 ? "left-0" : "left-[105px] "
                     }`}
                     style={{
-                      width: tab === 1 ? "90px" : "120px",
+                      width: tab === 1 ? "90px" : "90px",
                     }}
                   ></div>
                 </div>
