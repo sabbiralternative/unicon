@@ -148,7 +148,7 @@ const MyBankDetails = () => {
                     className="cursor-pointer flex flex-row items-center justify-center"
                   >
                     <span
-                      className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ${
+                      className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 font-lato ${
                         tab === 2 ? "text-text_Quaternary" : "bg-bg_Quaternary"
                       }`}
                     >
@@ -156,8 +156,8 @@ const MyBankDetails = () => {
                     </span>
                   </div>
                   <div
-                    className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary rounded-full  ${
-                      tab === 1 ? "left-0" : "left-[105px] "
+                    className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary font-lato rounded-full  ${
+                      tab === 1 ? "left-0" : "left-[105px] lg:left-[115px]"
                     }`}
                     style={{
                       width: tab === 1 ? "90px" : "90px",
@@ -165,14 +165,14 @@ const MyBankDetails = () => {
                   ></div>
                 </div>
               </div>
-              <div style={{ margin: "10px" }}>
+              <div className="font-lato" style={{ margin: "10px" }}>
                 <button
                   onClick={() => setShowAddBank(true)}
                   className="btn"
                   style={{
                     background: "var(--color-bg-primary)",
                     color: "white",
-                    padding: "10px 0px",
+                    padding: "6px 0px",
                     fontSize: "14px",
                     fontWeight: "600",
                   }}
