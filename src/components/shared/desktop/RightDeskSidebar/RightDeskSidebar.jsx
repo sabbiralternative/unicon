@@ -75,6 +75,7 @@ const RightDeskSidebar = () => {
         totalSize: stake,
         isBettable: placeBetValues?.isBettable,
         eventId: placeBetValues?.eventId,
+        cashout: placeBetValues?.cashout || false,
       };
     } else {
       payload = {
@@ -90,6 +91,7 @@ const RightDeskSidebar = () => {
         isBettable: placeBetValues?.isBettable,
         maxLiabilityPerBet: placeBetValues?.maxLiabilityPerBet,
         eventId: placeBetValues?.eventId,
+        cashout: placeBetValues?.cashout || false,
       };
     }
   }

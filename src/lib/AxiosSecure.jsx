@@ -16,6 +16,7 @@ AxiosSecure.interceptors.request.use(
     }
     if (config?.method === "post") {
       const generatedToken = handleRandomToken();
+
       let payload = {
         ...config.data,
         token: generatedToken,
@@ -24,6 +25,7 @@ AxiosSecure.interceptors.request.use(
       if (settings.language) {
         payload.language = localStorage.getItem("language") || "english";
       }
+
       const encryptedData = handleEncryptData(payload);
       config.data = encryptedData;
     }

@@ -50,6 +50,7 @@ export const handleCashoutBetMobile = (
           marketName: games?.name,
           eventId: games?.eventId,
           totalSize: team?.newStakeValue,
+          cashout: true,
         })
       );
     }

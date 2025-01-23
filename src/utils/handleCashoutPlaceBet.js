@@ -1,4 +1,7 @@
-import { setPlaceBetValues, setShowComponent } from "../redux/features/events/eventSlice";
+import {
+  setPlaceBetValues,
+  setShowComponent,
+} from "../redux/features/events/eventSlice";
 
 /* handle place bet */
 export const handleCashOutPlaceBet = (
@@ -49,6 +52,7 @@ export const handleCashOutPlaceBet = (
           marketName: games?.name,
           eventId: games?.eventId,
           totalSize: team?.newStakeValue,
+          cashout: true,
         })
       );
     }
