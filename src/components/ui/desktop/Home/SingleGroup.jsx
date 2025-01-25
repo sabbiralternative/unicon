@@ -142,7 +142,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                   </span>
                                 </span>
                               </span>
-                              {data?.[keys]?.inPlay === 1 && (
+                              {data?.[keys]?.isTV === 1 && (
                                 <span className="absolute top-0.5 right-0.5">
                                   <svg
                                     width="13"

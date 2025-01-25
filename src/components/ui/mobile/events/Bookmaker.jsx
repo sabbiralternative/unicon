@@ -149,7 +149,7 @@ const Bookmaker = ({ bookmaker }) => {
       setTeamProfit([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookmaker, eventId, exposer]);
+  }, [bookmaker, eventId]);
   return (
     <>
       {bookmaker?.map((games, i) => {

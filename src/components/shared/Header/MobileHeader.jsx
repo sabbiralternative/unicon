@@ -5,12 +5,19 @@ import { settings } from "../../../api";
 import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { useEffect } from "react";
 const MobileHeader = () => {
+  const location = useLocation();
   const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { group } = useSelector((state) => state.state);
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [group, location]);
+
   return (
     <div className="lg:hidden">
       <div className="flex w-full overflow-x-auto no-scrollbar     bg-bg_Quaternary p-1 items-start lg:items-center lg:justify-center mobile-menu-list">

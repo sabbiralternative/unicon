@@ -46,9 +46,9 @@ const Fancy = ({ fancy }) => {
   };
   return (
     <>
-      <div className="text-base font-medium text-center py-1.5">
-        <ul className="flex flex-wrap items-center justify-start gap-x-3">
-          <li className="px-[15px] py-2 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100">
+      <div className="text-base font-medium text-center">
+        <ul className="flex flex-wrap items-center justify-start !pl-1 !mb-0">
+          <li className=" py-1 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100">
             <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
               Fancy Market
             </span>
