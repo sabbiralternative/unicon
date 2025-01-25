@@ -46,14 +46,36 @@ const Fancy = ({ fancy }) => {
   };
   return (
     <>
-      <div className="text-base font-medium text-center">
+      {/* <div className="text-base font-medium text-center">
         <ul className="flex flex-wrap items-center justify-start !pl-1 !mb-0">
           <li className=" py-1 rounded-[100px] flex items-center justify-center cursor-pointer active:scale-95 transition-all ease-in-out duration-100">
             <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
               Fancy Market
             </span>
+            <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
+              Fancy Market
+            </span>
           </li>
         </ul>
+      </div> */}
+      <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] ">
+        <div className="pl-1 flex items-center justify-start gap-x-1 md:gap-x-1 col-span-4 ">
+          <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
+            Fancy Market
+          </span>
+        </div>
+        <div className="col-span-8 grid grid-cols-6  ">
+          <span className="hidden md:flex col-span-1 text-start font-semibold h-full items-end justify-center"></span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+          <span className="col-span-1 text-start text-[10px] sm:text-xs md:text-sm leading-3 text-text_Ternary font-bold h-full flex ml-3">
+            No
+          </span>
+          <span className="col-span-1 text-center text-[10px] sm:text-xs md:text-sm leading-3 font-bold h-full flex items-end justify-end mr-4">
+            Yes
+          </span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+        </div>
       </div>
       {/* <div className="py-1.5">
         <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">

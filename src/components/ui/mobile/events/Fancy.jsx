@@ -48,7 +48,7 @@ const Fancy = ({ fancy }) => {
 
   return (
     <>
-      <div className="text-base font-medium">
+      {/* <div className="text-base font-medium">
         <ul className="flex flex-wrap items-center justify-start !pl-1 !mb-0">
           <li className="py-1 rounded-[100px] flex items-center justify-center cursor-pointer transition-all ease-in-out duration-100 ">
             <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
@@ -56,6 +56,25 @@ const Fancy = ({ fancy }) => {
             </span>
           </li>
         </ul>
+      </div> */}
+      <div className="grid grid-flow-col grid-cols-12 text-xs font-[500] mb-1.5">
+        <div className="pl-1 flex items-center justify-start gap-x-1 md:gap-x-1 col-span-7 md:col-span-5">
+          <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
+            Fancy Market
+          </span>
+        </div>
+        <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">
+          <span className="hidden md:flex col-span-1 text-center font-semibold h-full items-end justify-center"></span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+          <span className="col-span-1 text-center text-[10px] sm:text-xs md:text-sm leading-3 text-text_Ternary font-bold h-full flex items-end justify-center">
+            No
+          </span>
+          <span className="col-span-1 text-center text-[10px] sm:text-xs md:text-sm leading-3 font-bold h-full flex items-end justify-center">
+            Yes
+          </span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+          <span className="col-span-1 text-center font-semibold h-full hidden md:flex items-end justify-center"></span>
+        </div>
       </div>
       {ladderData?.length > 0 && (
         <Ladder
