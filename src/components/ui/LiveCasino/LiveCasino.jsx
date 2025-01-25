@@ -7,7 +7,7 @@ import Dropdown from "./Dropdown";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
-import { AxiosInstance } from "../../../lib/AxiosInstance";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const LiveCasino = () => {
   const [showLeftDropdown, setShowLeftDropdown] = useState(false);
@@ -31,7 +31,7 @@ const LiveCasino = () => {
       auraWolf: API.auraWolf,
     };
     const getGames = async () => {
-      const res = await AxiosInstance.post(apiMapping[group], {
+      const res = await AxiosSecure.post(apiMapping[group], {
         gameList,
         product,
         isHome: false,

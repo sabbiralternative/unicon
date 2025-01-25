@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../api";
-import { AxiosInstance } from "../lib/AxiosInstance";
+import { AxiosSecure } from "../lib/AxiosSecure";
 
 const useLotusHomeLobby = () => {
   const { data: lotusLobby, isLoading } = useQuery({
     queryKey: [`lotusHomeLobby`],
     queryFn: async () => {
-      const res = await AxiosInstance.post(`${API.lotusHomeLobby}`);
+      const res = await AxiosSecure.post(`${API.lotusHomeLobby}`);
 
       return res?.data;
     },

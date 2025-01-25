@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../api";
-import { AxiosInstance } from "../lib/AxiosInstance";
+import { AxiosSecure } from "../lib/AxiosSecure";
 
 /* go casino api(aura) */
 const useCardGames = () => {
@@ -12,7 +12,7 @@ const useCardGames = () => {
     queryKey: ["cardGames"],
 
     queryFn: async () => {
-      const res = await AxiosInstance.post(API.auraWolf, {
+      const res = await AxiosSecure.post(API.auraWolf, {
         gameList: "All",
         product: "All",
         isHome: true,

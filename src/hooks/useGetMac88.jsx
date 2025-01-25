@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../api";
-import { AxiosInstance } from "../lib/AxiosInstance";
+import { AxiosSecure } from "../lib/AxiosSecure";
 
 const useGetMac88 = () => {
   const { data, refetch, isLoading } = useQuery({
     queryKey: ["mac88"],
 
     queryFn: async () => {
-      const res = await AxiosInstance.post(API.mac88, {
+      const res = await AxiosSecure.post(API.mac88, {
         isHome: false,
       });
       const result = res?.data;

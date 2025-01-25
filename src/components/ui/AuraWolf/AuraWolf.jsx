@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { AxiosInstance } from "../../../lib/AxiosInstance";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const AuraWolf = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const AuraWolf = () => {
 
   useEffect(() => {
     const getGames = async () => {
-      const res = await AxiosInstance.post(API.auraWolf, {
+      const res = await AxiosSecure.post(API.auraWolf, {
         gameList: "ALL",
         product: "ALL",
         isHome: false,

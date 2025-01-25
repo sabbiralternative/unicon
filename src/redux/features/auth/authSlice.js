@@ -17,6 +17,7 @@ export const authSlice = createSlice({
         (state.bonusToken = bonusToken);
     },
     logout: (state) => {
+      localStorage.clear();
       state.user = null;
       state.token = null;
       state.bonusToken = null;
