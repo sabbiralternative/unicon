@@ -17,7 +17,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
   return (
     <div className="w-full md:mt-[0px] lg:overflow-auto">
       <div className="w-full h-full">
-        <div className={`w-full ${margin ? " mt-[15px]" : ""} px-2`}>
+        <div className={`w-full ${margin ? " mt-[15px]" : ""} px-[2px]`}>
           <div title="In Play" className="w-full">
             <div className="w-full font-helvetica-neue">
               <div className="w-full flex items-center justify-between rounded-t-[3px] py-1.5 px-[7px] bg-competetionInPlayUpComingBg">

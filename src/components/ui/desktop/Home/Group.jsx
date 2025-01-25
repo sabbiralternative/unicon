@@ -16,7 +16,7 @@ const Group = ({ data }) => {
       style={{ minHeight: "calc(-110px + 100dvh)" }}
     >
       <div className="w-full h-full">
-        <div className="w-full mt-[15px] px-2">
+        <div className="w-full mt-[15px] px-[2px]">
           {inPlay?.length > 0 && (
             <SingleGroup data={data} filterData={inPlay} title="In Play" />
           )}
