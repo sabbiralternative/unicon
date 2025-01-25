@@ -141,20 +141,38 @@ const InPlay = ({ data }) => {
                                 id="inPlayTime"
                                 className="flex text-selection-none items-center justify-center flex-col col-span-2 pl-[2px] pr-[2px] min-h-9 active:scale-[94%] transition-all ease-in-out duration-100"
                               >
-                                <span
-                                  id="inPlayTime"
-                                  className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
-                                >
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                                    {formatDate(data, keys)}
+                                {data[keys]?.score2 ? (
+                                  <span
+                                    id="inPlayTime"
+                                    className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
+                                  >
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
+                                      {data?.[keys]?.score2?.line1}
+                                    </span>
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[9px] xs:text-[9px] font-medium w-full text-center">
+                                      {" "}
+                                      {data?.[keys]?.score2?.line2}
+                                    </span>
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
+                                      {data?.[keys]?.score2?.line3}
+                                    </span>
                                   </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
-                                    {/* Tgt 145 */}
+                                ) : (
+                                  <span
+                                    id="inPlayTime"
+                                    className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
+                                  >
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
+                                      {formatDate(data, keys)}
+                                    </span>
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
+                                      {/* Tgt 145 */}
+                                    </span>
+                                    <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
+                                      {/* 0/0 */}
+                                    </span>
                                   </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
-                                    {/* 0/0 */}
-                                  </span>
-                                </span>
+                                )}
                               </span>
                               <span
                                 id="inPlayTeamName"
