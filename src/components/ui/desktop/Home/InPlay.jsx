@@ -20,7 +20,11 @@ const InPlay = ({ data }) => {
   useEffect(() => {
     if (data) {
       const categories = Array.from(
-        new Set(Object.values(data).map((item) => item.eventTypeId))
+        new Set(
+          Object.values(data)
+            .filter((item) => item.visible)
+            .map((item) => item.eventTypeId)
+        )
       );
       const sortedCategories = categories.sort((a, b) => {
         const order = { 4: 0, 1: 1, 2: 2 };
@@ -78,7 +82,10 @@ const InPlay = ({ data }) => {
           </div>
           {categories?.map((category) => {
             const filteredData = Object.entries(data)
-              .filter(([, value]) => value.eventTypeId === category)
+              .filter(
+                ([, value]) =>
+                  value.eventTypeId === category && value.visible === true
+              )
               .reduce((obj, [key, value]) => {
                 obj[key] = value;
                 return obj;
