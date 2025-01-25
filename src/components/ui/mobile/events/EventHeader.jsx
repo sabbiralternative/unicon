@@ -28,7 +28,7 @@ const EventHeader = ({
             id="playIcon"
             className={`flex items-start ${
               eventTypeId != 4 ? "justify-center" : ""
-            } gap-x-3 w-full`}
+            } gap-x-1 w-full`}
           >
             <div
               onClick={() => navigate(-1)}
@@ -66,8 +66,8 @@ const EventHeader = ({
             )} */}
 
             {eventTypeId == 2 && (
-              <div className="text-primary w-full  bg-bg_color_quaternary1 px-3">
-                <div className="flex flex-col items-center justify-between my-[4px] w-full gap-y-[5px]">
+              <div className="text-primary w-full  bg-bg_color_quaternary1 pr-3">
+                <div className="flex flex-col items-center justify-between mb-[4px] w-full gap-y-[5px]">
                   <div className="flex justify-between items-center h-full w-full">
                     <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
                       {score?.player1}
