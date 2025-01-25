@@ -139,7 +139,7 @@ const SingleGroup = ({ data, filterData, title }) => {
                                   </span>
                                 </span>
                               </span>
-                              {data?.[keys]?.isTV === 1 && (
+                              {data[keys]?.isTv == 1 && (
                                 <span className="absolute top-0.5 right-0.5">
                                   <svg
                                     width="13"
