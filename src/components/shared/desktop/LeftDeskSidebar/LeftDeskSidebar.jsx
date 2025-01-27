@@ -39,10 +39,10 @@ const LeftDeskSidebar = () => {
         return setError("Bonus wallet is available only on sports.");
       }
       if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
+        navigate(`/casino/EvolutionGaming/201206`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+        setGameInfo({ gameName: "EvolutionGaming", gameId: "201206" });
         setShowWarning(true);
       }
     } else {

@@ -83,10 +83,10 @@ const LeftDeskSidebar = () => {
         return setError("Bonus wallet is available only on sports.");
       }
       if (settings.casinoCurrency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
+        navigate(`/casino/EvolutionGaming/201206`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+        setGameInfo({ gameName: "EvolutionGaming", gameId: "201206" });
         setShowWarning(true);
       }
     } else {
@@ -151,10 +151,7 @@ const LeftDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.BONUS_STATEMENT
-                    )}
+                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
                   </span>
                 </li>
                 <li
@@ -251,7 +248,7 @@ const LeftDeskSidebar = () => {
                 </li>
                 <li
                   onClick={() => handleNavigate(5)}
-                  className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
+                  className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-2 cursor-pointer"
                 >
                   <span className="">
                     <img className="size-5" src={assets.kabbadi} alt="" />
@@ -267,10 +264,10 @@ const LeftDeskSidebar = () => {
                   }}
                   className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
                 >
-                  <span className="">
+                  <span className="w-3 h-auto xs:w-4">
                     <svg
-                      width="20"
-                      height="20"
+                      width="15"
+                      height="16"
                       viewBox="0 0 18 22"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -292,10 +289,10 @@ const LeftDeskSidebar = () => {
                   }}
                   className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
                 >
-                  <span className="">
+                  <span className="w-3 h-auto xs:w-4">
                     <svg
-                      width="20"
-                      height="20"
+                      width="15"
+                      height="16"
                       viewBox="0 0 21 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
