@@ -12,7 +12,7 @@ const SingleGroup = ({ data, filterData, title }) => {
   const navigateGameList = (keys) => {
     navigate(`/game-details/${data[keys]?.eventTypeId}/${keys}`);
   };
-
+  // console.log(data);
   return (
     <div className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]">
       <div className="w-full h-full">
