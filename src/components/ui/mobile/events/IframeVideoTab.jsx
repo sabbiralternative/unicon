@@ -1,4 +1,18 @@
-const IframeVideoTab = ({ score, tab, setTab }) => {
+import { useParams } from "react-router-dom";
+import { settings } from "../../../../api";
+import { useVideoMutation } from "../../../../redux/features/video/video.api";
+import { useEffect } from "react";
+
+const IframeVideoTab = ({
+  score,
+  tab,
+  setTab,
+  setIframe,
+  betType,
+  setBetType,
+}) => {
+  const [sportsVideo] = useVideoMutation();
+  const { eventId, eventTypeId } = useParams();
   const handleToggle = (t) => {
     if (tab === t) {
       setTab("");
@@ -6,6 +20,34 @@ const IframeVideoTab = ({ score, tab, setTab }) => {
       setTab(t);
     }
   };
+
+  const handleGetVideo = async () => {
+    handleToggle("video");
+    const payload = {
+      eventTypeId: eventTypeId,
+      eventId: eventId,
+      type: "video",
+      casinoCurrency: settings.casinoCurrency,
+    };
+    const res = await sportsVideo(payload).unwrap();
+    if (res?.success) {
+      setIframe(res?.result?.url);
+    }
+  };
+
+  useEffect(() => {
+    if (betType === "video") {
+      if (!score?.hasVideo) {
+        setBetType("");
+      }
+    }
+    if (betType === "tracker") {
+      if (!score?.tracker) {
+        setBetType("");
+      }
+    }
+  }, [eventId, eventTypeId, score, betType, setBetType]);
+
   return (
     <div>
       {(score && score?.hasVideo) || score?.tracker ? (
@@ -20,7 +62,7 @@ const IframeVideoTab = ({ score, tab, setTab }) => {
         >
           {score && score?.hasVideo && (
             <div
-              onClick={() => handleToggle("video")}
+              onClick={handleGetVideo}
               style={{
                 flex: 1,
                 display: "flex",
@@ -52,7 +94,10 @@ const IframeVideoTab = ({ score, tab, setTab }) => {
           )}
           {score && score?.tracker && (
             <div
-              onClick={() => handleToggle("tracker")}
+              onClick={() => {
+                handleToggle("tracker");
+                setIframe(score?.tracker);
+              }}
               style={{
                 flex: 1,
                 display: "flex",

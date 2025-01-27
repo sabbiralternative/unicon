@@ -21,6 +21,7 @@ import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
 
 const Events = () => {
+  const [iFrame, setIframe] = useState("");
   const [betsType, setBetsType] = useState("live");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
@@ -286,6 +287,8 @@ const Events = () => {
               data={data}
               myBets={myBets}
               score={data?.score}
+              iFrame={iFrame}
+              setIframe={setIframe}
             />
 
             {betsType === "openBet" && <OpenBets myBets={myBets} />}
@@ -295,6 +298,7 @@ const Events = () => {
                 betType={betsType}
                 setBetType={setBetsType}
                 score={data?.score}
+                iFrame={iFrame}
               />
             }
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (

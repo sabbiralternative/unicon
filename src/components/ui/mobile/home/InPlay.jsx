@@ -131,6 +131,7 @@ const InPlay = ({ data }) => {
                         if (!data?.[keys]?.visible) {
                           return null;
                         }
+                        console.log(data?.[keys]);
                         return (
                           <>
                             <div

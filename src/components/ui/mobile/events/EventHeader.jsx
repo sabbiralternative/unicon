@@ -1,4 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useVideoMutation } from "../../../../redux/features/video/video.api";
+import { settings } from "../../../../api";
+import { useEffect } from "react";
 
 const EventHeader = ({
   data,
@@ -6,9 +9,44 @@ const EventHeader = ({
   betType,
   myBets,
   score,
-  eventTypeId,
+  setIframe,
 }) => {
   const navigate = useNavigate();
+  const [sportsVideo] = useVideoMutation();
+  const { eventId, eventTypeId } = useParams();
+
+  const handleGetVideo = async (betType) => {
+    if (betType === "video") {
+      setBetsType("video");
+      const payload = {
+        eventTypeId: eventTypeId,
+        eventId: eventId,
+        type: "video",
+        casinoCurrency: settings.casinoCurrency,
+      };
+      const res = await sportsVideo(payload).unwrap();
+      if (res?.success) {
+        setIframe(res?.result?.url);
+      }
+    }
+    if (betType === "tracker") {
+      setBetsType("tracker");
+      setIframe(score?.tracker);
+    }
+  };
+
+  useEffect(() => {
+    if (betType === "video") {
+      if (!score?.hasVideo) {
+        setBetsType("live");
+      }
+    }
+    if (betType === "tracker") {
+      if (!score?.tracker) {
+        setBetsType("live");
+      }
+    }
+  }, [eventId, eventTypeId, score, betType, setBetsType]);
 
   return (
     <div
@@ -236,7 +274,7 @@ const EventHeader = ({
           {score && score?.hasVideo && (
             <button
               onClick={() => {
-                setBetsType("video");
+                handleGetVideo("video");
                 window.scrollTo(0, 0);
               }}
               className={`flex items-center justify-center w-full gap-1 tracking-wider font-lato py-2.5 uppercase relative    font-bold font-lato text-xs ${
@@ -263,7 +301,7 @@ const EventHeader = ({
           {score && score?.tracker && (
             <button
               onClick={() => {
-                setBetsType("tracker");
+                handleGetVideo("tracker");
                 window.scrollTo(0, 0);
               }}
               className={`flex items-center justify-center w-full relative gap-1 tracking-wider font-lato py-2.5 uppercase  font-bold font-lato text-xs ${

@@ -23,6 +23,7 @@ import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound
 
 const Events = () => {
   const [tab, setTab] = useState("");
+  const [iFrame, setIframe] = useState("");
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
   const { refetchBalance } = useBalance();
@@ -343,8 +344,21 @@ const Events = () => {
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
 
-            <IframeVideoTab tab={tab} setTab={setTab} score={data?.score} />
-            <IFrame betType={tab} score={data?.score} setBetType={setTab} />
+            <IframeVideoTab
+              iFrame={iFrame}
+              setIframe={setIframe}
+              tab={tab}
+              setTab={setTab}
+              score={data?.score}
+              betType={tab}
+              setBetType={setTab}
+            />
+            <IFrame
+              iFrame={iFrame}
+              betType={tab}
+              score={data?.score}
+              setBetType={setTab}
+            />
 
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
