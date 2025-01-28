@@ -202,6 +202,7 @@ const EventHeader = ({
               </span> */}
             {/* </div> */}
           </div>
+
           {/* <div className="flex items-start justify-start w-max h-full">
             <svg
               width="17"
@@ -238,6 +239,48 @@ const EventHeader = ({
           </div> */}
         </div>
       </div>
+      {eventTypeId == 1 && (
+        <div
+          className=" w-full  bg-bg_color_quaternary1 px-3"
+          style={{ backgroundColor: "white" }}
+        >
+          <div className=" w-full flex items-center flex-col justify-center gap-y-1">
+            <div className=" w-full flex items-center justify-center gap-x-2">
+              <span className=" w-full text-center text-sm text-text_color_primary1  font-semibold font-lato leading-5">
+                {score?.timeStatus}
+              </span>
+              {/* <span className=" w-1/2 text-xs text-start text-text_color_primary1  font-semibold font-lato leading-5">
+                2nd Half
+              </span> */}
+            </div>
+            <div className="flex items-start w-full justify-between ">
+              <div
+                title="FC Den Bosch"
+                className=" w-1/3 text-text_color_primary1  font-lato text-sm font-semibold leading-5"
+              >
+                {score?.player1}
+              </div>
+              <div className=" w-1/3 flex items-center justify-center gap-x-1 text-text_color_primary1">
+                <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white pt-0.5">
+                  {score?.team1Score}
+                </div>
+                {score?.team1Score && <div>:</div>}
+
+                <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white pt-0.5">
+                  {score?.team2Score}
+                </div>
+              </div>
+              <div
+                title="FC Utrecht"
+                className=" w-1/3 text-text_color_primary1  font-lato text-sm font-semibold leading-5"
+              >
+                {score?.player2}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <hr className="w-full" />
       <div
         title="Live And Open Bets"
