@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import { formatDate } from "../../../../utils/formateDate";
 import assets from "../../../../assets";
 import { useSelector } from "react-redux";
+import Score from "./Score";
 
 const SingleGroup = ({ data, filterData, title, margin }) => {
   const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football", 5: "Kabbadi" };
@@ -99,6 +99,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
 
                   {data &&
                     filterData.map((keys) => {
+                      console.log(data[keys]);
                       return (
                         <>
                           <div
@@ -109,40 +110,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                               id="inPlayTime"
                               className="flex text-selection-none items-center justify-center flex-col col-span-2 pl-[2px] pr-[2px] min-h-9 active:scale-[94%] transition-all ease-in-out duration-100"
                             >
-                              {group == 4 &&
-                              data[keys]?.inPlay == 1 &&
-                              data[keys]?.score2 ? (
-                                <span
-                                  id="inPlayTime"
-                                  className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
-                                >
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                                    {data?.[keys]?.score2?.line1}
-                                  </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] xs:text-[9px] font-medium w-full text-center">
-                                    {" "}
-                                    {data?.[keys]?.score2?.line2}
-                                  </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
-                                    {data?.[keys]?.score2?.line3}
-                                  </span>
-                                </span>
-                              ) : (
-                                <span
-                                  id="inPlayTime"
-                                  className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
-                                >
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                                    {formatDate(data, keys)}
-                                  </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
-                                    {/* Tgt 145 */}
-                                  </span>
-                                  <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
-                                    {/* 0/0 */}
-                                  </span>
-                                </span>
-                              )}
+                              <Score data={data} group={group} keys={keys} />
                             </span>
                             <span
                               id="inPlayTeamName"

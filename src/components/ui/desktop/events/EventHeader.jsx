@@ -157,14 +157,19 @@ const EventHeader = ({ data, eventTypeId }) => {
                 {score?.player1}
               </div>
               <div className=" w-1/3 flex items-center justify-center gap-x-1 text-text_color_primary1">
-                <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white ">
-                  {score?.team1Score}
-                </div>
+                {score?.team1Score && (
+                  <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white ">
+                    {score?.team1Score}
+                  </div>
+                )}
+
                 {score?.team1Score && <div>:</div>}
 
-                <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white ">
-                  {score?.team2Score}
-                </div>
+                {score?.team2Score && (
+                  <div className="min-w-5 min-h-5 aspect-square bg-bg_brand_primary  text-center text-xs rounded-[4px] text-text_color_primary2 font-lato font-medium leading-4 flex items-center justify-center bg-[var(--color-bg-primary)] text-white ">
+                    {score?.team2Score}
+                  </div>
+                )}
               </div>
               <div
                 title="FC Utrecht"
