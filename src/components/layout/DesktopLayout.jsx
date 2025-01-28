@@ -7,10 +7,14 @@ const MainLayout = () => {
   const { showNotification } = useSelector((state) => state.state);
 
   const calculatePadding = () => {
-    if (showNotification) {
-      return "pt-[130px]";
+    if (!location.pathname.includes("/casino")) {
+      if (showNotification) {
+        return "pt-[130px]";
+      } else {
+        return "pt-[110px]";
+      }
     } else {
-      return "pt-[110px]";
+      return "pt-[20px]";
     }
   };
   return (
