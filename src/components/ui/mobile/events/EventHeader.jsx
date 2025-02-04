@@ -107,7 +107,7 @@ const EventHeader = ({
               <div className="text-primary w-full  bg-bg_color_quaternary1 pr-3">
                 <div className="flex flex-col items-center justify-between mb-[4px] w-full gap-y-[5px]">
                   <div className="flex justify-between items-center h-full w-full">
-                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1 text-black">
                       {score?.player1}
                     </span>
                     {eventTypeId == 2 && (
@@ -131,7 +131,7 @@ const EventHeader = ({
                           {score?.set1?.map((set, i) => (
                             <span
                               key={i}
-                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center text-black"
                             >
                               {set}
                             </span>
@@ -148,7 +148,7 @@ const EventHeader = ({
                     )}
                   </div>
                   <div className="flex justify-between items-center h-full w-full">
-                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1">
+                    <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1 text-black">
                       {score?.player2}
                     </span>
                     {eventTypeId == 2 && (
@@ -172,7 +172,7 @@ const EventHeader = ({
                           {score?.set2?.map((set, i) => (
                             <span
                               key={i}
-                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center"
+                              className="min-w-6 min-h-6 shadow-lg text-xs bg-bg_color_quaternary text-center rounded-[4px] text-text_color_secondary font-semibold flex items-center justify-center text-black"
                             >
                               {set}
                             </span>
@@ -276,7 +276,7 @@ const EventHeader = ({
               </div>
               <div
                 title="FC Utrecht"
-                className=" w-1/3 text-text_color_primary1  font-lato text-sm font-semibold leading-5"
+                className=" w-1/3 text-text_color_primary1  font-lato text-sm font-semibold leading-5 text-right"
               >
                 {score?.player2}
               </div>

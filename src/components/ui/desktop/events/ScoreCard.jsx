@@ -255,7 +255,7 @@ const ScoreCard = ({ match_odds, score }) => {
                 </div>
                 <span _ngcontent-ng-c3799324686="" class="batting-team">
                   <span
-                    style={{ color: "white", fontSize: "12px" }}
+                    style={{ color: "black", fontSize: "12px" }}
                     class="small"
                     _ngcontent-ng-c3799324686=""
                   >
