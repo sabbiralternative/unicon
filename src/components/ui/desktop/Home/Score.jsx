@@ -46,7 +46,7 @@ const Score = ({ group, data, keys }) => {
           {data[keys]?.inPlay == 1 && data[keys]?.score ? (
             <span
               id="inPlayTime"
-              className="flex  items-center justify-center flex-col pl-[1px] pr-[1px]"
+              className="flex flex-col  items-center justify-center  pl-[1px] pr-[1px]"
             >
               <span
                 className=" text-text_color_InPlayEventsScoreAndTime text-[8px] xs:text-xs font-medium w-full flex items-center justify-center gap-x-2"

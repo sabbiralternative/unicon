@@ -47,17 +47,24 @@ const ScoreHome = ({ data, keys }) => {
           {data[keys]?.inPlay == 1 && data[keys]?.score ? (
             <span
               id="inPlayTime"
-              className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
+              className="flex flex-col  items-center justify-center  pl-[1px] pr-[1px]"
             >
-              <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-                {data?.[keys]?.timeStatus}
-              </span>
-              <span className="text-text_InPlayEventsScoreAndTime text-[9px] xs:text-[9px] font-medium w-full text-center">
-                {" "}
-                {data?.[keys]?.score?.total_1}
-              </span>
-              <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
-                {data?.[keys]?.score?.total_2}
+              <span
+                className=" text-text_color_InPlayEventsScoreAndTime text-[8px] xs:text-xs font-medium w-full flex items-center justify-center gap-x-2"
+                style={{ fontSize: "10px" }}
+              >
+                <span className="text-text_InPlayEventsScoreAndTime">
+                  {data[keys]?.timeStatus}
+                </span>
+                <span className=" flex flex-col">
+                  <span className=" text-text_color_primary1 ">
+                    {" "}
+                    {data[keys]?.score?.total_1}
+                  </span>
+                  <span className=" text-text_color_primary1 ">
+                    {data[keys]?.score?.total_2}
+                  </span>
+                </span>
               </span>
             </span>
           ) : (
