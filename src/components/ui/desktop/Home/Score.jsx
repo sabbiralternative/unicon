@@ -85,20 +85,61 @@ const Score = ({ group, data, keys }) => {
         </>
       )}
       {group == 2 && (
-        <span
-          id="inPlayTime"
-          className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
-        >
-          <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
-            {formatDate(data, keys)}
-          </span>
-          <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
-            {/* Tgt 145 */}
-          </span>
-          <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
-            {/* 0/0 */}
-          </span>
-        </span>
+        <>
+          {data[keys]?.inPlay == 1 && data[keys]?.score ? (
+            <span
+              id="inPlayTime"
+              className="flex text-selection-none  items-center justify-center flex-col col-span-2  pl-[2px] pr-[2px] min-h-9 active:scale-[94%] transition-all ease-in-out duration-100"
+            >
+              <span
+                id="inPlayTime"
+                className="flex  items-center justify-center flex-col pl-[1px] pr-[1px]"
+              >
+                <span className=" text-text_color_InPlayEventsScoreAndTime text-[9px] font-medium w-full flex items-center justify-center gap-x-2 ">
+                  <span className="text-text_InPlayEventsScoreAndTime">
+                    {" "}
+                    {data[keys]?.score?.totalSet1}
+                  </span>
+                  <span className=" text-text_color_primary1 ">
+                    {" "}
+                    {data?.[keys]?.score?.set1
+                      .map((item) => Number(item))
+                      .filter((item) => !isNaN(item))
+                      .pop()}
+                  </span>
+                </span>
+                <span className=" text-text_color_InPlayEventsScoreAndTime text-[9px] font-medium w-full flex items-center justify-center gap-x-2">
+                  <span className="text-text_InPlayEventsScoreAndTime">
+                    {" "}
+                    {data[keys]?.score?.totalSet2}
+                  </span>
+                  <span className=" text-text_color_primary1 ">
+                    {" "}
+                    {data?.[keys]?.score?.set2
+                      .map((item) => Number(item))
+                      .filter((item) => !isNaN(item))
+                      .pop()}
+                  </span>
+                </span>
+              </span>
+            </span>
+          ) : (
+            <span
+              id="inPlayTime"
+              className="flex items-center justify-center flex-col pl-[1px] pr-[1px]"
+            >
+              <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium text-ellipsis overflow-hidden w-full text-center">
+                {formatDate(data, keys)}
+              </span>
+              <span className="text-text_InPlayEventsScoreAndTime text-[6px] xs:text-[9px] font-medium w-full text-center">
+                {/* Tgt 145 */}
+              </span>
+              <span className="text-text_InPlayEventsScoreAndTime text-[9px] font-medium w-full text-center">
+                {/* 0/0 */}
+              </span>
+            </span>
+          )}
+        </>
       )}
     </>
   );
