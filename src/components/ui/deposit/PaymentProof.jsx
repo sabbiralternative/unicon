@@ -66,7 +66,7 @@ const PaymentProof = ({ paymentId, amount }) => {
         paymentId,
         amount: amount,
         fileName: uploadedImage,
-        utr: parseFloat(utr),
+        utr: String(utr),
       };
 
       const res = await handleBankDeposit(screenshotPostData).unwrap();
