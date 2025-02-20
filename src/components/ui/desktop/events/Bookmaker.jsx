@@ -288,18 +288,18 @@ const Bookmaker = ({ bookmaker }) => {
                             })}
 
                           {stake &&
-                            predictOddValues?.map(({ odd, id }) => {
+                            predictOddValues?.map(({ exposure, id }) => {
                               return (
                                 <span
                                   key={id}
                                   className={`text-[12px] font-bold ${
-                                    odd > 0
+                                    exposure > 0
                                       ? "text-text_Success"
                                       : "text-text_Danger"
                                   }`}
                                 >
                                   {" "}
-                                  &gt;&gt; {stake && odd}
+                                  &gt;&gt; {stake && exposure}
                                 </span>
                               );
                             })}
