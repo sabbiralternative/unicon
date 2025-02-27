@@ -182,7 +182,9 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
-            <Score />
+            {data?.result?.[0]?.score2 && (
+              <Score score2={data?.result?.[0]?.score2} />
+            )}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

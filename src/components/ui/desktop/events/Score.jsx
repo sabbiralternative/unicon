@@ -1,4 +1,4 @@
-const Score = () => {
+const Score = ({ score2 }) => {
   return (
     <div
       style={{ height: "200px", marginTop: "2px" }}
@@ -22,10 +22,14 @@ const Score = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>AFG</span>
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>314/5</span>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_name}
+                </span>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_runs}
+                </span>
                 <span style={{ fontWeight: 100, fontSize: "12px" }}>
-                  (48.3)
+                  {score2?.team_overs}
                 </span>
               </div>
               <div
@@ -48,7 +52,7 @@ const Score = () => {
                     textTransform: "capitalize!important",
                   }}
                 >
-                  BALL CHALU
+                  {score2?.status}
                 </span>
               </div>
               <div
@@ -75,17 +79,20 @@ const Score = () => {
               >
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    CRR:<span style={{ fontWeight: 100 }}>6.47</span>
+                    {score2?.crr}
+                    {/* CRR:<span style={{ fontWeight: 100 }}>6.47</span> */}
                   </span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    RRR:<span style={{ fontWeight: 100 }}>0</span>
+                    {score2?.rrr}
+                    {/* RRR:<span style={{ fontWeight: 100 }}>0</span> */}
                   </span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    RRR:<span style={{ fontWeight: 100 }}>0</span>
+                    {score2?.status2}
+                    {/* RRR:<span style={{ fontWeight: 100 }}>0</span> */}
                   </span>
                 </div>
               </div>
@@ -121,12 +128,13 @@ const Score = () => {
                   paddingRight: "5px",
                 }}
               >
-                Over 49
+                {score2?.recent_overs?.[0]?.title}
               </span>
-              <div className="sc_cw-ball">1</div>
-              <div className="sc_cw-ball">2</div>
-              <div className="sc_cw-ball">1l</div>
-              <div className="sc_cw-ball">wd</div>
+              {score2?.recent_overs?.[0]?.balls?.map((ball, i) => (
+                <div key={i} className="sc_cw-ball">
+                  {ball}
+                </div>
+              ))}
             </div>
             <div className="sc_cw-over">
               <span
@@ -137,14 +145,13 @@ const Score = () => {
                   paddingRight: "5px",
                 }}
               >
-                Over 48
+                {score2?.recent_overs?.[1]?.title}
               </span>
-              <div className="sc_cw-ball">1</div>
-              <div className="sc_cw-ball">1</div>
-              <div className="sc_cw-ball">1</div>
-              <div className="sc_cw-ball">6</div>
-              <div className="sc_cw-ball">1</div>
-              <div className="sc_cw-ball">0</div>
+              {score2?.recent_overs?.[1]?.balls?.map((ball, i) => (
+                <div key={i} className="sc_cw-ball">
+                  {ball}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -158,14 +165,16 @@ const Score = () => {
           }}
         >
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP R:</span> 101
+            <span style={{ fontWeight: 600 }}>PSHIP R:</span>{" "}
+            {score2?.partnership_runs}
           </div>
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP B:</span> 51
+            <span style={{ fontWeight: 600 }}>PSHIP B:</span>{" "}
+            {score2?.partnership_balls}
           </div>
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>LAST WICKET:</span> A Omarzai 41
-            (31){" "}
+            <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
+            {score2?.last_wicket}
           </div>
         </div>
         <div style={{ overflowX: "auto", width: "100%" }}>
@@ -203,51 +212,40 @@ const Score = () => {
               <div style={{ minWidth: "40px!important", flex: "auto" }}>6s</div>
               <div style={{ minWidth: "40px!important", flex: "auto" }}>SR</div>
             </div>
-            <div
-              className="sc_cw-table-row sc_cw-desktop-row"
-              style={{ paddingTop: "2px", paddingBottom: "2px" }}
-            >
+            {score2?.batsmen?.map((batMen, i) => (
               <div
-                style={{
-                  minWidth: "95px!important",
-                  whiteSpace: "nowrap",
-                  textAlign: "left!important",
-                }}
+                key={i}
+                className="sc_cw-table-row sc_cw-desktop-row"
+                style={{ paddingTop: "2px", paddingBottom: "2px" }}
               >
-                I Zadran{" "}
+                <div
+                  style={{
+                    minWidth: "95px!important",
+                    whiteSpace: "nowrap",
+                    textAlign: "left!important",
+                  }}
+                >
+                  {batMen?.name}
+                </div>
+                <div style={{ minWidth: "40px!important", flex: "auto" }}>
+                  {batMen?.runs}
+                </div>
+                <div style={{ minWidth: "40px!important", flex: "auto" }}>
+                  {batMen?.balls}
+                </div>
+                <div style={{ minWidth: "40px!important", flex: "auto" }}>
+                  {batMen?.four}
+                </div>
+                <div style={{ minWidth: "40px!important", flex: "auto" }}>
+                  {batMen?.six}
+                </div>
+                <div style={{ minWidth: "40px!important", flex: "auto" }}>
+                  {batMen?.sr}
+                </div>
               </div>
-              <div style={{ minWidth: "40px!important", flex: "auto" }}>
-                168
-              </div>
-              <div style={{ minWidth: "40px!important", flex: "auto" }}>
-                142
-              </div>
-              <div style={{ minWidth: "40px!important", flex: "auto" }}>0</div>
-              <div style={{ minWidth: "40px!important", flex: "auto" }}>0</div>
-              <div style={{ minWidth: "40px!important", flex: "auto" }}>
-                118.31
-              </div>
-            </div>
-            <div
-              className="sc_cw-table-row sc_cw-desktop-row"
-              style={{ paddingTop: "2px", paddingBottom: "2px" }}
-            >
-              <div
-                style={{
-                  minWidth: "95px!important",
-                  whiteSpace: "nowrap",
-                  textAlign: "left!important",
-                }}
-              >
-                M Nabi
-              </div>
-              <div style={{ minWidth: "40px!important" }}>40</div>
-              <div style={{ minWidth: "40px!important" }}>23</div>
-              <div style={{ minWidth: "40px!important" }}>0</div>
-              <div style={{ minWidth: "40px!important" }}>0</div>
-              <div style={{ minWidth: "40px!important" }}>173.91 </div>
-            </div>
+            ))}
           </div>
+
           <div
             className="sc_cw-table-container"
             style={{
@@ -288,6 +286,7 @@ const Score = () => {
               <div style={{ minWidth: "40px!important" }}>W</div>
               <div style={{ minWidth: "40px!important" }}>Eco</div>
             </div>
+
             <div
               className="sc_cw-table-row sc_cw-desktop-row"
               style={{
@@ -308,13 +307,25 @@ const Score = () => {
                   height: "100%",
                 }}
               >
-                <span style={{ marginLeft: "5px" }}>Jamie Overton</span>
+                <span style={{ marginLeft: "5px" }}>
+                  {score2?.bowler?.name}
+                </span>
               </div>
-              <div style={{ minWidth: "40px!important" }}>0.3</div>
-              <div style={{ minWidth: "40px!important" }}>0</div>
-              <div style={{ minWidth: "40px!important" }}>5</div>
-              <div style={{ minWidth: "40px!important" }}>0</div>
-              <div style={{ minWidth: "40px!important" }}>10</div>
+              <div style={{ minWidth: "40px!important" }}>
+                {score2?.bowler?.overs}
+              </div>
+              <div style={{ minWidth: "40px!important" }}>
+                {score2?.bowler?.maidens}
+              </div>
+              <div style={{ minWidth: "40px!important" }}>
+                {score2?.bowler?.runs}
+              </div>
+              <div style={{ minWidth: "40px!important" }}>
+                {score2?.bowler?.wickets}
+              </div>
+              <div style={{ minWidth: "40px!important" }}>
+                {score2?.bowler?.eco}
+              </div>
             </div>
           </div>
         </div>
