@@ -115,7 +115,7 @@ const Score = () => {
             <div className="sc_cw-over">
               <span
                 style={{
-                  border: ".25px solid var(--color-bg-primary)",
+                  border: ".25px solid #000000",
                   borderRadius: "2px",
                   paddingLeft: "5px",
                   paddingRight: "5px",
@@ -131,7 +131,7 @@ const Score = () => {
             <div className="sc_cw-over">
               <span
                 style={{
-                  border: ".25px solid var(--color-bg-primary)",
+                  border: ".25px solid #000000",
                   borderRadius: "2px",
                   paddingLeft: "5px",
                   paddingRight: "5px",
@@ -181,8 +181,8 @@ const Score = () => {
             <div
               className=" sc_cw-table-row sc_cw-desktop-row"
               style={{
-                backgroundColor: "#e7dbef",
-                color: "#6e3482",
+                backgroundColor: "#cbcbcb",
+                color: "#000000",
                 paddingTop: "2px",
                 paddingBottom: "2px",
                 fontWeight: 600,
@@ -264,8 +264,8 @@ const Score = () => {
                 justifyContent: "space-between",
                 paddingTop: "2px",
                 paddingBottom: "2px",
-                backgroundColor: "#e7dbef",
-                color: "#6e3482",
+                backgroundColor: "#cbcbcb",
+                color: " #000000",
                 fontWeight: 600,
               }}
             >
