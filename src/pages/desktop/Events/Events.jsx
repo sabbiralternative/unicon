@@ -130,7 +130,7 @@ const Events = () => {
     // value?.toFixed(2)
     return hasDecimal ? parseFloat(value?.toFixed(2)) : value;
   };
-
+  console.log(data);
   return (
     <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
@@ -203,9 +203,10 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
-            {data?.result?.[0]?.score2?.length > 0 && (
-              <Score score2={data?.result?.[0]?.score2?.[0]} />
-            )}
+            {data?.result?.[0]?.score2?.length !== 0 &&
+              !Array.isArray(data?.result?.[0]?.score2) && (
+                <Score score2={data?.result?.[0]?.score2} />
+              )}
 
             <IframeVideoTab
               iFrame={iFrame}
