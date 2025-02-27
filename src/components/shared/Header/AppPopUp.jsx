@@ -24,8 +24,8 @@ const AppPopup = () => {
   };
   return (
     <div className="android-popup">
-      <div className="rect-1"></div>
-      <div className="rect-2"></div>
+      {/* <div className="rect-1"></div>
+      <div className="rect-2"></div> */}
       <div className="android-card">
         <div
           style={{ cursor: "pointer" }}
