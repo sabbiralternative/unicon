@@ -15,6 +15,7 @@ import IFrame from "../../../components/ui/IFrame/IFrame";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
 import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
+import Score from "../../../components/ui/desktop/events/Score";
 
 const Events = () => {
   const [tab, setTab] = useState("");
@@ -202,6 +203,7 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
+            <Score />
 
             <IframeVideoTab
               iFrame={iFrame}

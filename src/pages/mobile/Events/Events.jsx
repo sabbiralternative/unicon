@@ -14,6 +14,7 @@ import IFrameScore from "../../../components/ui/IFrame/IFrame";
 import useCurrentBets from "../../../hooks/useCurrentBets";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
+import Score from "../../../components/ui/desktop/events/Score";
 
 const Events = () => {
   const [iFrame, setIframe] = useState("");
@@ -181,6 +182,7 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
+            <Score />
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (
