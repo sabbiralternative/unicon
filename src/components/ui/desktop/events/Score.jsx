@@ -329,7 +329,7 @@ const Score = ({ score2 }) => {
                       </g>
                     </svg>
                   )}
-                  {batMen?.name}45654
+                  {batMen?.name}
                 </div>
                 <div style={{ minWidth: "40px!important", flex: "auto" }}>
                   {batMen?.runs}
