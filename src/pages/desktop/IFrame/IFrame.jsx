@@ -38,7 +38,7 @@ const IFrame = () => {
     getCasinoVideo();
   }, [gameId, token]);
   return (
-    <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-0">
+    <div className="flex flex-col transition-all  ease-in-out duration-100 pt-0">
       <div className="flex items-start justify-start w-full">
         <div
           className="w-full md:mt-[0px] lg:overflow-auto lg:w-full"

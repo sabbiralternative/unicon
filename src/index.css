@@ -1179,9 +1179,9 @@ html * {
 }
 .sc_cw-team-info-desktop {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 0 0;
-  gap: 16px;
+  gap: 5px;
   width: 100%;
 }
 .sc_cw-team-info-mobile {

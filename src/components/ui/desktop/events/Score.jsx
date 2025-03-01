@@ -14,9 +14,9 @@ const Score = ({ score2 }) => {
             <div
               style={{
                 width: "100%",
-                display: "grid",
-                gridTemplateColumns: "auto auto auto",
-                gridTemplateRows: "auto auto",
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "space-between",
               }}
             >
               <div
@@ -36,10 +36,7 @@ const Score = ({ score2 }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  height: "100%!important",
-                  textAlign: "center",
-                  gridColumn: 2,
-                  gridRow: "1/span 2",
+                  textAlign: "end",
                 }}
               >
                 <span
@@ -52,67 +49,53 @@ const Score = ({ score2 }) => {
                     textTransform: "capitalize!important",
                   }}
                 >
-                  ENG has won the toss and elected to bat first
+                  ENG has won the toss and elected to bat first //status1
                   {/* {score2?.status} */}
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  height: "100%!important",
-                  textAlign: "right",
-                  gridColumn: 3,
-                  gridRow: "1/span 2",
-                }}
-              >
-                <span
-                  style={{
-                    width: "100%",
-                    fontWeight: 500,
-                    fontSize: "10px",
-                    textTransform: "capitalize!important",
-                  }}
-                />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                justifyContent: "space-between",
+              }}
+            >
+              <div>
+                <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                  {score2?.crr && (
+                    <>
+                      CRR:
+                      <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
+                    </>
+                  )}
+                </span>
               </div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
+              {score2?.rrr !== null && score2?.rrr != 0 && (
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.crr && (
-                      <>
-                        CRR:
-                        <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
-                      </>
-                    )}
-                  </span>
-                </div>
-                {score2?.rrr !== null && score2?.rrr != 0 && (
-                  <div>
-                    <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                      {score2?.rrr && (
-                        <>
-                          RRR:
-                          <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
-                        </>
-                      )}
-                    </span>
-                  </div>
-                )}
-
-                <div>
-                  <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.status2 && (
+                    {score2?.rrr && (
                       <>
                         RRR:
-                        <span style={{ fontWeight: 100 }}>
-                          {score2?.status2}
-                        </span>
+                        <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
                       </>
                     )}
                   </span>
                 </div>
+              )}
+
+              <div>
+                <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                  {/* {score2?.status && ( */}
+                  <>
+                    <span style={{ fontWeight: 100 }}>
+                      this is very long ....long status2 key message
+                      {score2?.status}
+                    </span>
+                  </>
+                  {/* )} */}
+                </span>
               </div>
             </div>
           </div>
