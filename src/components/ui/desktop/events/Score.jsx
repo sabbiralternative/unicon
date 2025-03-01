@@ -36,14 +36,13 @@ const Score = ({ score2 }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  textAlign: "end",
                 }}
               >
                 <span
                   style={{
                     width: "100%",
                     fontWeight: 500,
-                    fontSize: "10px",
+                    fontSize: "14px",
                     paddingLeft: "10px",
 
                     textTransform: "capitalize!important",
