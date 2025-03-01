@@ -49,8 +49,7 @@ const Score = ({ score2 }) => {
                     textTransform: "capitalize!important",
                   }}
                 >
-                  ENG has won the toss and elected to bat first //status1
-                  {/* {score2?.status} */}
+                  {score2?.status}
                 </span>
               </div>
             </div>
@@ -87,14 +86,7 @@ const Score = ({ score2 }) => {
 
               <div>
                 <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                  {/* {score2?.status && ( */}
-                  <>
-                    <span style={{ fontWeight: 100 }}>
-                      this is very long ....long status2 key message
-                      {score2?.status}
-                    </span>
-                  </>
-                  {/* )} */}
+                  <span style={{ fontWeight: 100 }}>{score2?.status2}</span>
                 </span>
               </div>
             </div>
