@@ -1,7 +1,7 @@
 const Score = ({ score2 }) => {
   return (
     <div
-      style={{ height: "200px", marginTop: "2px" }}
+      style={{ marginTop: "2px" }}
       id="score-board"
       className="score-board  show mb-md-3"
     >
@@ -46,13 +46,14 @@ const Score = ({ score2 }) => {
                   style={{
                     width: "100%",
                     fontWeight: 500,
-                    fontSize: "12px",
-                    paddingLeft: "50px",
-                    paddingRight: "50px",
+                    fontSize: "10px",
+                    paddingLeft: "10px",
+
                     textTransform: "capitalize!important",
                   }}
                 >
-                  {score2?.status}
+                  ENG has won the toss and elected to bat first
+                  {/* {score2?.status} */}
                 </span>
               </div>
               <div
@@ -87,16 +88,19 @@ const Score = ({ score2 }) => {
                     )}
                   </span>
                 </div>
-                <div>
-                  <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.rrr && (
-                      <>
-                        RRR:
-                        <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
-                      </>
-                    )}
-                  </span>
-                </div>
+                {score2?.rrr !== null && score2?.rrr != 0 && (
+                  <div>
+                    <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                      {score2?.rrr && (
+                        <>
+                          RRR:
+                          <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
+                        </>
+                      )}
+                    </span>
+                  </div>
+                )}
+
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
                     {score2?.status2 && (
@@ -130,7 +134,7 @@ const Score = ({ score2 }) => {
               justifyContent: "space-between",
               gap: "16px",
               overflowX: "auto",
-              fontSize: "12px",
+              fontSize: "10px",
             }}
           >
             <div className="sc_cw-over">
@@ -179,17 +183,14 @@ const Score = ({ score2 }) => {
             display: "flex",
             justifyContent: "space-between",
             overflowX: "auto",
-            fontSize: "12px",
+            fontSize: "10px",
           }}
         >
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP R:</span>{" "}
-            {score2?.partnership_runs}
+            <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+            {score2?.partnership_runs} ({score2?.partnership_balls})
           </div>
-          <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP B:</span>{" "}
-            {score2?.partnership_balls}
-          </div>
+
           <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
             <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
             {score2?.last_wicket}
@@ -213,6 +214,7 @@ const Score = ({ score2 }) => {
                 paddingTop: "2px",
                 paddingBottom: "2px",
                 fontWeight: 600,
+                fontSize: "10px",
               }}
             >
               <div
@@ -234,7 +236,11 @@ const Score = ({ score2 }) => {
               <div
                 key={i}
                 className="sc_cw-table-row sc_cw-desktop-row"
-                style={{ paddingTop: "2px", paddingBottom: "2px" }}
+                style={{
+                  paddingTop: "2px",
+                  paddingBottom: "2px",
+                  fontSize: "10px",
+                }}
               >
                 <div
                   style={{
@@ -245,6 +251,7 @@ const Score = ({ score2 }) => {
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "5px",
+                    fontSize: "10px",
                   }}
                 >
                   {batMen?.strike == 1 && (
@@ -357,6 +364,7 @@ const Score = ({ score2 }) => {
               width: "max-content",
               display: "flex",
               flexDirection: "column",
+              fontSize: "10px",
             }}
           >
             <div
@@ -369,6 +377,7 @@ const Score = ({ score2 }) => {
                 backgroundColor: "#cbcbcb",
                 color: " #000000",
                 fontWeight: 600,
+                fontSize: "10px",
               }}
             >
               <div
@@ -382,7 +391,7 @@ const Score = ({ score2 }) => {
                   height: "100%",
                 }}
               >
-                <span style={{ marginLeft: "5px" }}>Bowler</span>
+                <span style={{}}>Bowler</span>
               </div>
               <div style={{ minWidth: "40px!important" }}>O</div>
               <div style={{ minWidth: "40px!important" }}>M</div>
@@ -398,6 +407,7 @@ const Score = ({ score2 }) => {
                 justifyContent: "space-between",
                 paddingTop: "2px",
                 paddingBottom: "2px",
+                fontSize: "10px",
               }}
             >
               <div
@@ -409,6 +419,7 @@ const Score = ({ score2 }) => {
                   whiteSpace: "nowrap",
                   textAlign: "left!important",
                   height: "100%",
+                  fontSize: "10px",
                 }}
               >
                 <span style={{ marginLeft: "5px" }}>

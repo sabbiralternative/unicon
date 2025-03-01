@@ -269,7 +269,7 @@ const Fancy = ({ fancy }) => {
                         <span
                           key={i}
                           onClick={() => handleGetLadder(MarketId, games)}
-                          className="col-span-2 md:col-span-1 flex flex-row items-center justify-center"
+                          className="col-span-2 md:col-span-2 flex flex-row items-center justify-end"
                         >
                           <div className="opacity-100 cursor-pointer">
                             <svg
@@ -312,7 +312,7 @@ const Fancy = ({ fancy }) => {
                       );
                     })
                   ) : (
-                    <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center">
+                    <span className="col-span-2 md:col-span-2 flex flex-row items-center justify-end">
                       <div className="opacity-50 cursor-not-allowed">
                         <svg
                           height="18"
