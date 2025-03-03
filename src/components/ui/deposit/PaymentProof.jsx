@@ -7,8 +7,10 @@ import { userToken } from "../../../redux/features/auth/authSlice";
 import { FaSpinner } from "react-icons/fa";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
 import axios from "axios";
+import useUTR from "../../../hooks/utr";
 
 const PaymentProof = ({ paymentId, amount }) => {
+  const { mutate: getUTR } = useUTR();
   const [handleBankDeposit] = useBankMutation();
   const token = useSelector(userToken);
   const navigate = useNavigate();
@@ -33,9 +35,16 @@ const PaymentProof = ({ paymentId, amount }) => {
         const data = res.data;
 
         if (data?.success) {
+          getUTR(data?.filePath, {
+            onSuccess: (data) => {
+              if (data?.success) {
+                setUtr(data?.utr);
+              }
+            },
+          });
           setLoading(false);
           setUploadedImage(data?.fileName);
-          setUtr(data?.utr);
+
           setFilePath(data?.filePath);
           setImage(null);
         } else {
@@ -49,7 +58,7 @@ const PaymentProof = ({ paymentId, amount }) => {
       };
       handleSubmitImage();
     }
-  }, [image, token]);
+  }, [image, token, getUTR]);
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);

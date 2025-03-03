@@ -11,6 +11,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
         API.index = endPoints?.index;
+        API.utr = endPoints?.utr;
         API.language = endPoints?.language;
         API.bonus = endPoints?.bonus;
         API.mac88 = endPoints?.mac88;
