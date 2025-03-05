@@ -22,7 +22,6 @@ const PaymentProof = ({ paymentId, amount }) => {
 
   useEffect(() => {
     if (image) {
-      setUtr(null);
       setLoading(true);
       const handleSubmitImage = async () => {
         const formData = new FormData();
@@ -39,7 +38,9 @@ const PaymentProof = ({ paymentId, amount }) => {
           getUTR(data?.filePath, {
             onSuccess: (data) => {
               if (data?.success) {
-                setUtr(data?.utr);
+                if (data?.utr !== null) {
+                  setUtr(data?.utr);
+                }
               }
             },
           });
