@@ -119,7 +119,6 @@ const BetSlip = ({ setRunnerId }) => {
           setBetDelay(false);
         }
       } catch (error) {
-        console.error("Error placing order:", error);
         toast.error("Something went wrong. Please try again.");
         setBetDelay("");
       }

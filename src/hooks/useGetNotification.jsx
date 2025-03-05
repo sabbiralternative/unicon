@@ -11,14 +11,10 @@ const useGetNotification = () => {
   } = useQuery({
     queryKey: ["notifications"],
     queryFn: async () => {
-      try {
-        const { data } = await AxiosSecure.post(`${API.notification}`);
+      const { data } = await AxiosSecure.post(`${API.notification}`);
 
-        if (data.success) {
-          return data?.result;
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      if (data.success) {
+        return data?.result;
       }
     },
     gcTime: 0,

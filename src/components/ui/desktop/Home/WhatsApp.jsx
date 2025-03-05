@@ -8,10 +8,8 @@ const WhatsApp = () => {
 
   const navigateWhatsApp = () => {
     if (token && socialLink?.branchWhatsapplink) {
-      console.log(socialLink?.branchWhatsapplink);
       window.open(socialLink?.branchWhatsapplink, "_blank");
     } else {
-      console.log(socialLink?.whatsapplink);
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };

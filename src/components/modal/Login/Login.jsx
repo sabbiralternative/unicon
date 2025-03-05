@@ -63,7 +63,7 @@ const Login = () => {
       b2c: settings.b2c,
     };
     const result = await handleLogin(loginData).unwrap();
-    // console.log(result);
+
     if (result.success) {
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;

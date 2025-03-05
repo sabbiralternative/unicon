@@ -37,7 +37,7 @@ const baseQuery = async (args, api, extraOptions) => {
     if (settings.language) {
       payload.language = localStorage.getItem("language") || "english";
     }
-    console.log(payload);
+
     const encryptedData = handleEncryptData(payload);
     args.body = encryptedData; // Update the body with encrypted data
   }

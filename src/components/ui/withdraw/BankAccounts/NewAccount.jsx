@@ -50,8 +50,6 @@ const NewAccount = ({ setTabs }) => {
       bankData.orderId = orderId;
     }
 
-    console.log(bankData);
-
     const res = await addNewBank(bankData).unwrap();
 
     if (res?.success) {

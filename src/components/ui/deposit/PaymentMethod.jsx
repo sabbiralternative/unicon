@@ -78,7 +78,6 @@ const PaymentMethod = ({
             >
               {paymentMethods?.length > 0 &&
                 paymentMethods?.map((method, i) => {
-                  // console.log(method);
                   return (
                     <div
                       onClick={(e) => handleVisibleBankMethod(e, method)}

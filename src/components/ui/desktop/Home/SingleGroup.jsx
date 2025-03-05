@@ -99,7 +99,6 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
 
                   {data &&
                     filterData.map((keys) => {
-                      console.log(data[keys]);
                       return (
                         <>
                           <div
