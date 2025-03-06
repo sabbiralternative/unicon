@@ -59,7 +59,11 @@ const PaymentMethod = ({
 
       const res = await handleBankPayment(depositDetail).unwrap();
       if (res?.success) {
-        setDepositData(res?.result);
+        if (method?.type === "whatsapp") {
+          window.location.href = res?.result?.link;
+        } else {
+          setDepositData(res?.result);
+        }
       }
     }
   };
@@ -136,6 +140,12 @@ const PaymentMethod = ({
                           <img
                             style={{ height: "20px", width: "20px" }}
                             src={assets.usdt}
+                          />
+                        ) : null}
+                        {method?.type == "whatsapp" ? (
+                          <img
+                            style={{ height: "17px", width: "17px" }}
+                            src={assets.whatsApp}
                           />
                         ) : null}
 
@@ -643,7 +653,9 @@ const PaymentMethod = ({
           {paymentMethods?.length > 0 && (
             <div className="w-full text-center py-4 px-2">
               <button
-                disabled={paymentMethods?.length === 0 || !tabs}
+                disabled={
+                  paymentMethods?.length === 0 || !tabs || tabs === "whatsapp"
+                }
                 onClick={() => {
                   setPaymentMethods(false);
                   setUploadTransaction(true);
