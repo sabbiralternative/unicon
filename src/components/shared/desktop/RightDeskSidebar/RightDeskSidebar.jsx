@@ -21,6 +21,7 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const RightDeskSidebar = () => {
+  const { eventTypeId } = useParams();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const { showComponent, price, stake, placeBetValues } = useSelector(
@@ -109,8 +110,26 @@ const RightDeskSidebar = () => {
       },
     ];
     setLoading(true);
-    setBetDelay(placeBetValues?.betDelay);
-    const delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
+    let delay = 0;
+    if (
+      (eventTypeId == 4 || eventTypeId == 2) &&
+      placeBetValues?.btype === "MATCH_ODDS" &&
+      price > 3 &&
+      placeBetValues?.name?.length === 2
+    ) {
+      delay = 9000;
+    }
+    if (
+      (eventTypeId == 4 || eventTypeId == 2) &&
+      placeBetValues?.btype === "MATCH_ODDS" &&
+      price > 7 &&
+      placeBetValues?.name?.length === 3
+    ) {
+      delay = 9000;
+    } else {
+      setBetDelay(placeBetValues?.betDelay);
+      delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
+    }
 
     setTimeout(async () => {
       const res = await createOrder(payloadData).unwrap();
