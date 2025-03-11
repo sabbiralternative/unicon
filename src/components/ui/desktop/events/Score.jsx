@@ -1,4 +1,4 @@
-const Score = ({ score2 }) => {
+const Score = ({ score2, mobile }) => {
   console.log(score2);
   return (
     <div
@@ -8,124 +8,126 @@ const Score = ({ score2 }) => {
     >
       <div className="sc_cw-main-container">
         {/* Header */}
-        <div className="sc_cw-header">
-          <div
-            className="sc_cw-team-info-desktop"
-            style={{ width: "100%!important", fontWeight: 200 }}
-          >
+        {!mobile && (
+          <div className="sc_cw-header">
             <div
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "start",
-                justifyContent: "space-between",
-              }}
+              className="sc_cw-team-info-desktop"
+              style={{ width: "100%!important", fontWeight: 200 }}
             >
               <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                  {score2?.team_name}
-                </span>
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                  {score2?.team_runs}
-                </span>
-                <span style={{ fontWeight: 100, fontSize: "12px" }}>
-                  {score2?.team_overs}
-                </span>
-              </div>
-              {/* <div
                 style={{
+                  width: "100%",
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "start",
+                  justifyContent: "space-between",
                 }}
               >
-                <span
-                  style={{
-                    width: "100%",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                    paddingLeft: "10px",
-
-                    textTransform: "capitalize!important",
-                  }}
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
                 >
-                  {score2?.status}
-                </span>
-              </div> */}
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                  {score2?.team_name2}
-                </span>
-                <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                  {score2?.team_runs2}
-                </span>
-                <span style={{ fontWeight: 100, fontSize: "12px" }}>
-                  {score2?.team_overs2}
-                </span>
-              </div>
-            </div>
-            <div
+                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                    {score2?.team_name}
+                  </span>
+                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                    {score2?.team_runs}
+                  </span>
+                  <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                    {score2?.team_overs}
+                  </span>
+                </div>
+                {/* <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                justifyContent: "space-between",
               }}
             >
-              <div>
-                <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                  {score2?.crr && (
-                    <>
-                      CRR:
-                      <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
-                    </>
-                  )}
-                </span>
+              <span
+                style={{
+                  width: "100%",
+                  fontWeight: 500,
+                  fontSize: "14px",
+                  paddingLeft: "10px",
+
+                  textTransform: "capitalize!important",
+                }}
+              >
+                {score2?.status}
+              </span>
+            </div> */}
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                    {score2?.team_name2}
+                  </span>
+                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                    {score2?.team_runs2}
+                  </span>
+                  <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                    {score2?.team_overs2}
+                  </span>
+                </div>
               </div>
-              {score2?.rrr !== null && score2?.rrr != 0 && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  justifyContent: "space-between",
+                }}
+              >
                 <div>
                   <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                    {score2?.rrr && (
+                    {score2?.crr && (
                       <>
-                        RRR:
-                        <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
+                        CRR:
+                        <span style={{ fontWeight: 100 }}>{score2?.crr}</span>
                       </>
                     )}
                   </span>
                 </div>
-              )}
+                {score2?.rrr !== null && score2?.rrr != 0 && (
+                  <div>
+                    <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                      {score2?.rrr && (
+                        <>
+                          RRR:
+                          <span style={{ fontWeight: 100 }}>{score2?.rrr}</span>
+                        </>
+                      )}
+                    </span>
+                  </div>
+                )}
 
-              <div>
-                <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                  <span style={{ fontWeight: 100 }}>{score2?.status2}</span>
-                </span>
-              </div>
-            </div>
-
-            <div
-              className="sc_cw-other-info"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                overflowX: "auto",
-                fontSize: "10px",
-              }}
-            >
-              <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
-                {score2?.partnership_runs} ({score2?.partnership_balls})
+                <div>
+                  <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                    <span style={{ fontWeight: 100 }}>{score2?.status2}</span>
+                  </span>
+                </div>
               </div>
 
-              <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
-                {score2?.last_wicket}
+              <div
+                className="sc_cw-other-info"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  overflowX: "auto",
+                  fontSize: "10px",
+                }}
+              >
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+                  {score2?.partnership_runs} ({score2?.partnership_balls})
+                </div>
+
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
+                  {score2?.last_wicket}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
         {/* Over */}
         <div
           className="sc_cw-overs-info"

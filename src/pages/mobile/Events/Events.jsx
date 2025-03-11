@@ -167,6 +167,7 @@ const Events = () => {
               score={data?.score}
               iFrame={iFrame}
               setIframe={setIframe}
+              score2={data?.result?.[0]?.score2}
             />
 
             {betsType === "openBet" && <OpenBets myBets={myBets} />}
@@ -184,7 +185,7 @@ const Events = () => {
             )}
             {data?.result?.[0]?.score2?.length !== 0 &&
               !Array.isArray(data?.result?.[0]?.score2) && (
-                <Score score2={data?.result?.[0]?.score2} />
+                <Score mobile={true} score2={data?.result?.[0]?.score2} />
               )}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">

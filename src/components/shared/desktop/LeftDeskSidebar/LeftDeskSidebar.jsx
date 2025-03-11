@@ -62,7 +62,7 @@ const LeftDeskSidebar = () => {
       <div
         title="Menu"
         id="leftDeskSideBar"
-        className="hidden lg:flex p-2 overflow-y-auto z-10 w-[20%] h-[calc(100dvh-120px)] sticky top-[54px] lg:top-[110px]"
+        className="hidden lg:flex p-2 overflow-y-auto z-10 w-[20%] h-[calc(100dvh-120px)] sticky "
       >
         <ul
           style={{ paddingLeft: "0px" }}

@@ -10,6 +10,7 @@ const EventHeader = ({
   myBets,
   score,
   setIframe,
+  score2,
 }) => {
   const navigate = useNavigate();
   const [sportsVideo] = useVideoMutation();
@@ -70,7 +71,9 @@ const EventHeader = ({
           >
             <div
               onClick={() => navigate(-1)}
-              className="w-8 cursor-pointer rounded-sm h-6 flex items-center justify-center  active:scale-110 active:opacity-90"
+              className={`w-8 cursor-pointer rounded-sm h-6 flex items-center justify-center  active:scale-110 active:opacity-90 ${
+                eventTypeId == 4 ? "hidden" : ""
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,12 +90,146 @@ const EventHeader = ({
             </div>
 
             {/* <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0"> */}
-            {eventTypeId != 2 && (
+            {eventTypeId != 2 && eventTypeId != 4 && (
               <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
                 <span className="capitalize break-words">
                   {data?.result?.length > 0 && data?.result?.[0]?.eventName}
                 </span>
               </span>
+            )}
+            {eventTypeId == 4 && score && (
+              <div className="sc_cw-header" style={{ width: "100%" }}>
+                <div
+                  className="sc_cw-team-info-desktop"
+                  style={{ width: "100%!important", fontWeight: 200 }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "start",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                        {score2?.team_name}
+                      </span>
+                      <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                        {score2?.team_runs}
+                      </span>
+                      <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                        {score2?.team_overs}
+                      </span>
+                    </div>
+                    {/* <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <span
+                  style={{
+                    width: "100%",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    paddingLeft: "10px",
+
+                    textTransform: "capitalize!important",
+                  }}
+                >
+                  {score2?.status}
+                </span>
+              </div> */}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                        {score2?.team_name2}
+                      </span>
+                      <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                        {score2?.team_runs2}
+                      </span>
+                      <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                        {score2?.team_overs2}
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                        {score2?.crr && (
+                          <>
+                            CRR:
+                            <span style={{ fontWeight: 100 }}>
+                              {score2?.crr}
+                            </span>
+                          </>
+                        )}
+                      </span>
+                    </div>
+                    {score2?.rrr !== null && score2?.rrr != 0 && (
+                      <div>
+                        <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                          {score2?.rrr && (
+                            <>
+                              RRR:
+                              <span style={{ fontWeight: 100 }}>
+                                {score2?.rrr}
+                              </span>
+                            </>
+                          )}
+                        </span>
+                      </div>
+                    )}
+
+                    <div>
+                      <span style={{ fontWeight: 500, fontSize: "10px" }}>
+                        <span style={{ fontWeight: 100 }}>
+                          {score2?.status2}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    className="sc_cw-other-info"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      overflowX: "auto",
+                      fontSize: "10px",
+                    }}
+                  >
+                    <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                      <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+                      {score2?.partnership_runs} ({score2?.partnership_balls})
+                    </div>
+
+                    <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                      <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
+                      {score2?.last_wicket}
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
 
             {/* {eventTypeId == 1 && (

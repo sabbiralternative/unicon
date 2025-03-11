@@ -136,7 +136,7 @@ const Events = () => {
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <LeftDeskSidebar />
         <div
-          className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
+          className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] lg:pt-2"
           style={{ minHeight: "calc(-54px + 100dvh)" }}
         >
           <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
@@ -206,7 +206,7 @@ const Events = () => {
             {eventTypeId == 4 &&
               data?.result?.[0]?.score2?.length !== 0 &&
               !Array.isArray(data?.result?.[0]?.score2) && (
-                <Score score2={data?.result?.[0]?.score2} />
+                <Score mobile={false} score2={data?.result?.[0]?.score2} />
               )}
 
             <IframeVideoTab
