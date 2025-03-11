@@ -111,6 +111,7 @@ const EventHeader = ({
                       justifyContent: "space-between",
                     }}
                   >
+                    {/* First left team  */}
                     <div
                       style={{
                         display: "flex",
@@ -128,25 +129,7 @@ const EventHeader = ({
                         {score2?.team_overs}
                       </span>
                     </div>
-                    {/* <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <span
-                  style={{
-                    width: "100%",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                    paddingLeft: "10px",
-
-                    textTransform: "capitalize!important",
-                  }}
-                >
-                  {score2?.status}
-                </span>
-              </div> */}
+                    {/* Second Right team */}
                     <div
                       style={{
                         display: "flex",
@@ -165,50 +148,8 @@ const EventHeader = ({
                       </span>
                     </div>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div>
-                      <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                        {score2?.crr && (
-                          <>
-                            CRR:
-                            <span style={{ fontWeight: 100 }}>
-                              {score2?.crr}
-                            </span>
-                          </>
-                        )}
-                      </span>
-                    </div>
-                    {score2?.rrr !== null && score2?.rrr != 0 && (
-                      <div>
-                        <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                          {score2?.rrr && (
-                            <>
-                              RRR:
-                              <span style={{ fontWeight: 100 }}>
-                                {score2?.rrr}
-                              </span>
-                            </>
-                          )}
-                        </span>
-                      </div>
-                    )}
 
-                    <div>
-                      <span style={{ fontWeight: 500, fontSize: "10px" }}>
-                        <span style={{ fontWeight: 100 }}>
-                          {score2?.status2}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-
+                  {/* Crr, rrr, pship, last wicket */}
                   <div
                     className="sc_cw-other-info"
                     style={{
@@ -218,15 +159,40 @@ const EventHeader = ({
                       fontSize: "10px",
                     }}
                   >
-                    <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                      <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
-                      {score2?.partnership_runs} ({score2?.partnership_balls})
-                    </div>
+                    {score2?.crr && (
+                      <div
+                        style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                      >
+                        <span style={{ fontWeight: 600 }}>CRR: </span>{" "}
+                        {score2?.crr}
+                      </div>
+                    )}
 
-                    <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                      <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
-                      {score2?.last_wicket}
-                    </div>
+                    {score2?.rrr !== null && score2?.rrr != 0 && (
+                      <div
+                        style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                      >
+                        <span style={{ fontWeight: 600 }}>RRR: </span>{" "}
+                        {score2?.rrr}
+                      </div>
+                    )}
+                    {score2?.partnership_runs || score2?.partnership_balls ? (
+                      <div
+                        style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                      >
+                        <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+                        {score2?.partnership_runs} ({score2?.partnership_balls})
+                      </div>
+                    ) : null}
+
+                    {score2?.last_wicket && (
+                      <div
+                        style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                      >
+                        <span style={{ fontWeight: 600 }}>LAST WKT:</span>{" "}
+                        {score2?.last_wicket}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
