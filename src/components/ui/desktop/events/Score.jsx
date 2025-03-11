@@ -7,6 +7,7 @@ const Score = ({ score2 }) => {
       className="score-board  show mb-md-3"
     >
       <div className="sc_cw-main-container">
+        {/* Header */}
         <div className="sc_cw-header">
           <div
             className="sc_cw-team-info-desktop"
@@ -103,8 +104,29 @@ const Score = ({ score2 }) => {
                 </span>
               </div>
             </div>
+
+            <div
+              className="sc_cw-other-info"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                overflowX: "auto",
+                fontSize: "10px",
+              }}
+            >
+              <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+                {score2?.partnership_runs} ({score2?.partnership_balls})
+              </div>
+
+              <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
+                {score2?.last_wicket}
+              </div>
+            </div>
           </div>
         </div>
+        {/* Over */}
         <div
           className="sc_cw-overs-info"
           style={{
@@ -165,26 +187,30 @@ const Score = ({ score2 }) => {
             </div>
           </div>
         </div>
-        <div
-          className="sc_cw-other-info"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            overflowX: "auto",
-            fontSize: "10px",
-          }}
-        >
-          <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
-            {score2?.partnership_runs} ({score2?.partnership_balls})
-          </div>
 
-          <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-            <span style={{ fontWeight: 600 }}>LAST WICKET:</span>{" "}
-            {score2?.last_wicket}
+        {/* score 1 2 */}
+        {score2?.status || score2?.status2 ? (
+          <div
+            className="sc_cw-other-info"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              overflowX: "auto",
+              fontSize: "10px",
+            }}
+          >
+            <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+              <span style={{ fontWeight: 600 }}> </span> {score2?.status}
+            </div>
+
+            <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+              <span style={{ fontWeight: 600 }}></span> {score2?.status2}
+            </div>
           </div>
-        </div>
+        ) : null}
+
         <div style={{ overflowX: "auto", width: "100%" }}>
+          {/* Batsmen */}
           <div
             className="sc_cw-table-container"
             style={{
@@ -344,7 +370,7 @@ const Score = ({ score2 }) => {
               </div>
             ))}
           </div>
-
+          {/* Bowler */}
           <div
             className="sc_cw-table-container"
             style={{

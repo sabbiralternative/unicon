@@ -7,7 +7,7 @@ import Fancy from "../../../components/ui/desktop/events/Fancy";
 import MatchOdds from "../../../components/ui/desktop/events/MatchOdds";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import RightDeskSidebar from "../../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
-import EventHeader from "../../../components/ui/desktop/events/EventHeader";
+// import EventHeader from "../../../components/ui/desktop/events/EventHeader";
 import useBalance from "../../../hooks/useBalance";
 import { useDispatch, useSelector } from "react-redux";
 import { setPredictOdd } from "../../../redux/features/events/eventSlice";
@@ -140,7 +140,7 @@ const Events = () => {
           style={{ minHeight: "calc(-54px + 100dvh)" }}
         >
           <div className="no-scrollbar min-h-[calc(100dvh-56px)] md:mb-3">
-            <EventHeader data={data} eventTypeId={eventTypeId} />
+            {/* <EventHeader data={data} eventTypeId={eventTypeId} /> */}
 
             {/* <div title="Open Bets" className="hidden">
               <div className="flex items-start justify-start flex-col w-full px-2 py-1">
