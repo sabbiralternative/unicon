@@ -1,4 +1,5 @@
 const Score = ({ score2 }) => {
+  console.log(score2);
   return (
     <div
       style={{ marginTop: "2px" }}
@@ -32,7 +33,7 @@ const Score = ({ score2 }) => {
                   {score2?.team_overs}
                 </span>
               </div>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -49,6 +50,19 @@ const Score = ({ score2 }) => {
                   }}
                 >
                   {score2?.status}
+                </span>
+              </div> */}
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_name2}
+                </span>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_runs2}
+                </span>
+                <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                  {score2?.team_overs2}
                 </span>
               </div>
             </div>
