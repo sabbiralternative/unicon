@@ -17,8 +17,8 @@ export const isGameSuspended = (games) => {
     return false;
   }
 };
-export const isHorseGreyhoundOddSuspended = (game, runner) => {
-  if (game?.status !== "OPEN" || runner?.status !== "ACTIVE") {
+export const isHorseGreyhoundOddSuspended = (game) => {
+  if (game?.status !== "OPEN") {
     return true;
   } else {
     return false;

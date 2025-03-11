@@ -88,6 +88,7 @@ const BetSlip = ({ setRunnerId }) => {
   /* Handle bets */
 
   const handleOrderBets = async () => {
+    setLoading(true);
     const payloadData = [
       {
         ...payload,
@@ -116,10 +117,12 @@ const BetSlip = ({ setRunnerId }) => {
       setBetDelay(placeBetValues?.betDelay);
       delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
     }
+
     // Introduce a delay before calling the API
     setTimeout(async () => {
       try {
         const res = await createOrder(payloadData).unwrap();
+
         if (res?.success) {
           setLoading(false);
           refetchExposure();
