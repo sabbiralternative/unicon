@@ -1,5 +1,4 @@
 const Score = ({ score2, mobile }) => {
-  console.log(score2);
   return (
     <div
       style={{ marginTop: "2px" }}

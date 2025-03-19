@@ -39,8 +39,10 @@ import default_notification from "./images/default_notification.svg";
 import warning from "./images/warning-yellow.svg";
 import matchField from "./images/liveMatchField.jpg";
 import usdt from "./images/usdt.png";
+import logo from "./images/logo.png";
 
 export default {
+  logo,
   commision,
   cogra,
   begamle,

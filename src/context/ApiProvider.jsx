@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { getSetApis } from "../api/config";
 import { API, settings } from "../api";
 import notice from "../../notice.json";
+import assets from "../assets";
 export const ApiContext = createContext(null);
 const ApiProvider = ({ children }) => {
   const [noticeLoaded, setNoticeLoaded] = useState(false);
@@ -18,8 +19,13 @@ const ApiProvider = ({ children }) => {
 
   useEffect(() => {
     if (noticeLoaded) {
-      const logo = `${API.assets}/${settings.siteUrl}/logo.${settings.logoFormat}`;
-      setLogo(logo);
+      if (settings.build === "production") {
+        const logo = `${API.assets}/${settings.siteUrl}/logo.${settings.logoFormat}`;
+        setLogo(logo);
+      } else {
+        setLogo(assets.logo);
+      }
+
       /* Theme css */
       const link = document.createElement("link");
       link.rel = "stylesheet";
