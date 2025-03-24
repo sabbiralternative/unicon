@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
+import useDepositBreakdown from "../../../hooks/depositBreakdown";
+import toast from "react-hot-toast";
 
 const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
-  const [error, setError] = useState("");
+  const { mutate: handleDepositBreakdown } = useDepositBreakdown();
+
   const handleShowPaymentMethods = () => {
-    if (!amount) {
-      return setError("Amount is required.");
+    if (amount) {
+      handleDepositBreakdown(
+        { amount },
+        {
+          onSuccess: (data) => {
+            if (data?.minimumDeposit && amount < data?.minimumDeposit) {
+              toast.error(`Minimum deposit amount is ${data?.minimumDeposit}`);
+            } else {
+              setPaymentMethods(true);
+            }
+          },
+        }
+      );
     } else {
-      setPaymentMethods(true);
+      return toast.error("Amount is required");
     }
   };
 
-  useEffect(() => {
-    if (amount) {
-      setError("");
-    }
-  }, [amount]);
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -85,13 +93,13 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span>+50,000</span>
               </button>
             </div>
-            {error && (
+            {/* {error && (
               <div className="my-2">
                 <span className="text-text_Primary text-base font-lato font-[480] leading-4">
                   {error}
                 </span>
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="flex items-start justify-center gap-x-2 py-3 px-5">

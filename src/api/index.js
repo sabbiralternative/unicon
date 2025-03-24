@@ -50,6 +50,7 @@ export const API = {
   index: "",
   language: "",
   utr: "",
+  depositBreakdown: "",
 };
 
 export const settings = {

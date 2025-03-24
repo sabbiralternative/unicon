@@ -10,6 +10,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
       if (data?.result?.endpoint) {
         const endPoints = data?.result?.endpoint;
         const setting = data?.result?.settings;
+        API.depositBreakdown = endPoints?.depositBreakdown;
         API.index = endPoints?.index;
         API.utr = endPoints?.utr;
         API.language = endPoints?.language;
