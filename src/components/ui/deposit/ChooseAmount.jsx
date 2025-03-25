@@ -5,12 +5,18 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
   const { mutate: handleDepositBreakdown } = useDepositBreakdown();
 
   const handleShowPaymentMethods = () => {
+    const floatAmount = parseFloat(amount);
+
+    if (typeof floatAmount !== "number") {
+      return toast.error("Please enter a valid number");
+    }
+
     if (amount) {
       handleDepositBreakdown(
-        { amount },
+        { amount: floatAmount },
         {
           onSuccess: (data) => {
-            if (data?.minimumDeposit && amount < data?.minimumDeposit) {
+            if (data?.minimumDeposit && floatAmount < data?.minimumDeposit) {
               toast.error(`Minimum deposit amount is ${data?.minimumDeposit}`);
             } else {
               setPaymentMethods(true);
