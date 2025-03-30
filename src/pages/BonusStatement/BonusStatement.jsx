@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import useBonusStatement from "../../hooks/useBonusStatement";
@@ -9,7 +8,6 @@ import moment from "moment";
 const BonusStatement = () => {
   const { data, refetch } = useBonusStatement();
   const [claimBonus] = useBonusMutation();
-  const { showAppPopUp } = useSelector((state) => state.state);
 
   const handleShowMessage = (item) => {
     if (item?.is_claimed == 1) {
@@ -56,11 +54,7 @@ const BonusStatement = () => {
   };
 
   return (
-    <div
-      className={`flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 ${
-        showAppPopUp ? "pt-[160px]" : "pt-[90px]"
-      }`}
-    >
+    <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <LeftDeskSidebar />
         <div

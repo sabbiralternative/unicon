@@ -11,7 +11,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
       return toast.error("Please enter a valid number");
     }
 
-    if (amount) {
+    if (floatAmount) {
       handleDepositBreakdown(
         { amount: floatAmount },
         {

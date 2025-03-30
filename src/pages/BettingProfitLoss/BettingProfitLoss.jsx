@@ -47,7 +47,7 @@ const BettingProfitLoss = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-[5px]">
+      <div className="flex flex-col transition-all  ease-in-out duration-100 pt-[5px]">
         <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
           <LeftDeskSidebar />
           <div
