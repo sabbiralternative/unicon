@@ -4,6 +4,7 @@ import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/R
 import useBettingProfitLoss from "../../hooks/useBettingProfitLoss";
 import { useSelector } from "react-redux";
 import { userToken } from "../../redux/features/auth/authSlice";
+import moment from "moment";
 
 const BettingProfitLoss = () => {
   const { passbook } = useBettingProfitLoss();
@@ -213,6 +214,9 @@ const BettingProfitLoss = () => {
                   const filterByDate = passbook?.filter(
                     (item) => item?.settledTime === date
                   );
+                  const totalPnl = filterByDate?.reduce((acc, curr) => {
+                    return acc + curr.memberWin;
+                  }, 0);
                   return (
                     <div
                       key={date}
@@ -221,8 +225,22 @@ const BettingProfitLoss = () => {
                     >
                       <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
                         <div className="text-xs text-text_Quaternary  font-[600] leading-[140%]">
-                          {date}
-                          {/* 29th August 2024 */}
+                          {moment(date).format("MMM-Do-YYYY")}
+                        </div>
+                        <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">
+                          <span>P&amp;L</span>
+                          <span className="-mt-0.5 ml-1">:</span>
+                          <span
+                            className={`ml-1 ${
+                              totalPnl > 0
+                                ? "text-text_Success"
+                                : totalPnl < 0
+                                ? "text-red-400"
+                                : "text-white"
+                            }`}
+                          >
+                            {totalPnl}
+                          </span>
                         </div>
                       </div>
                       {filterByDate?.map((item, i) => {
@@ -235,23 +253,8 @@ const BettingProfitLoss = () => {
                               title="Cricket - 1.232257782-3066645.FY"
                               className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
                             >
-                              <div className="w-full text-start  flex justify-between text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize">
+                              <div className="w-full text-start   text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize">
                                 <span> {item?.narration}</span>
-                                <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">
-                                  <span className="text-black">P&amp;L</span>
-                                  <span className="-mt-0.5 ml-1">:</span>
-                                  <span
-                                    className={`ml-1 ${
-                                      item?.memberWin > 0
-                                        ? "text-text_Success"
-                                        : item?.memberWin < 0
-                                        ? "text-text_Danger"
-                                        : "text-white"
-                                    }`}
-                                  >
-                                    {item?.memberWin}
-                                  </span>
-                                </div>
                               </div>
 
                               <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">

@@ -191,7 +191,15 @@ const SingleProfitLoss = () => {
                 </div>
                 <div className="flex justify-between border-dashed">
                   <div>Market Subtotal</div>
-                  <div className="font-bold text-text_Profit">₹ 0</div>
+                  <div
+                    className={`font-bold ${
+                      backTotal + layTotal > 0
+                        ? "text-text_Profit"
+                        : "text-text_Loss"
+                    }`}
+                  >
+                    ₹ {backTotal + layTotal}
+                  </div>
                 </div>
                 <div className="flex justify-between border-dashed">
                   <div>Commission</div>
