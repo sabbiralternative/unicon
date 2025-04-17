@@ -14,6 +14,11 @@ const BettingProfitLoss = () => {
       navigate(`/betting-profit-loss/${item?.marketId}`);
     }
   };
+
+  const getUniqueDate = Array.from(
+    new Set(passbook?.map((item) => item?.settledTime))
+  );
+
   return (
     <>
       <div
@@ -202,74 +207,86 @@ const BettingProfitLoss = () => {
                 </div>
               </div>
             </div> */}
-              {token && passbook?.length > 0 ? (
-                passbook?.map((item, i) => {
-                  console.log(item);
+
+              {token && getUniqueDate?.length > 0 ? (
+                getUniqueDate?.map((date) => {
+                  const filterByDate = passbook?.filter(
+                    (item) => item?.settledTime === date
+                  );
                   return (
                     <div
-                      onClick={() => handleNavigateSinglePassbook(item)}
-                      key={i}
+                      key={date}
                       title="Profit &amp; Loss Statement"
                       className="w-full px-1 my-1.5 cursor-pointer"
                     >
                       <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
                         <div className="text-xs text-text_Quaternary  font-[600] leading-[140%]">
-                          {item?.settledTime}
+                          {date}
                           {/* 29th August 2024 */}
                         </div>
-                        <div className="text-xs text-text_Quaternary  font-[600] flex items-center justify-center leading-[140%]">
-                          <span>P&amp;L</span>
-                          <span className="-mt-0.5 ml-1">:</span>
-                          <span
-                            className={`ml-1 ${
-                              item?.memberWin > 0
-                                ? "text-text_Success"
-                                : item?.memberWin < 0
-                                ? "text-red-400"
-                                : "text-white"
-                            }`}
+                      </div>
+                      {filterByDate?.map((item, i) => {
+                        return (
+                          <div
+                            onClick={() => handleNavigateSinglePassbook(item)}
+                            key={i}
                           >
-                            {item?.memberWin}
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        title="Cricket - 1.232257782-3066645.FY"
-                        className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-                      >
-                        <div className="w-full text-start  text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize">
-                          <span> {item?.narration}</span>
-                        </div>
-                        <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
-                          <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
-                            <span>Commission:</span>
-                            <span
-                              className={`font-semibold  ${
-                                item?.memberComm > 0
-                                  ? "text-text_Success"
-                                  : "text-text_Danger"
-                              }`}
+                            <div
+                              title="Cricket - 1.232257782-3066645.FY"
+                              className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
                             >
-                              ₹ {item?.memberComm}
-                            </span>
-                          </span>
-                          <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
-                            <span>Balance:</span>
-                            <span className={`font-semibold `}>
-                              ₹ {item?.balance}
-                            </span>
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-start flex-col w-full px-2.5 py-2 text-xs sm:text-sm  text-text_Ternary">
-                          <div className="flex items-center justify-between w-full font-[500]">
-                            <span>Settled Time</span>
-                            <span className="uppercase">
-                              {/* 30/8/2024, 5:19:05 pm */}
-                              {item?.settledTime}
-                            </span>
+                              <div className="w-full text-start  flex justify-between text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize">
+                                <span> {item?.narration}</span>
+                                <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">
+                                  <span className="text-black">P&amp;L</span>
+                                  <span className="-mt-0.5 ml-1">:</span>
+                                  <span
+                                    className={`ml-1 ${
+                                      item?.memberWin > 0
+                                        ? "text-text_Success"
+                                        : item?.memberWin < 0
+                                        ? "text-text_Danger"
+                                        : "text-white"
+                                    }`}
+                                  >
+                                    {item?.memberWin}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
+                                <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
+                                  <span>Commission:</span>
+                                  <span
+                                    className={`font-semibold  ${
+                                      item?.memberComm > 0
+                                        ? "text-text_Success"
+                                        : "text-text_Danger"
+                                    }`}
+                                  >
+                                    ₹ {item?.memberComm}
+                                  </span>
+                                </span>
+                                <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
+                                  <span>Balance:</span>
+                                  <span className={`font-semibold `}>
+                                    ₹ {item?.balance}
+                                  </span>
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-start flex-col w-full px-2.5 py-2 text-xs sm:text-sm  text-text_Ternary">
+                                <div className="flex items-center justify-between w-full font-[500]">
+                                  <span>Settled Time</span>
+                                  <span className="uppercase">
+                                    {/* 30/8/2024, 5:19:05 pm */}
+                                    {item?.settledTime}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
+                        );
+                      })}
                     </div>
                   );
                 })
