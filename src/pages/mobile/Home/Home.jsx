@@ -39,8 +39,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    refetchBalance();
-  }, [refetchBalance]);
+    if (token) {
+      refetchBalance();
+    }
+  }, [refetchBalance, token]);
 
   return (
     <>

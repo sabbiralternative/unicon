@@ -3,8 +3,8 @@ import filterUpcoming from "../../../../utils/filterUpcoming";
 import SingleGroup from "../../mobile/home/SingleGroup";
 
 const Group = ({ data }) => {
-  let inPlay = [];
-  let upComing = [];
+  let inPlay;
+  let upComing;
   if (data) {
     inPlay = filterInPlay(data);
     upComing = filterUpcoming(data);
@@ -28,11 +28,16 @@ const Group = ({ data }) => {
                 title="Upcoming Events"
               />
             )}
-            {inPlay?.length === 0 && upComing?.length === 0 && (
-              <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-                No event available right now!
-              </div>
-            )}
+            {inPlay &&
+              upComing &&
+              Array.isArray(inPlay) &&
+              Array.isArray(upComing) &&
+              inPlay?.length === 0 &&
+              upComing?.length === 0 && (
+                <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
+                  No event available right now!
+                </div>
+              )}
           </div>
         </div>
       </div>

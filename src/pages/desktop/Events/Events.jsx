@@ -204,6 +204,8 @@ const Events = () => {
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
             {eventTypeId == 4 &&
+              data &&
+              data?.result?.length > 0 &&
               data?.result?.[0]?.score2?.length !== 0 &&
               !Array.isArray(data?.result?.[0]?.score2) && (
                 <Score mobile={false} score2={data?.result?.[0]?.score2} />

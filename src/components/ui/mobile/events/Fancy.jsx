@@ -95,9 +95,9 @@ const Fancy = ({ fancy }) => {
             <div className="bg-bg_Quaternary rounded-[3px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] py-[1px] cursor-pointer">
               <div title="1" id="1" className="grid grid-cols-12">
                 <div className="w-full md:col-span-6 col-span-7 h-12 grid grid-cols-12 grid-flow-col pl-2.5 md:pl-2 py-0.5 pr-[3px]">
-                  <div className="col-span-8 md:col-span-10 flex items-start justify-center h-full flex-col">
+                  <div className="col-span-10 flex items-start justify-center h-full flex-col">
                     <div className="w-full flex flex-nowrap gap-x-2">
-                      <span className="w-full truncate capitalize text-text_Ternary text-[13px] md:text-sm font-semibold">
+                      <span className="w-full  capitalize text-text_Ternary text-[11px] md:text-[13px] md:text-sm font-semibold">
                         {games?.name}
                       </span>
                     </div>
@@ -166,7 +166,7 @@ const Fancy = ({ fancy }) => {
                         <span
                           key={i}
                           onClick={() => handleGetLadder(MarketId, games)}
-                          className="col-span-4 md:col-span-1 flex flex-row items-center justify-end"
+                          className="col-span-2  flex flex-row items-center justify-end"
                         >
                           <div className="opacity-100 cursor-pointer">
                             <svg
@@ -209,7 +209,7 @@ const Fancy = ({ fancy }) => {
                       );
                     })
                   ) : (
-                    <span className="col-span-4 md:col-span-1 flex flex-row items-center justify-end">
+                    <span className="col-span-2 flex flex-row items-center justify-end">
                       <div className="opacity-50 cursor-not-allowed">
                         <svg
                           height="18"

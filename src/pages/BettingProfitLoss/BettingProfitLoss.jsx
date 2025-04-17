@@ -204,6 +204,7 @@ const BettingProfitLoss = () => {
             </div> */}
               {token && passbook?.length > 0 ? (
                 passbook?.map((item, i) => {
+                  console.log(item);
                   return (
                     <div
                       onClick={() => handleNavigateSinglePassbook(item)}
@@ -219,7 +220,17 @@ const BettingProfitLoss = () => {
                         <div className="text-xs text-text_Quaternary  font-[600] flex items-center justify-center leading-[140%]">
                           <span>P&amp;L</span>
                           <span className="-mt-0.5 ml-1">:</span>
-                          <span className="ml-1">0</span>
+                          <span
+                            className={`ml-1 ${
+                              item?.memberWin > 0
+                                ? "text-text_Success"
+                                : item?.memberWin < 0
+                                ? "text-red-400"
+                                : "text-white"
+                            }`}
+                          >
+                            {item?.memberWin}
+                          </span>
                         </div>
                       </div>
                       <div
@@ -232,20 +243,20 @@ const BettingProfitLoss = () => {
                         <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                           <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
                             <span>Commission:</span>
-                            <span className="font-semibold text-text_Danger">
-                              ₹ {item?.memberComm}
-                            </span>
-                          </span>
-                          <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
-                            <span>Net Win:</span>
                             <span
-                              className={`font-semibold ${
-                                item?.memberWin > 0
+                              className={`font-semibold  ${
+                                item?.memberComm > 0
                                   ? "text-text_Success"
                                   : "text-text_Danger"
                               }`}
                             >
-                              ₹ {item?.memberWin}
+                              ₹ {item?.memberComm}
+                            </span>
+                          </span>
+                          <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
+                            <span>Balance:</span>
+                            <span className={`font-semibold `}>
+                              ₹ {item?.balance}
                             </span>
                           </span>
                         </div>

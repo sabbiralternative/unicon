@@ -1,4 +1,4 @@
-const filterInPlay = (data) => {
+const filterInPlay = async (data) => {
   let inPlay = [];
   if (data) {
     inPlay =
@@ -13,14 +13,3 @@ const filterInPlay = (data) => {
 };
 
 export default filterInPlay;
-
-// const filterInPlay = (data) => {
-//   if (!data) return [];
-
-//   return Object.keys(data)
-//     .sort((keyA, keyB) => data[keyA].sort - data[keyB].sort)
-//     .filter((key) => data[key]?.inPlay === 1)
-//     .map((key) => ({ key, ...data[key] }));
-// };
-
-// export default filterInPlay;

@@ -39,14 +39,45 @@ const SingleProfitLoss = () => {
 
   return (
     <>
-      <div className="lg:flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
+      <div
+        onClick={() => navigate(-1)}
+        className="lg:hidden flex flex-col w-fit cursor-pointer text-[12px]"
+      >
+        <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
+          <div className="app-bg flex-row w-full h-full flex">
+            <div className="w-[34px] h-full flex items-center justify-center">
+              <button
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+                type="button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="8"
+                  height="8"
+                  viewBox="0 0 7 12"
+                  fill="var(--color-iconsColor)"
+                >
+                  <path
+                    d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
+                    fill="var(--color-iconsColor)"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold  leading-5">
+              <span>Back</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="lg:flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24 text-[12px]">
         <LeftDeskSidebar />
         <div
           className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
           style={{ minHeight: "calc(-110px + 100dvh)" }}
         >
           <div className="pb-2">
-            <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary  text-sm">
+            <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary  ">
               <div className="flex flex-col bg-bg_Quaternary rounded-md overflow-hidden shadow-lg">
                 <div className="bg-headerBg py-2 px-4 text-text_Quaternary font-semibold">
                   {singlePassbook?.[0]?.eventName}
@@ -62,7 +93,7 @@ const SingleProfitLoss = () => {
                           <span>Selection</span>
                           <span className="capitalize">
                             {/* 1st Wicket SL */}
-                            {item?.marketName}
+                            {item?.nation}
                           </span>
                         </div>
                         <div
@@ -104,7 +135,7 @@ const SingleProfitLoss = () => {
                           <div>Placed Date</div>
                           <div>{item?.placeDate}</div>
                         </div>
-                        <div className="px-4 py-4 text-center text-sm">
+                        <div className="px-4 py-4 text-center ">
                           <div className="overflow-hidden rounded-lg border">
                             <table className="w-full border-collapse">
                               <thead>
@@ -176,37 +207,6 @@ const SingleProfitLoss = () => {
                     ₹ {total}
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            onClick={() => navigate(-1)}
-            className="lg:hidden flex flex-col w-fit cursor-pointer"
-          >
-            <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
-              <div className="app-bg flex-row w-full h-full flex">
-                <div className="w-[34px] h-full flex items-center justify-center">
-                  <button
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
-                    type="button"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="7"
-                      height="12"
-                      viewBox="0 0 7 12"
-                      fill="var(--color-iconsColor)"
-                    >
-                      <path
-                        d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                        fill="var(--color-iconsColor)"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
-                  <span>Back</span>
-                </span>
               </div>
             </div>
           </div>

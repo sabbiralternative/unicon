@@ -97,7 +97,7 @@ const EventHeader = ({
                 </span>
               </span>
             )}
-            {eventTypeId == 4 && score && (
+            {eventTypeId == 4 && score2?.length > 0 && (
               <div className="sc_cw-header" style={{ width: "100%" }}>
                 <div
                   className="sc_cw-team-info-desktop"

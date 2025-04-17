@@ -28,7 +28,7 @@ const Events = () => {
     eventTypeId,
     eventId,
   };
-
+  const { token } = useSelector((state) => state.auth);
   const { myBets } = useCurrentBets(eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
@@ -41,8 +41,10 @@ const Events = () => {
   });
 
   useEffect(() => {
-    refetchBalance();
-  }, []);
+    if (token) {
+      refetchBalance();
+    }
+  }, [refetchBalance, token]);
   /* Filtered all the game  */
   useEffect(() => {
     if (data?.result) {
@@ -183,7 +185,10 @@ const Events = () => {
             {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.score} match_odds={match_odds} />
             )}
-            {data?.result?.[0]?.score2?.length !== 0 &&
+            {eventTypeId == 4 &&
+              data &&
+              data?.result?.length > 0 &&
+              data?.result?.[0]?.score2?.length !== 0 &&
               !Array.isArray(data?.result?.[0]?.score2) && (
                 <Score mobile={true} score2={data?.result?.[0]?.score2} />
               )}
