@@ -29,12 +29,14 @@ const SingleProfitLoss = () => {
     }
   }, [singlePassbook]);
 
-  if (!singlePassbook) {
-    return;
-  }
+  // if (!singlePassbook || singlePassbook?.length === 0) {
+  //   return;
+  // }
   let total = 0;
-  for (const item of singlePassbook) {
-    total = total + item.win;
+  if (singlePassbook && singlePassbook?.length > 0) {
+    for (const item of singlePassbook) {
+      total = total + item.win;
+    }
   }
 
   return (

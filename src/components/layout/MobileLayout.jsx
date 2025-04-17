@@ -28,7 +28,7 @@ const MobileLayout = () => {
       <div className="w-full flex flex-col app-bg h-[100%]">
         {!pathname.includes("/casino") && <Header />}
         <div
-          className={`flex flex-col transition-all ease-in-out duration-100 ${calculatePadding()}`}
+          className={`flex flex-col transition-all ease-in-out duration-100   ${calculatePadding()}`}
         >
           <Outlet />
         </div>
