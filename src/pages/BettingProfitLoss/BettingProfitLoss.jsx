@@ -24,7 +24,7 @@ const BettingProfitLoss = () => {
     <>
       <div
         onClick={() => navigate(-1)}
-        className="lg:hidden flex flex-col w-fit cursor-pointer"
+        className="lg:hidden flex flex-col w-fit cursor-pointer text-[12px]"
       >
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex">
@@ -35,8 +35,8 @@ const BettingProfitLoss = () => {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="7"
-                  height="12"
+                  width="8"
+                  height="8"
                   viewBox="0 0 7 12"
                   fill="var(--color-iconsColor)"
                 >
@@ -47,7 +47,7 @@ const BettingProfitLoss = () => {
                 </svg>
               </button>
             </div>
-            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
+            <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold  leading-5">
               <span>Back</span>
             </span>
           </div>
@@ -225,12 +225,13 @@ const BettingProfitLoss = () => {
                     >
                       <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
                         <div className="text-xs text-text_Quaternary  font-[600] leading-[140%]">
-                          {moment(date).format("MMM-Do-YYYY")}
+                          {moment(date).format("Do-MMM-YYYY")}
                         </div>
                         <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">
-                          <span>P&amp;L</span>
+                          <span>Total PL</span>
                           <span className="-mt-0.5 ml-1">:</span>
                           <span
+                            style={{ textShadow: "1px 1px #000000" }}
                             className={`ml-1 ${
                               totalPnl > 0
                                 ? "text-text_Success"
@@ -259,15 +260,17 @@ const BettingProfitLoss = () => {
 
                               <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                                 <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
-                                  <span>Commission:</span>
+                                  <span>PL:</span>
                                   <span
-                                    className={`font-semibold  ${
-                                      item?.memberComm > 0
+                                    className={`font-semibold ${
+                                      item?.memberWin > 0
                                         ? "text-text_Success"
-                                        : "text-text_Danger"
-                                    }`}
+                                        : item?.memberWin < 0
+                                        ? "text-text_Danger"
+                                        : "text-black"
+                                    } `}
                                   >
-                                    ₹ {item?.memberComm}
+                                    ₹ {item?.memberWin}
                                   </span>
                                 </span>
                                 <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
@@ -277,15 +280,14 @@ const BettingProfitLoss = () => {
                                   </span>
                                 </span>
                               </div>
-                              <div className="flex items-center justify-start flex-col w-full px-2.5 py-2 text-xs sm:text-sm  text-text_Ternary">
+                              {/* <div className="flex items-center justify-start flex-col w-full px-2.5 py-2 text-xs sm:text-sm  text-text_Ternary">
                                 <div className="flex items-center justify-between w-full font-[500]">
                                   <span>Settled Time</span>
                                   <span className="uppercase">
-                                    {/* 30/8/2024, 5:19:05 pm */}
                                     {item?.settledTime}
                                   </span>
                                 </div>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         );
