@@ -7,87 +7,87 @@ const Score = ({ score2, mobile }) => {
     >
       <div className="sc_cw-main-container">
         {/* Header */}
-        {!mobile && (
-          <div className="sc_cw-header">
+
+        <div className="sc_cw-header">
+          <div
+            className="sc_cw-team-info-desktop"
+            style={{ width: "100%!important", fontWeight: 200 }}
+          >
             <div
-              className="sc_cw-team-info-desktop"
-              style={{ width: "100%!important", fontWeight: 200 }}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "start",
+                justifyContent: "space-between",
+              }}
             >
+              {/* First left team name */}
               <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "start",
-                  justifyContent: "space-between",
-                }}
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
-                {/* First left team name */}
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                    {score2?.team_name}
-                  </span>
-                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                    {score2?.team_runs}
-                  </span>
-                  <span style={{ fontWeight: 100, fontSize: "12px" }}>
-                    {score2?.team_overs}
-                  </span>
-                </div>
-                {/* Second right team name */}
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                    {score2?.team_name2}
-                  </span>
-                  <span style={{ fontWeight: 500, fontSize: "16px" }}>
-                    {score2?.team_runs2}
-                  </span>
-                  <span style={{ fontWeight: 100, fontSize: "12px" }}>
-                    {score2?.team_overs2}
-                  </span>
-                </div>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_name}
+                </span>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_runs}
+                </span>
+                <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                  {score2?.team_overs}
+                </span>
               </div>
-              {/* Crr, rrr, pship, last wicket */}
+              {/* Second right team name */}
               <div
-                className="sc_cw-other-info"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  overflowX: "auto",
-                  fontSize: "10px",
-                }}
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
               >
-                {score2?.crr && (
-                  <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                    <span style={{ fontWeight: 600 }}>CRR: </span> {score2?.crr}
-                  </div>
-                )}
-
-                {score2?.rrr !== null && score2?.rrr != 0 && (
-                  <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                    <span style={{ fontWeight: 600 }}>RRR: </span> {score2?.rrr}
-                  </div>
-                )}
-                {score2?.partnership_runs || score2?.partnership_balls ? (
-                  <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                    <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
-                    {score2?.partnership_runs} ({score2?.partnership_balls})
-                  </div>
-                ) : null}
-
-                {score2?.last_wicket && (
-                  <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
-                    <span style={{ fontWeight: 600 }}>LAST WKT:</span>{" "}
-                    {score2?.last_wicket}
-                  </div>
-                )}
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_name2}
+                </span>
+                <span style={{ fontWeight: 500, fontSize: "16px" }}>
+                  {score2?.team_runs2}
+                </span>
+                <span style={{ fontWeight: 100, fontSize: "12px" }}>
+                  {score2?.team_overs2}
+                </span>
               </div>
             </div>
+            {/* Crr, rrr, pship, last wicket */}
+            <div
+              className="sc_cw-other-info"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                overflowX: "auto",
+                fontSize: "10px",
+              }}
+            >
+              {score2?.crr && (
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>CRR: </span> {score2?.crr}
+                </div>
+              )}
+
+              {score2?.rrr !== null && score2?.rrr != 0 && (
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>RRR: </span> {score2?.rrr}
+                </div>
+              )}
+              {score2?.partnership_runs || score2?.partnership_balls ? (
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>PSHIP: </span>{" "}
+                  {score2?.partnership_runs} ({score2?.partnership_balls})
+                </div>
+              ) : null}
+
+              {score2?.last_wicket && (
+                <div style={{ paddingLeft: "30px", paddingRight: "30px" }}>
+                  <span style={{ fontWeight: 600 }}>LAST WKT:</span>{" "}
+                  {score2?.last_wicket}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        </div>
+
         {/* Over */}
         <div
           className="sc_cw-overs-info"
