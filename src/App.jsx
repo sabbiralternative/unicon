@@ -24,7 +24,7 @@ const App = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [dispatch]);
 
   /* Disable devtool */
   useEffect(() => {

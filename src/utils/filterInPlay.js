@@ -1,4 +1,4 @@
-const filterInPlay = async (data) => {
+const filterInPlay = (data) => {
   let inPlay = [];
   if (data) {
     inPlay =
