@@ -99,8 +99,9 @@ const EventHeader = ({
                 </span>
               </span>
             )}
+            {/* Added hidden class */}
             {eventTypeId == 4 && score2?.length > 0 && (
-              <div className="sc_cw-header" style={{ width: "100%" }}>
+              <div className="sc_cw-header hidden" style={{ width: "100%" }}>
                 <div
                   className="sc_cw-team-info-desktop"
                   style={{ width: "100%!important", fontWeight: 200 }}
