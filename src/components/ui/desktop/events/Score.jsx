@@ -7,7 +7,7 @@ const Score = ({ score2, mobile }) => {
     >
       <div className="sc_cw-main-container">
         {/* Header */}
-
+        {/* {!mobile && ( */}
         <div className="sc_cw-header">
           <div
             className="sc_cw-team-info-desktop"
@@ -87,7 +87,7 @@ const Score = ({ score2, mobile }) => {
             </div>
           </div>
         </div>
-
+        {/* )} */}
         {/* Over */}
         <div
           className="sc_cw-overs-info"
