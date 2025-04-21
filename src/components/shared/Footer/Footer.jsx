@@ -10,6 +10,8 @@ const Footer = () => {
   const [iFrame, setIFrame] = useState(null);
   const [showGame, setShowGame] = useState(false);
   const [closeAnimation, setCloseAnimation] = useState(false);
+  const [openAnimation, setOpenAnimation] = useState(false);
+
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
@@ -35,6 +37,8 @@ const Footer = () => {
   return (
     <>
       <OriginalCrashThumb
+        openAnimation={openAnimation}
+        setOpenAnimation={setOpenAnimation}
         iFrame={iFrame}
         setIFrame={setIFrame}
         setCloseAnimation={setCloseAnimation}
@@ -44,7 +48,10 @@ const Footer = () => {
       />
       {!showGame && (
         <div
-          onClick={() => setShowGame(true)}
+          onClick={() => {
+            setShowGame(true);
+            setOpenAnimation(true);
+          }}
           className="fixed bottom-[calc(55px+env(safe-area-inset-bottom))] right-[calc(0.75rem+env(safe-area-inset-right))] w-max z-[10000] block"
         >
           <button

@@ -1,21 +1,24 @@
 const OriginalCrashIFrame = ({
-  showGame,
+  openAnimation,
   closeAnimation,
-  setShowIFrame,
+  setIFrame,
   closeModal,
   iFrame,
   gameTitle,
+  showGame,
 }) => {
   return (
     <div
-      className={`origin-bottom-right max-w-screen-xsm w-[90%] h-[85%] fixed bottom-0 right-0 z-[9999] font-lato border overflow-hidden border-[var(--color-bg-primary)] bg-white rounded-t-xl shadow-passwordRulesBox overflow-y-auto no-scrollbar flex-col flex ${
-        showGame ? "popUpOpenAnimation1" : "hidden"
-      } ${closeAnimation ? "popUpOpenAnimation2" : ""}`}
+      className={`origin-bottom-right max-w-screen-xsm w-[90%] h-[85%] fixed bottom-0 right-0 z-[9999] font-lato  overflow-hidden  bg-white rounded-t-xl shadow-passwordRulesBox overflow-y-auto no-scrollbar flex-col flex ${
+        !showGame ? "hidden" : ""
+      }  ${openAnimation ? "popUpOpenAnimation1" : ""} ${
+        closeAnimation ? "popUpOpenAnimation2" : ""
+      }`}
     >
       <div className="flex items-center justify-between px-2 border-b border-border_color_primary bg-bg_color_primary sticky top-0 z-[100]">
         <div className="flex max-w-[80%] items-center justify-start py-2  ">
           <button
-            onClick={() => setShowIFrame(false)}
+            onClick={() => setIFrame(false)}
             className="relative overflow-hidden bg-white text-[var(--color-bg-primary)] flex items-center gap-x-2"
             type="button"
           >
@@ -47,7 +50,7 @@ const OriginalCrashIFrame = ({
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="cursor-pointer bg-bg_color_quaternary size-6 rounded-full p-1"
+          className="cursor-pointer bg-rose-100 size-6 rounded-full p-1"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M5 9l4 0l0 -4" />
