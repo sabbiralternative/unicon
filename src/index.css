@@ -1517,6 +1517,9 @@ html * {
 .popUpOpenAnimation1 {
   animation: popUpOpenAnimation1 0.3s ease-in-out;
 }
+.popUpOpenAnimation2 {
+  animation: popUpOpenAnimation2 0.3s ease-in-out;
+}
 
 .max-w-screen-xsm {
   max-width: 430px;
@@ -1551,3 +1554,14 @@ html * {
     transform: scale(1);
   }
 }
+@keyframes popUpOpenAnimation2 {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
+/*!  Footer Games*/

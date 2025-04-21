@@ -3,11 +3,13 @@ import assets from "../../../assets";
 import useContextState from "../../../hooks/useContextState";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import { userToken } from "../../../redux/features/auth/authSlice";
-import Games from "./Games";
-import { useState } from "react";
+import OriginalCrashThumb from "./OriginaCrash/OriginalCrashThumb";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [iFrame, setIFrame] = useState(null);
   const [showGame, setShowGame] = useState(false);
+  const [closeAnimation, setCloseAnimation] = useState(false);
   const { logo } = useContextState();
   const token = useSelector(userToken);
   const { socialLink } = useGetSocialLink();
@@ -25,9 +27,21 @@ const Footer = () => {
     }
   };
 
+  useEffect(() => {
+    setShowGame(false);
+    setIFrame(null);
+  }, [token]);
+
   return (
     <>
-      {showGame && <Games setShowGame={setShowGame} />}
+      <OriginalCrashThumb
+        iFrame={iFrame}
+        setIFrame={setIFrame}
+        setCloseAnimation={setCloseAnimation}
+        closeAnimation={closeAnimation}
+        setShowGame={setShowGame}
+        showGame={showGame}
+      />
       {!showGame && (
         <div
           onClick={() => setShowGame(true)}
@@ -35,7 +49,7 @@ const Footer = () => {
         >
           <button
             title="Enjoy the Original Crash Games"
-            className="relative overflow-hidden px-2  bg-bg_color_primary rounded-full size-10 shadow-lg flex items-center justify-center text-[var(--color-bg-primary)]"
+            className="relative overflow-hidden p-2  bg-white rounded-full size-10 shadow-lg flex items-center justify-center text-[var(--color-bg-primary)]"
             type="button"
           >
             <svg
