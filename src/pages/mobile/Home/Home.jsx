@@ -19,6 +19,7 @@ import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
 import Originals from "../../../components/ui/desktop/Home/Originals";
 import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
+import assets from "../../../assets";
 
 const Home = () => {
   const { lotusLobby } = useLotusHomeLobby();
@@ -52,6 +53,17 @@ const Home = () => {
             className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
             style={{ minHeight: "calc(-54px + 100dvh)" }}
           >
+            {socialLink?.telegramLink ? (
+              <div
+                onClick={() => window.open(socialLink?.telegramLink, "_blank")}
+                title="WhatsAppContact"
+                className="fixed cursor-pointer top-[calc(100dvh-110px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+              >
+                <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+                  <img className="h-11 w-11" src={assets.telegram} alt="" />
+                </div>
+              </div>
+            ) : null}
             {socialLink?.whatsapplink && (
               <div
                 onClick={openWhatsapp}

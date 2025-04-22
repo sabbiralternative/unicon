@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useEffect } from "react";
+import assets from "../../../../assets";
 
 const WhatsApp = () => {
   const { socialLink, refetch } = useGetSocialLink();
@@ -19,6 +20,17 @@ const WhatsApp = () => {
   }, [token, refetch]);
   return (
     <>
+      {socialLink?.telegramLink ? (
+        <div
+          onClick={() => window.open(socialLink?.telegramLink, "_blank")}
+          title="WhatsAppContact"
+          className="fixed cursor-pointer top-[calc(100dvh-120px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+        >
+          <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+            <img className="h-11 w-11" src={assets.telegram} alt="" />
+          </div>
+        </div>
+      ) : null}
       {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
         <div
           onClick={navigateWhatsApp}
