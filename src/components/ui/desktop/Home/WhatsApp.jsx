@@ -18,8 +18,20 @@ const WhatsApp = () => {
   useEffect(() => {
     refetch();
   }, [token, refetch]);
+
   return (
     <>
+      {socialLink?.instagramLink ? (
+        <div
+          onClick={() => window.open(socialLink?.instagramLink, "_blank")}
+          title="WhatsAppContact"
+          className="fixed cursor-pointer top-[calc(100dvh-180px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+        >
+          <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+            <img className="h-11 w-11" src={assets.instagram} alt="" />
+          </div>
+        </div>
+      ) : null}
       {socialLink?.telegramLink ? (
         <div
           onClick={() => window.open(socialLink?.telegramLink, "_blank")}

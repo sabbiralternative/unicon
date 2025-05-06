@@ -26,7 +26,7 @@ import search from "./images/toolbar-search-icon.b64bd6a7.svg";
 import inplay from "./images/inplay.svg";
 import upcoming from "./images/upcoming.svg";
 // import telegram from "./images/telegramGray.fded7f58 (1).svg";
-import instagram from "./images/instagramGray.20f307d4.svg";
+// import instagram from "./images/instagramGray.20f307d4.svg";
 import fasterBet from "./images/fasterBetAcceptanceIcon.0268b720.svg";
 import begamle from "./images/BegambleAware.svg";
 import cogra from "./images/cograE.svg";
@@ -41,6 +41,7 @@ import matchField from "./images/liveMatchField.jpg";
 import usdt from "./images/usdt.png";
 import logo from "./images/logo.png";
 import telegram from "./images/telegram.png";
+import instagram from "./images/instagram.png";
 
 export default {
   logo,
