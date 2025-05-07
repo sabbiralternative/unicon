@@ -5,7 +5,7 @@ import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
 import { jwtDecode } from "jwt-decode";
 import { useSelector } from "react-redux";
 import { AxiosSecure } from "../../../../lib/AxiosSecure";
-import { API } from "../../../../api";
+import { API, settings } from "../../../../api";
 
 const NewAccount = ({ setTabs }) => {
   const { refetchBankAccounts } = useGetAllBankAccount();
@@ -246,7 +246,7 @@ const NewAccount = ({ setTabs }) => {
             <div className="text-xs ml-1 text-text_Primary"></div>
           </div>
         </div>
-        {mobile && (
+        {mobile && settings.otp && (
           <div className="flex flex-col gap-1 w-full">
             <div title="passwordInput" className="w-full  ">
               <div className="ml-1  lg:text-sm">
@@ -293,7 +293,7 @@ const NewAccount = ({ setTabs }) => {
             </div>
           </div>
         )}
-        {mobile && (
+        {mobile && settings.otp && (
           <div className="flex flex-col gap-1 w-full">
             <div title="passwordInput" className="w-full  uppercase">
               <div className=" ml-1  lg:text-sm">
