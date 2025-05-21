@@ -1,4 +1,7 @@
 const Score = ({ score2, mobile }) => {
+  if (!score2) {
+    return null;
+  }
   return (
     <div
       style={{ marginTop: "2px" }}
