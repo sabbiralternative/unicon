@@ -75,7 +75,7 @@ const Home = () => {
                 </div>
               </div>
             ) : null}
-            {socialLink?.whatsapplink && (
+            {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
               <div
                 onClick={openWhatsapp}
                 title="WhatsAppContact"
@@ -125,7 +125,7 @@ const Home = () => {
                   </svg>
                 </div>
               </div>
-            )}
+            ) : null}
 
             <Banner />
 
