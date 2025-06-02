@@ -32,7 +32,7 @@ const NewAccount = ({ setTabs }) => {
       return toast.error("Account number not matched!");
     }
 
-    if (mobile && !bankDetails.otp) {
+    if (mobile && !bankDetails.otp && settings.otp) {
       return toast.error("Please enter otp to add new account");
     }
     /* generating random token for post data */
