@@ -16,6 +16,7 @@ import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
 import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
 import Score from "../../../components/ui/desktop/events/Score";
+import SportsBook from "../../../components/ui/SportsBook/SportsBook";
 
 const Events = () => {
   const [tab, setTab] = useState("");
@@ -239,6 +240,9 @@ const Events = () => {
                 {eventTypeId == 7 || eventTypeId == 4339 ? (
                   <HorseGreyhound data={data} />
                 ) : null}
+                {data && data?.sportsbook?.Result && (
+                  <SportsBook sportsBook={data?.sportsbook?.Result} />
+                )}
               </div>
             </div>
           </div>

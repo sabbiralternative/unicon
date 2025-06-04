@@ -5,7 +5,6 @@ const initialState = {
   showComponent: false,
   price: null,
   stake: null,
-
   predictOdd: [],
 };
 

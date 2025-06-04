@@ -15,6 +15,7 @@ import useCurrentBets from "../../../hooks/useCurrentBets";
 import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
 import Score from "../../../components/ui/desktop/events/Score";
+import SportsBook from "../../../components/ui/SportsBook/SportsBook";
 
 const Events = () => {
   const [iFrame, setIframe] = useState("");
@@ -202,6 +203,9 @@ const Events = () => {
                 {eventTypeId == 7 || eventTypeId == 4339 ? (
                   <HorseGreyhound data={data} />
                 ) : null}
+                {data && data?.sportsbook?.Result && (
+                  <SportsBook sportsBook={data?.sportsbook?.Result} />
+                )}
               </div>
             </div>
           </div>
