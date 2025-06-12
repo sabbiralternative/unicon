@@ -5,9 +5,10 @@ import { userToken } from "../../../redux/features/auth/authSlice";
 import { API, settings } from "../../../api";
 import toast from "react-hot-toast";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
+import Loader from "../../../components/shared/Loader/Loader";
 
 const IFrame = () => {
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [iFrame, setIFrame] = useState("");
   const { gameId } = useParams();
   const token = useSelector(userToken);
@@ -38,6 +39,10 @@ const IFrame = () => {
     };
     getCasinoVideo();
   }, [gameId, token]);
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <div className="w-full flex flex-col app-bg h-[100dvh] overflow-x-hidden overflow-y-auto">
       <div className="flex flex-col transition-all lg:pt-[110px] ease-in-out duration-100 pt-0">
