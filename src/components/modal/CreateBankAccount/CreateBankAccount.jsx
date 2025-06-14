@@ -5,7 +5,7 @@ import { useBankMutation } from "../../../redux/features/payment/payment.api";
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
-import { API } from "../../../api";
+import { API, settings } from "../../../api";
 
 const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
   const addBankRef = useRef();
@@ -123,6 +123,22 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
       setTimer(null);
     }
   }, [timer]);
+
+  const getOtpOnWhatsapp = async () => {
+    const otpData = {
+      mobile: mobile,
+      type: "otpsend",
+    };
+
+    const res = await AxiosSecure.post(API.otpless, otpData);
+    const data = res.data;
+
+    if (data?.success) {
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
+    }
+  };
 
   return (
     <div
@@ -291,7 +307,7 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
                   </div>
                 </div>
               </div>
-              {mobile && (
+              {mobile && settings.otp && (
                 <div className="flex flex-col gap-1">
                   <div
                     title="passwordInput"
@@ -327,14 +343,24 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
                             {/* <span className="shimmer"></span> */}
                           </button>
                         ) : (
-                          <button
-                            onClick={getOtp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                            type="button"
-                          >
-                            <span className=" ">Get OTP</span>
-                            <span className="shimmer"></span>
-                          </button>
+                          <div className="flex items-center">
+                            <button
+                              onClick={getOtpOnWhatsapp}
+                              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                              type="button"
+                            >
+                              <span className=" ">Get OTP Whatsapp</span>
+                              <span className="shimmer"></span>
+                            </button>
+                            <button
+                              onClick={getOtp}
+                              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                              type="button"
+                            >
+                              <span className=" ">Get OTP Message</span>
+                              <span className="shimmer"></span>
+                            </button>
+                          </div>
                         )}
                       </div>
                     </div>

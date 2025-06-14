@@ -51,6 +51,7 @@ export const API = {
   language: "",
   utr: "",
   depositBreakdown: "",
+  otpless: "",
 };
 
 export const settings = {
@@ -81,4 +82,5 @@ export const settings = {
   bookmakerCashOut: "",
   language: "",
   betDelay: "",
+  otpWhatsapp: "",
 };

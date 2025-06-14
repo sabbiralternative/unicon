@@ -34,10 +34,12 @@
       },
       "baseUrl": "",
       "build": "development",
-      "betDelay": true
+      "betDelay": true,
+      "otpWhatsapp": true
     },
 
     "endpoint": {
+      "otpless": "https://api7.live/api/exchange/diamond/otpless",
       "liveCasinoWolf": "https://api7.live/api/exchange/diamond/liveCasinoWolf",
       "slotsWolf": "https://api7.live/api/exchange/diamond/slotsWolf",
       "auraWolf": "https://api7.live/api/exchange/diamond/auraWolf",

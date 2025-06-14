@@ -61,6 +61,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         API.slotsWolf = endPoints?.slotsWolf;
         API.withdrawIframe = endPoints?.withdrawIframe;
         API.assets = endPoints?.assets;
+        API.otpless = endPoints?.otpless;
         settings.registrationWhatsapp = setting?.registrationWhatsapp;
         settings.casino = setting?.casino;
         settings.otp = setting?.otp;
@@ -88,6 +89,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.language = setting?.language;
         settings.bookmakerCashOut = setting?.bookmakerCashOut;
         settings.betDelay = setting?.betDelay;
+        settings.otpWhatsapp = setting?.otpWhatsapp;
         setNoticeLoaded(true);
       }
     })
