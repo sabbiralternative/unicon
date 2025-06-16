@@ -338,6 +338,7 @@ const NewAccount = ({ setTabs }) => {
                   className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
                   placeholder="Enter OTP"
                   type="text"
+                  maxLength={6}
                 />
               </div>
             </div>

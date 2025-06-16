@@ -175,6 +175,7 @@ const ForgetPassword = () => {
                         disabled=""
                         className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-4 pr-8 ml-0 mr-0"
                         type="text"
+                        maxLength={6}
                       />
                       <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
                         <button
