@@ -26,6 +26,7 @@ import ReferralStatement from "../pages/ReferralStatement/ReferralStatement.jsx"
 import HorseRacing from "../pages/HorseRacing/HorseRacing.jsx";
 import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing.jsx";
 import MyBankDetails from "../pages/MyBankDetails/MyBankDetails.jsx";
+import GameProviderDetails from "../pages/GameProviderDetails/GameProviderDetails.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -47,6 +48,10 @@ const MainRouter = () => {
           {
             path: "/deposit",
             element: <Deposit />,
+          },
+          {
+            path: "/game-provider/:game_name/:game_id",
+            element: <GameProviderDetails />,
           },
           {
             path: "/withdraw",

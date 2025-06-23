@@ -1,50 +1,53 @@
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setShowLoginModal } from "../../../redux/features/stateSlice";
-import { useEffect, useRef, useState } from "react";
-import WarningCondition from "../../shared/WarningCondition/WarningCondition";
-import toast from "react-hot-toast";
-import { settings } from "../../../api";
+// import { setShowLoginModal } from "../../../redux/features/stateSlice";
+import { useRef, useState } from "react";
+// import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+// import toast from "react-hot-toast";
+// import { settings } from "../../../api";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
 
 const CasinoProvider = ({ casinoProviders }) => {
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
-  const [error, setError] = useState("");
-  const [showWarning, setShowWarning] = useState(false);
-  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
-  const { token, bonusToken } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  // const [error, setError] = useState("");
+  // const [showWarning, setShowWarning] = useState(false);
+  // const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  // const { token, bonusToken } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
   const handleNavigate = (game) => {
-    if (token) {
-      if (bonusToken) {
-        return setError("Bonus wallet is available only on sports.");
-      }
-      if (settings.casinoCurrency !== "AED") {
-        navigate(
-          `/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`
-        );
-      } else {
-        setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: game?.game_name, gameId: game?.game_id });
-        setShowWarning(true);
-      }
-    } else {
-      dispatch(setShowLoginModal(true));
-    }
+    navigate(
+      `/game-provider/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`
+    );
+    // if (token) {
+    //   if (bonusToken) {
+    //     return setError("Bonus wallet is available only on sports.");
+    //   }
+    //   if (settings.casinoCurrency !== "AED") {
+    //     navigate(
+    //       `/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`
+    //     );
+    //   } else {
+    //     setGameInfo({ gameName: "", gameId: "" });
+    //     setGameInfo({ gameName: game?.game_name, gameId: game?.game_id });
+    //     setShowWarning(true);
+    //   }
+    // } else {
+    //   dispatch(setShowLoginModal(true));
+    // }
   };
 
-  useEffect(() => {
-    if (error) {
-      return toast.error(error);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     return toast.error(error);
+  //   }
+  // }, [error]);
   return (
     <>
-      {showWarning && (
+      {/* {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
-      )}
+      )} */}
       <div title="Casino" className="py-1 px-[6px] w-full">
         <div className="flex flex-col w-full bg-bg_Quaternary rounded-[4px] shadow-homeCasinoCardGamesShadow divide-y">
           <div className="flex items-center w-full py-2 px-2.5 gap-2.5 rounded-t-[4px] bg-bg_Quaternary">
