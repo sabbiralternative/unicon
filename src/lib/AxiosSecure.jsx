@@ -26,8 +26,6 @@ AxiosSecure.interceptors.request.use(
         payload.language = localStorage.getItem("language") || "english";
       }
 
-      console.log(payload);
-
       const encryptedData = handleEncryptData(payload);
       config.data = encryptedData;
     }
