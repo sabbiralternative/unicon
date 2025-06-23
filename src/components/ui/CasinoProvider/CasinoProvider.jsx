@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
 import { settings } from "../../../api";
+import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
 
 const CasinoProvider = ({ casinoProviders }) => {
+  const [showSeeAll, setShowSeeAll] = useState(false);
+  const ref = useRef();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [showWarning, setShowWarning] = useState(false);
@@ -61,19 +64,80 @@ const CasinoProvider = ({ casinoProviders }) => {
               <span className="text-text_Ternary font-semibold capitalize">
                 casino Providers
               </span>
+
+              <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
+                <button
+                  onClick={() => setShowSeeAll((prev) => !prev)}
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
+                  type="button"
+                >
+                  {showSeeAll ? "See Less" : "See All"}
+                </button>
+                <button
+                  onClick={() => scrollToLeft(ref)}
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
+                  type="button"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="27"
+                    height="27"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="var(--color-primary)"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M15 6l-6 6l6 6"></path>
+                  </svg>
+                </button>
+                <button
+                  onClick={() => scrollToRight(ref)}
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
+                  type="button"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="27"
+                    height="27"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="var(--color-primary)"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
           <div
+            ref={ref}
             id="scrollShow"
             className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto overflow-x-auto"
           >
-            <div className="min-w-full grid grid-rows-3 grid-flow-col gap-2">
+            <div
+              className={`min-w-full grid  gap-2 ${
+                !showSeeAll
+                  ? "grid-rows-3 grid-flow-col "
+                  : "grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
+              }`}
+            >
               {casinoProviders?.map((game, idx) => {
                 return (
                   <button
                     onClick={() => handleNavigate(game)}
                     key={idx}
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out transition-all bg-bg_CasinoProvider ease-in-out duration-100 flex xxs:min-w-[80px] xs:min-w-[100px] sm:min-w-[150px] min-h-[45px] md:min-h-[60px] px-5 py-2 flex-col items-center justify-center gap-1 rounded-[12px] border-2 rounded-2 border-quaternary text-text_Quaternary whitespace-nowrap uppercase font-lato font-[700] text-xs hover:scale-105 shadow-homeCasinoCardGamesShadow cursor-pointer"
+                    className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out transition-all bg-bg_CasinoProvider ease-in-out duration-100 flex  px-5 py-2 flex-col items-center justify-center gap-1 rounded-[12px] border-2 rounded-2 border-quaternary text-text_Quaternary whitespace-nowrap uppercase font-lato font-[700] text-xs hover:scale-105 shadow-homeCasinoCardGamesShadow cursor-pointer ${
+                      !showSeeAll
+                        ? "xxs:min-w-[80px] xs:min-w-[100px] sm:min-w-[150px] min-h-[45px] md:min-h-[60px]"
+                        : ""
+                    }`}
                     type="button"
                     title="Evolution Gaming"
                   >

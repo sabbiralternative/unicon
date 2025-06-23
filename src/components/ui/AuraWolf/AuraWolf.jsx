@@ -2,11 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { API } from "../../../api";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
+import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
 
 const AuraWolf = () => {
+  const [showSeeAll, setShowSeeAll] = useState(false);
+  const ref = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, bonusToken } = useSelector((state) => state.auth);
@@ -74,14 +77,16 @@ const AuraWolf = () => {
             <span className="text-text_Ternary font-semibold capitalize">
               Indian Card Games
             </span>
-            {/* <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
+            <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
               <button
+                onClick={() => setShowSeeAll((prev) => !prev)}
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
                 type="button"
               >
-                See All
+                {showSeeAll ? "See Less" : "See All"}
               </button>
               <button
+                onClick={() => scrollToLeft(ref)}
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
                 type="button"
               >
@@ -101,6 +106,7 @@ const AuraWolf = () => {
                 </svg>
               </button>
               <button
+                onClick={() => scrollToRight(ref)}
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex w-[22px] h-[22px] p-1 justify-center items-center gap-[10px] text-text_Primary border bg-bg_Foundation rounded cursor-pointer"
                 type="button"
               >
@@ -119,14 +125,21 @@ const AuraWolf = () => {
                   <path d="M9 6l6 6l-6 6"></path>
                 </svg>
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
         <div
+          ref={ref}
           id="scrollShow"
           className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto overflow-x-auto"
         >
-          <div className="grid grid-rows-3 grid-flow-col gap-y-2 w-max md:w-full gap-x-[6px]">
+          <div
+            className={`grid  gap-y-2 w-max md:w-full gap-x-[6px] ${
+              showSeeAll
+                ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8"
+                : "grid-flow-col grid-rows-3"
+            }`}
+          >
             {data?.data?.map((item, i) => {
               return (
                 <div
@@ -134,10 +147,16 @@ const AuraWolf = () => {
                     handleAuraCasino(item?.game_id, item?.game_name)
                   }
                   key={i}
-                  className="flex w-[120px] sm:w-[180px] md:w-[140px] flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100"
+                  className={`flex  flex-col items-center justify-center cursor-pointer transition-all ease-in-out duration-100 ${
+                    showSeeAll ? "" : "w-[120px] sm:w-[180px] md:w-[140px]"
+                  }`}
                 >
                   <div className="w-full bg-transparent flex flex-col transition-all ease-in-out duration-200 relative overflow-hidden rounded-[4px]">
-                    <div className="aspect-[1.00] w-[120px] sm:w-[180px] md:w-[140px]">
+                    <div
+                      className={`aspect-[1.00] ${
+                        showSeeAll ? "" : "w-[120px] sm:w-[180px] md:w-[140px]"
+                      } `}
+                    >
                       <img
                         src={item?.img}
                         height="auto"
