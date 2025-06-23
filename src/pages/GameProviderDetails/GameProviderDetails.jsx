@@ -1,4 +1,10 @@
+import { useParams } from "react-router-dom";
+import useLotusHomeLobby from "../../hooks/useLotusHomeLobby";
+
 const GameProviderDetails = () => {
+  const { game_name } = useParams();
+  const { lotusLobby } = useLotusHomeLobby({ provider: game_name });
+  console.log(lotusLobby);
   return (
     <div
       id="main-content-container"
