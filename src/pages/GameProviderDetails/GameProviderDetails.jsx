@@ -9,7 +9,7 @@ import WarningCondition from "../../components/shared/WarningCondition/WarningCo
 
 const GameProviderDetails = () => {
   const { game_name } = useParams();
-  const { lotusLobby } = useLotusHomeLobby({ provider: game_name });
+  const { lotusLobby, isSuccess } = useLotusHomeLobby({ provider: game_name });
   const [error, setError] = useState("");
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
@@ -108,6 +108,11 @@ const GameProviderDetails = () => {
                         );
                       })}
                   </div>
+                  {lotusLobby?.length === 0 && isSuccess && (
+                    <div className="w-full flex items-center justify-center mt-20">
+                      No game found!
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="hidden">

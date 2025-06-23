@@ -3,7 +3,11 @@ import { API } from "../api";
 import { AxiosSecure } from "../lib/AxiosSecure";
 
 const useLotusHomeLobby = (payload) => {
-  const { data: lotusLobby, isLoading } = useQuery({
+  const {
+    data: lotusLobby,
+    isLoading,
+    isSuccess,
+  } = useQuery({
     queryKey: [`lotusHomeLobby`, payload],
     queryFn: async () => {
       const res = await AxiosSecure.post(`${API.lotusHomeLobby}`, payload);
@@ -12,7 +16,7 @@ const useLotusHomeLobby = (payload) => {
     },
     refetchOnWindowFocus: false,
   });
-  return { lotusLobby, isLoading };
+  return { lotusLobby, isLoading, isSuccess };
 };
 
 export default useLotusHomeLobby;
