@@ -17,6 +17,7 @@ export const handleSportsBookPlaceBet = (
       if (column?.IsActive === 1 || column?.IsActive) {
         dispatch(setPlaceBetValues({}));
         setRunnerId(item?.Id);
+
         dispatch(
           setPlaceBetValues({
             price: column?.Price?.toFixed(2),
@@ -28,8 +29,8 @@ export const handleSportsBookPlaceBet = (
             eventTypeId: sportsBook?.EventTypeId,
             betDelay: sportsBook?.betDelay,
             marketId: item?.Id,
-            maxLiabilityPerMarket: sportsBook?.maxLiabilityPerMarket,
-            maxLiabilityPerBet: sportsBook?.maxLiabilityPerBet,
+            maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
+            maxLiabilityPerBet: item?.maxLiabilityPerBet,
             isBettable: sportsBook?.isBettable,
             isWeak: sportsBook?.isWeak,
             marketName: item?.Name,
