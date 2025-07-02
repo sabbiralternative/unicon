@@ -1,18 +1,19 @@
 const EventHeader = ({ data, eventTypeId }) => {
   const score = data?.score;
+
   return (
     <div className="flex flex-col w-full">
       <div
         style={{
           backgroundColor: "#eceaea",
         }}
-        className="flex flex-row w-full justify-between items-center px-2 mt-2 bg-bg_Quaternary rounded-sm py-2"
+        className="flex flex-row w-full justify-between items-center  mt-2 bg-bg_Quaternary rounded-sm py-2"
       >
         <div
           id="playIcon"
-          className="flex items-center justify-start gap-x-3 w-[92%]"
+          className="flex items-center justify-start gap-x-3 w-[100%]"
         >
-          <span className="min-w-[4%]">
+          {/* <span className="min-w-[4%]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -36,7 +37,7 @@ const EventHeader = ({ data, eventTypeId }) => {
                 </clipPath>
               </defs>
             </svg>
-          </span>
+          </span> */}
           {eventTypeId != 2 && (
             <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold">
               <span className="text-primary capitalize w-max break-words ">
@@ -46,7 +47,7 @@ const EventHeader = ({ data, eventTypeId }) => {
           )}
 
           {eventTypeId == 2 && (
-            <div className="text-primary w-full  bg-bg_color_quaternary1 px-3">
+            <div className="text-primary w-full  bg-bg_color_quaternary1">
               <div className="flex flex-col items-center justify-center my-[4px] w-full gap-y-[5px]">
                 <div className="flex justify-between items-center h-full w-full">
                   <span className="text-sm sm:text-base md:text-[18px] w-[60%] truncate font-semibold leading-5 font-lato text-text_color_primary1 text-black">
