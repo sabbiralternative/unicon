@@ -13,8 +13,10 @@ import {
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState(true);
   const { logo } = useContextState();
   const dispatch = useDispatch();
@@ -44,7 +46,10 @@ const Login = () => {
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("token", token);
       localStorage.setItem("bonusToken", bonusToken);
-      if (token && user) {
+      if (result?.result?.changePassword) {
+        navigate("/change-password");
+      }
+      if (!result?.result?.changePassword && token && user) {
         dispatch(setShowLoginModal(false));
         toast.success("Login successful");
       }
