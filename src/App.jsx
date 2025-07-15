@@ -7,12 +7,13 @@ import { logout, userToken } from "./redux/features/auth/authSlice";
 import { settings } from "./api";
 import { setWindowWidth } from "./redux/features/stateSlice";
 import useGetSocialLink from "./hooks/useGetSocialLink";
+import Banner from "./components/modal/Banner/Banner";
 
 const App = () => {
   const { refetch: refetchSocialLinks } = useGetSocialLink();
   const dispatch = useDispatch();
   const disabledDevtool = settings.disabledDevtool;
-  const { windowWidth } = useSelector((state) => state.state);
+  const { windowWidth, showBanner } = useSelector((state) => state.state);
   const token = useSelector(userToken);
 
   useEffect(() => {
@@ -45,7 +46,12 @@ const App = () => {
   useEffect(() => {
     refetchSocialLinks();
   }, [refetchSocialLinks, token]);
-  return <div>{windowWidth > 1024 ? <DesktopLayout /> : <MobileLayout />}</div>;
+  return (
+    <div>
+      {showBanner && <Banner />}
+      {windowWidth > 1024 ? <DesktopLayout /> : <MobileLayout />}
+    </div>
+  );
 };
 
 export default App;

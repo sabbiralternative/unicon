@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import {
+  setShowBanner,
   setShowForgetModal,
   setShowLoginModal,
   setShowRegisterModal,
@@ -41,11 +42,16 @@ const Login = () => {
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
       const memberId = result?.result?.memberId;
+      const banner = result?.result?.banner;
       dispatch(setUser({ user, token }));
       localStorage.setItem("memberId", memberId);
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("token", token);
       localStorage.setItem("bonusToken", bonusToken);
+      if (banner) {
+        localStorage.setItem("banner", banner);
+        dispatch(setShowBanner(true));
+      }
       if (result?.result?.changePassword) {
         navigate("/change-password");
       }
@@ -74,12 +80,16 @@ const Login = () => {
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
-
+      const banner = result?.result?.banner;
       dispatch(setUser({ user, token }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("token", token);
 
       localStorage.setItem("bonusToken", bonusToken);
+      if (banner) {
+        localStorage.setItem("banner", banner);
+        dispatch(setShowBanner(true));
+      }
       if (token && user) {
         dispatch(setShowLoginModal(false));
         toast.success("Login successful");

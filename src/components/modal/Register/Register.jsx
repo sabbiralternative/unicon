@@ -11,6 +11,7 @@ import { setUser } from "../../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import {
+  setShowBanner,
   setShowLoginModal,
   setShowRegisterModal,
 } from "../../../redux/features/stateSlice";
@@ -73,9 +74,14 @@ const Register = () => {
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
+      const banner = result?.result?.banner;
       dispatch(setUser({ user, token }));
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("bonusToken", bonusToken);
+      if (banner) {
+        localStorage.setItem("banner", banner);
+        dispatch(setShowBanner(true));
+      }
       if (token && user) {
         refetchBalance();
         dispatch(setShowRegisterModal(false));
