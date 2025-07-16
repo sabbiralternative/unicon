@@ -53,6 +53,7 @@ const Login = () => {
         dispatch(setShowBanner(true));
       }
       if (result?.result?.changePassword) {
+        localStorage.setItem("changePassword", true);
         navigate("/change-password");
       }
       if (!result?.result?.changePassword && token && user) {

@@ -8,13 +8,16 @@ import { settings } from "./api";
 import { setWindowWidth } from "./redux/features/stateSlice";
 import useGetSocialLink from "./hooks/useGetSocialLink";
 import Banner from "./components/modal/Banner/Banner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const App = () => {
+  const navigate = useNavigate();
   const { refetch: refetchSocialLinks } = useGetSocialLink();
   const dispatch = useDispatch();
   const disabledDevtool = settings.disabledDevtool;
   const { windowWidth, showBanner } = useSelector((state) => state.state);
   const token = useSelector(userToken);
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,6 +49,14 @@ const App = () => {
   useEffect(() => {
     refetchSocialLinks();
   }, [refetchSocialLinks, token]);
+
+  useEffect(() => {
+    const changePassword = localStorage.getItem("changePassword");
+    if (changePassword) {
+      navigate("/change-password");
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <div>
       {showBanner && <Banner />}
