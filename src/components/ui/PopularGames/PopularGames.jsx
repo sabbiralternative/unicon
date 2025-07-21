@@ -125,7 +125,7 @@ const PopularGames = ({ popularGames }) => {
                 showSeeAll
                   ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8"
                   : "grid-flow-col grid-rows-2"
-              } gap-y-2 w-max md:w-full gap-x-[6px]`}
+              } gap-y-2 w-full gap-x-[6px]`}
             >
               {popularGames?.map((game, idx) => {
                 return (

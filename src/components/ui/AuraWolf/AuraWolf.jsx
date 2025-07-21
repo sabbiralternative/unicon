@@ -134,7 +134,7 @@ const AuraWolf = () => {
           className="py-2.5 px-2.5 transition-all ease-in-out duration-200 w-full h-max overflow-x-auto overflow-x-auto"
         >
           <div
-            className={`grid  gap-y-2 w-max md:w-full gap-x-[6px] ${
+            className={`grid  gap-y-2 w-full gap-x-[6px] ${
               showSeeAll
                 ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8"
                 : "grid-flow-col grid-rows-3"
