@@ -4,11 +4,11 @@ import {
   setGroupType,
   setShowAppPopUp,
   setShowLeftSidebar,
+  setShowLoginModal,
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import LoggedIn from "./LoggedIn";
 import UnAuthorized from "./UnAuthorized";
-import { userToken } from "../../../redux/features/auth/authSlice";
 import useBalance from "../../../hooks/useBalance";
 import LeftDeskSidebar from "../mobile/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../mobile/RightDeskSidebar/RightDeskSidebar";
@@ -25,8 +25,13 @@ import useLanguage from "../../../hooks/useLanguage";
 import { LanguageKey } from "../../../const";
 import { languageValue } from "../../../utils/language";
 import Notification from "./Notification";
+import toast from "react-hot-toast";
+import WarningCondition from "../WarningCondition/WarningCondition";
 
 const Header = () => {
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  const { token, bonusToken } = useSelector((state) => state.auth);
   const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -34,7 +39,7 @@ const Header = () => {
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
   const { logo } = useContextState();
-  const token = useSelector(userToken);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
@@ -69,9 +74,27 @@ const Header = () => {
     location?.state?.pathname,
     location.pathname,
   ]);
-
+  const handleNavigateToIFrame = (name, id) => {
+    if (token) {
+      if (bonusToken) {
+        return toast.error("Bonus wallet is available only on sports.");
+      }
+      if (settings.casinoCurrency !== "AED") {
+        navigate(`/casino/${name}/${id}`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: name, gameId: id });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <>
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <div
         id="header"
         title="header"
@@ -239,7 +262,7 @@ cursor-pointer
                   />
                 )}
               </div>
-              <MobileHeader />
+              <MobileHeader handleNavigateToIFrame={handleNavigateToIFrame} />
               <div className="hidden lg:block">
                 <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
                   {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
@@ -279,6 +302,17 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                    </span>
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      handleNavigateToIFrame("sportsbook", "550000")
+                    }
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      Sportsbook
                     </span>
                   </button>
                   <button

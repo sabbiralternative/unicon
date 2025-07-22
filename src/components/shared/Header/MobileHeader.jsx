@@ -6,7 +6,7 @@ import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useEffect } from "react";
-const MobileHeader = () => {
+const MobileHeader = ({ handleNavigateToIFrame }) => {
   const location = useLocation();
   const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
@@ -100,6 +100,20 @@ const MobileHeader = () => {
      }`}
           >
             <span className="font font-lato text-[12px]">Tennis</span>
+          </button>
+        </a>
+        <a onClick={() => handleNavigateToIFrame("sportsbook", "550000")}>
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       pathname === "/casino/sportsbook/550000"
+         ? "text-secondary border border-primary"
+         : ""
+     }`}
+          >
+            <span className="font font-lato text-[12px]">Sportsbook</span>
           </button>
         </a>
         <a
