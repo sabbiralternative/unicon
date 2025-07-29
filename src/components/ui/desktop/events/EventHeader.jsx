@@ -46,7 +46,7 @@ const EventHeader = ({ data, eventTypeId }) => {
             </span>
           )}
 
-          {eventTypeId == 2 && (
+          {eventTypeId == 2 && score && (
             <div className="text-primary w-full  bg-bg_color_quaternary1">
               <div className="flex flex-col items-center justify-center my-[4px] w-full gap-y-[5px]">
                 <div className="flex justify-between items-center h-full w-full">
