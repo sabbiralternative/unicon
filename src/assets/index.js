@@ -42,8 +42,12 @@ import usdt from "./images/usdt.png";
 import logo from "./images/logo.png";
 import telegram from "./images/telegram.png";
 import instagram from "./images/instagram.png";
+import bep from "./images/bep20.svg";
+import trc from "./images/trc20.svg";
 
 export default {
+  bep,
+  trc,
   logo,
   commision,
   cogra,

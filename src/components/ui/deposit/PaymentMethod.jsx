@@ -139,7 +139,13 @@ const PaymentMethod = ({
                         {method?.type == "usdt" ? (
                           <img
                             style={{ height: "20px", width: "20px" }}
-                            src={assets.usdt}
+                            src={assets.trc}
+                          />
+                        ) : null}
+                        {method?.type == "usdt_bep20" ? (
+                          <img
+                            style={{ height: "20px", width: "20px" }}
+                            src={assets.bep}
                           />
                         ) : null}
                         {method?.type == "whatsapp" ? (
@@ -507,7 +513,7 @@ const PaymentMethod = ({
               </div>
             </div>
           )}
-          {tabs === "usdt" && (
+          {tabs === "usdt" || tabs === "usdt_bep20" ? (
             <div className="w-full mt-2.5 rounded-[10px] bg-bg_Quaternary px-3 py-[15px]">
               {depositData?.token && (
                 <span className="flex flex-col items-start justify-start">
@@ -608,7 +614,7 @@ const PaymentMethod = ({
                 </div>
               </div>
             </div>
-          )}
+          ) : null}
 
           {/* buttons */}
           {paymentMethods?.length > 0 && (
