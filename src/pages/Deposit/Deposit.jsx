@@ -25,6 +25,7 @@ const Deposit = () => {
       {/* step 2 */}
       {paymentMethods && (
         <PaymentMethod
+          paymentId={paymentId}
           setUploadTransaction={setUploadTransaction}
           setPaymentMethods={setPaymentMethods}
           setPaymentId={setPaymentId}
