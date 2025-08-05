@@ -16,7 +16,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 top-0 overflow-hidden flex h-[100dvh] w-dvw items-center justify-center bg-bg_color_popUpParentBg overflow-y-hidden z-[10000]">
+    <div className="fixed bottom-0 left-0 right-0 top-0 overflow-hidden flex h-[100dvh] w-dvw items-center justify-center bg-bg_CasinoPopupBg overflow-y-hidden z-[10000]">
       <div
         ref={ref}
         className="relative  w-[90%]  max-w-[450px] rounded-[5px] max-h-full overflow-y-auto   bg-bg_color_LoginPopUpBg popUpOpenAnimation"

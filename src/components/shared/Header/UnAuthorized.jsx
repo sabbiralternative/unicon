@@ -37,7 +37,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
       {showForgetModal && <ForgetPassword />}
       {showLanguage && <Language setShowLanguage={setShowLanguage} />}
       {!showMobileSearch && (
-        <div className="w-max flex items-center justify-center">
+        <div className="w-full lg:w-max flex items-center justify-center">
           <div
             onClick={() => setShowMobileSearch(true)}
             id="mobileSearchIcon"

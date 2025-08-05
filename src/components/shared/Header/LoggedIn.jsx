@@ -159,7 +159,7 @@ cursor-pointer
         )}
       </div>
       <div
-        className={`w-max flex items-center justify-center ${
+        className={`w-full lg:w-max flex items-center justify-center ${
           showMobileSearch ? "hidden" : ""
         }`}
       >
