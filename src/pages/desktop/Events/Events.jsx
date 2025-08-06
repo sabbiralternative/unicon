@@ -131,6 +131,7 @@ const Events = () => {
     // value?.toFixed(2)
     return hasDecimal ? parseFloat(value?.toFixed(2)) : value;
   };
+  // console.log(match_odds);
 
   return (
     <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
@@ -201,8 +202,8 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
-            {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
-              <ScoreCard score={data?.score} match_odds={match_odds} />
+            {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
+              <ScoreCard score={data?.result?.[0]?.score} />
             )}
             {eventTypeId == 4 &&
               data &&

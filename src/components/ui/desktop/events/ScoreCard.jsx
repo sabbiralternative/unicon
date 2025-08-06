@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 // import { useState } from "react";
 
-const ScoreCard = ({ match_odds, score }) => {
+const ScoreCard = ({ score }) => {
   // const [show, setShow] = useState(true);
 
   return (
@@ -193,7 +193,7 @@ const ScoreCard = ({ match_odds, score }) => {
         _ngcontent-ng-c942213636=""
         className="live-match-screen ng-star-inserted"
       >
-        {match_odds?.[0]?.score?.map((team, i) => {
+        {score?.map((team, i) => {
           return (
             <div
               key={i}

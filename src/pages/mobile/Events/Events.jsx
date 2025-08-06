@@ -183,8 +183,8 @@ const Events = () => {
                 iFrame={iFrame}
               />
             }
-            {match_odds?.[0]?.score?.length > 0 && eventTypeId == 4 && (
-              <ScoreCard score={data?.score} match_odds={match_odds} />
+            {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
+              <ScoreCard score={data?.result?.[0]?.score} />
             )}
             {eventTypeId == 4 &&
               data &&
