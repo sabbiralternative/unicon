@@ -114,7 +114,7 @@ const Header = () => {
               >
                 <div
                   id="logoContainer"
-                  className="logo flex   w-full h-full md:w-fit "
+                  className="logo flex   w-full h-full lg:w-fit "
                 >
                   <div
                     onClick={() => dispatch(setShowLeftSidebar(true))}
