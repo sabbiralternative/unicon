@@ -35,7 +35,7 @@ const Notification = () => {
       );
 
       if (filteredNotifications?.length > 0) {
-        setFilteredNotification(filteredNotification);
+        setFilteredNotification(filteredNotifications);
         dispatch(setShowNotification(true));
       }
     }
