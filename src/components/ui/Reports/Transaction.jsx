@@ -70,7 +70,7 @@ const Transaction = () => {
                 className="cursor-pointer flex flex-row items-center justify-center"
               >
                 <span
-                  className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ${
+                  className={` text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ${
                     tabs === "withdraw"
                       ? "text-text_Quaternary"
                       : "bg-bg_Quaternary"

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import useDepositStatement from "../../../hooks/useDepositStatement";
 import ShowImage from "../../modal/ShowImage/ShowImage";
+import { settings } from "../../../api";
+import Complaint from "../../modal/Complaint/Complaint";
 
 const DepositReport = () => {
+  const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
   const { accountStatement } = useDepositStatement();
   const [category, setCategory] = useState([]);
@@ -20,6 +23,13 @@ const DepositReport = () => {
 
   return (
     <>
+      {complaintId && (
+        <Complaint
+          setComplaintId={setComplaintId}
+          complaintId={complaintId}
+          method="deposit"
+        />
+      )}
       {image && <ShowImage image={image} setShowImage={setImage} />}
       <div className="rounded-lg flex flex-col gap-y-2 px-2 overflow-clip mt-2">
         {accountStatement?.length > 0 ? (
@@ -81,8 +91,21 @@ const DepositReport = () => {
                                 />
                               </span>
                             )}
-                            <span className="text-start text-lg flex items-end justify-end tracking-tighter font-bold flex-1">
-                              ₹ {data?.amount}{" "}
+
+                            <span className="text-start text-lg flex items-end flex-col justify-end tracking-tighter  flex-1">
+                              <span className="font-bold">
+                                ₹ {data?.amount}{" "}
+                              </span>
+                              {settings.complaint && (
+                                <button
+                                  onClick={() =>
+                                    setComplaintId(data?.referenceNo)
+                                  }
+                                  className="bg-orange-500 px-2 py-1 rounded-md text-white flex items-center justify-center text-sm"
+                                >
+                                  Complaint
+                                </button>
+                              )}
                             </span>
                           </div>
                           <div className="text-xs py-1 text-center text-text_Quinary w-full border-t bg-bg_Ternary6">

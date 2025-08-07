@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import ShowImage from "../../modal/ShowImage/ShowImage";
 import useWithdrawStatement from "../../../hooks/useWithdrawStatement";
+import { settings } from "../../../api";
+import Complaint from "../../modal/Complaint/Complaint";
 
 const WithdrawReport = () => {
+  const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
   const { withdrawStatement } = useWithdrawStatement();
   const [category, setCategory] = useState([]);
@@ -20,6 +23,9 @@ const WithdrawReport = () => {
 
   return (
     <>
+      {complaintId && (
+        <Complaint setComplaintId={setComplaintId} method="withdraw" />
+      )}
       {image && <ShowImage image={image} setShowImage={setImage} />}
       <div className="rounded-lg flex flex-col gap-y-2 px-2 overflow-clip mt-2 ">
         {withdrawStatement?.length > 0 ? (
@@ -81,8 +87,20 @@ const WithdrawReport = () => {
                                 />
                               </span>
                             )}
-                            <span className="text-start text-lg flex items-end justify-end tracking-tighter font-bold flex-1">
-                              ₹ {data?.amount}{" "}
+                            <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1">
+                              <span className="font-bold">
+                                ₹ {data?.amount}{" "}
+                              </span>
+                              {settings.complaint && (
+                                <button
+                                  onClick={() =>
+                                    setComplaintId(data?.referenceNo)
+                                  }
+                                  className="bg-orange-500 px-2 py-1 rounded-md text-white flex items-center justify-center text-sm"
+                                >
+                                  Complaint
+                                </button>
+                              )}
                             </span>
                           </div>
                           <div className="text-xs py-1 text-center text-text_Quinary w-full border-t bg-bg_Ternary6">

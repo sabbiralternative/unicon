@@ -90,6 +90,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.bookmakerCashOut = setting?.bookmakerCashOut;
         settings.betDelay = setting?.betDelay;
         settings.otpWhatsapp = setting?.otpWhatsapp;
+        settings.complaint = setting?.complaint;
         setNoticeLoaded(true);
       }
     })

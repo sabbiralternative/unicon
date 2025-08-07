@@ -27,6 +27,7 @@
       "referral": true,
       "b2c": true,
       "language": true,
+      "complaint": true,
       "logo": {
         "height": 55,
         "width": 125,

@@ -83,4 +83,5 @@ export const settings = {
   language: "",
   betDelay: "",
   otpWhatsapp: "",
+  complaint: "",
 };
