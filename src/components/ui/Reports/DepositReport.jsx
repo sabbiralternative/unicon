@@ -98,12 +98,13 @@ const DepositReport = () => {
                               </span>
                               {settings.complaint && (
                                 <button
+                                  style={{ backgroundColor: "rgb(255 131 46)" }}
                                   onClick={() =>
                                     setComplaintId(data?.referenceNo)
                                   }
-                                  className="bg-orange-500 px-2 py-1 rounded-md text-white flex items-center justify-center text-sm"
+                                  className="px-2 py-1 rounded-md text-white flex items-center justify-center   sm:text-sm font-semibold"
                                 >
-                                  Complaint
+                                  Raise Complaint
                                 </button>
                               )}
                             </span>

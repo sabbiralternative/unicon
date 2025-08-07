@@ -15,7 +15,7 @@ const Transaction = () => {
     <>
       <div
         onClick={() => navigate(-1)}
-        className="lg:hidden flex flex-col w-fit cursor-pointer"
+        className="lg:hidden flex flex-col w-fit cursor-pointer font-lato"
       >
         <div className="w-full h-[34px] pr-[4px] flex items-center justify-between gap-1 relative">
           <div className="app-bg flex-row w-full h-full flex">
