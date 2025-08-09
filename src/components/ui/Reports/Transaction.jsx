@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import DepositReport from "./DepositReport";
 import WithdrawReport from "./WithdrawReport";
 import useBalance from "../../../hooks/useBalance";
+import { settings } from "../../../api";
 
 const Transaction = () => {
   const { refetchBalance } = useBalance();
@@ -11,6 +12,37 @@ const Transaction = () => {
   useEffect(() => {
     refetchBalance();
   }, [refetchBalance]);
+
+  const depositTab = [
+    'If you face any issue with your deposit, click the "Report Issue" button next to your deposit details to let us know.',
+    "यदि आपकी जमा राशि में कोई समस्या आती है, तो हमें बताने के लिए अपनी डिपॉज़िट विवरण के पास दिए गए Report Issue बटन पर क्लिक करें",
+  ];
+  const withdrawTab = [
+    'If you face any issue with your withdraw, click the "Report Issue" button next to your withdraw details to let us know.',
+    "यदि आपको अपने निकासी (Withdrawal) में कोई समस्या आती है, तो हमें बताने के लिए अपनी निकासी विवरण के पास दिए गए  Report Issue बटन पर क्लिक करें",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // fade out
+      setFade(false);
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => {
+          const arrLength =
+            tabs === "deposit" ? depositTab.length : withdrawTab.length;
+          return (prev + 1) % arrLength;
+        });
+        setFade(true);
+      }, 500); // fade out duration
+    }, 10000); // 10s display time
+
+    return () => clearInterval(interval);
+  }, [tabs]);
+
   return (
     <>
       <div
@@ -143,6 +175,25 @@ const Transaction = () => {
             </svg>
           </button>
         </div> */}
+          {settings.complaint && (
+            <div
+              className="text-start bg-bg_Quaternary mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm mx-2 flex items-start gap-2 transition-opacity duration-500"
+              style={{
+                opacity: fade ? 1 : 0,
+              }}
+            >
+              <img
+                style={{ height: "15px" }}
+                src="/icon/info-icon-svgrepo-com.svg"
+                alt=""
+              />
+              <span className="font-medium">
+                {tabs === "deposit"
+                  ? depositTab[currentIndex]
+                  : withdrawTab[currentIndex]}
+              </span>
+            </div>
+          )}
 
           {tabs === "deposit" && <DepositReport />}
           {tabs === "withdraw" && <WithdrawReport />}

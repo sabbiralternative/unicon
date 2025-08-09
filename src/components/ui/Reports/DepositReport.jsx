@@ -104,7 +104,7 @@ const DepositReport = () => {
                                   }
                                   className="px-2 py-1 rounded-md text-white flex items-center justify-center   sm:text-sm font-semibold"
                                 >
-                                  Raise Complaint
+                                  Report Issue
                                 </button>
                               )}
                             </span>
