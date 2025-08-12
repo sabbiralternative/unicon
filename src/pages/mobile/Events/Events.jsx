@@ -12,10 +12,11 @@ import { setPredictOdd } from "../../../redux/features/events/eventSlice";
 import OpenBets from "../../../components/ui/mobile/events/OpenBets";
 import IFrameScore from "../../../components/ui/IFrame/IFrame";
 import useCurrentBets from "../../../hooks/useCurrentBets";
-import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
+// import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound";
-import Score from "../../../components/ui/desktop/events/Score";
+// import Score from "../../../components/ui/desktop/events/Score";
 import SportsBook from "../../../components/ui/SportsBook/SportsBook";
+import ScoreBottomPart from "../../../components/ui/Score/ScoreBottomPart";
 
 const Events = () => {
   const [iFrame, setIframe] = useState("");
@@ -183,16 +184,12 @@ const Events = () => {
                 iFrame={iFrame}
               />
             }
-            {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
+            {/* {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.result?.[0]?.score} />
+            )} */}
+            {eventTypeId == 4 && data?.iscore && (
+              <ScoreBottomPart iscore={data?.iscore} />
             )}
-            {eventTypeId == 4 &&
-              data &&
-              data?.result?.length > 0 &&
-              data?.result?.[0]?.score2?.length !== 0 &&
-              !Array.isArray(data?.result?.[0]?.score2) && (
-                <Score mobile={true} score2={data?.result?.[0]?.score2} />
-              )}
             <div className="w-full text-selection-none pb-3 lg:pb-0">
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (

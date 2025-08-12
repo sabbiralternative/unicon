@@ -12,7 +12,7 @@ import useBalance from "../../../hooks/useBalance";
 import { useDispatch, useSelector } from "react-redux";
 import { setPredictOdd } from "../../../redux/features/events/eventSlice";
 import IFrame from "../../../components/ui/IFrame/IFrame";
-import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
+// import ScoreCard from "../../../components/ui/desktop/events/ScoreCard";
 import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab";
 import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
 import Score from "../../../components/ui/desktop/events/Score";
@@ -202,16 +202,12 @@ const Events = () => {
                 </div>
               </div>
             </div> */}
-            {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
+            {/* {data?.result?.[0]?.score?.length > 0 && eventTypeId == 4 && (
               <ScoreCard score={data?.result?.[0]?.score} />
+            )} */}
+            {eventTypeId == 4 && data?.iscore && (
+              <Score iscore={data?.iscore} />
             )}
-            {eventTypeId == 4 &&
-              data &&
-              data?.result?.length > 0 &&
-              data?.result?.[0]?.score2?.length !== 0 &&
-              !Array.isArray(data?.result?.[0]?.score2) && (
-                <Score mobile={false} score2={data?.result?.[0]?.score2} />
-              )}
 
             <IframeVideoTab
               iFrame={iFrame}

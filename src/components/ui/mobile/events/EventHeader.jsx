@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useVideoMutation } from "../../../../redux/features/video/video.api";
 import { settings } from "../../../../api";
 import { useEffect } from "react";
+import ScoreTopPart from "../../Score/ScoreTopPart";
 
 const EventHeader = ({
   data,
@@ -390,7 +391,9 @@ const EventHeader = ({
           </div>
         </div>
       )}
-
+      {eventTypeId == 4 && data?.iscore && (
+        <ScoreTopPart iscore={data?.iscore} />
+      )}
       <hr className="w-full" />
       <div
         title="Live And Open Bets"
