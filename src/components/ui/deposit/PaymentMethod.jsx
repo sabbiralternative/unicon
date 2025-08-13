@@ -17,11 +17,13 @@ const PaymentMethod = ({
   setPaymentId,
   amount,
   paymentId,
+  setTabs,
+  tabs,
 }) => {
   const [depositData, setDepositData] = useState({});
   const [handlePgPayment] = usePgPaymentMutation();
   const [handleBankPayment] = useBankMutation();
-  const [tabs, setTabs] = useState("");
+
   const { paymentMethods, isFetched } = useGetAllPaymentMethods(amount);
 
   const handleVisibleBankMethod = async (e, method) => {

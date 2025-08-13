@@ -10,6 +10,7 @@ const Deposit = () => {
   const [paymentMethods, setPaymentMethods] = useState(false);
   const [uploadTransaction, setUploadTransaction] = useState(false);
   const [paymentId, setPaymentId] = useState("");
+  const [tabs, setTabs] = useState("");
   return (
     <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
       <LeftDeskSidebar />
@@ -25,6 +26,8 @@ const Deposit = () => {
       {/* step 2 */}
       {paymentMethods && (
         <PaymentMethod
+          setTabs={setTabs}
+          tabs={tabs}
           paymentId={paymentId}
           setUploadTransaction={setUploadTransaction}
           setPaymentMethods={setPaymentMethods}
@@ -34,7 +37,7 @@ const Deposit = () => {
       )}
       {/* step 3 */}
       {uploadTransaction && (
-        <PaymentProof paymentId={paymentId} amount={amount} />
+        <PaymentProof tabs={tabs} paymentId={paymentId} amount={amount} />
       )}
 
       <RightDeskSidebar />
