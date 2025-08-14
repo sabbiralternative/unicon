@@ -59,9 +59,6 @@ const EventHeader = ({
       style={{ zIndex: 20 }}
     >
       <div
-        style={{
-          backgroundColor: "#eceaea",
-        }}
         className="w-full pl-[4px] pr-[4px] py-1.5 bg-bg_Quaternary flex flex-col items-center"
         id="eventPageHeader"
       >

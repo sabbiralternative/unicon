@@ -1,21 +1,19 @@
 const ScoreTopPart = ({ iscore, isMobile }) => {
   return (
     <div
-      className={` w-full  bg-bg_color_secondary px-0 ${
-        isMobile ? "lg:hidden" : ""
-      }`}
+      className={` w-full bg-bg_Quaternary px-0 ${isMobile ? "lg:hidden" : ""}`}
     >
       <div className=" flex w-full justify-between items-center px-3.5 py-1 font-lato">
         <div className=" flex items-start justify-start w-max flex-col max-w-[70%]">
-          <div className=" bg-bg_text_brand_primary text-transparent text-start bg-clip-text font-lato font-bold text-sm flex items-start justify-start w-full">
+          <div className=" bg-bg_Primary text-transparent text-start bg-clip-text font-lato font-bold text-sm flex items-start justify-start w-full">
             <span className=" text-start">{iscore?.teamName}</span>
           </div>
           <div className=" flex items-center justify-start gap-x-1">
             <span className="text-[18px] font-bold text-text_color_primary1 ">
               {iscore?.teamRun}
             </span>
-            <div className=" flex items-center justify-center rounded-[4px] px-1.5 py-0.5 bg-bg_text_brand_primary">
-              <span className=" text-[10px] font-[500] leading-4 text-primary">
+            <div className=" flex items-center justify-center rounded-[4px] px-1.5 py-0.5 bg-bg_text_brand_primary bg-bg_Primary">
+              <span className=" text-[10px] font-[500] leading-4 text-white">
                 Over {iscore?.teamOver}
               </span>
             </div>
@@ -49,7 +47,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
         </div>
       </div>
       {iscore?.currentOver?.length > 0 || iscore?.previousOver?.length > 0 ? (
-        <div className=" px-[11px] relative bg-bg_color_primary w-full shadow-md">
+        <div className=" px-[11px] relative bg-bg_color_primary w-full shadow-md  z-10">
           <div className=" w-full flex items-center py-1 justify-start overflow-scroll no-scrollbar gap-x-2">
             {iscore?.currentOver?.length > 0 && (
               <div

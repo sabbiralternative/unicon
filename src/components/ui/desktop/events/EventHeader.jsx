@@ -3,12 +3,7 @@ const EventHeader = ({ data, eventTypeId }) => {
 
   return (
     <div className="flex flex-col w-full">
-      <div
-        style={{
-          backgroundColor: "#eceaea",
-        }}
-        className="flex flex-row w-full justify-between items-center  mt-2 bg-bg_Quaternary rounded-sm py-2"
-      >
+      <div className="flex flex-row w-full justify-between items-center  mt-2  rounded-sm py-2 bg-bg_Primary">
         <div
           id="playIcon"
           className="flex items-center justify-start gap-x-3 w-[100%]"
@@ -39,8 +34,8 @@ const EventHeader = ({ data, eventTypeId }) => {
             </svg>
           </span> */}
           {eventTypeId != 2 && (
-            <span className="text-primary text-transparent bg-clip-text font-lato text-xl font-bold">
-              <span className="text-primary capitalize w-max break-words ">
+            <span className="font-lato text-xl font-bold">
+              <span className="text-white capitalize w-max break-words  py-2 px-4 rounded-sm">
                 {data?.result?.length > 0 && data?.result?.[0]?.eventName}
               </span>
             </span>
