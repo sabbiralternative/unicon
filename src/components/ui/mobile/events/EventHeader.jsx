@@ -59,8 +59,8 @@ const EventHeader = ({
       style={{ zIndex: 20 }}
     >
       <div
-        className="w-full pl-[4px] pr-[4px] py-1.5 bg-bg_Quaternary flex flex-col items-center"
-        id="eventPageHeader"
+        className={`w-full pl-[4px] pr-[4px] py-1.5  flex flex-col items-center"
+        id="eventPageHeader ${eventTypeId != 2 ? "bg-bg_Primary" : ""}`}
       >
         <div className="w-full flex items-center justify-between">
           <div
@@ -81,18 +81,20 @@ const EventHeader = ({
               >
                 <path
                   d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                  fill="var(--color-bg-primary)"
+                  fill={eventTypeId != 2 ? "white" : "var(--color-bg-primary)"}
                 ></path>
               </svg>
             </div>
 
             {/* <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0"> */}
 
-            <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
-              <span className="capitalize break-words">
-                {data?.result?.length > 0 && data?.result?.[0]?.eventName}
+            {eventTypeId != 2 && (
+              <span className="w-full text-white text-start bg-clip-text font-lato text-base font-bold truncate ">
+                <span className="capitalize break-words">
+                  {data?.result?.length > 0 && data?.result?.[0]?.eventName}
+                </span>
               </span>
-            </span>
+            )}
 
             {/* Added hidden class */}
             {eventTypeId == 4 && score2?.length > 0 && (

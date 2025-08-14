@@ -3,7 +3,11 @@ const EventHeader = ({ data, eventTypeId }) => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex flex-row w-full justify-between items-center  mt-2  rounded-sm py-2 bg-bg_Primary">
+      <div
+        className={`flex flex-row w-full justify-between items-center  mt-2  rounded-sm py-2  ${
+          eventTypeId != 2 ? "bg-bg_Primary" : ""
+        }`}
+      >
         <div
           id="playIcon"
           className="flex items-center justify-start gap-x-3 w-[100%]"
