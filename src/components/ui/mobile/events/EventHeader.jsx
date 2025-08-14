@@ -68,15 +68,12 @@ const EventHeader = ({
         <div className="w-full flex items-center justify-between">
           <div
             id="playIcon"
-            className={`flex items-start ${
-              eventTypeId != 4 ? "" : ""
+            className={`flex items-start 
             } gap-x-1 w-full`}
           >
             <div
               onClick={() => navigate(-1)}
-              className={`w-8 cursor-pointer rounded-sm h-6 flex items-center justify-center  active:scale-110 active:opacity-90 ${
-                eventTypeId == 4 ? "hidden" : ""
-              }`}
+              className={`w-8 cursor-pointer rounded-sm h-6 flex items-center justify-center  active:scale-110 active:opacity-90 `}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,13 +90,13 @@ const EventHeader = ({
             </div>
 
             {/* <div className="flex flex-col items-start justify-start w-[95%] break-words gap-y-0"> */}
-            {eventTypeId != 2 && eventTypeId != 4 && (
-              <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
-                <span className="capitalize break-words">
-                  {data?.result?.length > 0 && data?.result?.[0]?.eventName}
-                </span>
+
+            <span className="w-full text-primary text-transparent text-start bg-clip-text font-lato text-base font-bold truncate ">
+              <span className="capitalize break-words">
+                {data?.result?.length > 0 && data?.result?.[0]?.eventName}
               </span>
-            )}
+            </span>
+
             {/* Added hidden class */}
             {eventTypeId == 4 && score2?.length > 0 && (
               <div className="sc_cw-header hidden" style={{ width: "100%" }}>
