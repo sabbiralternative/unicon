@@ -19,7 +19,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
   const [image, setImage] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [filePath, setFilePath] = useState(null);
-  const [receipt, setReceipt] = useState(null);
+  // const [receipt, setReceipt] = useState(null);
 
   useEffect(() => {
     if (image) {
@@ -80,9 +80,9 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
         fileName: uploadedImage,
         utr: String(utr),
       };
-      if (tabs === "usdt" || tabs === "usdt_bep20") {
-        screenshotPostData.receipt_no = receipt;
-      }
+      // if (tabs === "usdt" || tabs === "usdt_bep20") {
+      //   screenshotPostData.receipt_no = receipt;
+      // }
       const res = await handleBankDeposit(screenshotPostData).unwrap();
 
       if (res?.success) {
@@ -247,7 +247,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               <span className="text-text_Danger text-xs font-lato font-[450] leading-4"></span>
             </div>
           </div>
-          {tabs === "usdt" || tabs === "usdt_bep20" ? (
+          {/* {tabs === "usdt" || tabs === "usdt_bep20" ? (
             <div className="w-full mt-2.5 bg-bg_Quaternary rounded-md px-3 py-3.5">
               <div className="font-lato font-bold text-sm mb-2 leading-5">
                 Receipt Number
@@ -263,7 +263,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                 <span className="text-text_Danger text-xs font-lato font-[450] leading-4"></span>
               </div>
             </div>
-          ) : null}
+          ) : null} */}
 
           <div className="flex items-start justify-center gap-x-2 py-3 px-5">
             <div className="inline-flex items-center">
