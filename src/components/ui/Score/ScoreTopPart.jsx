@@ -5,7 +5,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
     >
       <div className=" flex w-full justify-between items-center px-3.5 py-1 font-lato shadow-md">
         <div className=" flex items-start justify-start w-max flex-col max-w-[70%]">
-          <div className=" bg-bg_Primary text-transparent text-start bg-clip-text font-lato font-bold text-sm flex items-start justify-start w-full">
+          <div className="text-text_Primary  text-start font-lato font-bold text-sm flex items-start justify-start w-full">
             <span className=" text-start">{iscore?.teamName}</span>
           </div>
           <div className=" flex items-center justify-start gap-x-1">
@@ -26,7 +26,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
           )}
         </div>
         <div className=" flex flex-col gap-y-[3px] text-end max-w-[60%] text-text_color_primary1 ">
-          <span className="text-lg bg-bg_text_brand_secondary text-transparent  bg-clip-text font-bold leading-6 text-lg">
+          <span className=" text-text_Primary font-bold leading-6 text-lg">
             {iscore?.status}
           </span>
           <div className=" text-x font-semibold text-end leading-3">
