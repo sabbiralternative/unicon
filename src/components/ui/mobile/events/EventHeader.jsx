@@ -60,7 +60,7 @@ const EventHeader = ({
     >
       <div
         className={`w-full pl-[4px] pr-[4px] py-1.5  flex flex-col items-center"
-        id="eventPageHeader ${eventTypeId != 2 ? "bg-bg_Primary" : ""}`}
+        id="eventPageHeader ${eventTypeId != 2 ? "bg-headerBg" : ""}`}
       >
         <div className="w-full flex items-center justify-between">
           <div

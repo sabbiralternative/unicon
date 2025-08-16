@@ -5,7 +5,7 @@ const EventHeader = ({ data, eventTypeId }) => {
     <div className="flex flex-col w-full">
       <div
         className={`flex flex-row w-full justify-between items-center  mt-2  rounded-sm py-2  ${
-          eventTypeId != 2 ? "bg-bg_Primary" : ""
+          eventTypeId != 2 ? "bg-headerBg" : ""
         }`}
       >
         <div
