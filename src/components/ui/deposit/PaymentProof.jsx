@@ -104,14 +104,8 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
 
   const handleUTRChange = (e) => {
     const value = e.target.value;
-    if (/^[0-9]*$/.test(value)) {
-      setUtr(value);
-    }
-  };
-  const handleKeyDown = (e) => {
-    if (!/[0-9]/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
-      e.preventDefault();
-    }
+
+    setUtr(value);
   };
 
   return (
@@ -234,7 +228,6 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
             <div className="w-full relative font-lato">
               <input
                 onChange={handleUTRChange}
-                onKeyDown={handleKeyDown}
                 className="block w-full focus:outline-none border-[1px] font-lato px-3 py-2.5 rounded-[4px] font-lato placeholder:font-lato font-semibold text-base border-quinary focus:border-ternary"
                 placeholder={
                   tabs === "usdt" || tabs === "usdt_bep20"
