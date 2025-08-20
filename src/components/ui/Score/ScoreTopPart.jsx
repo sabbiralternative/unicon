@@ -62,13 +62,17 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
                     {iscore?.currentOver?.map((cv, i) => (
                       <span
                         key={i}
-                        className="text-xs font-medium min-w-5 min-h-5 aspect-square flex items-center justify-center shadow-md rounded-full p-1 bg-bg_color_cr_default text-text_color_cr_default border-border_color_cr_default "
+                        className={`text-xs font-medium min-w-5 min-h-5  flex items-center justify-center shadow-md  p-1 bg-bg_color_cr_default text-text_color_cr_default border-border_color_cr_default ${
+                          cv?.length === 1
+                            ? "aspect-square rounded-full"
+                            : "aspect-auto rounded-2xl"
+                        }`}
                         style={{
                           color: "white",
                           backgroundColor:
                             cv == "0"
                               ? "#999"
-                              : cv == "1"
+                              : cv == "1" || cv == "2"
                               ? "#48a23c"
                               : cv.split().includes("W")
                               ? "#c9362b"
@@ -109,13 +113,17 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
                     {iscore?.previousOver?.map((pv, i) => (
                       <span
                         key={i}
-                        className="text-xs font-medium min-w-5 min-h-5 aspect-square flex items-center justify-center shadow-md rounded-full p-1 bg-bg_color_cr_wd text-text_color_cr_wd border-border_color_cr_wd "
+                        className={`text-xs font-medium min-w-5 min-h-5  flex items-center justify-center shadow-md  p-1 bg-bg_color_cr_wd text-text_color_cr_wd border-border_color_cr_wd  ${
+                          pv?.length === 1
+                            ? "aspect-square rounded-full"
+                            : "aspect-auto rounded-2xl"
+                        }`}
                         style={{
                           color: "white",
                           backgroundColor:
                             pv == "0"
                               ? "#999"
-                              : pv == "1"
+                              : pv == "1" || pv == "2"
                               ? "#48a23c"
                               : pv.split().includes("W")
                               ? "#c9362b"
