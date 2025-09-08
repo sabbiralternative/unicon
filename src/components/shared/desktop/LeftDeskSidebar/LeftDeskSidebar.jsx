@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 // import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
 import { settings } from "../../../../api";
 // import { ImDice } from "react-icons/im";
-import assets from "../../../../assets";
+
 import { useState } from "react";
 import toast from "react-hot-toast";
 import WarningCondition from "../../WarningCondition/WarningCondition";
 import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
+import { KABBADI } from "../../../../assets/Icon";
 
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -222,7 +223,7 @@ const LeftDeskSidebar = () => {
             className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
           >
             <span className="flex w-full items-center h-full px-6 justify-start gap-3">
-              <img className="size-6" src={assets.kabbadi} alt="" />
+              <KABBADI />
               <span className="font-medium text-start text-text_Ternary">
                 {languageValue(valueByLanguage, LanguageKey.KABADDI)}
               </span>

@@ -9,13 +9,14 @@ import {
 import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 // import { ImDice } from "react-icons/im";
-import assets from "../../../../assets";
+
 import toast from "react-hot-toast";
 import WarningCondition from "../../WarningCondition/WarningCondition";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
+import { KABBADI } from "../../../../assets/Icon";
 
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -263,7 +264,7 @@ const LeftDeskSidebar = () => {
                   className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-2 cursor-pointer"
                 >
                   <span className="">
-                    <img className="size-5" src={assets.kabbadi} alt="" />
+                    <KABBADI height={13} width={13} />
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {languageValue(valueByLanguage, LanguageKey.KABADDI)}
