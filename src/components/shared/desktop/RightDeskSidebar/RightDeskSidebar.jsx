@@ -46,13 +46,9 @@ const RightDeskSidebar = () => {
     }
 
     dispatch(setPrice(placeBetValues?.price));
-    dispatch(
-      setStake(
-        placeBetValues?.totalSize > 0
-          ? placeBetValues?.totalSize.toFixed(2)
-          : null
-      )
-    );
+    if (placeBetValues?.totalSize > 0) {
+      dispatch(setStake(placeBetValues?.totalSize.toFixed(2)));
+    }
   }, [placeBetValues, betDelay, dispatch]);
 
   useEffect(() => {
@@ -141,6 +137,7 @@ const RightDeskSidebar = () => {
         refetchCurrentBets();
         dispatch(setShowComponent(false));
         setBetDelay("");
+        dispatch(setStake(null));
         toast.success(res?.result?.result?.placed?.[0]?.message);
       } else {
         setLoading(false);
@@ -381,6 +378,7 @@ const RightDeskSidebar = () => {
                           onClick={() => {
                             dispatch(setPredictOdd([]));
                             dispatch(setShowComponent(false));
+                            dispatch(setStake(null));
                           }}
                           type="button"
                           className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent  text-text_BetSlipCancelBtnColor font-medium border border-primary rounded-md cursor-pointer"

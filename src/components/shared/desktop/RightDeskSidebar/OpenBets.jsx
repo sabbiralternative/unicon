@@ -4,9 +4,10 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const OpenBets = () => {
+  const navigate = useNavigate();
   const { eventId } = useParams();
   const { myBets } = useCurrentBets(eventId);
   const [openBets, setOpenBets] = useState(true);
@@ -14,6 +15,9 @@ const OpenBets = () => {
     ...myBets.filter((bet) => bet.betType === "Back"),
     ...myBets.filter((bet) => bet.betType === "Lay"),
   ];
+  const navigateGameList = (item) => {
+    navigate(`/game-details/${item?.eventTypeId}/${item?.eventId}`);
+  };
 
   return (
     <div id="openBetsRightSide" title="Open Bets">
@@ -54,6 +58,7 @@ const OpenBets = () => {
                 {orderedBets?.map((bet, i) => {
                   return (
                     <div
+                      onClick={() => navigateGameList(bet)}
                       key={i}
                       className={`grid grid-cols-6 font-semibold px-2 py-1 cursor-pointer rounded w-full text-xs capitalize   ${
                         bet?.betType === "Back"
