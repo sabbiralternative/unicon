@@ -41,19 +41,19 @@ const RightDeskSidebar = () => {
   }
 
   useEffect(() => {
-    if (betDelay <= 0) {
-      setBetDelay(null);
-    }
-
     dispatch(setPrice(placeBetValues?.price));
     if (placeBetValues?.totalSize > 0) {
       dispatch(setStake(placeBetValues?.totalSize.toFixed(2)));
     }
-  }, [placeBetValues, betDelay, dispatch]);
+  }, [placeBetValues, dispatch]);
 
   useEffect(() => {
+    if (betDelay <= 0) {
+      setBetDelay(null);
+    }
+
     dispatch(setPredictOdd([]));
-  }, [placeBetValues, dispatch]);
+  }, [placeBetValues, betDelay, dispatch]);
 
   let payload = {};
   if (price) {
