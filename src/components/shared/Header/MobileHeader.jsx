@@ -43,6 +43,42 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
         </a>
         <a
           onClick={() => {
+            navigate("/game-details/4/28871646");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+    w-max px-3  py-1     
+ lg:hidden ${
+   pathname === "/game-details/4/28871646"
+     ? "text-secondary border border-primary"
+     : ""
+ }`}
+          >
+            <span className="font font-lato text-[12px]">Asia Cup</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
+            navigate("/game-details/5/1756414503");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+    w-max px-3  py-1     
+ lg:hidden ${
+   pathname === "/game-details/5/1756414503"
+     ? "text-secondary border border-primary"
+     : ""
+ }`}
+          >
+            <span className="font font-lato text-[12px]">PKL</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
             navigate("/");
             dispatch(setGroupType(4));
           }}
