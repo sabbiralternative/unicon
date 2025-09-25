@@ -137,7 +137,7 @@ const Fancy = ({ fancy }) => {
                         })} */}
                     </span>
                   </div>
-                  {/* <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
+                  <span className="col-span-2 md:col-span-1 flex flex-row items-center justify-center gap-x-[2px]">
                     <svg
                       version="1.0"
                       height="15"
@@ -156,9 +156,9 @@ const Fancy = ({ fancy }) => {
                       </g>
                     </svg>
                     <span className="font-[480] text-sm text-text_Ternary">
-                      2s
+                      {games?.betDelay}s
                     </span>
-                  </span> */}
+                  </span>
 
                   {pnl?.length > 0 ? (
                     pnl?.map(({ MarketId }, i) => {
