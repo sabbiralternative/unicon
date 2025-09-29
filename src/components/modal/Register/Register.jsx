@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { useForm } from "react-hook-form";
 import {
@@ -18,8 +18,10 @@ import {
 import useContextState from "../../../hooks/useContextState";
 import useBalance from "../../../hooks/useBalance";
 import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
+import useGetSocialLink from "../../../hooks/useGetSocialLink";
 
 const Register = () => {
+  const { socialLink } = useGetSocialLink();
   const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
   const [passType, setPassType] = useState(true);
@@ -94,6 +96,12 @@ const Register = () => {
 
   const handleGetOtpOnWhatsapp = async () => {
     await getOtpOnWhatsapp(mobile, setOTP);
+  };
+
+  const openWhatsapp = () => {
+    if (socialLink?.whatsapplink) {
+      window.open(socialLink?.whatsapplink, "_blank");
+    }
   };
   return (
     <div
@@ -410,6 +418,29 @@ const Register = () => {
                     </span>
                   </button>
                 </div>
+
+                {settings.registrationWhatsapp && socialLink?.whatsapplink && (
+                  <Fragment>
+                    <div className="w-full flex items-center gap-4 py-3 px-1">
+                      <div className="h-px flex-1 bg-neutral-200" />
+                      <span className="text-neutral-500 text-sm font-medium">
+                        OR
+                      </span>
+                      <div className="h-px flex-1 bg-neutral-200" />
+                    </div>
+                    <div title="registerSubmitBtn" className="w-full ">
+                      <button
+                        onClick={openWhatsapp}
+                        type="button"
+                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_Primary rounded-lg font-medium border text-[12px] xs:text-[15px] py-2 flex items-center justify-center gap-x-2 disabled:bg-bg_Quinary cursor-pointer"
+                      >
+                        <span className="font-medium text-base">
+                          Get ID on Whatsapp
+                        </span>
+                      </button>
+                    </div>
+                  </Fragment>
+                )}
 
                 <div
                   title="registerNowButton"
