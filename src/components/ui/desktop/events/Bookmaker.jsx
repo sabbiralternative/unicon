@@ -169,7 +169,6 @@ const Bookmaker = ({ bookmaker }) => {
                 </span>
                 {settings.bookmakerCashOut &&
                   games?.runners?.length !== 3 &&
-                  games?.name === "bookmaker" &&
                   games?.status === "OPEN" && (
                     <button
                       onClick={() =>

@@ -53,7 +53,9 @@ const Events = () => {
       const events = data?.result;
       const filterMatch_odds = events?.filter(
         (match_odd) =>
-          match_odd.btype === "MATCH_ODDS" && match_odd?.visible == true
+          match_odd.btype === "MATCH_ODDS" &&
+          match_odd?.visible == true &&
+          match_odd?.name !== "tied match"
       );
       setMatch_odds(filterMatch_odds);
 
@@ -89,6 +91,13 @@ const Events = () => {
       // setOverByOver(overByOverFilter);
     }
   }, [data]);
+
+  const tiedMatch = data?.result?.filter(
+    (match_odd) =>
+      match_odd.btype === "MATCH_ODDS" &&
+      match_odd?.visible == true &&
+      match_odd?.name === "tied match"
+  );
 
   useEffect(() => {
     let total;
@@ -203,6 +212,7 @@ const Events = () => {
                 {data && data?.sportsbook?.Result && (
                   <SportsBook sportsBook={data?.sportsbook?.Result} />
                 )}
+                {tiedMatch?.length > 0 && <MatchOdds match_odds={tiedMatch} />}
               </div>
             </div>
           </div>
