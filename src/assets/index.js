@@ -44,8 +44,10 @@ import telegram from "./images/telegram.png";
 import instagram from "./images/instagram.png";
 import bep from "./images/bep20.svg";
 import trc from "./images/trc20.svg";
+import whatsapp2 from "./images/1384023 (1).png";
 
 export default {
+  whatsapp2,
   bep,
   trc,
   logo,

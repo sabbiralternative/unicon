@@ -6,7 +6,7 @@ import {
   useRegisterMutation,
 } from "../../../redux/features/auth/authApi";
 import { settings } from "../../../api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
@@ -17,10 +17,12 @@ import {
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import useBalance from "../../../hooks/useBalance";
-import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
+// import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import assets from "../../../assets";
 
 const Register = () => {
+  const { token } = useSelector((state) => state.auth);
   const { socialLink } = useGetSocialLink();
   const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
@@ -94,9 +96,9 @@ const Register = () => {
     }
   };
 
-  const handleGetOtpOnWhatsapp = async () => {
-    await getOtpOnWhatsapp(mobile, setOTP);
-  };
+  // const handleGetOtpOnWhatsapp = async () => {
+  //   await getOtpOnWhatsapp(mobile, setOTP);
+  // };
 
   const openWhatsapp = () => {
     if (socialLink?.whatsapplink) {
@@ -184,7 +186,7 @@ const Register = () => {
                     value={mobile}
                   />
                   <div className="w-max flex items-center gap-2">
-                    {settings.otpWhatsapp && (
+                    {/* {settings.otpWhatsapp && (
                       <button
                         onClick={handleGetOtpOnWhatsapp}
                         disabled={mobile?.length < 10}
@@ -194,9 +196,10 @@ const Register = () => {
                         <span className=" ">Get OTP Whatsapp</span>
                         <span className="shimmer"></span>
                       </button>
-                    )}
+                    )} */}
 
                     <button
+                      disabled={mobile?.length < 10}
                       onClick={handleOTP}
                       className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                       type="button"
@@ -419,28 +422,35 @@ const Register = () => {
                   </button>
                 </div>
 
-                {settings.registrationWhatsapp && socialLink?.whatsapplink && (
-                  <Fragment>
-                    <div className="w-full flex items-center gap-4 py-3 px-1">
-                      <div className="h-px flex-1 bg-neutral-200" />
-                      <span className="text-neutral-500 text-sm font-medium">
-                        OR
-                      </span>
-                      <div className="h-px flex-1 bg-neutral-200" />
-                    </div>
-                    <div title="registerSubmitBtn" className="w-full ">
-                      <button
-                        onClick={openWhatsapp}
-                        type="button"
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_Primary rounded-lg font-medium border text-[12px] xs:text-[15px] py-2 flex items-center justify-center gap-x-2 disabled:bg-bg_Quinary cursor-pointer"
-                      >
-                        <span className="font-medium text-base">
-                          Get ID on Whatsapp
+                {settings.registrationWhatsapp &&
+                  socialLink?.whatsapplink &&
+                  !token && (
+                    <Fragment>
+                      <div className="w-full flex items-center gap-4 py-3 px-1">
+                        <div className="h-px flex-1 bg-neutral-200" />
+                        <span className="text-neutral-500 text-sm font-medium">
+                          OR
                         </span>
-                      </button>
-                    </div>
-                  </Fragment>
-                )}
+                        <div className="h-px flex-1 bg-neutral-200" />
+                      </div>
+                      <div title="registerSubmitBtn" className="w-full ">
+                        <button
+                          onClick={openWhatsapp}
+                          type="button"
+                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_Primary rounded-lg font-medium border text-[12px] xs:text-[15px] py-2 flex items-center justify-center gap-x-2 disabled:bg-bg_Quinary cursor-pointer"
+                        >
+                          <img
+                            className="size-5"
+                            src={assets.whatsapp2}
+                            alt=""
+                          />
+                          <span className="font-medium text-base">
+                            Get ID on Whatsapp
+                          </span>
+                        </button>
+                      </div>
+                    </Fragment>
+                  )}
 
                 <div
                   title="registerNowButton"
