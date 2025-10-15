@@ -43,7 +43,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
         </a>
         <a
           onClick={() => {
-            navigate("/game-details/4/34766450");
+            navigate("/game-details/4/34644908");
           }}
         >
           <button
@@ -51,7 +51,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
    
     w-max px-3  py-1     
  lg:hidden ${
-   pathname === "/game-details/4/34766450"
+   pathname === "/game-details/4/34644908"
      ? "text-secondary border border-primary"
      : ""
  }`}
