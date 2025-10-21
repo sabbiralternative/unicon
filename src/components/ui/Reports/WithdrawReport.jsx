@@ -44,7 +44,7 @@ const WithdrawReport = () => {
                       return (
                         <div
                           key={i}
-                          className="flex  flex-col gap-2 border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
+                          className="flex  flex-col  border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
                         >
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
                             <div className="text-base px-3 py-1">Withdraw</div>
@@ -69,8 +69,8 @@ const WithdrawReport = () => {
                               {data?.status}
                             </div>
                           </div>
-                          <div className="flex px-3 justify-between">
-                            <span className="flex flex-col justify-center flex-1">
+                          <div className="flex  justify-between  mt-2">
+                            <span className="flex flex-col justify-center flex-1 px-3">
                               <span className="text-xs font-normal">
                                 {data?.remark}
                               </span>
@@ -78,7 +78,7 @@ const WithdrawReport = () => {
                             {data?.image && (
                               <span
                                 onClick={() => setImage(data?.image)}
-                                className="flex-1 flex justify-end cursor-pointer"
+                                className="flex-1 flex justify-end cursor-pointer px-3"
                               >
                                 <img
                                   className="size-12"
@@ -87,7 +87,7 @@ const WithdrawReport = () => {
                                 />
                               </span>
                             )}
-                            <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1">
+                            <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1 px-3 mb-2">
                               <span className="font-bold">
                                 ₹ {data?.amount}{" "}
                               </span>
@@ -97,7 +97,7 @@ const WithdrawReport = () => {
                                   onClick={() =>
                                     setComplaintId(data?.referenceNo)
                                   }
-                                  className="px-2 py-1 rounded-md text-white flex items-center justify-center sm:text-sm font-semibold"
+                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-text_Quaternary rounded-tl h-fit tracking-normal"
                                 >
                                   Report Issue
                                 </button>
