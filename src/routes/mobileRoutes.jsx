@@ -2,7 +2,8 @@ import Events from "../pages/mobile/Events/Events";
 import Home from "../pages/mobile/Home/Home";
 import IFrame from "../pages/mobile/IFrame/IFrame";
 import OpenBets from "../pages/mobile/OpenBets/OpenBets";
-import Transaction from "../pages/mobile/Transaction/Transaction";
+import DepositReport from "../pages/mobile/DepositReport/DepositReport";
+import WithdrawReport from "../pages/mobile/WithdrawReport/WithdrawReport";
 
 export const mobileRoutes = [
   {
@@ -18,8 +19,12 @@ export const mobileRoutes = [
     element: <IFrame />,
   },
   {
-    path: "/deposit-withdraw-report",
-    element: <Transaction />,
+    path: "/deposit-report",
+    element: <DepositReport />,
+  },
+  {
+    path: "/withdraw-report",
+    element: <WithdrawReport />,
   },
   {
     path: "/open-bets",

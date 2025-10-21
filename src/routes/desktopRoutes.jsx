@@ -1,8 +1,9 @@
+import DepositReport from "../pages/desktop/DepositReport/DepositReport";
 import Events from "../pages/desktop/Events/Events";
 import Home from "../pages/desktop/Home/Home";
 import IFrame from "../pages/desktop/IFrame/IFrame";
 import OpenBets from "../pages/desktop/OpenBets/OpenBets";
-import Transaction from "../pages/desktop/Transaction/Transaction";
+import WithdrawReport from "../pages/desktop/WithdrawReport/WithdrawReport";
 
 export const desktopRoutes = [
   {
@@ -18,8 +19,12 @@ export const desktopRoutes = [
     element: <IFrame />,
   },
   {
-    path: "/deposit-withdraw-report",
-    element: <Transaction />,
+    path: "/deposit-report",
+    element: <DepositReport />,
+  },
+  {
+    path: "/withdraw-report",
+    element: <WithdrawReport />,
   },
   {
     path: "/open-bets",

@@ -407,7 +407,7 @@ const RightDeskSidebar = () => {
                 )}
 
                 <div
-                  onClick={() => handleNavigate("/deposit-withdraw-report")}
+                  onClick={() => handleNavigate("/deposit-report")}
                   className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                 >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
@@ -432,7 +432,36 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Deposit Withdraw Report
+                    Deposit Report
+                  </span>
+                </div>
+                <div
+                  onClick={() => handleNavigate("/withdraw-report")}
+                  className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                >
+                  <span className="w-4 h-auto xs:w-5 text-text_Primary">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="var(--color-iconsColor)"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M11 16h10"></path>
+                      <path d="M11 16l4 4"></path>
+                      <path d="M11 16l4 -4"></path>
+                      <path d="M13 8h-10"></path>
+                      <path d="M13 8l-4 4"></path>
+                      <path d="M13 8l-4 -4"></path>
+                    </svg>
+                  </span>
+                  <span className="font-medium text-sm xs:text-base">
+                    Withdraw Report
                   </span>
                 </div>
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
