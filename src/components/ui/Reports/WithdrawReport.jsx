@@ -87,8 +87,8 @@ const WithdrawReport = () => {
                                 />
                               </span>
                             )}
-                            <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1 px-3 mb-2">
-                              <span className="font-bold">
+                            <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1 ">
+                              <span className="font-bold px-3 mb-2">
                                 ₹ {data?.amount}{" "}
                               </span>
                               {settings.complaint && (
