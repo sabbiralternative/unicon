@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import ChooseAmount from "../../components/ui/deposit/ChooseAmount";
@@ -11,6 +11,11 @@ const Deposit = () => {
   const [uploadTransaction, setUploadTransaction] = useState(false);
   const [paymentId, setPaymentId] = useState("");
   const [tabs, setTabs] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [paymentMethods, uploadTransaction]);
+
   return (
     <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
       <LeftDeskSidebar />

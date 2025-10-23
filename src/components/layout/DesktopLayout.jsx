@@ -9,12 +9,12 @@ const MainLayout = () => {
   const calculatePadding = () => {
     if (!location.pathname.includes("/casino")) {
       if (showNotification) {
-        return "pt-[130px]";
+        return "mt-[130px]";
       } else {
-        return "pt-[110px]";
+        return "mt-[110px]";
       }
     } else {
-      return "pt-[20px]";
+      return "mt-[20px]";
     }
   };
   return (

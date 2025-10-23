@@ -75,6 +75,7 @@ const PaymentMethod = ({
   useEffect(() => {
     if (paymentMethodRef && paymentMethodRef.current && tabs && tabs !== "pg") {
       paymentMethodRef.current.scrollIntoView({
+        block: "center",
         behavior: "smooth",
       });
     }

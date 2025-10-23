@@ -13,13 +13,13 @@ const MobileLayout = () => {
   const calculatePadding = () => {
     if (!location.pathname.includes("/casino")) {
       if (showAppPopUp && showNotification) {
-        return "pt-[160px]";
+        return "mt-[160px]";
       } else if (showAppPopUp) {
-        return "pt-[135px]";
+        return "mt-[135px]";
       } else if (showNotification) {
-        return "pt-[110px]";
+        return "mt-[110px]";
       } else {
-        return "pt-[90px]";
+        return "mt-[90px]";
       }
     }
   };
