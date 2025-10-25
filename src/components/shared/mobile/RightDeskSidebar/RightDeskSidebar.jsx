@@ -695,7 +695,7 @@ const RightDeskSidebar = () => {
                     Referral Statement
                   </span>
                 </div>
-                {socialLink?.whatsapplink && (
+                {/* {socialLink?.whatsapplink && (
                   <div
                     onClick={() =>
                       handleOpenSocialLink(socialLink?.whatsapplink)
@@ -709,7 +709,7 @@ const RightDeskSidebar = () => {
                       All Support
                     </span>
                   </div>
-                )}
+                )} */}
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
                     <svg
