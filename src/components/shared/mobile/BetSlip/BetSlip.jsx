@@ -222,13 +222,14 @@ const BetSlip = ({ setRunnerId }) => {
                 <div className="grid grid-cols-12 min-h-[35px]">
                   <span className="col-span-12 h-full pr-1 overflow-hidden relative">
                     <input
+                      readOnly={placeBetValues?.cashout}
                       onChange={(e) => dispatch(setPrice(e.target.value))}
                       id="oddInput"
                       className="focus:outline-none text-sm w-full h-full text-center py-1 flex items-center justify-center border-[0.25px] text-text_Ternary border-oddInputBorder focus:border-oddInputBorderActive active:border-oddInputBorderActive"
                       type="number"
                       value={price}
                     />
-                    {!placeBetValues?.isWeak && (
+                    {!placeBetValues?.isWeak && !placeBetValues?.cashout && (
                       <div
                         style={{
                           position: "absolute",
@@ -258,6 +259,7 @@ const BetSlip = ({ setRunnerId }) => {
                 className="col-span-6 pt-1.5 w-full px-[1px] overflow-hidden"
               >
                 <input
+                  readOnly={placeBetValues?.cashout}
                   onChange={(e) => dispatch(setStake(e.target.value))}
                   id="stakeInput"
                   className=" focus:outline-none text-md w-full h-full text-center bg-bg_Quaternary flex items-center justify-center border-[0.75px] text-text_Ternary placeholder:text-text_Ternary 5 rounded-sm text-text_Ternary 5 focus:border-oddInputBorderActive active:border-oddInputBorderActive"
@@ -273,6 +275,7 @@ const BetSlip = ({ setRunnerId }) => {
                 {parseButtonValues?.slice(0, 6)?.map((button, i) => {
                   return (
                     <button
+                      disabled={placeBetValues?.cashout}
                       onClick={() => dispatch(setStake(button?.value))}
                       key={i}
                       className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-text_Quaternary text-center py-1.5 cursor-pointer"
@@ -340,7 +343,7 @@ const BetSlip = ({ setRunnerId }) => {
                   disabled={!stake || betDelay > 0}
                   type="button"
                   className={` leading-normal relative overflow-hidden  transition duration-150 ease-in-out py-1 w-full flex  min-h-[46px] px-2.5 rounded-md  font-medium border  flex-row items-center justify-between  
-                   text-text_Ternary 5     text-text_Quaternary  
+                     text-text_Quaternary  
                cursor-pointer ${
                  !stake || betDelay > 0
                    ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"

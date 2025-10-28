@@ -261,6 +261,7 @@ const RightDeskSidebar = () => {
                           <div className="grid grid-cols-12 min-h-[35px]">
                             <span className="col-span-12 h-full pr-1 overflow-hidden relative">
                               <input
+                                readOnly={placeBetValues?.cashout}
                                 onChange={(e) =>
                                   dispatch(setPrice(e.target.value))
                                 }
@@ -273,28 +274,29 @@ const RightDeskSidebar = () => {
                                 type="number"
                                 value={price}
                               />
-                              {!placeBetValues?.isWeak && (
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: 3,
-                                    right: 5,
-                                    display: "flex",
-                                    flexDirection: "column",
-                                  }}
-                                >
-                                  <MdKeyboardArrowUp
-                                    onClick={handleIncreasePrice}
-                                    style={{ cursor: "pointer" }}
-                                    size={15}
-                                  />
-                                  <MdKeyboardArrowDown
-                                    onClick={handleDecreasePrice}
-                                    style={{ cursor: "pointer" }}
-                                    size={15}
-                                  />
-                                </div>
-                              )}
+                              {!placeBetValues?.isWeak &&
+                                !placeBetValues?.cashout && (
+                                  <div
+                                    style={{
+                                      position: "absolute",
+                                      top: 3,
+                                      right: 5,
+                                      display: "flex",
+                                      flexDirection: "column",
+                                    }}
+                                  >
+                                    <MdKeyboardArrowUp
+                                      onClick={handleIncreasePrice}
+                                      style={{ cursor: "pointer" }}
+                                      size={15}
+                                    />
+                                    <MdKeyboardArrowDown
+                                      onClick={handleDecreasePrice}
+                                      style={{ cursor: "pointer" }}
+                                      size={15}
+                                    />
+                                  </div>
+                                )}
                             </span>
                           </div>{" "}
                         </span>
@@ -303,6 +305,7 @@ const RightDeskSidebar = () => {
                           className="col-span-6 pt-1.5 w-full px-[1px] overflow-hidden"
                         >
                           <input
+                            readOnly={placeBetValues?.cashout}
                             onChange={(e) => dispatch(setStake(e.target.value))}
                             id="stakeInput"
                             className="focus:outline-none text-md w-full h-full text-center bg-bg_Quaternary flex items-center justify-center border-[0.75px] text-text_Ternary placeholder:text-text_Ternary 5 rounded-sm text-text_Ternary focus:border-oddInputBorderActive active:border-oddInputBorderActive"
@@ -318,6 +321,7 @@ const RightDeskSidebar = () => {
                           {parseButtonValues?.slice(0, 6)?.map((button, i) => {
                             return (
                               <button
+                                disabled={placeBetValues?.cashout}
                                 key={i}
                                 onClick={() =>
                                   dispatch(setStake(button?.value))
