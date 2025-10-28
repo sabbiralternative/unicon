@@ -33,7 +33,7 @@ const PaymentMethod = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
 
-    if (method?.type === "pg") {
+    if (method?.type === "upigateway") {
       const pgPayload = {
         paymentId: method?.paymentId,
         site: settings.siteUrl,
@@ -73,7 +73,12 @@ const PaymentMethod = ({
   };
 
   useEffect(() => {
-    if (paymentMethodRef && paymentMethodRef.current && tabs && tabs !== "pg") {
+    if (
+      paymentMethodRef &&
+      paymentMethodRef.current &&
+      tabs &&
+      tabs !== "upigateway"
+    ) {
       paymentMethodRef.current.scrollIntoView({
         block: "center",
         behavior: "smooth",
@@ -176,6 +181,16 @@ const PaymentMethod = ({
                                 margin: "0px",
                               }}
                               src={assets.whatsApp}
+                            />
+                          ) : null}
+                          {method?.type == "upigateway" ? (
+                            <img
+                              style={{
+                                height: "17px",
+                                width: "17px",
+                                margin: "0px",
+                              }}
+                              src={assets.upigateway}
                             />
                           ) : null}
                         </div>
