@@ -190,7 +190,7 @@ const PaymentMethod = ({
                                 width: "17px",
                                 margin: "0px",
                               }}
-                              src={assets.upigateway}
+                              src={assets.bhim}
                             />
                           ) : null}
                         </div>

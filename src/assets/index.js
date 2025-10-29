@@ -46,8 +46,10 @@ import bep from "./images/bep20.svg";
 import trc from "./images/trc20.svg";
 import whatsapp2 from "./images/1384023 (1).png";
 import upigateway from "./images/brand-sm.svg";
+import bhim from "./images/bhim.png";
 
 export default {
+  bhim,
   upigateway,
   whatsapp2,
   bep,
