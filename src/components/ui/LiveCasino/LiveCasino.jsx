@@ -28,7 +28,7 @@ const LiveCasino = () => {
     const apiMapping = {
       liveCasinoWolf: API.liveCasinoWolf,
       slotWolf: API.slotsWolf,
-      auraWolf: API.auraWolf,
+      auraWolf: API.mac88,
     };
     const getGames = async () => {
       const res = await AxiosSecure.post(apiMapping[group], {

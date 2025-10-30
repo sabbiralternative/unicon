@@ -12,7 +12,7 @@ const useCardGames = () => {
     queryKey: ["cardGames"],
 
     queryFn: async () => {
-      const res = await AxiosSecure.post(API.auraWolf, {
+      const res = await AxiosSecure.post(API.mac88, {
         gameList: "All",
         product: "All",
         isHome: true,
