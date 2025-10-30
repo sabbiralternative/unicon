@@ -270,7 +270,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </button>
           </a>
         )}
-
+        {/* 
         {settings.aura && (
           <a
             onClick={() => {
@@ -311,7 +311,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
               </span>
             </button>
           </a>
-        )}
+        )} */}
         <a
           onClick={() => {
             navigate("/live-casino");

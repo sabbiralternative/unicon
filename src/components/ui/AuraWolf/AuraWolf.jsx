@@ -18,7 +18,7 @@ const AuraWolf = () => {
 
   useEffect(() => {
     const getGames = async () => {
-      const res = await AxiosSecure.post(API.auraWolf, {
+      const res = await AxiosSecure.post(API.mac88, {
         gameList: "ALL",
         product: "ALL",
         isHome: false,

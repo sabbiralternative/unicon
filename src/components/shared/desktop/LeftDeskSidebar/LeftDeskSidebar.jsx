@@ -319,7 +319,7 @@ const LeftDeskSidebar = () => {
               </span>
             </li>
           )}
-          {settings.aura && (
+          {/* {settings.aura && (
             <li
               onClick={() => {
                 navigate("/");
@@ -345,7 +345,7 @@ const LeftDeskSidebar = () => {
                 </span>
               </span>
             </li>
-          )}
+          )} */}
           {/* <li className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]">
           <span className="flex w-full items-center h-full px-6 justify-start gap-3">
             <svg

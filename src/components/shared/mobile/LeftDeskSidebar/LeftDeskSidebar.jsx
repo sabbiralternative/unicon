@@ -349,7 +349,7 @@ const LeftDeskSidebar = () => {
                   </li>
                 )}
 
-                {settings.aura && (
+                {/* {settings.aura && (
                   <li
                     onClick={() => handleNavigate("auraWolf")}
                     className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"
@@ -372,7 +372,7 @@ const LeftDeskSidebar = () => {
                       Aura
                     </span>
                   </li>
-                )}
+                )} */}
 
                 <li
                   onClick={() => {

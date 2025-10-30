@@ -396,7 +396,7 @@ cursor-pointer
                       </span>
                     </button>
                   )}
-                  {settings.aura && (
+                  {/* {settings.aura && (
                     <button
                       onClick={() => {
                         navigate("/");
@@ -406,7 +406,7 @@ cursor-pointer
                     >
                       <span className="font font-lato text-[12px]">Aura</span>
                     </button>
-                  )}
+                  )} */}
                   {/* <button
                     onClick={() => {
                       navigate("/");
