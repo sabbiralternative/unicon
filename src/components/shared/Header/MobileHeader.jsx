@@ -59,7 +59,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             <span className="font font-lato text-[12px]">Bihar Election</span>
           </button>
         </a>
-        <a
+        {/* <a
           onClick={() => {
             navigate("/game-details/4/34644908");
           }}
@@ -94,7 +94,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">PKL</span>
           </button>
-        </a>
+        </a> */}
         <a
           onClick={() => {
             navigate("/");
