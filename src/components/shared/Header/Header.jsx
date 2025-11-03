@@ -90,6 +90,7 @@ const Header = () => {
       dispatch(setShowLoginModal(true));
     }
   };
+
   return (
     <>
       {showWarning && (
