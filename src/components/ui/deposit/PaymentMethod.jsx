@@ -33,11 +33,12 @@ const PaymentMethod = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
 
-    if (method?.type === "upigateway") {
+    if (method?.type === "upigateway" || method?.type === "toitgateway") {
       const pgPayload = {
         paymentId: method?.paymentId,
         site: settings.siteUrl,
         amount,
+        method: method?.type,
       };
       const res = await handlePgPayment(pgPayload).unwrap();
       if (res?.success) {
@@ -77,7 +78,8 @@ const PaymentMethod = ({
       paymentMethodRef &&
       paymentMethodRef.current &&
       tabs &&
-      tabs !== "upigateway"
+      tabs !== "upigateway" &&
+      tabs !== "toitgateway"
     ) {
       paymentMethodRef.current.scrollIntoView({
         block: "center",
@@ -183,7 +185,8 @@ const PaymentMethod = ({
                               src={assets.whatsApp}
                             />
                           ) : null}
-                          {method?.type == "upigateway" ? (
+                          {method?.type == "upigateway" ||
+                          method?.type === "toitgateway" ? (
                             <img
                               style={{
                                 height: "17px",
