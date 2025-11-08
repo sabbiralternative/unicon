@@ -254,8 +254,12 @@ const BettingProfitLoss = () => {
                               title="Cricket - 1.232257782-3066645.FY"
                               className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
                             >
-                              <div className="w-full text-start   text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize">
+                              <div className="w-full text-start   text-text_Primary px-2.5 py-2 text-xs font-[550] capitalize flex items-center justify-between">
                                 <span> {item?.narration}</span>
+                                <span className="text-gray-400">
+                                  {" "}
+                                  {item?.time}
+                                </span>
                               </div>
 
                               <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
