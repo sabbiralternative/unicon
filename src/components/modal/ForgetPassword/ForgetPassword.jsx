@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   useForgotPasswordMutation,
@@ -26,6 +26,7 @@ const ForgetPassword = () => {
   const { register, handleSubmit } = useForm();
   const { logo } = useContextState();
   const forgotPassRef = useRef();
+  const [timer, setTimer] = useState(null);
   useCloseModalClickOutside(forgotPassRef, () => {
     dispatch(setShowForgetModal(false));
   });
@@ -40,6 +41,7 @@ const ForgetPassword = () => {
       const res = await getOTP({ mobile }).unwrap();
 
       if (res?.success) {
+        setTimer(60);
         setOTP({
           orderId: res?.result?.orderId,
           otpMethod: "sms",
@@ -71,6 +73,16 @@ const ForgetPassword = () => {
       toast.error(result?.error?.loginName?.[0]?.description);
     }
   };
+
+  useEffect(() => {
+    if (timer > 0) {
+      setTimeout(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else {
+      setTimer(null);
+    }
+  }, [timer]);
   return (
     <div
       id="popup-modal"
@@ -160,6 +172,26 @@ const ForgetPassword = () => {
                         className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-4 pr-8 ml-0 mr-0"
                         type="text"
                       />
+
+                      <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
+                        {timer ? (
+                          <button
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center !cursor-text"
+                            type="button"
+                          >
+                            <span className=" ">Retry in {timer}</span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={handleOTP}
+                            disabled=""
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
+                            type="button"
+                          >
+                            <span className=" ">Get OTP Message</span>
+                          </button>
+                        )}
+                      </span>
                     </div>
                     <div className="h-2.5 text-xs ml-1 -mt-0.5 text-text_Primary text-text_Primary"></div>
                   </div>
@@ -177,16 +209,6 @@ const ForgetPassword = () => {
                         type="text"
                         maxLength={6}
                       />
-                      <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
-                        <button
-                          onClick={handleOTP}
-                          disabled=""
-                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
-                          type="button"
-                        >
-                          <span className=" ">Get OTP</span>
-                        </button>
-                      </span>
                     </div>
                     <div className="text-xs ml-1 text-text_Primary"></div>
                   </div>

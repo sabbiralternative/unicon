@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { useForm } from "react-hook-form";
 import {
@@ -35,6 +35,7 @@ const Register = () => {
   const [handleRegister] = useRegisterMutation();
   const { register, handleSubmit } = useForm();
   const { logo } = useContextState();
+  const [timer, setTimer] = useState(null);
   const registerRef = useRef();
   useCloseModalClickOutside(registerRef, () => {
     dispatch(setShowRegisterModal(false));
@@ -48,6 +49,7 @@ const Register = () => {
   const handleOTP = async () => {
     const res = await getOTP({ mobile }).unwrap();
     if (res?.success) {
+      setTimer(60);
       setOTP({
         orderId: res?.result?.orderId,
         otpMethod: "sms",
@@ -111,6 +113,16 @@ const Register = () => {
       window.open(socialLink?.whatsapplink, "_blank");
     }
   };
+
+  useEffect(() => {
+    if (timer > 0) {
+      setTimeout(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else {
+      setTimer(null);
+    }
+  }, [timer]);
   return (
     <div
       id="popup-modal"
@@ -203,16 +215,25 @@ const Register = () => {
                         <span className="shimmer"></span>
                       </button>
                     )} */}
-
-                    <button
-                      disabled={mobile?.length < 10}
-                      onClick={handleOTP}
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                      type="button"
-                    >
-                      <span className=" ">Get OTP Message</span>
-                      <span className="shimmer"></span>
-                    </button>
+                    {timer ? (
+                      <button
+                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
+                        type="button"
+                      >
+                        <span className=" ">Retry in {timer}</span>
+                        {/* <span className="shimmer"></span> */}
+                      </button>
+                    ) : (
+                      <button
+                        disabled={mobile?.length < 10}
+                        onClick={handleOTP}
+                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                        type="button"
+                      >
+                        <span className=" ">Get OTP Message</span>
+                        <span className="shimmer"></span>
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div
