@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import NewAccount from "./NewAccount";
 import OldAccount from "./OldAccount";
 import useGetAllBankAccount from "../../../../hooks/useGetAllBankAccount";
+import AddUSDTAccount from "./AddUSDTAccount";
 
 const BankAccounts = ({ amount }) => {
-  const { bankAccounts } = useGetAllBankAccount();
+  const { bankAccounts, refetchBankAccounts } = useGetAllBankAccount();
   const [tabs, setTabs] = useState("");
   useEffect(() => {
     if (bankAccounts?.length > 0) {
       setTabs("oldAccount");
     } else {
-      setTabs("newAccount");
+      setTabs("add-bank-account");
     }
   }, [bankAccounts]);
+
   return (
     <div
       className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%]"
@@ -68,15 +70,27 @@ const BankAccounts = ({ amount }) => {
               className="relative flex w-[100%] rounded-lg border shadow bg-bg_Quaternary overflow-clip undefined"
             >
               <button
-                onClick={() => setTabs("newAccount")}
+                onClick={() => setTabs("add-bank-account")}
                 className={`flex items-center justify-center w-full gap-1.5 tracking-wider undefined p-3 text-sm font-semibold ${
-                  tabs === "newAccount"
+                  tabs === "add-bank-account"
                     ? "text-text_Quaternary"
                     : "text-text_Quinary"
                 } undefined`}
                 style={{ zIndex: 10 }}
               >
-                Use New Account
+                Add Bank Account
+              </button>
+
+              <button
+                onClick={() => setTabs("add-usdt-account")}
+                className={`flex items-center justify-center w-full gap-1.5 tracking-wider undefined p-3 text-sm font-semibold ${
+                  tabs === "add-usdt-account"
+                    ? "text-text_Quaternary"
+                    : "text-text_Quinary"
+                } undefined`}
+                style={{ zIndex: 10 }}
+              >
+                Add USDT Wallet
               </button>
               <button
                 onClick={() => setTabs("oldAccount")}
@@ -90,17 +104,32 @@ const BankAccounts = ({ amount }) => {
                 Use Previous Account
               </button>
               <div
-                className={`w-[48%] absolute z-10 h-full transition-all ease-in-out p-1 ${
-                  tabs === "newAccount" ? "left-0" : "right-0"
+                className={`w-[30%] absolute z-10 h-full transition-all ease-in-out p-1 ${
+                  tabs === "add-bank-account"
+                    ? "left-0"
+                    : tabs === "add-usdt-account"
+                    ? "left-[35%]"
+                    : "right-0"
                 }`}
-                style={{ zIndex: 9, width: "50%", bottom: "0px" }}
+                style={{ zIndex: 9, width: "35%", bottom: "0px" }}
               >
                 <div className="w-full h-full bg-bg_Primary rounded-lg"></div>
               </div>
             </div>
           </div>
         </div>
-        {tabs === "newAccount" && <NewAccount setTabs={setTabs} />}
+        {tabs === "add-bank-account" && (
+          <NewAccount
+            setTabs={setTabs}
+            refetchBankAccounts={refetchBankAccounts}
+          />
+        )}
+        {tabs === "add-usdt-account" && (
+          <AddUSDTAccount
+            setTabs={setTabs}
+            refetchBankAccounts={refetchBankAccounts}
+          />
+        )}
         {tabs === "oldAccount" && (
           <OldAccount bankAccounts={bankAccounts} amount={amount} />
         )}

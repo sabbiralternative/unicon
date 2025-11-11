@@ -6,61 +6,50 @@ import { useSelector } from "react-redux";
 import { AxiosSecure } from "../../../../lib/AxiosSecure";
 import { API, settings } from "../../../../api";
 
-const NewAccount = ({ setTabs, refetchBankAccounts }) => {
-  const [addNewBank] = useBankMutation();
+const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
+  const [addNewUSDTAccount] = useBankMutation();
   const [isFormValid, setIsFormValid] = useState(false);
   const [mobile, setMobile] = useState(null);
   const { token } = useSelector((state) => state.auth);
   const [orderId, setOrderId] = useState(null);
   const [timer, setTimer] = useState(null);
-  const [bankDetails, setBankDetails] = useState({
-    accountName: "",
-    ifsc: "",
-    accountNumber: "",
-    confirmAccountNumber: "",
-    upiId: "",
+  const [usdtDetails, setUsdtDetails] = useState({
     otp: "",
+    usdt_type: "",
+    wallet_address: "",
   });
 
   /* Handle add bank function */
-  const handleAddBank = async (e) => {
+  const handleAddUSDTAccount = async (e) => {
     e.preventDefault();
-    // console.log(bankDetails);
-    if (bankDetails.accountNumber != bankDetails.confirmAccountNumber) {
-      return toast.error("Account number not matched!");
-    }
 
-    if (mobile && !bankDetails.otp && settings.otp) {
+    if (mobile && !usdtDetails.otp && settings.otp) {
       return toast.error("Please enter otp to add new account");
     }
     /* generating random token for post data */
 
-    let bankData = {
-      accountName: bankDetails.accountName,
-      ifsc: bankDetails.ifsc,
-      accountNumber: bankDetails.accountNumber,
-      upiId: bankDetails.upiId,
-      type: "addBankAccount",
+    let payload = {
+      wallet_address: usdtDetails.wallet_address,
+      usdt_type: usdtDetails.usdt_type,
+      type: "addUSDTAccount",
     };
     if (mobile) {
-      bankData.mobile = mobile;
-      bankData.otp = bankDetails.otp;
-      bankData.orderId = orderId;
+      payload.mobile = mobile;
+      payload.otp = usdtDetails.otp;
+      payload.orderId = orderId;
     }
 
-    const res = await addNewBank(bankData).unwrap();
+    const res = await addNewUSDTAccount(payload).unwrap();
 
     if (res?.success) {
-      setBankDetails({
-        accountName: "",
-        ifsc: "",
-        accountNumber: "",
-        confirmAccountNumber: "",
+      setUsdtDetails({
         otp: "",
+        usdt_type: "",
+        wallet_address: "",
       });
       toast.success(res?.result?.message);
-      setTabs("oldAccount");
       refetchBankAccounts();
+      setTabs("oldAccount");
       window.scrollTo(0, 0);
     } else {
       toast.error(res?.result?.message);
@@ -68,22 +57,17 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
   };
 
   const validateForm = (bankDetails) => {
-    const isaccountNameFilled = bankDetails.accountName.trim() !== "";
-    const isaccountNumberFilled = bankDetails.accountNumber.trim() !== "";
-    const isIfscFilled = bankDetails.ifsc.trim() !== "";
-    const isOTPFilled =
-      mobile && settings.otp ? bankDetails.otp.trim() !== "" : true;
+    const isUSDTTypeFilled = bankDetails.usdt_type.trim() !== "";
+    const isWalletAddressFilled = bankDetails.wallet_address.trim() !== "";
+    const isOTPFilled = mobile ? bankDetails.otp.trim() !== "" : true;
     const isFormValid =
-      isaccountNameFilled &&
-      isIfscFilled &&
-      isaccountNumberFilled &&
-      isOTPFilled;
+      isUSDTTypeFilled && isWalletAddressFilled && isOTPFilled;
     setIsFormValid(isFormValid);
   };
 
   useEffect(() => {
-    validateForm(bankDetails);
-  }, [bankDetails]);
+    validateForm(usdtDetails);
+  }, [usdtDetails]);
 
   const getOtp = async () => {
     const otpData = {
@@ -138,7 +122,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
   };
   return (
     <form
-      onSubmit={handleAddBank}
+      onSubmit={handleAddUSDTAccount}
       className="w-full flex flex-col items-start justify-start gap-y-4"
       data-gtm-form-interact-id="0"
     >
@@ -146,116 +130,65 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
         <div className="w-full relative h-full">
           <div className="flex flex-col w-full">
             <div className="ml-1 text-sm">
-              UPI ID (Optional)
-              <span className="text-text_Primary"></span>
+              USDT Type<span className="text-text_Primary">*</span>
             </div>
-            <div className="relative">
-              <input
-                onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
-                    upiId: e.target.value,
-                  });
-                }}
-                placeholder="Enter UPI ID"
-                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
-                type="text"
-                value={bankDetails.upiId}
-              />
+            <div className="relative flex items-center gap-x-3 w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0">
+              <div className="flex items-center gap-x-2">
+                <p>BEP20</p>
+                <input
+                  name="usdt-type"
+                  onChange={(e) => {
+                    setUsdtDetails({
+                      ...usdtDetails,
+                      usdt_type: e.target.value,
+                    });
+                  }}
+                  type="radio"
+                  placeholder="Enter Wallet Address"
+                  className="pr-2"
+                  value="BEP20"
+                />
+              </div>
+              <div className="flex items-center gap-x-2">
+                <p>TRC20</p>
+                <input
+                  name="usdt-type"
+                  onChange={(e) => {
+                    setUsdtDetails({
+                      ...usdtDetails,
+                      usdt_type: e.target.value,
+                    });
+                  }}
+                  type="radio"
+                  placeholder="Enter Wallet Address"
+                  className="pr-2"
+                  value="TRC20"
+                />
+              </div>
             </div>
             <div className="text-xs ml-1 text-text_Primary"></div>
           </div>
         </div>
-        <div className="flex flex-col w-full">
-          <div className="ml-1 text-sm">
-            Account Name <span className="text-text_Primary">*</span>
-          </div>
-          <div className="relative">
-            <input
-              onChange={(e) => {
-                setBankDetails({
-                  ...bankDetails,
-                  accountName: e.target.value,
-                });
-              }}
-              id="accountName"
-              label="Account Name"
-              required
-              placeholder="Enter Account Name"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
-              type="text"
-              value={bankDetails.accountName}
-            />
-          </div>
-          <div className="text-xs ml-1 text-text_Primary"></div>
-        </div>
-        <div className="flex flex-col w-full">
-          <div className="ml-1 text-sm">
-            Account No <span className="text-text_Primary">*</span>
-          </div>
-          <div className="relative">
-            <input
-              onChange={(e) => {
-                setBankDetails({
-                  ...bankDetails,
-                  accountNumber: e.target.value,
-                });
-              }}
-              id="accountNo"
-              label="Account No"
-              required
-              placeholder="Enter Account Number"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
-              type="text"
-              value={bankDetails.accountNumber}
-            />
-          </div>
-          <div className="text-xs ml-1 text-text_Primary"></div>
-        </div>
-        <div className="flex flex-col w-full">
-          <div className="ml-1 text-sm">
-            Confirm Account No
-            <span className="text-text_Primary">*</span>
-          </div>
-          <div className="relative">
-            <input
-              onChange={(e) => {
-                setBankDetails({
-                  ...bankDetails,
-                  confirmAccountNumber: e.target.value,
-                });
-              }}
-              label="Confirm Account No"
-              required
-              id="confirmAccountNo"
-              placeholder="Re-enter Account Number"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
-              type="text"
-              value={bankDetails.confirmAccountNumber}
-            />
-          </div>
-          <div className="text-xs ml-1 text-text_Primary"></div>
-        </div>
         <div className="w-full relative h-full">
           <div className="flex flex-col w-full">
             <div className="ml-1 text-sm">
-              IFSC Code <span className="text-text_Primary">*</span>
+              Wallet Address<span className="text-text_Primary">*</span>
             </div>
             <div className="relative">
               <input
                 onChange={(e) => {
-                  setBankDetails({
-                    ...bankDetails,
-                    ifsc: e.target.value,
+                  setUsdtDetails({
+                    ...usdtDetails,
+                    wallet_address: e.target.value,
                   });
                 }}
                 id="ifsc"
                 label="IFSC Code"
                 required
-                placeholder="Enter IFSC Code"
+                placeholder="Enter Wallet Address"
                 className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
                 type="text"
-                value={bankDetails.ifsc}
+                value={usdtDetails.wallet_address}
               />
             </div>
             <div className="text-xs ml-1 text-text_Primary"></div>
@@ -328,8 +261,8 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
               <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
                 <input
                   onChange={(e) => {
-                    setBankDetails({
-                      ...bankDetails,
+                    setUsdtDetails({
+                      ...usdtDetails,
                       otp: e.target.value,
                     });
                   }}
@@ -395,4 +328,4 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
   );
 };
 
-export default NewAccount;
+export default AddUSDTAccount;
