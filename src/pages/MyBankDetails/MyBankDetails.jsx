@@ -10,9 +10,11 @@ import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/R
 import { MdDelete } from "react-icons/md";
 import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
 import CreateBankAccount from "../../components/modal/CreateBankAccount/CreateBankAccount";
+import CreateUSDTAccount from "../../components/modal/CreateUSDTAccount/CreateUSDTAccount";
 
 const MyBankDetails = () => {
   const [showAddBank, setShowAddBank] = useState(false);
+  const [showUSDTModal, setShowUSDTModal] = useState(false);
   const [showDetails, setShowDetails] = useState(null);
   const [tab, setTab] = useState(1);
   const navigate = useNavigate();
@@ -88,6 +90,12 @@ const MyBankDetails = () => {
         <CreateBankAccount
           refetchBankAccounts={refetchBankData}
           setShowAddBank={setShowAddBank}
+        />
+      )}
+      {showUSDTModal && (
+        <CreateUSDTAccount
+          refetchBankAccounts={refetchBankData}
+          setShowUSDTModal={setShowUSDTModal}
         />
       )}
       <div className="flex flex-col transition-all">
@@ -179,6 +187,20 @@ const MyBankDetails = () => {
                 >
                   Add New Bank
                 </button>
+                <button
+                  onClick={() => setShowUSDTModal(true)}
+                  className="btn"
+                  style={{
+                    background: "var(--color-bg-primary)",
+                    color: "white",
+                    padding: "6px 0px",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginTop: "5px",
+                  }}
+                >
+                  Add USDT Account
+                </button>
                 <h2 style={{ marginTop: "5px", fontWeight: "500" }}>
                   Bank Details
                 </h2>
@@ -214,7 +236,7 @@ const MyBankDetails = () => {
                               gap: "3px",
                             }}
                           >
-                            <img
+                            {/* <img
                               style={{
                                 height: "30px",
                                 width: "30px",
@@ -222,7 +244,7 @@ const MyBankDetails = () => {
                               }}
                               alt="Bank Icon"
                               src={`/src/assets/img/${bank?.bankCode}.png`}
-                            />
+                            /> */}
                             <div>
                               <p> {bank?.bankName}</p>
                               {bank?.isDefault === 1 && (
