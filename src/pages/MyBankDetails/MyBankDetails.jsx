@@ -174,33 +174,34 @@ const MyBankDetails = () => {
                 </div>
               </div>
               <div className="font-lato" style={{ margin: "10px" }}>
-                <button
-                  onClick={() => setShowAddBank(true)}
-                  className="btn"
-                  style={{
-                    background: "var(--color-bg-primary)",
-                    color: "white",
-                    padding: "6px 0px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                  }}
-                >
-                  Add New Bank
-                </button>
-                <button
-                  onClick={() => setShowUSDTModal(true)}
-                  className="btn"
-                  style={{
-                    background: "var(--color-bg-primary)",
-                    color: "white",
-                    padding: "6px 0px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    marginTop: "5px",
-                  }}
-                >
-                  Add USDT Account
-                </button>
+                <div className="flex items-center justify-between gap-x-4">
+                  <button
+                    onClick={() => setShowAddBank(true)}
+                    className="btn"
+                    style={{
+                      background: "var(--color-bg-primary)",
+                      color: "white",
+                      padding: "6px 0px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Add New Bank
+                  </button>
+                  <button
+                    onClick={() => setShowUSDTModal(true)}
+                    className="btn"
+                    style={{
+                      background: "var(--color-bg-primary)",
+                      color: "white",
+                      padding: "6px 0px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Add USDT Account
+                  </button>
+                </div>
                 <h2 style={{ marginTop: "5px", fontWeight: "500" }}>
                   Bank Details
                 </h2>
@@ -380,8 +381,6 @@ const MyBankDetails = () => {
                 )}
               </div>
             </div>
-            <div className="px-[6px]"></div>
-            <div className="py-1 px-[6px]"></div>
           </div>
 
           <RightDeskSidebar />

@@ -27,6 +27,7 @@ import HorseRacing from "../pages/HorseRacing/HorseRacing.jsx";
 import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing.jsx";
 import MyBankDetails from "../pages/MyBankDetails/MyBankDetails.jsx";
 import GameProviderDetails from "../pages/GameProviderDetails/GameProviderDetails.jsx";
+import Affiliate from "../pages/Affiliate/Affiliate.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -132,6 +133,10 @@ const MainRouter = () => {
           {
             path: "/apk",
             element: <APK />,
+          },
+          {
+            path: "/affiliate",
+            element: <Affiliate />,
           },
         ],
       },
