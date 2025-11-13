@@ -254,7 +254,7 @@ const RightDeskSidebar = () => {
                             STAKE
                           </span>
                           <span className="text-[10px] float-right capitalize text-text_Ternary 5 font-normal text-center">
-                            Max Mkt : {placeBetValues?.maxLiabilityPerBet}
+                            Max Mkt : {placeBetValues?.maxLiabilityPerMarket}
                           </span>
                         </div>
                         <span title="Odds" className="col-span-6 pt-1.5 w-full">

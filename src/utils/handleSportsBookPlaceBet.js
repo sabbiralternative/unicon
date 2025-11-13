@@ -31,6 +31,7 @@ export const handleSportsBookPlaceBet = (
             marketId: item?.Id,
             maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
             maxLiabilityPerBet: item?.maxLiabilityPerBet,
+            minLiabilityPerBet: item?.minLiabilityPerBet,
             isBettable: sportsBook?.isBettable,
             isWeak: sportsBook?.isWeak,
             marketName: item?.Name,
