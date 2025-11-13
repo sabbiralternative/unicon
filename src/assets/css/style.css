@@ -5469,7 +5469,7 @@ video {
   --color-lightgray: #eee;
   --color-popUpParentBg: #00000066;
   --color-loginTextColor: #fcecca;
-  --color-headerDeskNavMenu: #440a57;
+  --color-headerDeskNavMenu: #292929;
   --color-headerDeskNavMenuHover: #c95c54;
   --color-loginFormBorderColor: #c7c7c7;
   --color-loginButtonColor: #860a22;
@@ -5632,7 +5632,7 @@ video {
   --color-text-dark: #343a40;
   --color-text-lightgray: #eee;
   --color-text-loginTextColor: #fcecca;
-  --color-text-headerDeskNavMenu: #440a57;
+  --color-text-headerDeskNavMenu: #292929;
   --color-text-headerDeskNavMenuHover: #c95c54;
   --color-text-btnHoverPrimary: #6e081c97;
   --color-text-suspendedFontColor: #1e3f5a;
@@ -5677,7 +5677,7 @@ video {
   --color-bg-dark: #343a40;
   --color-bg-popUpParentBg: #00000066;
   --color-bg-loginTextColor: #fcecca;
-  --color-bg-headerDeskNavMenu: #440a57;
+  --color-bg-headerDeskNavMenu: #292929;
   --color-bg-headerDeskNavMenuHover: #c95c54;
   --color-bg-loginFormBorderColor: #c7c7c7;
   --color-bg-loginButtonColor: #860a22;

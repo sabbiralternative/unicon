@@ -81,9 +81,7 @@ const OriginalCrashThumb = ({
                   onClick={() => setTab("originals")}
                   style={{ zIndex: "100" }}
                   className={`flex items-center justify-center w-full gap-1.5 tracking-wider rounded-none px-auto py-2 px-2 text-xs font-semibold whitespace-nowrap   ${
-                    tab === "originals"
-                      ? "text-[var(--color-bg-primary)]"
-                      : "text-black"
+                    tab === "originals" ? "text-secondary" : "text-black"
                   }`}
                 >
                   <span>
@@ -95,9 +93,7 @@ const OriginalCrashThumb = ({
                   onClick={() => setTab("crashGames")}
                   style={{ zIndex: "10" }}
                   className={`flex items-center justify-center w-full gap-1.5 tracking-wider rounded-none px-auto py-2 px-2 text-xs font-semibold whitespace-nowrap  ${
-                    tab === "crashGames"
-                      ? "text-[var(--color-bg-primary)]"
-                      : "text-black"
+                    tab === "crashGames" ? "text-secondary" : "text-black"
                   }`}
                 >
                   <span>
@@ -105,7 +101,7 @@ const OriginalCrashThumb = ({
                       width="14"
                       height="14"
                       viewBox="0 0 64 64"
-                      fill="var(--color-bg-primary)"
+                      fill="var(--color-text-secondary)"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -133,7 +129,7 @@ const OriginalCrashThumb = ({
               height="18"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="var(--color-bg-primary)"
+              stroke="var(--color-text-secondary)"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"

@@ -1,9 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../shared/Header/Header";
 import Footer from "../shared/Footer/Footer";
 import { useSelector } from "react-redux";
 
 const MainLayout = () => {
+  const { pathname } = useLocation();
   const { showNotification } = useSelector((state) => state.state);
 
   const calculatePadding = () => {
@@ -13,20 +14,23 @@ const MainLayout = () => {
       } else {
         return "mt-[110px]";
       }
-    } else {
-      return "mt-[20px]";
     }
   };
   return (
     <div className="w-full flex flex-col app-bg h-[100%] ">
-      <Header />
+      {!pathname.includes("/casino") && <Header />}
+
       <div
         className={calculatePadding()}
-        style={{ minHeight: "calc(-110px + 100dvh)" }}
+        style={{
+          minHeight: !pathname.includes("/casino")
+            ? "calc(-110px + 100dvh)"
+            : "100vh",
+        }}
       >
         <Outlet />
       </div>
-      <Footer />
+      {!pathname.includes("/casino") && <Footer />}
     </div>
   );
 };
