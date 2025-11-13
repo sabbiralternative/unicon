@@ -19,13 +19,13 @@ const OpenBets = ({ myBets }) => {
           className="w-full flex items-center justify-between bg-primary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95 cursor-pointer"
         >
           <div className="head pl-2">
-            <span className="text-primary site-font">Open Bets</span>
+            <span className="text-primary site-font text-sm">Open Bets</span>
           </div>
-          <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85">
+          <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85 text-primary">
             {activeTab ? (
-              <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+              <MdOutlineKeyboardArrowUp size={20} />
             ) : (
-              <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+              <MdOutlineKeyboardArrowDown size={20} />
             )}
           </div>
         </div>

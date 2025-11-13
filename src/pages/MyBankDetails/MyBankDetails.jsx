@@ -174,13 +174,13 @@ const MyBankDetails = () => {
                 </div>
               </div>
               <div className="font-lato" style={{ margin: "10px" }}>
-                <div className="flex items-center justify-between gap-x-4">
+                <div className="flex items-center justify-between gap-x-4 text-primary">
                   <button
                     onClick={() => setShowAddBank(true)}
                     className="btn"
                     style={{
                       background: "var(--color-bg-primary)",
-                      color: "white",
+
                       padding: "6px 0px",
                       fontSize: "14px",
                       fontWeight: "600",
@@ -193,7 +193,7 @@ const MyBankDetails = () => {
                     className="btn"
                     style={{
                       background: "var(--color-bg-primary)",
-                      color: "white",
+
                       padding: "6px 0px",
                       fontSize: "14px",
                       fontWeight: "600",
@@ -349,10 +349,10 @@ const MyBankDetails = () => {
                           {bank?.isDefault === 0 && tab === 1 && (
                             <button
                               onClick={() => handleMakeDefault(bank?.bankId)}
-                              className="btn"
+                              className="btn text-primary"
                               style={{
                                 background: "var(--color-bg-primary)",
-                                color: "white",
+
                                 marginTop: "15px",
                               }}
                             >

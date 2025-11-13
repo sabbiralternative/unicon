@@ -28,11 +28,11 @@ const OpenBets = () => {
           className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-primary rounded "
         >
           <span className=" text-primary text-xs">Matched Bets</span>
-          <div className=" flex items-center justify-center autoAnimate ">
+          <div className=" flex items-center justify-center autoAnimate text-primary">
             {openBets ? (
-              <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+              <MdOutlineKeyboardArrowUp size={20} />
             ) : (
-              <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+              <MdOutlineKeyboardArrowDown size={20} />
             )}
           </div>
         </div>

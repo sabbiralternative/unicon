@@ -211,7 +211,7 @@ cursor-pointer
         <div className=" w-max hidden items-center justify-center gap-1 rounded-full  lg:flex">
           <button
             onClick={() => dispatch(setShowRightSidebar(true))}
-            className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-primary"
+            className="relative flex rounded-full gap-1  hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-primary"
           >
             <span className=" w-max text-text_LoginTextColor hidden md:block">
               <svg
@@ -220,7 +220,7 @@ cursor-pointer
                 height="18"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="var(--color-quaternary)"
+                stroke="var(--color-text-primary)"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -274,7 +274,7 @@ cursor-pointer
               height="24"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="var(--color-quaternary)"
+              stroke="var(--color-text-primary)"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"

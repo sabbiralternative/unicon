@@ -74,7 +74,7 @@ const InPlay = ({ data }) => {
                 Open Bets
               </span>
               <sup className="font-features sups">
-                <span className="text-x font-normal tracking-wide text-text_Ternary bg-bg_Warning min-w-4 min-h-4 text-center px-1 py-0.5 font-lato rounded-full">
+                <span className="text-x font-normal tracking-wide text-primary bg-bg_Warning min-w-4 min-h-4 text-center px-1 py-0.5 font-lato rounded-full">
                   0
                 </span>
               </sup>

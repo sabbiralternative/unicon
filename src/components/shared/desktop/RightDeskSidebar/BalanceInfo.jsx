@@ -36,11 +36,11 @@ const BalanceInfo = ({ balance }) => {
             ₹ {balance?.availBalance}
           </span>
         </div>
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer mr-2 flex items-center justify-center autoAnimate -rotate-180">
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer mr-2 flex items-center justify-center autoAnimate -rotate-180 text-primary">
           {showBalance ? (
-            <MdOutlineKeyboardArrowDown size={20} color="#fff" />
+            <MdOutlineKeyboardArrowDown size={20} />
           ) : (
-            <MdOutlineKeyboardArrowUp size={20} color="#fff" />
+            <MdOutlineKeyboardArrowUp size={20} />
           )}
         </div>
       </div>

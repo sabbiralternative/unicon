@@ -19,11 +19,11 @@ const OpenBets = () => {
                   width="7"
                   height="12"
                   viewBox="0 0 7 12"
-                  fill="var(--color-bg-primary)"
+                  fill="var(--color-text-primary)"
                 >
                   <path
                     d="M5.3673 11.2346L0 5.8673L5.3673 0.5L6.32 1.4527L1.90539 5.8673L6.32 10.2819L5.3673 11.2346Z"
-                    fill="var(--color-bg-primary)"
+                    fill="var(--color-text-primary)"
                   ></path>
                 </svg>
               </button>

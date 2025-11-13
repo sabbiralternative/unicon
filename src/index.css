@@ -15,10 +15,10 @@
   fill: var(--color-text-primary);
 }
 .text-primary {
-  color: var(--color-text-primary);
+  color: var(--color-text-primary) !important;
 }
 .text-secondary {
-  color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
 }
 .bg-primary {
   background-color: var(--color-bg-primary);
@@ -680,6 +680,9 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 .border-primary {
   border-color: var(--color-bg-primary) !important;
 }
+.border-secondary {
+  border-color: var(--color-text-secondary) !important;
+}
 
 .page-body[_ngcontent-ng-c943649379] {
   background-color: var(--grey-00);
@@ -788,7 +791,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   gap: 2px;
 }
 .app-text h2 {
-  color: #fff;
+  color: var(--color-text-primary);
   font-family: Helvetica Neue, sans-serif, BBAlpha Sans;
   font-size: 11px;
   font-style: normal;

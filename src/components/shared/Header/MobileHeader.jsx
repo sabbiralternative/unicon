@@ -28,11 +28,13 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
     w-max px-3  py-1     
  lg:hidden ${
-   group === 0 && pathname === "/" ? "text-secondary border border-primary" : ""
+   group === 0 && pathname === "/"
+     ? "text-secondary border border-secondary"
+     : ""
  }`}
           >
             <span className="font font-lato text-[12px]">
@@ -48,12 +50,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
     w-max px-3  py-1     
  lg:hidden ${
    pathname === "/game-details/4/28045743"
-     ? "text-secondary border border-primary"
+     ? "text-secondary border border-secondary"
      : ""
  }`}
           >
@@ -66,12 +68,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
     w-max px-3  py-1     
  lg:hidden ${
    pathname === "/game-details/4/1759935118"
-     ? "text-secondary border border-primary"
+     ? "text-secondary border border-secondary"
      : ""
  }`}
           >
@@ -86,12 +88,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
           w-max px-3  py-1     
        lg:hidden ${
          group === 4 && pathname === "/"
-           ? "text-secondary border border-primary"
+           ? "text-secondary border border-secondary"
            : ""
        }`}
           >
@@ -107,12 +109,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
                 w-max px-3  py-1     
              lg:hidden ${
                group === 1 && pathname === "/"
-                 ? "text-secondary border border-primary"
+                 ? "text-secondary border border-secondary"
                  : ""
              }`}
           >
@@ -128,12 +130,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        group === 2 && pathname === "/"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
           >
@@ -142,12 +144,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
         </a>
         <a onClick={() => handleNavigateToIFrame("sportsbook", "550000")}>
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        pathname === "/casino/sportsbook/550000"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
           >
@@ -161,12 +163,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        group === 5 && pathname === "/"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
           >
@@ -181,12 +183,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        pathname === "/horse-racing"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
           >
@@ -201,12 +203,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        pathname === "/greyhound-racing"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
           >
@@ -223,11 +225,11 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             }}
           >
             <button
-              className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
      
           w-max px-3  py-1     
        lg:hidden ${
-         pathname === "/mac88" ? "text-secondary border border-primary" : ""
+         pathname === "/mac88" ? "text-secondary border border-secondary" : ""
        }`}
             >
               <span className="flex w-full items-center h-full gap-3">
@@ -263,12 +265,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             }}
           >
             <button
-              className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
        group === "auraWolf" && pathname === "/"
-         ? "text-secondary border border-primary"
+         ? "text-secondary border border-secondary"
          : ""
      }`}
             >
@@ -302,11 +304,13 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
         w-max px-3  py-1     
      lg:hidden ${
-       pathname === "/live-casino" ? "text-secondary border border-primary" : ""
+       pathname === "/live-casino"
+         ? "text-secondary border border-secondary"
+         : ""
      }`}
           >
             <span className="flex w-full items-center h-full gap-3">
@@ -378,12 +382,12 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/slots"
-                ? "text-secondary border border-primary"
+                ? "text-secondary border border-secondary"
                 : ""
             }`}
           >
@@ -428,12 +432,12 @@ lg:hidden ${
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/crash-games"
-                ? "text-secondary border border-primary"
+                ? "text-secondary border border-secondary"
                 : ""
             }`}
           >
@@ -468,12 +472,12 @@ lg:hidden ${
           }}
         >
           <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-primary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
   w-max px-3  py-1     
 lg:hidden ${
               pathname === "/fishing-games"
-                ? "text-secondary border border-primary"
+                ? "text-secondary border border-secondary"
                 : ""
             }`}
           >
