@@ -57,7 +57,7 @@ const IFrame = () => {
               className="logo flex w-full h-full md:w-fit "
             >
               <div
-                onClick={() => navigate("/")}
+                onClick={() => navigate(-1)}
                 className="flex items-center w-[40px] md:w-fit justify-center  back-from-iframe "
               >
                 <button
