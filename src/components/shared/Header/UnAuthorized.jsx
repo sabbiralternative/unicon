@@ -61,16 +61,16 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
           <div className="w-max hidden items-center justify-center gap-1 rounded-full lg:flex">
             <button
               onClick={() => dispatch(setShowLoginModal(true))}
-              className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Secondary"
+              className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-primary"
             >
-              <span className="w-max text-text_LoginTextColor hidden md:block">
+              <span className="w-max text-primary hidden md:block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
-                  stroke="var(--color-quaternary)"
+                  stroke="var(--color-text-primary)"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -81,7 +81,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   <path d="M11 15l-3 -3"></path>
                 </svg>
               </span>
-              <span className="text-xxs text-text_Quaternary md:text-text_LoginTextColor font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
+              <span className="text-xxs text-primary  font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
                 {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>
@@ -167,9 +167,9 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             <button
               onClick={() => dispatch(setShowLoginModal(true))}
               id="loginButton"
-              className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Secondary"
+              className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-primary"
             >
-              <span className="text-x text-text_Quaternary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
+              <span className="text-x text-primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
                 {languageValue(valueByLanguage, LanguageKey.LOGIN)}
               </span>
             </button>

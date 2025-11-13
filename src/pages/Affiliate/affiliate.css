@@ -123,7 +123,7 @@
 .nw-affi-add-new-user-btn {
   background: var(--color-bg-primary);
   position: relative;
-  color: #fff;
+  color: var(--color-text-primary);
   padding: 16px;
   display: block;
   width: 100%;

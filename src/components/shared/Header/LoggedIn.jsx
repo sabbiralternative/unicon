@@ -21,26 +21,26 @@ const LoggedIn = ({
     <>
       <div
         id="loginName"
-        className=" text-text_Quaternary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
+        className=" text-primary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
       >
         <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap hidden lg:block">
           {languageValue(valueByLanguage, LanguageKey.LOGIN)} as{" "}
-          <span className="font-medium text-text_Quaternary">{user}</span>
+          <span className="font-medium text-white">{user}</span>
         </div>
         {/* <div className="flex  gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
           Last logged in
-          <span className="font-medium text-text_Quaternary">
+          <span className="font-medium text-primary">
             8/15/2024, 7:24:09 PM
           </span>
         </div> */}
       </div>
       <div
         id="loginName"
-        className=" text-text_Quaternary text-[10px] lg:text-[12px] lg:flex flex-col px-2 hidden"
+        className=" text-primary text-[10px] lg:text-[12px] lg:flex flex-col px-2 hidden"
       >
         <div className="flex gap-0.5 text-white/80  xl:text-nowrap whitespace-nowrap">
           Available balance:{" "}
-          <span className="font-medium text-text_Quaternary">
+          <span className="font-medium text-white">
             ₹{" "}
             {bonusToken &&
               bonusBalance &&
@@ -211,7 +211,7 @@ cursor-pointer
         <div className=" w-max hidden items-center justify-center gap-1 rounded-full  lg:flex">
           <button
             onClick={() => dispatch(setShowRightSidebar(true))}
-            className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Secondary"
+            className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-primary"
           >
             <span className=" w-max text-text_LoginTextColor hidden md:block">
               <svg
@@ -230,7 +230,7 @@ cursor-pointer
                 <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
               </svg>
             </span>
-            <span className=" text-xxs text-text_Quaternary  md:text-text_LoginTextColor  font-normal font-lato md:font-semibold md:text-xs xs:text-xs ">
+            <span className=" text-xxs text-primary  md:text-text_LoginTextColor  font-normal font-lato md:font-semibold md:text-xs xs:text-xs ">
               Account
             </span>
           </button>
@@ -250,7 +250,7 @@ cursor-pointer
           <button
             onClick={() => dispatch(setShowRightSidebar(true))}
             title="Balance"
-            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  rounded-full text-text_Quaternary  pl-3 bg-bg_Secondary flex items-center justify-center pr-1 py-1 xs:py-1 sm:py-2  gap-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  rounded-full text-primary  pl-3 bg-primary flex items-center justify-center pr-1 py-1 xs:py-1 sm:py-2  gap-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
 cursor-pointer
 "
             type="button"

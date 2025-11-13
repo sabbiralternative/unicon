@@ -278,7 +278,7 @@ const BetSlip = ({ setRunnerId }) => {
                       disabled={placeBetValues?.cashout}
                       onClick={() => dispatch(setStake(button?.value))}
                       key={i}
-                      className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-text_Quaternary text-center py-1.5 cursor-pointer"
+                      className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-primary text-center py-1.5 cursor-pointer"
                       type="button"
                     >
                       <span>+{button?.value}</span>
@@ -289,7 +289,7 @@ const BetSlip = ({ setRunnerId }) => {
               {/* <div className="grid grid-cols-9 gap-x-1 gap-y-1 pt-[15px]">
                 <button
                   onClick={() => dispatch(setStake(100))}
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold rounded-[4px] bg-minBtnGrd text-text_Quaternary py-2 cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold rounded-[4px] bg-minBtnGrd text-primary py-2 cursor-pointer"
                   type="button"
                 >
                   MIN
@@ -302,20 +302,20 @@ const BetSlip = ({ setRunnerId }) => {
                       )
                     )
                   }
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-bg_Secondary text-text_Quaternary py-2 cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-primary text-primary py-2 cursor-pointer"
                   type="button"
                 >
                   MAX
                 </button>
                 <button
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] text-text_Quaternary py-2 bg-editStakesGrd cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] text-primary py-2 bg-editStakesGrd cursor-pointer"
                   type="button"
                 >
                   EDIT STAKES
                 </button>
                 <button
                   onClick={() => dispatch(setStake(null))}
-                  className="inline-block  relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-text_Quaternary leading-4 py-2 cursor-pointer"
+                  className="inline-block  relative overflow-hidden transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-primary leading-4 py-2 cursor-pointer"
                   id="clearBtn"
                   type="button"
                 >
@@ -343,7 +343,7 @@ const BetSlip = ({ setRunnerId }) => {
                   disabled={!stake || betDelay > 0}
                   type="button"
                   className={` leading-normal relative overflow-hidden  transition duration-150 ease-in-out py-1 w-full flex  min-h-[46px] px-2.5 rounded-md  font-medium border  flex-row items-center justify-between  
-                     text-text_Quaternary  
+                     text-primary  
                cursor-pointer ${
                  !stake || betDelay > 0
                    ? " bg-bg_InActivePlaceBtnColor border-inActivePlaceBtnColor cursor-not-allowed"
@@ -386,7 +386,7 @@ const BetSlip = ({ setRunnerId }) => {
                     </span>
                     <span
                       className={`font-normal ${
-                        !stake || betDelay > 0 ? "" : "text-text_Quaternary"
+                        !stake || betDelay > 0 ? "" : "text-primary"
                       }  `}
                     >
                       {placeBetValues?.betDelay}s

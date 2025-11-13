@@ -595,7 +595,7 @@ const LeftDeskSidebar = () => {
                 socialLink?.telegramLink ? (
                   <li className="p-1">
                     <div className="flex flex-col gap-1 p-3 items-center  rounded">
-                      <span className="text-text_Quaternary font-semibold text-primary">
+                      <span className="text-primary font-semibold text-primary">
                         Contact Us
                       </span>
                       <div className="flex w-full items-center justify-center gap-1">

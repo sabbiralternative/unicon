@@ -210,7 +210,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                     <div className="w-max">
                       {timer ? (
                         <button
-                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
+                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
                           type="button"
                         >
                           <span className=" ">Retry in {timer}</span>
@@ -220,7 +220,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                         <div className="flex items-center">
                           <button
                             onClick={getOtpOnWhatsapp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                             type="button"
                           >
                             <span className=" ">Get OTP Whatsapp</span>
@@ -228,7 +228,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                           </button>
                           <button
                             onClick={getOtp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                             type="button"
                           >
                             <span className=" ">Get OTP Message</span>
@@ -379,7 +379,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                 <button
                   disabled={!isFormValid}
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span>Add New User</span>
                 </button>

@@ -161,7 +161,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                         ? "bg-primary"
                         : " bg-bg_Quaternary gap-1"
                     }
-                            inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out px-4 py-2 flex items-center justify-center border whitespace-nowrap uppercase font-lato font-[700] text-xs cursor-pointer rounded-full text-text_Quaternary
+                            inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out px-4 py-2 flex items-center justify-center border whitespace-nowrap uppercase font-lato font-[700] text-xs cursor-pointer rounded-full text-primary
                             
                           `}
                     type="button"
@@ -169,7 +169,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                     <span
                       className={`${
                         selectedCategory === "ALL"
-                          ? "text-text_Quaternary"
+                          ? "text-primary"
                           : "text-text_Quinary"
                       }`}
                     >
@@ -187,7 +187,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                               ? "  bg-bg_Primary    "
                               : " bg-bg_Quaternary  gap-1  "
                           }
-                            inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out px-4 py-2 flex items-center justify-center border whitespace-nowrap uppercase font-lato font-[700] text-xs cursor-pointer rounded-full text-text_Quaternary
+                            inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out px-4 py-2 flex items-center justify-center border whitespace-nowrap uppercase font-lato font-[700] text-xs cursor-pointer rounded-full text-primary
                             
                           `}
                           type="button"
@@ -195,7 +195,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                           <span
                             className={`${
                               selectedCategory === category
-                                ? "text-text_Quaternary"
+                                ? "text-primary"
                                 : "text-text_Quinary"
                             }`}
                           >
@@ -220,7 +220,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                         return (
                           <div key={idx} className="flex flex-col">
                             <div className="w-full overflow-hidden mt-2">
-                              <div className="flex flex-wrap items-center mt-2 mb-2 justify-between gap-[5px] self-stretch text-text_Quaternary">
+                              <div className="flex flex-wrap items-center mt-2 mb-2 justify-between gap-[5px] self-stretch text-primary">
                                 <div className="flex items-center gap-2 px-1">
                                   <span className="font-lato text-text_Ternary font-extrabold tracking-[0.3px] text-sm md:text-base lg:text-lg capitalize leading-[18px]">
                                     {category}

@@ -21,7 +21,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
           <div title="In Play" className="w-full">
             <div className="w-full font-helvetica-neue">
               <div className="w-full flex items-center justify-between rounded-t-[3px] py-1.5 px-[7px] bg-competetionInPlayUpComingBg">
-                <div className="flex items-center text-text_Quaternary font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
+                <div className="flex items-center text-white font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
                   {title === "In Play" ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

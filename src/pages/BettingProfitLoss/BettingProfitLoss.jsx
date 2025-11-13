@@ -201,7 +201,7 @@ const BettingProfitLoss = () => {
                     <div className="cursor-pointer active:scale-95 rounded-md px-3 border py-1 text-xs sm:text-sm whitespace-nowrap shadow bg-bg_Quaternary text-text_Ternary font-bold">
                       Last 14 Days
                     </div>
-                    <div className="cursor-pointer active:scale-95 rounded-md px-3 border py-1 text-xs sm:text-sm whitespace-nowrap shadow bg-titleGrd font-medium text-text_Quaternary">
+                    <div className="cursor-pointer active:scale-95 rounded-md px-3 border py-1 text-xs sm:text-sm whitespace-nowrap shadow bg-titleGrd font-medium text-primary">
                       Last 28 Days
                     </div>
                   </div>
@@ -223,8 +223,8 @@ const BettingProfitLoss = () => {
                       title="Profit &amp; Loss Statement"
                       className="w-full px-1 my-1.5 cursor-pointer"
                     >
-                      <div className="w-full text-text_Quaternary rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
-                        <div className="text-xs text-text_Quaternary  font-[600] leading-[140%]">
+                      <div className="w-full text-white rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
+                        <div className="text-xs   font-[600] leading-[140%]">
                           {moment(date).format("Do-MMM-YYYY")}
                         </div>
                         <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">

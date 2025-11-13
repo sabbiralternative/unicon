@@ -25,9 +25,9 @@ const OpenBets = () => {
           <div
             onClick={() => setOpenBets((prev) => !prev)}
             id="matched_1"
-            className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-bg_Secondary rounded"
+            className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-primary rounded"
           >
-            <span className="text-text_Quaternary text-xs">Open Bets</span>
+            <span className="text-primary text-xs">Open Bets</span>
             <div className="flex items-center justify-center autoAnimate">
               {openBets ? (
                 <MdOutlineKeyboardArrowUp size={20} color="#fff" />

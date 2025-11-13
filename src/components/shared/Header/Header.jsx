@@ -244,7 +244,7 @@ cursor-pointer
                       {/* Aug 16th, 2024 ( GMT +5.5:30 ) */}
                       {moment().format("MMMM Do YYYY")}
                     </div>
-                    <span className="text-text_Quaternary text-xs lg:text-[14px] text-nowrap whitespace-nowrap font-semibold ">
+                    <span className="text-white text-xs lg:text-[14px] text-nowrap whitespace-nowrap font-semibold ">
                       {time}
                     </span>
                   </div>

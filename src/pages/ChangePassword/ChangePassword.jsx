@@ -188,7 +188,7 @@ const ChangePassword = () => {
                   </button>
                   <button
                     type="submit"
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] cursor-pointer disabled:cursor-not-allowed p-2 bg-bg_Primary mt-2 w-full rounded-lg font-semibold text-text_Quaternary disabled:opacity-40 flex items-center justify-center "
+                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] cursor-pointer disabled:cursor-not-allowed p-2 bg-bg_Primary mt-2 w-full rounded-lg font-semibold text-primary disabled:opacity-40 flex items-center justify-center "
                   >
                     <span>Save</span>
                   </button>

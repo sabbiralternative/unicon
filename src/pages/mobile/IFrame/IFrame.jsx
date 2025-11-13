@@ -97,7 +97,7 @@ const IFrame = () => {
             </div>
             <div className="md:w-max flex items-center justify-center ml-auto lg:ml-0">
               <div className="w-max hidden items-center justify-center gap-1 rounded-full lg:flex">
-                <button className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-bg_Secondary">
+                <button className="relative flex rounded-full gap-1 border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center pr-4 pl-3 py-2 bg-primary">
                   <span className="w-max text-text_LoginTextColor hidden md:block">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ const IFrame = () => {
                       <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
                     </svg>
                   </span>
-                  <span className="text-xxs text-text_Quaternary md:text-text_LoginTextColor font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
+                  <span className="text-xxs text-primary md:text-text_LoginTextColor font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
                     Account
                   </span>
                 </button>
@@ -123,7 +123,7 @@ const IFrame = () => {
               <div className="flex justify-between items-center gap-x-1 h-max lg:hidden">
                 <button
                   type="button"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out overflow-hidden relative active:scale-95 hidden xxs:flex items-center h-fit justify-center bg-bg_Success rounded-md px-8 py-2 sm:px-4 sm:py-1.5 mr-[8px] text-text_Quaternary text-sm text-center cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out overflow-hidden relative active:scale-95 hidden xxs:flex items-center h-fit justify-center bg-bg_Success rounded-md px-8 py-2 sm:px-4 sm:py-1.5 mr-[8px] text-primary text-sm text-center cursor-pointer"
                 >
                   <span className="font-semibold flex flex-row font-lato md:font-normal sm:text-base xs:text-sm">
                     <span className="relative top-[2px] right-[3px]">

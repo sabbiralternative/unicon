@@ -46,7 +46,7 @@ const WithdrawDepositButton = () => {
                 fill="var(--color-quaternary)"
               ></path>
             </svg>
-            <span className="text-sm font-bold font-lato text-text_Quaternary">
+            <span className="text-sm font-bold font-lato text-white">
               Withdraw
             </span>
           </button>
@@ -90,7 +90,7 @@ const WithdrawDepositButton = () => {
                 fill="var(--color-quaternary)"
               ></path>
             </svg>
-            <span className="text-sm font-bold font-lato text-text_Quaternary">
+            <span className="text-sm font-bold font-lato text-white">
               Deposit
             </span>
           </button>

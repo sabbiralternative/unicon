@@ -43,7 +43,7 @@ const SearchBox = () => {
     <div className="relative search-box">
       <div
         id="searchBox"
-        className="text-text_Quaternary relative hidden max-w-[500] font-lato md:block flex-grow"
+        className="text-primary relative hidden max-w-[500] font-lato md:block flex-grow"
       >
         <div className=" relative w-full max-w-[450px]">
           <input

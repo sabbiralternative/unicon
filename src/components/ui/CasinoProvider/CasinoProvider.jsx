@@ -139,7 +139,7 @@ const CasinoProvider = ({ casinoProviders }) => {
                   <button
                     onClick={() => handleNavigate(game)}
                     key={idx}
-                    className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out transition-all bg-bg_CasinoProvider ease-in-out duration-100 flex  px-5 py-2 flex-col items-center justify-center gap-1 rounded-[12px] border-2 rounded-2 border-quaternary text-text_Quaternary whitespace-nowrap uppercase font-lato font-[700] text-xs hover:scale-105 shadow-homeCasinoCardGamesShadow cursor-pointer ${
+                    className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out transition-all bg-bg_CasinoProvider ease-in-out duration-100 flex  px-5 py-2 flex-col items-center justify-center gap-1 rounded-[12px] border-2 rounded-2 border-quaternary text-primary whitespace-nowrap uppercase font-lato font-[700] text-xs hover:scale-105 shadow-homeCasinoCardGamesShadow cursor-pointer ${
                       !showSeeAll
                         ? "xxs:min-w-[80px] xs:min-w-[100px] sm:min-w-[150px] min-h-[45px] md:min-h-[60px]"
                         : ""

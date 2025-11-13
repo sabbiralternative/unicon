@@ -326,10 +326,10 @@ const Footer = () => {
                   ></path>
                 </svg>
                 <div className="flex rounded flex-col items-start justify-center text-xs">
-                  <span className=" w-full  flex flex-row  justify-between text-text_Quaternary font-normal ">
+                  <span className=" w-full  flex flex-row  justify-between text-primary font-normal ">
                     <span>Download</span>
                   </span>
-                  <span className="text-text_Quaternary font-semibold whitespace-nowrap flex-nowrap  uppercase">
+                  <span className="text-primary font-semibold whitespace-nowrap flex-nowrap  uppercase">
                     Android App
                   </span>
                 </div>
@@ -398,10 +398,10 @@ cursor-pointer
                   </defs>
                 </svg>
                 <div className="flex rounded flex-col items-start justify-center text-xs">
-                  <span className=" w-full  flex flex-row  justify-between text-text_Quaternary font-normal ">
+                  <span className=" w-full  flex flex-row  justify-between text-primary font-normal ">
                     <span>Download</span>
                   </span>
-                  <span className="text-text_Quaternary font-semibold  whitespace-nowrap flex-nowrap uppercase">
+                  <span className="text-primary font-semibold  whitespace-nowrap flex-nowrap uppercase">
                     Score App
                   </span>
                 </div>

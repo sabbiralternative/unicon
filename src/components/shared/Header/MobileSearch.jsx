@@ -47,7 +47,7 @@ const MobileSearch = ({ setShowMobileSearch }) => {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         id="searchEventsMobile"
-        className="relative z-1 bg-transparent text-text_Quaternary outline-none border-none focus-none w-full pr-6 font-lato"
+        className="relative z-1 bg-transparent text-primary outline-none border-none focus-none w-full pr-6 font-lato"
         type="text"
         placeholder=" Search Events(At least 3 letters)..."
       />

@@ -77,7 +77,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Evolution"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Evolution
                     </span>
                   </div>
@@ -107,7 +107,7 @@ const Banner = () => {
                       loading="lazy"
                       title="e-Cricket"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Crash Games
                     </span>
                   </div>
@@ -138,7 +138,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Live Casinos"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Live Casinos
                     </span>
                   </div>
@@ -170,7 +170,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Card Games"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Card Games
                     </span>
                   </div>
@@ -201,7 +201,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Fishing games"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Fishing games
                     </span>
                   </div>
@@ -231,7 +231,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Slot Games"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Slot Games
                     </span>
                   </div>
@@ -265,7 +265,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Multiplayer Games"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Game Shows
                     </span>
                   </div>
@@ -294,7 +294,7 @@ const Banner = () => {
                       loading="lazy"
                       title="Aura"
                     />
-                    <span className=" ml-1 autoAnimate text-text_Quaternary text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
+                    <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
                       Aura
                     </span>
                   </div>

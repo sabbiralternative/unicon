@@ -81,7 +81,7 @@ const SingleProfitLoss = () => {
           <div className="pb-2">
             <div className="w-full h-full flex flex-col gap-2 p-2 text-text_Ternary  ">
               <div className="flex flex-col bg-bg_Quaternary rounded-md overflow-hidden shadow-lg">
-                <div className="bg-headerBg py-2 px-4 text-text_Quaternary font-semibold">
+                <div className="bg-headerBg py-2 px-4 text-primary font-semibold">
                   {singlePassbook?.[0]?.eventName}
                 </div>
                 <div className="flex flex-col divide-y">

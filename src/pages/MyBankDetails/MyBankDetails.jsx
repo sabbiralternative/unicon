@@ -145,7 +145,7 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
-                        tab === 1 ? "text-text_Quaternary" : "bg-bg_Quaternary"
+                        tab === 1 ? "text-primary" : "bg-bg_Quaternary"
                       }`}
                     >
                       Active
@@ -157,7 +157,7 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 font-lato ${
-                        tab === 2 ? "text-text_Quaternary" : "bg-bg_Quaternary"
+                        tab === 2 ? "text-primary" : "bg-bg_Quaternary"
                       }`}
                     >
                       Deleted

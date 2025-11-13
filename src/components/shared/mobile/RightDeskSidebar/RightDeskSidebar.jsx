@@ -224,7 +224,7 @@ const RightDeskSidebar = () => {
                       className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                       type="button"
                     >
-                      <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeDepositBtnBgColor border-depositBtn white-icon-color">
+                      <span className="text-white capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeDepositBtnBgColor border-depositBtn white-icon-color">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="21"
@@ -272,7 +272,7 @@ const RightDeskSidebar = () => {
                       className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out flex bg-none border-none shadow-none w-full cursor-pointer"
                       type="button"
                     >
-                      <span className="text-text_Quaternary capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeWithdrawBtnBgColor border-withDrawBtn white-icon-color">
+                      <span className="text-white capitalize border flex rounded px-3 py-1 flex-col text-[10px] hover:opacity-100 w-full font-semibold items-center justify-center bg-bg_HomeWithdrawBtnBgColor border-withDrawBtn white-icon-color">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="21"
@@ -1075,7 +1075,7 @@ const RightDeskSidebar = () => {
             </li>
             {/* <li className="p-1">
               <div className="flex flex-col gap-1 p-3 items-center bg-bg_contactUsCard rounded">
-                <span className="text-text_Quaternary font-semibold">
+                <span className="text-primary font-semibold">
                   Contact Us
                 </span>
                 <div className="flex w-full items-center justify-center gap-1">

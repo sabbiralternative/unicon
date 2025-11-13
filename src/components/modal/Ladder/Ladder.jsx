@@ -53,11 +53,11 @@ const Ladder = ({ ladderData, setLadderData, eventName }) => {
           <button
             onClick={() => setLadderData([])}
             type="button"
-            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-bg_Secondary px-2.5 py-1 rounded-md w-full flex items-center justify-center shadow-md 
+            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-primary px-2.5 py-1 rounded-md w-full flex items-center justify-center shadow-md 
   cursor-pointer
   "
           >
-            <span className=" text-text_Quaternary font-semibold fonn-lato text-base">
+            <span className=" text-primary font-semibold fonn-lato text-base">
               OK
             </span>
           </button>

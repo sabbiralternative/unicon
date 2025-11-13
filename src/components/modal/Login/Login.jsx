@@ -256,7 +256,7 @@ const Login = () => {
               <div title="loginButton" className="w-full">
                 <button
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
                 >
                   <span>Log In</span>
                 </button>
@@ -264,7 +264,7 @@ const Login = () => {
                   <button
                     onClick={loginWithDemo}
                     type="button"
-                    className="inline-block mt-3 leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-text_Quaternary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
+                    className="inline-block mt-3 leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
                   >
                     <span>Demo Login</span>
                   </button>

@@ -3,7 +3,7 @@ const UpcomingEvents = () => {
     <div title="Upcoming Events" className="py-1 px-[6px] w-full">
       <div className="w-full font-helvetica-neue">
         <div className="w-full flex items-center justify-between rounded-t-[3px] py-1.5 px-[7px] bg-UpcomingBg">
-          <div className="flex items-center text-text_Quaternary font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
+          <div className="flex items-center text-white font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
             <svg
               width="20"
               height="20"

@@ -39,7 +39,7 @@ const InPlay = ({ data }) => {
       <div title="In Play" className="py-1 px-[6px] w-full">
         <div className="w-full font-helvetica-neue">
           <div className="w-full flex items-center justify-between rounded-t-[3px] py-1.5 px-[7px] bg-inPlayBlockBg">
-            <div className="flex items-center text-text_Quaternary font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
+            <div className="flex items-center text-white font-semibold text-[18px] tracking-wide justify-start w-full gap-[5px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="29"
@@ -70,7 +70,7 @@ const InPlay = ({ data }) => {
               onClick={() => navigate("/open-bets")}
               className="w-max text-nowrap cursor-pointer"
             >
-              <span className="text-xs tracking-wide text-text_Quaternary text-nowrap whitespace-nowrap font-normal">
+              <span className="text-xs tracking-wide text-white text-nowrap whitespace-nowrap font-normal">
                 Open Bets
               </span>
               <sup className="font-features sups">

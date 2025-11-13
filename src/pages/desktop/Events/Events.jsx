@@ -157,10 +157,10 @@ const Events = () => {
               <div className="flex items-start justify-start flex-col w-full px-2 py-1">
                 <div
                   id="unmatched_0"
-                  className="w-full flex items-center justify-between bg-bg_Secondary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
+                  className="w-full flex items-center justify-between bg-primary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
                 >
                   <div className="head pl-2">
-                    <span className="text-text_Quaternary font-lato-bold">
+                    <span className="text-primary font-lato-bold">
                       Unmatched Bets
                     </span>
                   </div>
@@ -184,10 +184,10 @@ const Events = () => {
                 </div>
                 <div
                   id="matched_1"
-                  className="w-full flex items-center justify-between bg-bg_Secondary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
+                  className="w-full flex items-center justify-between bg-primary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95"
                 >
                   <div className="head pl-2">
-                    <span className="text-text_Quaternary font-lato-bold">
+                    <span className="text-primary font-lato-bold">
                       Matched Bets
                     </span>
                   </div>

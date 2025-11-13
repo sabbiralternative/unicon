@@ -13,7 +13,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
               {iscore?.teamRun}
             </span>
             <div className=" flex items-center justify-center rounded-[4px] px-1.5 py-0.5 bg-bg_text_brand_primary bg-bg_Primary">
-              <span className=" text-[10px] font-[500] leading-4 text-white">
+              <span className=" text-[10px] font-[500] leading-4 text-primary">
                 Over {iscore?.teamOver}
               </span>
             </div>

@@ -176,7 +176,7 @@ const ForgetPassword = () => {
                       <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
                         {timer ? (
                           <button
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center !cursor-text"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center !cursor-text"
                             type="button"
                           >
                             <span className=" ">Retry in {timer}</span>
@@ -185,7 +185,7 @@ const ForgetPassword = () => {
                           <button
                             onClick={handleOTP}
                             disabled=""
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-text_Quaternary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
                             type="button"
                           >
                             <span className=" ">Get OTP Message</span>
@@ -366,7 +366,7 @@ const ForgetPassword = () => {
                 >
                   <button
                     type="submit"
-                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out py-2.5 w-full mb-2 text-sm text-text_Quaternary font-lato font-bold focus:outline-none bg-bg_Secondary rounded-lg hover:opacity-95 disabled:bg-bg_Slate500 cursor-pointer"
+                    className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out py-2.5 w-full mb-2 text-sm text-primary font-lato font-bold focus:outline-none bg-primary rounded-lg hover:opacity-95 disabled:bg-bg_Slate500 cursor-pointer"
                     disabled=""
                   >
                     <span>Update Password</span>

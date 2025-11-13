@@ -73,7 +73,7 @@ const BankAccounts = ({ amount }) => {
                 onClick={() => setTabs("add-bank-account")}
                 className={`flex items-center justify-center w-full gap-1.5 tracking-wider undefined p-3 text-sm font-semibold ${
                   tabs === "add-bank-account"
-                    ? "text-text_Quaternary"
+                    ? "text-primary"
                     : "text-text_Quinary"
                 } undefined`}
                 style={{ zIndex: 10 }}
@@ -85,7 +85,7 @@ const BankAccounts = ({ amount }) => {
                 onClick={() => setTabs("add-usdt-account")}
                 className={`flex items-center justify-center w-full gap-1.5 tracking-wider undefined p-3 text-sm font-semibold ${
                   tabs === "add-usdt-account"
-                    ? "text-text_Quaternary"
+                    ? "text-primary"
                     : "text-text_Quinary"
                 } undefined`}
                 style={{ zIndex: 10 }}
@@ -95,9 +95,7 @@ const BankAccounts = ({ amount }) => {
               <button
                 onClick={() => setTabs("oldAccount")}
                 className={`flex items-center justify-center w-full gap-1.5 tracking-wider undefined p-3 text-sm font-semibold  undefined ${
-                  tabs === "oldAccount"
-                    ? "text-text_Quaternary"
-                    : "text-text_Quinary"
+                  tabs === "oldAccount" ? "text-primary" : "text-text_Quinary"
                 } `}
                 style={{ zIndex: 10 }}
               >

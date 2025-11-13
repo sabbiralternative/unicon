@@ -26,13 +26,13 @@ const BalanceInfo = ({ balance }) => {
     <div className="flex flex-col w-full gap-1 select-none">
       <div
         onClick={() => setShowBalance((prev) => !prev)}
-        className="w-full flex px-3 gap-x-1 py-2 relative cursor-pointer rounded bg-bg_Secondary"
+        className="w-full flex px-3 gap-x-1 py-2 relative cursor-pointer rounded bg-primary"
       >
         <div className="flex flex-col items-start">
-          <span className="uppercase text-text_Quaternary font-normal text-xxs">
+          <span className="uppercase text-primary font-normal text-xxs">
             Available Credit
           </span>
-          <span className="text-text_Quaternary font-lato text-sm">
+          <span className="text-primary font-lato text-sm">
             ₹ {balance?.availBalance}
           </span>
         </div>

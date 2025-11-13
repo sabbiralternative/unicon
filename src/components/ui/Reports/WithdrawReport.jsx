@@ -49,7 +49,7 @@ const WithdrawReport = () => {
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
                             <div className="text-base px-3 py-1">Withdraw</div>
                             <div
-                              className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-text_Quaternary rounded-bl h-full   
+                              className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-primary rounded-bl h-full   
                             
                             ${
                               data?.status === "APPROVED"
@@ -97,7 +97,7 @@ const WithdrawReport = () => {
                                   onClick={() =>
                                     setComplaintId(data?.referenceNo)
                                   }
-                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-text_Quaternary rounded-tl h-fit tracking-normal"
+                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
                                 >
                                   Report Issue
                                 </button>

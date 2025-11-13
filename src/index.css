@@ -7,21 +7,24 @@
 }
 .primary-icon-color svg,
 .back-from-iframe svg {
-  stroke: var(--color-bg-primary);
+  stroke: var(--color-text-primary);
 }
 
 .change-password svg,
 .primary-icons svg {
-  fill: var(--color-bg-primary);
+  fill: var(--color-text-primary);
 }
 .text-primary {
-  color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 .text-secondary {
   color: var(--color-bg-secondary);
 }
 .bg-primary {
   background-color: var(--color-bg-primary);
+}
+.text-white {
+  color: var(--color-text-white);
 }
 
 .white-icon-color svg {

@@ -79,7 +79,7 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
             </button>
             <button
               onClick={handleDeleteBank}
-              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-primary text-base font-semibold font-lato text-text_Quaternary h-10 w-32 rounded-md flex items-center justify-center gap-x-1 cursor-pointer"
+              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-primary text-base font-semibold font-lato text-primary h-10 w-32 rounded-md flex items-center justify-center gap-x-1 cursor-pointer"
               type="button"
             >
               <span className="font-lato font-normal text-[16px]">
