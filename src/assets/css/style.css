@@ -3739,7 +3739,7 @@ video {
 }
 
 .bg-bg_Secondary {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 .bg-bg_Secondary2 {
@@ -3827,7 +3827,7 @@ video {
 }
 
 .bg-bg_Warning {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
   color: white !important;
 }
 
@@ -3888,7 +3888,7 @@ video {
 }
 
 .bg-bg_lossGrd {
-  background-image: var(--color-bg-secondary);
+  background-image: var(--color-bg-primary);
 }
 
 .bg-bg_primary_to_secondary {
@@ -3950,7 +3950,7 @@ video {
 }
 
 .bg-maxBtnGrd {
-  background-image: var(--color-bg-secondary);
+  background-image: var(--color-bg-primary);
 }
 
 .bg-minBtnGrd {
@@ -4920,9 +4920,7 @@ video {
   color: var(--color-text-oddValue);
 }
 
-.text-text_Primary {
-  color: var(--color-bg-primary);
-}
+
 
 .text-text_Profit {
   color: var(--color-text-profit);
@@ -5096,9 +5094,6 @@ video {
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-
-
-
 .shadow-\[inset_-12px_-8px_40px_\#46464620\] {
   --tw-shadow: inset -12px -8px 40px #46464620;
   --tw-shadow-colored: inset -12px -8px 40px var(--tw-shadow-color);
@@ -5126,7 +5121,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-
 
 .shadow-\[rgba\(50\2c
   _50\2c
@@ -6094,7 +6088,7 @@ button:active {
 }
 
 .btn-secondary {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 @keyframes pulse {
@@ -8828,8 +8822,6 @@ span.ripple {
   opacity: 0.04;
 }
 
-
-
 .focus\:border-oddInputBorderActive:focus {
   border-color: var(--border-oddInputBorderActive);
 }
@@ -8889,8 +8881,6 @@ span.ripple {
   content: var(--tw-content);
   opacity: 0.12;
 }
-
-
 
 .focus\:before\:transition-\[box-shadow_0\.2s\2c
   transform_0\.2s\]:focus:before {
@@ -10117,8 +10107,6 @@ span.ripple {
     background-color: var(--color-bg-primary);
     content: var(--tw-content);
   }
-
-
 
   .dark\:checked\:focus\:border-primary:focus:checked {
     border-color: var(--border-primary);

@@ -3741,7 +3741,7 @@ video {
 }
 
 .bg-bg_Secondary {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 .bg-bg_Secondary2 {
@@ -3885,7 +3885,7 @@ video {
 }
 
 .bg-bg_lossGrd {
-  background-image: var(--color-bg-secondary);
+  background-image: var(--color-bg-primary);
 }
 
 .bg-bg_primary_to_secondary {
@@ -3947,7 +3947,7 @@ video {
 }
 
 .bg-maxBtnGrd {
-  background-image: var(--color-bg-secondary);
+  background-image: var(--color-bg-primary);
 }
 
 .bg-minBtnGrd {
@@ -4918,7 +4918,7 @@ video {
 }
 
 .text-text_Primary {
-  color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
 }
 
 .text-text_Profit {
@@ -5850,6 +5850,10 @@ video {
   --border-danger: #e90038;
   --border-notesBorderColor: #dadada;
   --border-borderColorForDepositPaymentMethod: #007df1;
+  --color-bg-homeWithdrawBtnBgColor: linear-gradient(90deg, #6e081d, #c10931);
+  --color-bg-homeDepositBtnBgColor: linear-gradient(90deg, #17c964, #2e924b);
+  --color-text-white: #fff;
+  --color-bg-quaternary: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -6048,7 +6052,7 @@ button:active {
 }
 
 .btn-secondary {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 @keyframes pulse {

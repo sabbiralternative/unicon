@@ -1,10 +1,6 @@
 :root {
-  --color-bg-homeWithdrawBtnBgColor: linear-gradient(90deg, #6e081d, #c10931);
-  --color-bg-homeDepositBtnBgColor: linear-gradient(90deg, #17c964, #2e924b);
-  --color-bg-gradient: linear-gradient(90deg, #6e081d, #c10931);
-  --color-bg-secondary: #6e081d;
-  --color-bg-quaternary: #fff;
-  --color-bg-primary: #6e081d;
+  --color-bg-gradient: linear-gradient(90deg, #1a5684, #1a5684);
+  --color-bg-primary: #84b332;
   --color-text-primary: #fff;
-  --color-text-white: #fff;
+  --color-text-secondary: #8b0de5;
 }

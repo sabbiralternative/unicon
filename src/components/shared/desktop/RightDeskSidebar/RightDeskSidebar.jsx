@@ -344,7 +344,7 @@ const RightDeskSidebar = () => {
                           </button>
                           <button
                             style={{
-                              backgroundColor: "var(--color-bg-secondary)",
+                              backgroundColor: "var(--color-bg-primary)",
                             }}
                             onClick={() =>
                               dispatch(
