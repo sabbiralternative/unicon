@@ -52,6 +52,8 @@ export const API = {
   utr: "",
   depositBreakdown: "",
   otpless: "",
+  sb_cashout: "",
+  fast_cashout: "",
 };
 
 export const settings = {

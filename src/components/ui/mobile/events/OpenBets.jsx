@@ -4,11 +4,68 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import useSBCashOut from "../../../../hooks/sb_cashout";
+import toast from "react-hot-toast";
 
-const OpenBets = ({ myBets }) => {
+const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
   const [activeTab, setActiveTab] = useState(true);
-
   const navigate = useNavigate();
+  const { mutate: cashOut } = useSBCashOut();
+
+  const sports =
+    sportsBook &&
+    sportsBook?.MarketGroups?.filter(
+      (group) =>
+        group?.Name !== "Bet Builder" &&
+        group?.Name !== "Fast Markets" &&
+        group?.Name !== "Player Specials"
+    );
+
+  const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
+    let item;
+    sports?.forEach((group) => {
+      group?.Items?.forEach((data) => {
+        if (betHistory?.marketId == data?.Id) {
+          item = data;
+        }
+      });
+    });
+
+    const column = item?.Items?.find(
+      (col) => col?.Id === betHistory?.selectionId
+    );
+
+    const payload = {
+      price,
+      cashout_value,
+      back: true,
+      side: 0,
+      selectionId: column?.Id,
+      btype: "SPORTSBOOK",
+      placeName: column?.Name,
+      eventTypeId: sportsBook?.EventTypeId,
+      betDelay: sportsBook?.betDelay,
+      marketId: item?.Id,
+      maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
+      maxLiabilityPerBet: item?.maxLiabilityPerBet,
+      isBettable: sportsBook?.isBettable,
+      isWeak: sportsBook?.isWeak,
+      marketName: item?.Name,
+      eventId: sportsBook?.eventId,
+      betId: betHistory?.betId,
+    };
+
+    cashOut(payload, {
+      onSuccess: (data) => {
+        if (data?.success) {
+          refetchCurrentBets();
+          toast.success(data?.result?.message);
+        } else {
+          toast.error(data?.error);
+        }
+      },
+    });
+  };
 
   return (
     <div title="Open Bets" className="">
@@ -36,24 +93,87 @@ const OpenBets = ({ myBets }) => {
         >
           {myBets?.length > 0 ? (
             myBets?.map((item, i) => {
+              let column;
+              sports?.forEach((group) => {
+                group?.Items?.forEach((data) => {
+                  if (item?.marketId == data?.Id) {
+                    column = data?.Items?.find(
+                      (col) => col?.Id === item?.selectionId
+                    );
+                  }
+                });
+              });
+
+              const price = (
+                0.92 *
+                item?.amount *
+                (item?.userRate / column?.Price)
+              )?.toFixed(2);
               return (
                 <div
                   key={i}
                   className="bg-bg_Quaternary rounded-md mb-1 px-4 w-full py-3 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);"
                 >
                   <div
-                    onClick={() => {
-                      setActiveTab((prev) => !prev);
-                      navigate(
-                        `/game-details/${item?.eventTypeId}/${item?.eventId}`
-                      );
-                    }}
                     id="eventHeader"
-                    className="font-lato-bold font-semibold cursor-pointer"
+                    className="font-lato-bold font-semibold cursor-pointer flex items-center justify-between"
                   >
-                    <div className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack">
+                    <div
+                      onClick={() => {
+                        setActiveTab((prev) => !prev);
+                        navigate(
+                          `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                        );
+                      }}
+                      className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack "
+                    >
                       {item?.title}
                     </div>
+                    {item?.cashout && (
+                      <button
+                        onClick={() =>
+                          handleCashOut({
+                            betHistory: item,
+                            sportsBook,
+                            price: column?.Price,
+                            cashout_value: price,
+                          })
+                        }
+                        type="button"
+                        className="btn_box "
+                        style={{
+                          width: "auto",
+                          backgroundColor: "#eceaea",
+                          display: "flex",
+                          alignItems: "center",
+                          cursor: `pointer`,
+                          justifyContent: "center",
+                          gap: "0px 2px",
+                          borderRadius: "2px",
+                          padding: "3px 5px",
+                        }}
+                      >
+                        <span style={{ fontSize: "10px", color: "black" }}>
+                          Cashout
+                        </span>
+                        {price && (
+                          <span style={{ color: "black", fontSize: "10px" }}>
+                            :
+                          </span>
+                        )}
+
+                        {price && (
+                          <span
+                            style={{
+                              color: `${price > 0 ? "green" : "red"}`,
+                              fontSize: "10px",
+                            }}
+                          >
+                            {price}
+                          </span>
+                        )}
+                      </button>
+                    )}
                   </div>
                   <div className="font-normal text-text_Ternary capitalize text-xs font-lato">
                     {item?.marketName}: {item?.nation}

@@ -5,11 +5,21 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
+import useSBCashOut from "../../../../hooks/sb_cashout";
+import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
+import toast from "react-hot-toast";
 
 const OpenBets = () => {
   const navigate = useNavigate();
-  const { eventId } = useParams();
-  const { myBets } = useCurrentBets(eventId);
+  const { eventId, eventTypeId } = useParams();
+  const { myBets, refetchCurrentBets } = useCurrentBets(eventId);
+  const { mutate: cashOut } = useSBCashOut();
+  const { data: eventData } = useGetAllOddsEventsQuery(
+    { eventTypeId, eventId },
+    {
+      pollingInterval: 1000,
+    }
+  );
   const [openBets, setOpenBets] = useState(true);
   const orderedBets = [
     ...myBets.filter((bet) => bet.betType === "Back"),
@@ -19,6 +29,62 @@ const OpenBets = () => {
     navigate(`/game-details/${item?.eventTypeId}/${item?.eventId}`);
   };
 
+  const sportsBook = eventData?.sportsbook?.Result;
+
+  const sports =
+    sportsBook &&
+    sportsBook?.MarketGroups?.filter(
+      (group) =>
+        group?.Name !== "Bet Builder" &&
+        group?.Name !== "Fast Markets" &&
+        group?.Name !== "Player Specials"
+    );
+
+  const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
+    let item;
+    sports?.forEach((group) => {
+      group?.Items?.forEach((data) => {
+        if (betHistory?.marketId == data?.Id) {
+          item = data;
+        }
+      });
+    });
+
+    const column = item?.Items?.find(
+      (col) => col?.Id === betHistory?.selectionId
+    );
+
+    const payload = {
+      price,
+      cashout_value,
+      back: true,
+      side: 0,
+      selectionId: column?.Id,
+      btype: "SPORTSBOOK",
+      placeName: column?.Name,
+      eventTypeId: sportsBook?.EventTypeId,
+      betDelay: sportsBook?.betDelay,
+      marketId: item?.Id,
+      maxLiabilityPerMarket: item?.maxLiabilityPerMarket,
+      maxLiabilityPerBet: item?.maxLiabilityPerBet,
+      isBettable: sportsBook?.isBettable,
+      isWeak: sportsBook?.isWeak,
+      marketName: item?.Name,
+      eventId: sportsBook?.eventId,
+      betId: betHistory?.betId,
+    };
+
+    cashOut(payload, {
+      onSuccess: (data) => {
+        if (data?.success) {
+          refetchCurrentBets();
+          toast.success(data?.result?.message);
+        } else {
+          toast.error(data?.error);
+        }
+      },
+    });
+  };
   return (
     <div id="openBetsRightSide" title="Open Bets">
       <div className=" flex flex-col w-full  gap-1">
@@ -44,6 +110,7 @@ const OpenBets = () => {
                 <span className="col-span-2 text-text_Ternary font-semibold capitalize">
                   Market
                 </span>
+
                 <span className="col-span-2 text-center text-text_Ternary">
                   Odds
                 </span>
@@ -56,6 +123,22 @@ const OpenBets = () => {
               </div>
               <div className="flex w-full flex-col gap-0.5">
                 {orderedBets?.map((bet, i) => {
+                  let column;
+                  sports?.forEach((group) => {
+                    group?.Items?.forEach((data) => {
+                      if (bet?.marketId == data?.Id) {
+                        column = data?.Items?.find(
+                          (col) => col?.Id === bet?.selectionId
+                        );
+                      }
+                    });
+                  });
+
+                  const price = (
+                    0.92 *
+                    bet?.amount *
+                    (bet?.userRate / column?.Price)
+                  )?.toFixed(2);
                   return (
                     <div
                       onClick={() => navigateGameList(bet)}
@@ -66,7 +149,58 @@ const OpenBets = () => {
                           : "bg-bg_LayBtnBg"
                       }`}
                     >
-                      <span className="col-span-2">{bet?.nation}</span>
+                      <span className="col-span-2 flex items-center justify-between">
+                        <span> {bet?.nation}</span>
+
+                        {bet?.cashout && eventId && eventTypeId && (
+                          <button
+                            onClick={() =>
+                              handleCashOut({
+                                betHistory: bet,
+                                sportsBook,
+                                price: column?.Price,
+                                cashout_value: price,
+                              })
+                            }
+                            type="button"
+                            className="btn_box "
+                            style={{
+                              width: "auto",
+                              backgroundColor: "#f3f3f3ff",
+                              display: "flex",
+                              alignItems: "center",
+                              cursor: `pointer`,
+                              justifyContent: "center",
+                              gap: "0px 2px",
+                              borderRadius: "2px",
+                              padding: "3px 5px",
+                            }}
+                          >
+                            <span style={{ fontSize: "10px", color: "black" }}>
+                              Cashout
+                            </span>
+                            {price && (
+                              <span
+                                style={{ color: "black", fontSize: "10px" }}
+                              >
+                                :
+                              </span>
+                            )}
+
+                            {price && (
+                              <span
+                                style={{
+                                  color: `${price > 0 ? "green" : "red"}`,
+                                  fontSize: "10px",
+                                }}
+                              >
+                                {price}
+                              </span>
+                            )}
+                          </button>
+                        )}
+                      </span>
+
                       <span className="col-span-2 text-center">
                         {bet?.userRate}
                       </span>

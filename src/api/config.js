@@ -62,6 +62,8 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         API.withdrawIframe = endPoints?.withdrawIframe;
         API.assets = endPoints?.assets;
         API.otpless = endPoints?.otpless;
+        API.sb_cashout = endPoints?.sb_cashout;
+        API.fast_cashout = endPoints?.fast_cashout;
         settings.registrationWhatsapp = setting?.registrationWhatsapp;
         settings.casino = setting?.casino;
         settings.otp = setting?.otp;

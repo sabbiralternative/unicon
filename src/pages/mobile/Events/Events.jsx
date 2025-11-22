@@ -31,7 +31,7 @@ const Events = () => {
     eventId,
   };
   const { token } = useSelector((state) => state.auth);
-  const { myBets } = useCurrentBets(eventId);
+  const { myBets, refetchCurrentBets } = useCurrentBets(eventId);
   const [match_odds, setMatch_odds] = useState([]);
   const [bookmaker, setBookmaker] = useState([]);
   // const [bookmaker2, setBookmaker2] = useState([]);
@@ -183,7 +183,13 @@ const Events = () => {
               score2={data?.result?.[0]?.score2}
             />
 
-            {betsType === "openBet" && <OpenBets myBets={myBets} />}
+            {betsType === "openBet" && (
+              <OpenBets
+                myBets={myBets}
+                sportsBook={data?.sportsbook?.Result}
+                refetchCurrentBets={refetchCurrentBets}
+              />
+            )}
 
             {
               <IFrameScore
