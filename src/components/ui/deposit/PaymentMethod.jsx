@@ -33,7 +33,11 @@ const PaymentMethod = ({
     setTabs(method?.type);
     setPaymentId(method?.paymentId);
 
-    if (method?.type === "upigateway" || method?.type === "toitgateway") {
+    if (
+      method?.type === "upigateway" ||
+      method?.type === "toitgateway" ||
+      method?.type === "i100gateway"
+    ) {
       const pgPayload = {
         paymentId: method?.paymentId,
         site: settings.siteUrl,
@@ -79,7 +83,8 @@ const PaymentMethod = ({
       paymentMethodRef.current &&
       tabs &&
       tabs !== "upigateway" &&
-      tabs !== "toitgateway"
+      tabs !== "toitgateway" &&
+      tabs !== "i100gateway"
     ) {
       paymentMethodRef.current.scrollIntoView({
         block: "center",
@@ -186,7 +191,8 @@ const PaymentMethod = ({
                             />
                           ) : null}
                           {method?.type == "upigateway" ||
-                          method?.type === "toitgateway" ? (
+                          method?.type === "toitgateway" ||
+                          method?.type === "i100gateway" ? (
                             <img
                               style={{
                                 height: "17px",
