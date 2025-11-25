@@ -135,9 +135,8 @@ const OpenBets = () => {
                   });
 
                   const price = (
-                    0.92 *
-                    bet?.amount *
-                    (bet?.userRate / column?.Price)
+                    0.92 * bet?.amount * (bet?.userRate / column?.Price) -
+                    bet?.amount
                   )?.toFixed(2);
                   return (
                     <div
@@ -152,7 +151,7 @@ const OpenBets = () => {
                       <span className="col-span-2 flex items-center justify-between">
                         <span> {bet?.nation}</span>
 
-                        {bet?.cashout && eventId && eventTypeId && (
+                        {bet?.cashout && eventId && eventTypeId && column && (
                           <button
                             onClick={() =>
                               handleCashOut({

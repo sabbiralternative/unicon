@@ -280,17 +280,6 @@ cursor-pointer
 
                   <button
                     onClick={() => {
-                      navigate("/game-details/4/1759935118");
-                    }}
-                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                  >
-                    <span className="font font-lato text-[12px]">
-                      Bihar Election
-                    </span>
-                  </button>
-
-                  <button
-                    onClick={() => {
                       navigate("/");
                       dispatch(setGroupType(4));
                     }}

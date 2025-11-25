@@ -105,9 +105,8 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
               });
 
               const price = (
-                0.92 *
-                item?.amount *
-                (item?.userRate / column?.Price)
+                0.92 * item?.amount * (item?.userRate / column?.Price) -
+                item?.amount
               )?.toFixed(2);
               return (
                 <div
@@ -129,7 +128,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
                     >
                       {item?.title}
                     </div>
-                    {item?.cashout && (
+                    {item?.cashout && column && (
                       <button
                         onClick={() =>
                           handleCashOut({
