@@ -21,6 +21,7 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const RightDeskSidebar = () => {
+  const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
@@ -45,6 +46,7 @@ const RightDeskSidebar = () => {
     if (placeBetValues?.totalSize > 0) {
       dispatch(setStake(placeBetValues?.totalSize.toFixed(2)));
     }
+    setIsCashOut(placeBetValues?.cashout || false);
   }, [placeBetValues, dispatch]);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const RightDeskSidebar = () => {
         totalSize: stake,
         isBettable: placeBetValues?.isBettable,
         eventId: placeBetValues?.eventId,
-        cashout: placeBetValues?.cashout || false,
+        cashout: isCashOut,
         b2c: settings.b2c,
       };
     } else {
@@ -89,7 +91,7 @@ const RightDeskSidebar = () => {
         isBettable: placeBetValues?.isBettable,
         maxLiabilityPerBet: placeBetValues?.maxLiabilityPerBet,
         eventId: placeBetValues?.eventId,
-        cashout: placeBetValues?.cashout || false,
+        cashout: isCashOut,
         b2c: settings.b2c,
       };
     }
@@ -171,6 +173,7 @@ const RightDeskSidebar = () => {
     } else {
       dispatch(setPrice(parseFloat(price) + 1));
     }
+    setIsCashOut(false);
   };
 
   /* Decrease price bets */
@@ -192,8 +195,20 @@ const RightDeskSidebar = () => {
     } else {
       dispatch(setPrice(parseFloat(price) - 1));
     }
+    setIsCashOut(false);
   };
+  const handleButtonValue = (value) => {
+    setIsCashOut(false);
+    const buttonValue = Number(value);
+    const prevStake = stake === null ? null : Number(stake);
 
+    if (prevStake === null) {
+      dispatch(setStake(buttonValue));
+    }
+    if (prevStake >= 0) {
+      dispatch(setStake(buttonValue + prevStake));
+    }
+  };
   return (
     <>
       <div
@@ -261,42 +276,40 @@ const RightDeskSidebar = () => {
                           <div className="grid grid-cols-12 min-h-[35px]">
                             <span className="col-span-12 h-full pr-1 overflow-hidden relative">
                               <input
-                                readOnly={placeBetValues?.cashout}
-                                onChange={(e) =>
-                                  dispatch(setPrice(e.target.value))
-                                }
+                                onChange={(e) => {
+                                  dispatch(setPrice(e.target.value));
+                                  setIsCashOut(false);
+                                }}
                                 id="oddInput"
                                 className="focus:outline-none text-sm w-full h-full text-center py-1 flex items-center justify-center border-[0.25px] text-text_Ternary border-oddInputBorder focus:border-oddInputBorderActive active:border-oddInputBorderActive"
-                                disabled=""
                                 max="1000"
                                 min="-1000"
                                 pattern="^[+-ed]+$"
                                 type="number"
                                 value={price}
                               />
-                              {!placeBetValues?.isWeak &&
-                                !placeBetValues?.cashout && (
-                                  <div
-                                    style={{
-                                      position: "absolute",
-                                      top: 3,
-                                      right: 5,
-                                      display: "flex",
-                                      flexDirection: "column",
-                                    }}
-                                  >
-                                    <MdKeyboardArrowUp
-                                      onClick={handleIncreasePrice}
-                                      style={{ cursor: "pointer" }}
-                                      size={15}
-                                    />
-                                    <MdKeyboardArrowDown
-                                      onClick={handleDecreasePrice}
-                                      style={{ cursor: "pointer" }}
-                                      size={15}
-                                    />
-                                  </div>
-                                )}
+                              {!placeBetValues?.isWeak && (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: 3,
+                                    right: 5,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                  }}
+                                >
+                                  <MdKeyboardArrowUp
+                                    onClick={handleIncreasePrice}
+                                    style={{ cursor: "pointer" }}
+                                    size={15}
+                                  />
+                                  <MdKeyboardArrowDown
+                                    onClick={handleDecreasePrice}
+                                    style={{ cursor: "pointer" }}
+                                    size={15}
+                                  />
+                                </div>
+                              )}
                             </span>
                           </div>{" "}
                         </span>
@@ -305,8 +318,10 @@ const RightDeskSidebar = () => {
                           className="col-span-6 pt-1.5 w-full px-[1px] overflow-hidden"
                         >
                           <input
-                            readOnly={placeBetValues?.cashout}
-                            onChange={(e) => dispatch(setStake(e.target.value))}
+                            onChange={(e) => {
+                              dispatch(setStake(e.target.value));
+                              setIsCashOut(false);
+                            }}
                             id="stakeInput"
                             className="focus:outline-none text-md w-full h-full text-center bg-bg_Quaternary flex items-center justify-center border-[0.75px] text-text_Ternary placeholder:text-text_Ternary 5 rounded-sm text-text_Ternary focus:border-oddInputBorderActive active:border-oddInputBorderActive"
                             placeholder={`Max : ${placeBetValues?.maxLiabilityPerBet}`}
@@ -321,11 +336,11 @@ const RightDeskSidebar = () => {
                           {parseButtonValues?.slice(0, 6)?.map((button, i) => {
                             return (
                               <button
-                                disabled={placeBetValues?.cashout}
                                 key={i}
-                                onClick={() =>
-                                  dispatch(setStake(button?.value))
-                                }
+                                onClick={() => {
+                                  handleButtonValue(button?.value);
+                                  setIsCashOut(false);
+                                }}
                                 className="inline-block leading-normal relative  transition duration-150 ease-in-out col-span-4 w-full overflow-hidden border border-primary text-[12px] font-semibold rounded-[4px] bg-bg_Primary text-primary text-center py-1.5 cursor-pointer"
                                 type="button"
                               >
