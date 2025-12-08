@@ -632,7 +632,7 @@ const RightDeskSidebar = () => {
                   </span>
                 </div>
 
-                {settings.referral && (
+                {socialLink?.referral && (
                   <div
                     onClick={() => handleNavigate("/affiliate")}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
