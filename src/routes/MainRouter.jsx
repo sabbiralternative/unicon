@@ -28,6 +28,7 @@ import GreyhoundRacing from "../pages/GreyhoundRacing/GreyhoundRacing.jsx";
 import MyBankDetails from "../pages/MyBankDetails/MyBankDetails.jsx";
 import GameProviderDetails from "../pages/GameProviderDetails/GameProviderDetails.jsx";
 import Affiliate from "../pages/Affiliate/Affiliate.jsx";
+import AffiliateUserProfitLoss from "../pages/AffiliateUserProfitLoss/AffiliateUserProfitLoss.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -137,6 +138,10 @@ const MainRouter = () => {
           {
             path: "/affiliate",
             element: <Affiliate />,
+          },
+          {
+            path: "/affiliate/user-profit-loss",
+            element: <AffiliateUserProfitLoss />,
           },
         ],
       },

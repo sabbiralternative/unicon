@@ -1,6 +1,7 @@
 // import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "rsuite/Pagination/styles/index.css";
 import MainRouter from "./routes/MainRouter.jsx";
 import ApiProvider from "./context/ApiProvider.jsx";
 import { Provider } from "react-redux";

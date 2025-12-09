@@ -3,25 +3,29 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import TodayStatusSection from "../../components/modules/Affiliate/TodayStatusSection";
 import InviteSection from "../../components/modules/Affiliate/InviteSection";
-import TopFiveLossUser from "../../components/modules/Affiliate/TopFiveLossUser";
+// import TopFiveLossUser from "../../components/modules/Affiliate/TopFiveLossUser";
 import BonusInformation from "../../components/modules/Affiliate/BonusInformation";
 import TodayProfitLoss from "../../components/modules/Affiliate/TodayProfitLoss";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import UserList from "../../components/modules/Affiliate/UserList";
 import ProfitLoss from "../../components/modules/Affiliate/ProfitLoss";
 import Reports from "../../components/modules/Affiliate/Reports";
 import Footer from "../../components/modules/Affiliate/Footer";
+import { useLocation } from "react-router-dom";
 
 const Affiliate = () => {
-  const [tab, setTab] = useState("dashboard");
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const tab = params.get("tab");
+
   return (
     <div className="flex flex-col transition-all">
       <div className="flex items-start flex-col lg:flex-row justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <LeftDeskSidebar />
 
         <div
-          className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] px-2 md:px-0"
-          style={{ minHeight: "calc(-110px + 100dvh)", paddingTop: "10px" }}
+          className="w-full md:mt-[0px] lg:overflow-auto lg:w-[54%] px-2 md:px-0 lg:pt-[]"
+          style={{ minHeight: "calc(-110px + 100dvh)" }}
         >
           <div className="main-content">
             <div
@@ -29,11 +33,12 @@ const Affiliate = () => {
               className="container"
               style={{ maxWidth: "100%" }}
             >
-              {tab === "dashboard" && (
+              <Footer />
+              {(tab === "dashboard" || !tab) && (
                 <Fragment>
                   <TodayStatusSection />
                   <InviteSection />
-                  <TopFiveLossUser />
+                  {/* <TopFiveLossUser /> */}
                   <BonusInformation />
                   <TodayProfitLoss />
                 </Fragment>
@@ -53,7 +58,6 @@ const Affiliate = () => {
                   <Reports />
                 </div>
               )}
-              <Footer setTab={setTab} tab={tab} />
             </div>
           </div>
         </div>

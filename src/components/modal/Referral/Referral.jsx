@@ -2,10 +2,10 @@
 
 import { useRef } from "react";
 
-import useGetIndex from "../../../hooks/useGetIndex";
 import useContextState from "../../../hooks/useContextState";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { handleCopyToClipBoard } from "../../../utils/handleCopyToClipBoard";
+import { useGetIndex } from "../../../hooks";
 
 const Referral = ({ setShowReferral }) => {
   const { logo } = useContextState();
@@ -13,7 +13,9 @@ const Referral = ({ setShowReferral }) => {
   useCloseModalClickOutside(referralRef, () => {
     setShowReferral(false);
   });
-  const { data } = useGetIndex();
+  const { data } = useGetIndex({
+    type: "get_referral_code",
+  });
 
   return (
     <div
@@ -109,11 +111,13 @@ const Referral = ({ setShowReferral }) => {
                           _ngcontent-ng-c526813732=""
                           className="refer-code-text"
                         >
-                          {data?.link}
+                          {data?.result?.link}
                         </p>
                         <button
                           style={{ color: "white" }}
-                          onClick={() => handleCopyToClipBoard(data?.text)}
+                          onClick={() =>
+                            handleCopyToClipBoard(data?.result?.text)
+                          }
                           _ngcontent-ng-c526813732=""
                           className="btn secondary-btn"
                         >

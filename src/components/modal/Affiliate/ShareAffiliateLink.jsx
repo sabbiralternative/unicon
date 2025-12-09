@@ -1,11 +1,14 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import assets from "../../../assets";
-import useGetIndex from "../../../hooks/useGetIndex";
+
 import { handleCopyToClipBoard } from "../../../utils/handleCopyToClipBoard";
+import { useGetIndex } from "../../../hooks";
 
 const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
-  const { data } = useGetIndex();
+  const { data } = useGetIndex({
+    type: "get_referral_code",
+  });
   const ref = useRef();
   useCloseModalClickOutside(ref, () => {
     setShowShareAffiliateLink(false);
@@ -64,9 +67,9 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
               <div className="af-share-link-wrapper">
                 <p>Share Link</p>
                 <div className="af-share-link-sec">
-                  <span>{data?.link}</span>
+                  <span>{data?.result?.link}</span>
                   <button
-                    onClick={() => handleCopyToClipBoard(data?.text)}
+                    onClick={() => handleCopyToClipBoard(data?.result?.text)}
                     className="thm-but btn-gradient"
                   >
                     Copy
