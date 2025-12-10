@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import useExposer from "../../../../hooks/useExposure";
-import isOddSuspended from "../../../../utils/isOddSuspended";
+import isOddSuspended, {
+  isGameSuspended,
+} from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +11,10 @@ import { useEffect, useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { settings } from "../../../../api";
 import { handleCashoutBetMobile } from "../../../../utils/handleCashoutBetMobile";
+import SpeedCashOut from "../../../modal/SpeedCashOut/SpeedCashOut";
 
 const MatchOdds = ({ match_odds }) => {
+  const [speedCashOut, setSpeedCashOut] = useState(null);
   const [teamProfit, setTeamProfit] = useState([]);
   const [runnerId, setRunnerId] = useState("");
   const { predictOdd, stake } = useSelector((state) => state?.event);
@@ -43,7 +47,12 @@ const MatchOdds = ({ match_odds }) => {
     runner2,
     gameId
   ) => {
-    let runner, largerExposure, layValue, oppositeLayValue, lowerExposure;
+    let runner,
+      largerExposure,
+      layValue,
+      oppositeLayValue,
+      lowerExposure,
+      speedCashOut;
 
     const pnlArr = [exposureA, exposureB];
     const isOnePositiveExposure = onlyOnePositive(pnlArr);
@@ -62,6 +71,13 @@ const MatchOdds = ({ match_odds }) => {
       layValue = runner2?.lay?.[0]?.price;
       oppositeLayValue = runner1?.lay?.[0]?.price;
       lowerExposure = exposureA;
+    }
+
+    if (exposureA > 0 && exposureB > 0) {
+      const difference = exposureA - exposureB;
+      if (difference <= 10) {
+        speedCashOut = true;
+      }
     }
 
     // Compute the absolute value of the lower exposure.
@@ -88,6 +104,11 @@ const MatchOdds = ({ match_odds }) => {
       oppositeLayValue,
       gameId,
       isOnePositiveExposure,
+      exposureA,
+      exposureB,
+      runner1,
+      runner2,
+      speedCashOut,
     };
   };
   function onlyOnePositive(arr) {
@@ -134,10 +155,20 @@ const MatchOdds = ({ match_odds }) => {
 
   return (
     <>
+      {speedCashOut && (
+        <SpeedCashOut
+          speedCashOut={speedCashOut}
+          setSpeedCashOut={setSpeedCashOut}
+        />
+      )}
       {match_odds?.map((games, i) => {
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
             profit?.gameId === games?.id && profit?.isOnePositiveExposure
+        );
+
+        const speedCashOut = teamProfit?.find(
+          (profit) => profit?.gameId === games?.id && profit?.speedCashOut
         );
 
         return (
@@ -157,7 +188,8 @@ const MatchOdds = ({ match_odds }) => {
                 </button> */}
                 {settings.betFairCashOut &&
                   games?.runners?.length !== 3 &&
-                  games?.status === "OPEN" && (
+                  games?.status === "OPEN" &&
+                  !speedCashOut && (
                     <button
                       onClick={() =>
                         handleCashoutBetMobile(
@@ -194,6 +226,22 @@ const MatchOdds = ({ match_odds }) => {
                           <span> {teamProfitForGame?.profit?.toFixed(2)}</span>
                         </div>
                       )}
+                    </button>
+                  )}
+
+                {settings.betFairCashOut &&
+                  games?.runners?.length !== 3 &&
+                  games?.status === "OPEN" &&
+                  speedCashOut && (
+                    <button
+                      onClick={() => setSpeedCashOut(speedCashOut)}
+                      disabled={isGameSuspended(games)}
+                      type="button"
+                      className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer bg-[#82371b]`}
+                    >
+                      <div className="text-[10px] md:text-sm text-white whitespace-nowrap font-semibold">
+                        Speed Cashout
+                      </div>
                     </button>
                   )}
                 {/* <span className="text-xs font-light">
