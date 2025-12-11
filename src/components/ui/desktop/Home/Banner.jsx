@@ -295,7 +295,7 @@ const Banner = () => {
                       title="Aura"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Aura
+                      Mac88
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>

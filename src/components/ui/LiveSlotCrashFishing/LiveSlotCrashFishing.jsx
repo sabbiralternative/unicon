@@ -216,7 +216,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                         const filteredByName = getFilteredGamesByName(games); // Filter games by name
 
                         // If no games match the search, show a message
-                        if (filteredByName.length === 0) return null;
+                        if (filteredByName?.length === 0) return null;
                         return (
                           <div key={idx} className="flex flex-col">
                             <div className="w-full overflow-hidden mt-2">

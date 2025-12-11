@@ -442,7 +442,7 @@ const LeftDeskSidebar = () => {
               </span>
             </span>
           </li>
-          {settings.aura && (
+          {/* {settings.aura && (
             <li
               onClick={() => {
                 navigate("/");
@@ -468,7 +468,7 @@ const LeftDeskSidebar = () => {
                 </span>
               </span>
             </li>
-          )}
+          )} */}
           <li
             onClick={() => {
               navigate("/slots");
