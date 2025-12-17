@@ -256,7 +256,13 @@ const Bookmaker = ({ bookmaker }) => {
                   games?.status === "OPEN" &&
                   speedCashOut && (
                     <button
-                      onClick={() => setSpeedCashOut(speedCashOut)}
+                      onClick={() =>
+                        setSpeedCashOut({
+                          ...speedCashOut,
+                          market_name: games?.name,
+                          event_name: games?.eventName,
+                        })
+                      }
                       disabled={isGameSuspended(games)}
                       type="button"
                       className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer bg-[#82371b]`}
