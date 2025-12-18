@@ -240,7 +240,7 @@ const BettingProfitLoss = () => {
                                 : "text-white"
                             }`}
                           >
-                            {totalPnl}
+                            {totalPnl?.toFixed(2)}
                           </span>
                         </div>
                       </div>
