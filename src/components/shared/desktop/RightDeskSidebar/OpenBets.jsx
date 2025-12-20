@@ -4,20 +4,23 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useSBCashOut from "../../../../hooks/sb_cashout";
 import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
 import toast from "react-hot-toast";
 
 const OpenBets = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { eventId, eventTypeId } = useParams();
   const { myBets, refetchCurrentBets } = useCurrentBets(eventId);
   const { mutate: cashOut } = useSBCashOut();
   const { data: eventData } = useGetAllOddsEventsQuery(
     { eventTypeId, eventId },
+
     {
       pollingInterval: 1000,
+      skip: !pathname.includes("/game-details"),
     }
   );
   const [openBets, setOpenBets] = useState(true);
