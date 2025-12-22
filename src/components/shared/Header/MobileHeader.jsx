@@ -6,7 +6,9 @@ import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useEffect } from "react";
+import useGetSocialLink from "../../../hooks/useGetSocialLink";
 const MobileHeader = ({ handleNavigateToIFrame }) => {
+  const { socialLink } = useGetSocialLink();
   const location = useLocation();
   const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
@@ -62,6 +64,24 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             <span className="font font-lato text-[12px]">BBL</span>
           </button>
         </a>
+        {socialLink?.referral && (
+          <a
+            onClick={() => {
+              navigate("/affiliate");
+            }}
+          >
+            <button
+              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+    w-max px-3  py-1     
+ lg:hidden ${
+   pathname === "/affiliate" ? "text-secondary border border-secondary" : ""
+ }`}
+            >
+              <span className="font font-lato text-[12px]">Affiliate</span>
+            </button>
+          </a>
+        )}
 
         <a
           onClick={() => {
