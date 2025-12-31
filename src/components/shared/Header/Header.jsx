@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   setGroupType,
+  setShowAPKModal,
   setShowAppPopUp,
   setShowLeftSidebar,
   setShowLoginModal,
@@ -28,6 +29,7 @@ import Notification from "./Notification";
 import toast from "react-hot-toast";
 import WarningCondition from "../WarningCondition/WarningCondition";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK";
 
 const Header = () => {
   const { socialLink } = useGetSocialLink();
@@ -44,7 +46,9 @@ const Header = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showAppPopUp, windowWidth } = useSelector((state) => state?.state);
+  const { showAppPopUp, windowWidth, showAPKModal } = useSelector(
+    (state) => state?.state
+  );
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,11 +57,16 @@ const Header = () => {
   }, [time]);
 
   useEffect(() => {
+    const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
     const closePopupForForever = localStorage.getItem("closePopupForForever");
     if (location?.state?.pathname === "/apk" || location.pathname === "/apk") {
+      sessionStorage.setItem("apk_modal_shown", true);
       localStorage.setItem("closePopupForForever", true);
       localStorage.removeItem("installPromptExpiryTime");
     } else {
+      if (!apk_modal_shown) {
+        dispatch(setShowAPKModal(true));
+      }
       if (!closePopupForForever) {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
         const currentTime = new Date().getTime();
@@ -108,6 +117,7 @@ const Header = () => {
         {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
           <AppPopup />
         )}
+        {settings?.apkLink && showAPKModal && <DownloadAPK />}
         <header>
           <div className="flex flex-col">
             <div className=" flex flex-col shadow-lg autoAnimate">

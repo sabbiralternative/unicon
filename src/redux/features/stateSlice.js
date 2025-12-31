@@ -8,6 +8,7 @@ const initialState = {
   showRightSidebar: false,
   showForgetModal: false,
   showAppPopUp: false,
+  showAPKModal: false,
   windowWidth: window.innerWidth,
   selectedCategory: "ALL",
   showNotification: false,
@@ -56,6 +57,9 @@ const stateSlice = createSlice({
     setShowBanner: (state, action) => {
       state.showBanner = action.payload;
     },
+    setShowAPKModal: (state, action) => {
+      state.showAPKModal = action.payload;
+    },
   },
 });
 
@@ -72,6 +76,7 @@ export const {
   setSelectedCategory,
   setShowNotification,
   setShowBanner,
+  setShowAPKModal,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;
