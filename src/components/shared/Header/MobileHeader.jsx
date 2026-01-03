@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setGroupType } from "../../../redux/features/stateSlice";
+import {
+  setGroupType,
+  setShowLoginModal,
+} from "../../../redux/features/stateSlice";
 import { settings } from "../../../api";
 import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
@@ -14,6 +17,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { group } = useSelector((state) => state.state);
+  const { token } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -67,7 +71,9 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
         {socialLink?.referral && (
           <a
             onClick={() => {
-              navigate("/affiliate");
+              token
+                ? navigate("/affiliate")
+                : dispatch(setShowLoginModal(true));
             }}
           >
             <button

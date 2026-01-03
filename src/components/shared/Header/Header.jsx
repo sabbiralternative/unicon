@@ -292,7 +292,9 @@ cursor-pointer
                   {socialLink?.referral && (
                     <button
                       onClick={() => {
-                        navigate("/affiliate");
+                        token
+                          ? navigate("/affiliate")
+                          : dispatch(setShowLoginModal(true));
                       }}
                       className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                     >
