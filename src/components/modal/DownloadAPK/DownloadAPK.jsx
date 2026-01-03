@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import { setShowAPKModal } from "../../../redux/features/stateSlice";
 import { settings } from "../../../api";
+import { GrAndroid } from "react-icons/gr";
+import assets from "../../../assets";
 
 const DownloadAPK = () => {
   const dispatch = useDispatch();
@@ -32,11 +34,11 @@ const DownloadAPK = () => {
     <div className="fixed bottom-0 left-0 right-0 top-0 overflow-hidden flex h-[100dvh] w-dvw items-center justify-center bg-bg_CasinoPopupBg overflow-y-hidden z-[10000]">
       <div
         ref={modalRef}
-        className="relative w-[90%]  sm:w-[85%] md:w-[70%] lg:w-[450px] max-w-[450px] rounded-[20px]   popUpBoxShadow popUpOpenAnimation  "
+        className="relative w-[90%]  sm:w-[85%] md:w-[70%] lg:w-[450px] max-w-[450px] rounded-[20px] bg-bg_Quaternary  popUpBoxShadow popUpOpenAnimation  "
       >
         <button
           onClick={closeModal}
-          className="absolute top-3 right-3 active:scale-95 transition-all duration-300"
+          className="absolute top-3 right-3 active:scale-95 transition-all duration-300 z-50"
         >
           <svg
             className="cursor-pointer z-50"
@@ -64,12 +66,57 @@ const DownloadAPK = () => {
           </svg>
         </button>
 
-        <div
-          onClick={handleDownload}
-          className="w-full  flex flex-col justify-center items-center  gap-y-6 h-max cursor-pointer"
-          id="loginRegLayOut"
-        >
-          <img src="https://mythemedata.com/uploads/apk.webp" alt="" />
+        <div className="promo-card font-lato">
+          <header className="promo-header">
+            <div className="header-content">
+              <img src={assets.install_android} alt="install_android" />
+
+              <h1 className="main-title">
+                Download APK for Premium Gaming Experience
+              </h1>
+            </div>
+          </header>
+
+          <main className="promo-body">
+            <p className="intro-text">
+              Kabhi-kabhi website slow ho sakti hai ya link update ho jata hai,
+              lekin hamara Official App aapko hamesha connected rakhega 🚀
+            </p>
+
+            <h2 className="benefits-title">App ke saath aapko milega:</h2>
+
+            <ul className="benefits-list">
+              <li>
+                <strong>24×7 Instant Access</strong> – Har waqt khelo bina
+                rukawat
+              </li>
+              <li>
+                <strong>2X Faster Speed</strong> – Website se bhi double fast
+                loading
+              </li>
+              <li>
+                <strong>Secure Login</strong> – Aapka data hamesha safe &
+                protected
+              </li>
+              <li>
+                <strong>Non-Stop Gaming</strong> – No waiting, no interruptions
+              </li>
+            </ul>
+
+            <p className="closing-text">
+              Yehi wajah hai ki sabse zyada serious players App prefer karte
+              hain. Aap bhi join karo unme aur pao ek premium lifestyle
+              experience 💎
+            </p>
+
+            <a
+              onClick={handleDownload}
+              className="download-button text-primary"
+            >
+              <GrAndroid className="android-icon" />
+              <span>Download Official App Now ↓</span>
+            </a>
+          </main>
         </div>
       </div>
     </div>
