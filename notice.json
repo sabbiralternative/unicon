@@ -101,7 +101,7 @@
       "liveCasinoIFrame": " https://api7.live/api/livecasino/iframe",
       "bankAccount": "https://api7.live/api/exchange/diamond/bankAccount",
       "pg": "https://api7.live/api/exchange/diamond/pg",
-      "uploadScreenshot": "https://b2c.bet/deposit/up.php",
+      "uploadScreenshot": "https://1pe.site/api/upload",
       "withdrawBreakdown": "https://api7.live/api/exchange/diamond/withdrawBreakdown",
       "banner": "https://api7.live/api/exchange/diamond/banner",
       "exchangeGames": "https://cache7.live/api/exchange/diamond/exchangeGames",
@@ -111,7 +111,7 @@
       "bonus": "https://api7.live/api/exchange/diamond/bonus",
       "index": "https://api7.live/api/exchange/diamond/index",
       "language": "https://api7.live/api/exchange/diamond/language",
-      "utr": "https://b2c.bet/deposit/utr",
+      "utr": "https://1pe.site/api/utr",
       "depositBreakdown": "https://api7.live/api/exchange/diamond/depositBreakdown",
       "sb_cashout": "https://api7.live/api/exchange/diamond/sb_cashout",
       "fast_cashout": "https://api7.live/api/exchange/diamond/fast_cashout"

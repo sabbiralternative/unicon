@@ -69,7 +69,11 @@ const DownloadAPK = () => {
         <div className="promo-card font-lato">
           <header className="promo-header">
             <div className="header-content">
-              <img src={assets.install_android} alt="install_android" />
+              <img
+                src={assets.install_android}
+                className="size-20"
+                alt="install_android"
+              />
 
               <h1 className="main-title">
                 Download APK for Premium Gaming Experience
@@ -85,7 +89,7 @@ const DownloadAPK = () => {
 
             <h2 className="benefits-title">App ke saath aapko milega:</h2>
 
-            <ul className="benefits-list">
+            <ul className="benefits-list mb-2">
               <li>
                 <strong>24×7 Instant Access</strong> – Har waqt khelo bina
                 rukawat
