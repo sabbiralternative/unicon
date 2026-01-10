@@ -103,7 +103,7 @@ const App = () => {
     const newVersion = socialLink?.build_version;
     if (!stored_build_version) {
       if (newVersion) {
-        setShowBuildVersion(true);
+        localStorage.setItem("build_version", newVersion);
       }
     }
     if (stored_build_version && newVersion) {
