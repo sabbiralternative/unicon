@@ -16,7 +16,7 @@ import {
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-const BetSlip = ({ setRunnerId }) => {
+const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const BetSlip = ({ setRunnerId }) => {
         btype: placeBetValues?.btype,
         placeName: placeBetValues?.placeName,
         eventTypeId: placeBetValues?.eventTypeId,
-        betDelay: placeBetValues?.betDelay,
+        betDelay: currentPlacedBetEvent?.betDelay,
         marketId: placeBetValues?.marketId,
         maxLiabilityPerMarket: placeBetValues?.maxLiabilityPerMarket,
         maxLiabilityPerBet: placeBetValues?.maxLiabilityPerBet,
@@ -66,7 +66,7 @@ const BetSlip = ({ setRunnerId }) => {
       };
     } else {
       payload = {
-        betDelay: placeBetValues?.betDelay,
+        betDelay: currentPlacedBetEvent?.betDelay,
         btype: placeBetValues?.btype,
         eventTypeId: placeBetValues?.eventTypeId,
         marketId: placeBetValues?.marketId,
@@ -113,8 +113,8 @@ const BetSlip = ({ setRunnerId }) => {
     ) {
       delay = 9000;
     } else {
-      setBetDelay(placeBetValues?.betDelay);
-      delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
+      setBetDelay(currentPlacedBetEvent?.betDelay);
+      delay = settings.betDelay ? currentPlacedBetEvent?.betDelay * 1000 : 0;
     }
 
     // Introduce a delay before calling the API
@@ -409,7 +409,7 @@ const BetSlip = ({ setRunnerId }) => {
                         !stake || betDelay > 0 ? "" : "text-primary"
                       }  `}
                     >
-                      {placeBetValues?.betDelay}s
+                      {currentPlacedBetEvent?.betDelay}s
                     </span>
                   </span>
                 </button>

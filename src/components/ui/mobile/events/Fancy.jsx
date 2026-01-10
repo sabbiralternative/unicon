@@ -339,7 +339,10 @@ const Fancy = ({ fancy }) => {
 
                 <div className="col-span-12 h-max"></div>
                 {games?.id === runnerId && (
-                  <BetSlip setRunnerId={setRunnerId} />
+                  <BetSlip
+                    currentPlacedBetEvent={games}
+                    setRunnerId={setRunnerId}
+                  />
                 )}
               </div>
             </div>

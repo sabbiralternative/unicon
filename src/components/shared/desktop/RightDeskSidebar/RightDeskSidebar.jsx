@@ -20,7 +20,7 @@ import BalanceInfo from "./BalanceInfo";
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
-const RightDeskSidebar = () => {
+const RightDeskSidebar = ({ data }) => {
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const dispatch = useDispatch();
@@ -40,6 +40,9 @@ const RightDeskSidebar = () => {
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
+  const currentPlaceBetEvent = data?.result?.find(
+    (item) => item?.id === placeBetValues?.marketId
+  );
 
   useEffect(() => {
     dispatch(setPrice(placeBetValues?.price));
@@ -67,7 +70,7 @@ const RightDeskSidebar = () => {
         btype: placeBetValues?.btype,
         placeName: placeBetValues?.placeName,
         eventTypeId: placeBetValues?.eventTypeId,
-        betDelay: placeBetValues?.betDelay,
+        betDelay: currentPlaceBetEvent?.betDelay,
         marketId: placeBetValues?.marketId,
         maxLiabilityPerMarket: placeBetValues?.maxLiabilityPerMarket,
         maxLiabilityPerBet: placeBetValues?.maxLiabilityPerBet,
@@ -79,7 +82,7 @@ const RightDeskSidebar = () => {
       };
     } else {
       payload = {
-        betDelay: placeBetValues?.betDelay,
+        betDelay: currentPlaceBetEvent?.betDelay,
         btype: placeBetValues?.btype,
         eventTypeId: placeBetValues?.eventTypeId,
         marketId: placeBetValues?.marketId,
@@ -125,8 +128,8 @@ const RightDeskSidebar = () => {
     ) {
       delay = 9000;
     } else {
-      setBetDelay(placeBetValues?.betDelay);
-      delay = settings.betDelay ? placeBetValues?.betDelay * 1000 : 0;
+      setBetDelay(currentPlaceBetEvent?.betDelay);
+      delay = settings.betDelay ? currentPlaceBetEvent?.betDelay * 1000 : 0;
     }
 
     setTimeout(async () => {
@@ -451,7 +454,7 @@ const RightDeskSidebar = () => {
                                 </svg>
                               </span>
                               <span className="font-normal text-primary">
-                                {placeBetValues?.betDelay}s
+                                {currentPlaceBetEvent?.betDelay}s
                               </span>
                             </span>
                           </button>

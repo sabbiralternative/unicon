@@ -386,7 +386,10 @@ const HorseGreyhound = ({ data }) => {
 
                       <div className="col-span-12 h-max"></div>
                       {runner?.id === runnerId && (
-                        <BetSlip setRunnerId={setRunnerId} />
+                        <BetSlip
+                          currentPlacedBetEvent={games}
+                          setRunnerId={setRunnerId}
+                        />
                       )}
                     </div>
                   </>

@@ -254,7 +254,7 @@ const Events = () => {
             </div>
           </div>
         </div>
-        <RightDeskSidebar />
+        <RightDeskSidebar data={data} />
       </div>
     </div>
   );

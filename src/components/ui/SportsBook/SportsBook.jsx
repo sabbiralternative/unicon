@@ -108,7 +108,12 @@ const SportsBook = ({ sportsBook }) => {
                 )}
               </div>
               <div className="block lg:hidden">
-                {item?.Id === runnerId && <BetSlip setRunnerId={setRunnerId} />}
+                {item?.Id === runnerId && (
+                  <BetSlip
+                    currentPlacedBetEvent={item}
+                    setRunnerId={setRunnerId}
+                  />
+                )}
               </div>
             </div>
           );

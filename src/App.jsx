@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DesktopLayout from "./components/layout/DesktopLayout";
 import MobileLayout from "./components/layout/MobileLayout";
 import disableDevtool from "disable-devtool";
@@ -9,13 +9,18 @@ import { setWindowWidth } from "./redux/features/stateSlice";
 import useGetSocialLink from "./hooks/useGetSocialLink";
 import Banner from "./components/modal/Banner/Banner";
 import { useLocation, useNavigate } from "react-router-dom";
+import BuildVersion from "./components/modal/BuildVersion/BuildVersion";
 
 const App = () => {
+  const [showBuildVersion, setShowBuildVersion] = useState(false);
+  const stored_build_version = localStorage.getItem("build_version");
   const navigate = useNavigate();
   const { refetch: refetchSocialLinks, socialLink } = useGetSocialLink();
   const dispatch = useDispatch();
   const disabledDevtool = settings.disabledDevtool;
-  const { windowWidth, showBanner } = useSelector((state) => state.state);
+  const { windowWidth, showBanner, showAPKModal } = useSelector(
+    (state) => state.state
+  );
   const token = useSelector(userToken);
   const location = useLocation();
 
@@ -94,8 +99,29 @@ const App = () => {
     }
   }, [socialLink?.pixel]);
 
+  useEffect(() => {
+    const newVersion = socialLink?.build_version;
+    if (!stored_build_version) {
+      if (newVersion) {
+        setShowBuildVersion(true);
+      }
+    }
+    if (stored_build_version && newVersion) {
+      const parseVersion = JSON.parse(stored_build_version);
+      if (newVersion > parseVersion) {
+        setShowBuildVersion(true);
+      }
+    }
+  }, [socialLink?.build_version, stored_build_version]);
+
   return (
     <div>
+      {showBuildVersion && !showAPKModal && (
+        <BuildVersion
+          build_version={socialLink?.build_version}
+          setShowBuildVersion={setShowBuildVersion}
+        />
+      )}
       {showBanner && <Banner />}
       {windowWidth > 1024 ? <DesktopLayout /> : <MobileLayout />}
     </div>
