@@ -24,6 +24,7 @@ import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 import CryptoReferTab from "../../../components/ui/CryptoReferTab/CryptoReferTab";
 import useGetSocialLink from "../../../hooks/useGetSocialLink";
+import Promotion from "../../../components/ui/Promotion";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -61,6 +62,7 @@ const Home = () => {
                 id="home"
                 className="py-1 flex flex-col items-start justify-start"
               >
+                <Promotion />
                 {socialLink?.referral && <CryptoReferTab />}
                 <Originals trendingGames={lotusLobby?.trendingGames} />
                 {/* <WithdrawAndDepositButton /> */}

@@ -30,6 +30,8 @@ import GameProviderDetails from "../pages/GameProviderDetails/GameProviderDetail
 import Affiliate from "../pages/Affiliate/Affiliate.jsx";
 import AffiliateUserProfitLoss from "../pages/AffiliateUserProfitLoss/AffiliateUserProfitLoss.jsx";
 import AffiliateUserStatement from "../pages/AffiliateUserStatement/AffiliateUserStatement.jsx";
+import Promotions from "../pages/Promotions/Promotions.jsx";
+import LossBackClaims from "../pages/LossBackClaims/LossBackClaims.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -147,6 +149,14 @@ const MainRouter = () => {
           {
             path: "/affiliate/user-statement",
             element: <AffiliateUserStatement />,
+          },
+          {
+            path: "/promotions",
+            element: <Promotions />,
+          },
+          {
+            path: "/lossback-claims",
+            element: <LossBackClaims />,
           },
         ],
       },

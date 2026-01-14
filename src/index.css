@@ -1743,3 +1743,42 @@ html * {
   }
 }
 /*! Download apk css end  */
+.bg-bg_color_bonusInfo {
+  background-image: linear-gradient(91deg, #535252 -1.96%, #312626 110.45%);
+}
+
+.bg-bg_color_lossback_card_bg {
+  background-image: linear-gradient(90deg, #15803d, #000, #000);
+}
+
+.text-text_color_lossback_amt {
+  color: #facc15;
+}
+
+.bg-bg_color_avlnowLossback {
+  background-color: #eab30833;
+}
+
+.bg-bg_color_lossbackSeeAll {
+  background-color: #16a34a;
+}
+
+.bg-bg_color_GiftCardBg {
+  background-image: linear-gradient(90deg, #743899, #9b1d39);
+}
+
+.bg-bg_color_giftCardInputBg {
+  background-color: #ffffff26;
+}
+
+.bg-bg_color_quaternary2 {
+  background-color: #545454;
+}
+
+.bg-bg_color_tertiary {
+  background-color: #48494b;
+}
+
+.bg-bg_color_quaternary {
+  background-color: #545454;
+}
