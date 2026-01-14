@@ -19,6 +19,7 @@ import { setShowLoginModal } from "../../../../redux/features/stateSlice";
 import BalanceInfo from "./BalanceInfo";
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
 const RightDeskSidebar = ({ data }) => {
   const [isCashOut, setIsCashOut] = useState(false);
@@ -34,6 +35,7 @@ const RightDeskSidebar = ({ data }) => {
   const { refetchExposure } = useExposer(eventId);
   const [betDelay, setBetDelay] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { socialLink } = useGetSocialLink();
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
@@ -107,7 +109,7 @@ const RightDeskSidebar = ({ data }) => {
         ...payload,
         site: settings.siteUrl,
         nounce: uuidv4(),
-        isbetDelay: settings.betDelay,
+        isbetDelay: socialLink?.bet_delay,
       },
     ];
     setLoading(true);
@@ -129,7 +131,7 @@ const RightDeskSidebar = ({ data }) => {
       delay = 9000;
     } else {
       setBetDelay(currentPlaceBetEvent?.betDelay);
-      delay = settings.betDelay ? currentPlaceBetEvent?.betDelay * 1000 : 0;
+      delay = socialLink?.bet_delay ? currentPlaceBetEvent?.betDelay * 1000 : 0;
     }
 
     setTimeout(async () => {

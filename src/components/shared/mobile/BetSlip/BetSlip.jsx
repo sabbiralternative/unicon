@@ -15,6 +15,7 @@ import {
 } from "../../../../redux/features/events/eventSlice";
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 
 const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
   const [isCashOut, setIsCashOut] = useState(false);
@@ -26,6 +27,7 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
   const { refetchBalance } = useBalance();
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues, price, stake } = useSelector((state) => state?.event);
+  const { socialLink } = useGetSocialLink();
   const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
@@ -93,7 +95,7 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
         ...payload,
         site: settings.siteUrl,
         nounce: uuidv4(),
-        isbetDelay: settings.betDelay,
+        isbetDelay: socialLink?.bet_delay,
       },
     ];
     let delay = 0;
@@ -114,7 +116,9 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
       delay = 9000;
     } else {
       setBetDelay(currentPlacedBetEvent?.betDelay);
-      delay = settings.betDelay ? currentPlacedBetEvent?.betDelay * 1000 : 0;
+      delay = socialLink?.bet_delay
+        ? currentPlacedBetEvent?.betDelay * 1000
+        : 0;
     }
 
     // Introduce a delay before calling the API
