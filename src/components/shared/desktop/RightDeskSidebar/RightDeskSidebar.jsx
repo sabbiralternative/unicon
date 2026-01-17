@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useOrderMutation } from "../../../../redux/features/events/events";
 import { useEffect, useState } from "react";
 import useExposer from "../../../../hooks/useExposure";
 import useBalance from "../../../../hooks/useBalance";
-import { settings } from "../../../../api";
+import { API, settings } from "../../../../api";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import BetLoading from "../../mobile/BetSlip/BetLoading";
@@ -20,6 +19,7 @@ import BalanceInfo from "./BalanceInfo";
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+import { AxiosJSEncrypt } from "../../../../lib/AxiosJSEncrypt";
 
 const RightDeskSidebar = ({ data }) => {
   const [isCashOut, setIsCashOut] = useState(false);
@@ -27,7 +27,7 @@ const RightDeskSidebar = ({ data }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const { showComponent, price, stake, placeBetValues } = useSelector(
-    (state) => state.event
+    (state) => state.event,
   );
   const { eventId } = useParams();
   const { refetchBalance, balance } = useBalance();
@@ -36,14 +36,13 @@ const RightDeskSidebar = ({ data }) => {
   const [betDelay, setBetDelay] = useState(null);
   const [loading, setLoading] = useState(false);
   const { socialLink } = useGetSocialLink();
-  const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
   if (buttonValues) {
     parseButtonValues = JSON.parse(buttonValues);
   }
   const currentPlaceBetEvent = data?.result?.find(
-    (item) => item?.id === placeBetValues?.marketId
+    (item) => item?.id === placeBetValues?.marketId,
   );
 
   useEffect(() => {
@@ -135,9 +134,9 @@ const RightDeskSidebar = ({ data }) => {
     }
 
     setTimeout(async () => {
-      const res = await createOrder(payloadData).unwrap();
+      const { data } = await AxiosJSEncrypt.post(API.order, payloadData);
 
-      if (res?.success) {
+      if (data?.success) {
         setLoading(false);
         refetchExposure();
         refetchBalance();
@@ -145,11 +144,11 @@ const RightDeskSidebar = ({ data }) => {
         dispatch(setShowComponent(false));
         setBetDelay("");
         dispatch(setStake(null));
-        toast.success(res?.result?.result?.placed?.[0]?.message);
+        toast.success(data?.result?.result?.placed?.[0]?.message);
       } else {
         setLoading(false);
         toast.error(
-          res?.error?.status?.[0]?.description || res?.error?.errorMessage
+          data?.error?.status?.[0]?.description || data?.error?.errorMessage,
         );
         setBetDelay(null);
         // refetchExposure();

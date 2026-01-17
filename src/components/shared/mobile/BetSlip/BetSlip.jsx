@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { settings } from "../../../../api";
-import { useOrderMutation } from "../../../../redux/features/events/events";
+import { API, settings } from "../../../../api";
 import useExposer from "../../../../hooks/useExposure";
 import { useParams } from "react-router-dom";
 import useBalance from "../../../../hooks/useBalance";
@@ -16,6 +15,7 @@ import {
 import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import useGetSocialLink from "../../../../hooks/useGetSocialLink";
+import { AxiosJSEncrypt } from "../../../../lib/AxiosJSEncrypt";
 
 const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
   const [isCashOut, setIsCashOut] = useState(false);
@@ -28,7 +28,6 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
   const { refetchExposure } = useExposer(eventId);
   const { placeBetValues, price, stake } = useSelector((state) => state?.event);
   const { socialLink } = useGetSocialLink();
-  const [createOrder] = useOrderMutation();
   const buttonValues = localStorage.getItem("buttonValue");
   let parseButtonValues = [];
   if (buttonValues) {
@@ -124,9 +123,9 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
     // Introduce a delay before calling the API
     setTimeout(async () => {
       try {
-        const res = await createOrder(payloadData).unwrap();
+        const { data } = await AxiosJSEncrypt.post(API.order, payloadData);
 
-        if (res?.success) {
+        if (data?.success) {
           setLoading(false);
           refetchExposure();
           refetchBalance();
@@ -134,11 +133,11 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
           refetchCurrentBets();
           setBetDelay("");
           dispatch(setStake(null));
-          toast.success(res?.result?.result?.placed?.[0]?.message);
+          toast.success(data?.result?.result?.placed?.[0]?.message);
         } else {
           setLoading(false);
           toast.error(
-            res?.error?.status?.[0]?.description || res?.error?.errorMessage
+            data?.error?.status?.[0]?.description || data?.error?.errorMessage,
           );
           setBetDelay("");
           setBetDelay(false);
