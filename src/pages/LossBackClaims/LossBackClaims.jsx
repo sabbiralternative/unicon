@@ -40,7 +40,6 @@ const LossBackClaims = () => {
               {data?.result?.map((item) => {
                 return (
                   <div
-                    onClick={() => handleClaimBonus(item?.lossback_bonus_id)}
                     key={item?.lossback_bonus_id}
                     className="w-full  bg-bg_color_quaternary2 rounded-lg p-4 border border-border_color_primary shadow-sm"
                   >
@@ -88,6 +87,9 @@ const LossBackClaims = () => {
                     </div>
                     {item?.claim_button == 1 && (
                       <button
+                        onClick={() =>
+                          handleClaimBonus(item?.lossback_bonus_id)
+                        }
                         className="relative overflow-hidden bg-primary py-1 px-4 rounded-md active:scale-[99%] transition-all duration-300 text-primary  text-sm font-bold"
                         type="button"
                       >
