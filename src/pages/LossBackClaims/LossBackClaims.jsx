@@ -33,8 +33,7 @@ const LossBackClaims = () => {
                 No Loss Back Claims Available!
               </h3>
               <p className="text-text_color_primary1 text-sm max-w-sm leading-relaxed font-medium">
-                Continue playing to earn loss back bonuses! New claims are
-                typically processed on Tuesday, Wednesday, and Thursday.
+                Continue playing to earn loss back bonuses!
               </p>
             </div>
             <div className="w-full max-w-sm bg-bg_color_quaternary2 rounded-lg p-4 border border-border_color_primary shadow-sm">
