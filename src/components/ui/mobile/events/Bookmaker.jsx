@@ -37,7 +37,7 @@ const Bookmaker = ({ bookmaker }) => {
       runner,
       exposer,
       dispatch,
-      token
+      token,
     );
   };
   const computeExposureAndStake = (
@@ -45,7 +45,7 @@ const Bookmaker = ({ bookmaker }) => {
     exposureB,
     runner1,
     runner2,
-    gameId
+    gameId,
   ) => {
     let runner,
       largerExposure,
@@ -74,7 +74,7 @@ const Bookmaker = ({ bookmaker }) => {
     }
 
     if (exposureA > 0 && exposureB > 0) {
-      const difference = exposureA - exposureB;
+      const difference = Math.abs(exposureA - exposureB);
       if (difference <= 10) {
         speedCashOut = true;
       }
@@ -136,10 +136,10 @@ const Bookmaker = ({ bookmaker }) => {
           const runner2Lay = runner2?.lay?.[0]?.price;
 
           const pnl1 = pnlBySelection?.find(
-            (pnl) => pnl?.RunnerId === runner1?.id
+            (pnl) => pnl?.RunnerId === runner1?.id,
           )?.pnl;
           const pnl2 = pnlBySelection?.find(
-            (pnl) => pnl?.RunnerId === runner2?.id
+            (pnl) => pnl?.RunnerId === runner2?.id,
           )?.pnl;
 
           if (
@@ -157,7 +157,7 @@ const Bookmaker = ({ bookmaker }) => {
               pnl2,
               runner1,
               runner2,
-              game?.id
+              game?.id,
             );
             results.push(result);
           }
@@ -180,11 +180,11 @@ const Bookmaker = ({ bookmaker }) => {
       {bookmaker?.map((games, i) => {
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
-            profit?.gameId === games?.id && profit?.isOnePositiveExposure
+            profit?.gameId === games?.id && profit?.isOnePositiveExposure,
         );
 
         const speedCashOut = teamProfit?.find(
-          (profit) => profit?.gameId === games?.id && profit?.speedCashOut
+          (profit) => profit?.gameId === games?.id && profit?.speedCashOut,
         );
 
         return (
@@ -207,7 +207,7 @@ const Bookmaker = ({ bookmaker }) => {
                           setRunnerId,
                           pnlBySelection,
                           token,
-                          teamProfitForGame
+                          teamProfitForGame,
                         )
                       }
                       style={{
@@ -296,10 +296,10 @@ const Bookmaker = ({ bookmaker }) => {
               {games?.runners?.map((runner, idx) => {
                 const pnl =
                   pnlBySelection?.filter(
-                    (pnl) => pnl?.RunnerId === runner?.id
+                    (pnl) => pnl?.RunnerId === runner?.id,
                   ) || [];
                 const predictOddValues = predictOdd?.filter(
-                  (val) => val?.id === runner?.id
+                  (val) => val?.id === runner?.id,
                 );
                 return (
                   <div
@@ -364,7 +364,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.back?.[2]?.price
+                                runner?.back?.[2]?.price,
                               )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                             >
                               <span
@@ -388,7 +388,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.back?.[1]?.price
+                                runner?.back?.[1]?.price,
                               )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                             >
                               <span
@@ -417,7 +417,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.back?.[0]?.price
+                                runner?.back?.[0]?.price,
                               )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                             >
                               <span
@@ -446,7 +446,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.lay?.[0]?.price
+                                runner?.lay?.[0]?.price,
                               )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                             >
                               <span
@@ -470,7 +470,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.lay?.[1]?.price
+                                runner?.lay?.[1]?.price,
                               )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                             >
                               <span
@@ -494,7 +494,7 @@ const Bookmaker = ({ bookmaker }) => {
                           <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                             <div
                               className={`${isPriceAvailable(
-                                runner?.lay?.[2]?.price
+                                runner?.lay?.[2]?.price,
                               )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                             >
                               <span
