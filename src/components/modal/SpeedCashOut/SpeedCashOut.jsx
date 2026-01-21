@@ -22,7 +22,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
 
   const lowestExposure = Math.min(
     speedCashOut?.exposureA,
-    speedCashOut?.exposureB
+    speedCashOut?.exposureB,
   );
 
   const amount = lowestExposure - lowestExposure * 0.03;
@@ -95,7 +95,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
             title="mobileLogin"
             className="flex flex-col items-start gap-y-4 w-full"
           >
-            <div className="mdc-dialog__container">
+            <div className="mdc-dialog__container" style={{ width: "100%" }}>
               <div
                 style={{ borderRadius: "10px" }}
                 className="mat-mdc-dialog-surface mdc-dialog__surface"
@@ -218,7 +218,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                           _ngcontent-ng-c526813732=""
                           className="btn secondary-btn text-primary"
                         >
-                          Speed Cash - {amount}
+                          Speed Cash : {amount}
                         </button>
                       </div>
                     </div>
