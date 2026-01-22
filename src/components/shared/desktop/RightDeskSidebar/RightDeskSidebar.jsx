@@ -22,6 +22,7 @@ import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { AxiosJSEncrypt } from "../../../../lib/AxiosJSEncrypt";
 
 const RightDeskSidebar = ({ data }) => {
+  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
   const dispatch = useDispatch();
@@ -109,6 +110,7 @@ const RightDeskSidebar = ({ data }) => {
         site: settings.siteUrl,
         nounce: uuidv4(),
         isbetDelay: socialLink?.bet_delay,
+        apk: closePopupForForever ? true : false,
       },
     ];
     setLoading(true);
