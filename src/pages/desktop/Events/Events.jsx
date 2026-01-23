@@ -53,13 +53,13 @@ const Events = () => {
         (match_odd) =>
           match_odd.btype === "MATCH_ODDS" &&
           match_odd?.visible == true &&
-          match_odd?.name !== "tied match"
+          match_odd?.name !== "tied match",
       );
       setMatch_odds(filterMatch_odds);
 
       const bookmarkerFilter = events?.filter(
         (bookmaker) =>
-          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true
+          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true,
       );
       setBookmaker(bookmarkerFilter);
 
@@ -67,7 +67,7 @@ const Events = () => {
         (normal) =>
           normal.btype === "FANCY" &&
           normal.tabGroupName === "Normal" &&
-          normal?.visible == true
+          normal?.visible == true,
       );
       setFancy(normalFilter);
     }
@@ -77,7 +77,7 @@ const Events = () => {
     (match_odd) =>
       match_odd.btype === "MATCH_ODDS" &&
       match_odd?.visible == true &&
-      match_odd?.name === "tied match"
+      match_odd?.name === "tied match",
   );
 
   useEffect(() => {

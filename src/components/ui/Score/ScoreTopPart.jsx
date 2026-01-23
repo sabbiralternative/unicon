@@ -73,19 +73,19 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
                             cv == "0"
                               ? "#999"
                               : cv == "1" || cv == "2"
-                              ? "#48a23c"
-                              : cv.split().includes("W")
-                              ? "#c9362b"
-                              : cv == "4"
-                              ? "#2d90d4"
-                              : cv == "6"
-                              ? "#601c78"
-                              : cv.split().includes("b") ||
-                                cv.split().includes("lb") ||
-                                cv.split().includes("wd") ||
-                                cv.split().includes("nb")
-                              ? "#c2ad7b"
-                              : "#999",
+                                ? "#48a23c"
+                                : cv.split().includes("W")
+                                  ? "#c9362b"
+                                  : cv == "4"
+                                    ? "#2d90d4"
+                                    : cv == "6"
+                                      ? "#601c78"
+                                      : cv.split().includes("b") ||
+                                          cv.split().includes("lb") ||
+                                          cv.split().includes("wd") ||
+                                          cv.split().includes("nb")
+                                        ? "#c2ad7b"
+                                        : "#999",
                         }}
                       >
                         <span>{cv}</span>
@@ -124,19 +124,19 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
                             pv == "0"
                               ? "#999"
                               : pv == "1" || pv == "2"
-                              ? "#48a23c"
-                              : pv.split().includes("W")
-                              ? "#c9362b"
-                              : pv == "4"
-                              ? "#2d90d4"
-                              : pv == "6"
-                              ? "#601c78"
-                              : pv.split().includes("b") ||
-                                pv.split().includes("lb") ||
-                                pv.split().includes("wd") ||
-                                pv.split().includes("nb")
-                              ? "#c2ad7b"
-                              : "#999",
+                                ? "#48a23c"
+                                : pv.split().includes("W")
+                                  ? "#c9362b"
+                                  : pv == "4"
+                                    ? "#2d90d4"
+                                    : pv == "6"
+                                      ? "#601c78"
+                                      : pv.split().includes("b") ||
+                                          pv.split().includes("lb") ||
+                                          pv.split().includes("wd") ||
+                                          pv.split().includes("nb")
+                                        ? "#c2ad7b"
+                                        : "#999",
                         }}
                       >
                         <span>{pv}</span>
@@ -152,7 +152,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
               <span>{iscore?.totalLastOver}</span>
             </div>
           </div>
-          <div className=" absolute z-1 top-1/2 -translate-y-1/2 right-2">
+          {/* <div className=" absolute z-1 top-1/2 -translate-y-1/2 right-2">
             <button
               className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  min-w-5 min-h-5 flex items-center justify-center rounded-[4px] bg-bg_color_quaternary 
       cursor-pointer
@@ -172,7 +172,7 @@ const ScoreTopPart = ({ iscore, isMobile }) => {
                 />
               </svg>
             </button>
-          </div>
+          </div> */}
         </div>
       ) : null}
     </div>

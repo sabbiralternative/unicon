@@ -15,6 +15,7 @@ import { LanguageKey } from "../../../../const";
 import assets from "../../../../assets";
 
 const RightDeskSidebar = () => {
+  const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { valueByLanguage } = useLanguage();
   const memberId = localStorage.getItem("memberId");
   const navigate = useNavigate();
@@ -627,7 +628,7 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     {languageValue(
                       valueByLanguage,
-                      LanguageKey.BONUS_STATEMENT
+                      LanguageKey.BONUS_STATEMENT,
                     )}
                   </span>
                 </div>
@@ -686,7 +687,7 @@ const RightDeskSidebar = () => {
                   </span>
                 </div>
                 <div
-                  onClick={() => handleNavigate("/lossback-claims")}
+                  onClick={() => handleNavigate("/lossback-bonus")}
                   className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                 >
                   <span className="w-4 h-auto xs:w-5 text-text_Primary">
@@ -711,9 +712,45 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Loss Back Claims
+                    Lossback Bonus
                   </span>
                 </div>
+                {closePopupForForever && (
+                  <div
+                    onClick={() => handleNavigate("/app-only-bonus")}
+                    className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
+                  >
+                    <span className="w-4 h-auto xs:w-5 text-text_Primary">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--color-iconsColor)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path
+                          stroke="none"
+                          d="M0 0h24v24H0z"
+                          fill="none"
+                        ></path>
+                        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                        <path d="M12.25 18h-7.25a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4.5"></path>
+                        <path d="M18 12h.01"></path>
+                        <path d="M6 12h.01"></path>
+                        <path d="M16 19h6"></path>
+                        <path d="M19 16v6"></path>
+                      </svg>
+                    </span>
+                    <span className="font-medium text-sm xs:text-base">
+                      App Only Bonus
+                    </span>
+                  </div>
+                )}
+
                 {/* {settings.referral && (
                   <div
                     onClick={() => {
@@ -1080,7 +1117,7 @@ const RightDeskSidebar = () => {
                   <span className="font-medium text-sm xs:text-base">
                     {languageValue(
                       valueByLanguage,
-                      LanguageKey.CHANGE_PASSWORD
+                      LanguageKey.CHANGE_PASSWORD,
                     )}
                   </span>
                 </div>
