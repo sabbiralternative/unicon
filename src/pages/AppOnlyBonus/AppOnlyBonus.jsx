@@ -3,8 +3,13 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import { useBonusMutation, useBonusQuery } from "../../hooks/bonus";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 const AppOnlyBonus = () => {
+  const bonusMessage = [
+    "Lossback can be claimed only if you have a net loss on the specified date. If your total bets result in any profit, you are not eligible for this lossback bonus.Loss is calculated after all wins, losses, and settlements for that date.",
+    "लॉसबैक का दावा केवल उसी स्थिति में किया जा सकता है जब निर्धारित तिथि पर आपका कुल शुद्ध नुकसान (नेट लॉस) हो। यदि उस दिन आपकी कुल बेटिंग का परिणाम किसी भी प्रकार का मुनाफ़ा (प्रॉफिट) दिखाता है, तो आप इस लॉसबैक बोनस के लिए पात्र नहीं होंगे। लॉस की गणना उस तिथि की सभी जीत, हार और सेटलमेंट को जोड़ने के बाद की जाएगी।",
+  ];
   const navigate = useNavigate();
   const { mutate: claimBonus } = useBonusMutation();
   const { data, refetch } = useBonusQuery({
@@ -31,12 +36,42 @@ const AppOnlyBonus = () => {
       },
     );
   };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // fade out
+      setFade(false);
+
+      setTimeout(() => {
+        setCurrentIndex((prev) => {
+          return (prev + 1) % bonusMessage?.length;
+        });
+        setFade(true);
+      }, 500); // fade out duration
+    }, 30000); // 30s display time
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="flex flex-col transition-all">
       <div className="flex items-start flex-col lg:flex-row justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
         <LeftDeskSidebar />
         <div className="w-full h-full lg:w-[54%]">
+          <div
+            className="text-start bg-bg_Quaternary mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm mx-2 flex items-start gap-2 transition-opacity duration-500"
+            style={{
+              opacity: fade ? 1 : 0,
+            }}
+          >
+            <img
+              style={{ height: "15px" }}
+              src="/icon/info-icon-svgrepo-com.svg"
+              alt=""
+            />
+            <span className="font-medium">{bonusMessage[currentIndex]}</span>
+          </div>
           {data?.result?.length > 0 && (
             <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-4 px-4 py-6 font-lato">
               {data?.result?.map((item) => {
