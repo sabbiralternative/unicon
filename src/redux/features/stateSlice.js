@@ -13,6 +13,7 @@ const initialState = {
   selectedCategory: "ALL",
   showNotification: false,
   showBanner: false,
+  closePopupForForever: false,
 };
 
 const stateSlice = createSlice({
@@ -60,6 +61,9 @@ const stateSlice = createSlice({
     setShowAPKModal: (state, action) => {
       state.showAPKModal = action.payload;
     },
+    setClosePopUpForForever: (state, action) => {
+      state.closePopupForForever = action.payload;
+    },
   },
 });
 
@@ -77,6 +81,7 @@ export const {
   setShowNotification,
   setShowBanner,
   setShowAPKModal,
+  setClosePopUpForForever,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

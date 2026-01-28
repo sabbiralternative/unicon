@@ -93,6 +93,7 @@ export const getSetApis = (setNoticeLoaded, baseUrl) => {
         settings.betDelay = setting?.betDelay;
         settings.otpWhatsapp = setting?.otpWhatsapp;
         settings.complaint = setting?.complaint;
+        settings.appOnly = setting?.appOnly;
         setNoticeLoaded(true);
       }
     })
