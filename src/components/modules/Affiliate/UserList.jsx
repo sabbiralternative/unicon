@@ -2,16 +2,15 @@ import { LuCirclePlus } from "react-icons/lu";
 import { Fragment, useState } from "react";
 import assets from "../../../assets";
 import AddNewUser from "../../modal/Affiliate/AddNewUser";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import { useGetIndex } from "../../../hooks";
 import { Pagination } from "rsuite";
 import { useNavigate } from "react-router-dom";
+import { settings } from "../../../api";
 
 const UserList = () => {
   const navigate = useNavigate();
   const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
   const [activePage, setActivePage] = useState(1);
-  const { socialLink } = useGetSocialLink();
   const { data } = useGetIndex({
     type: "get_affiliate_users",
     page: activePage,
@@ -97,7 +96,7 @@ const UserList = () => {
                             <button
                               onClick={() =>
                                 navigate(
-                                  `/affiliate/user-statement?punter_id=${item?.punter_id}`
+                                  `/affiliate/user-statement?punter_id=${item?.punter_id}`,
                                 )
                               }
                               style={{
@@ -118,7 +117,7 @@ const UserList = () => {
                             <button
                               onClick={() =>
                                 navigate(
-                                  `/affiliate/user-profit-loss?punter_id=${item?.punter_id}`
+                                  `/affiliate/user-profit-loss?punter_id=${item?.punter_id}`,
                                 )
                               }
                               style={{
@@ -167,7 +166,7 @@ const UserList = () => {
                 boundaryLinks
               />
             </div>
-            {socialLink?.referral_create_account && (
+            {settings?.referral_create_account && (
               <div data-v-fd406c30 className="nw-affi-add-new-user-btn-sec">
                 <button
                   onClick={() => setShowAddNewUserModal(true)}

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import assets from "../../../assets";
 import useContextState from "../../../hooks/useContextState";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import { userToken } from "../../../redux/features/auth/authSlice";
 import OriginalCrashThumb from "./OriginaCrash/OriginalCrashThumb";
 import { useEffect, useState } from "react";
+import { settings } from "../../../api";
 
 const Footer = () => {
   const [iFrame, setIFrame] = useState(null);
@@ -14,7 +14,6 @@ const Footer = () => {
 
   const { logo } = useContextState();
   const token = useSelector(userToken);
-  const { socialLink } = useGetSocialLink();
   const handleOpenSocialLink = (link) => {
     if (link) {
       window.open(link, "_blank");
@@ -22,10 +21,10 @@ const Footer = () => {
   };
 
   const openWhatsapp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
+    if (token && settings?.branchWhatsapplink) {
+      window.open(settings?.branchWhatsapplink, "_blank");
     } else {
-      window.open(socialLink?.whatsapplink, "_blank");
+      window.open(settings?.whatsapplink, "_blank");
     }
   };
 
@@ -80,7 +79,7 @@ const Footer = () => {
             className="pt-5 w-full bg-bg_Quaternary gap-2 rounded-xl md:rounded-none"
           >
             <div className="flex w-full pb-[18px] items-center gap-x-[11px]  justify-center ">
-              {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
+              {settings?.whatsapplink || settings?.branchWhatsapplink ? (
                 <a
                   onClick={openWhatsapp}
                   title="whatsapp"
@@ -120,11 +119,9 @@ const Footer = () => {
                 </a>
               ) : null}
 
-              {socialLink?.instagramLink && (
+              {settings?.instagramLink && (
                 <a
-                  onClick={() =>
-                    handleOpenSocialLink(socialLink?.instagramLink)
-                  }
+                  onClick={() => handleOpenSocialLink(settings?.instagramLink)}
                   title="Instagram"
                   className="flex items-center justify-center rounded  w-[45px] h-[45px] md:w-20 md:h-20 cursor-pointer"
                 >
@@ -170,9 +167,9 @@ const Footer = () => {
                 </a>
               )}
 
-              {socialLink?.telegramLink && (
+              {settings?.telegramLink && (
                 <a
-                  onClick={() => handleOpenSocialLink(socialLink?.telegramLink)}
+                  onClick={() => handleOpenSocialLink(settings?.telegramLink)}
                   title="Telegram"
                   className="flex items-center justify-center rounded  w-[45px] h-[45px] md:w-20 md:h-20 cursor-pointer"
                 >

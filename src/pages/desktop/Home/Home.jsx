@@ -23,8 +23,8 @@ import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider
 import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 import CryptoReferTab from "../../../components/ui/CryptoReferTab/CryptoReferTab";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import Promotion from "../../../components/ui/Promotion";
+import { settings } from "../../../api";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -32,7 +32,6 @@ import Promotion from "../../../components/ui/Promotion";
 // import PopularGames from "../../../components/ui/PopularGames/PopularGames";
 
 const Home = () => {
-  const { socialLink } = useGetSocialLink();
   const { lotusLobby } = useLotusHomeLobby();
   const { refetchBalance } = useBalance();
   const { group } = useSelector((state) => state.state);
@@ -63,7 +62,7 @@ const Home = () => {
                 className="py-1 flex flex-col items-start justify-start"
               >
                 <Promotion />
-                {socialLink?.referral && <CryptoReferTab />}
+                {settings?.referral && <CryptoReferTab />}
                 <Originals trendingGames={lotusLobby?.trendingGames} />
                 {/* <WithdrawAndDepositButton /> */}
                 {data && <InPlay data={data} />}

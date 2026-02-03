@@ -7,15 +7,14 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import AddNewUser from "../../modal/Affiliate/AddNewUser";
 import assets from "../../../assets";
 import { handleCopyToClipBoard } from "../../../utils/handleCopyToClipBoard";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import { useGetIndex } from "../../../hooks";
+import { settings } from "../../../api";
 
 const InviteSection = () => {
   const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
   const { data } = useGetIndex({
     type: "get_referral_code",
   });
-  const { socialLink } = useGetSocialLink();
 
   return (
     <Fragment>
@@ -36,7 +35,7 @@ const InviteSection = () => {
             />
           </div>
         </div>
-        {socialLink?.referral_create_account && (
+        {settings?.referral_create_account && (
           <div className="nw-affi-add-new-user-btn-sec" data-v-4c49d924>
             <button
               onClick={() => setShowAddNewUserModal(true)}

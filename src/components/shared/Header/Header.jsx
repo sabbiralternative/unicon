@@ -29,12 +29,10 @@ import { languageValue } from "../../../utils/language";
 import Notification from "./Notification";
 import toast from "react-hot-toast";
 import WarningCondition from "../WarningCondition/WarningCondition";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK";
 import Error from "../../modal/Error/Error";
 
 const Header = () => {
-  const { socialLink } = useGetSocialLink();
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const { token, bonusToken } = useSelector((state) => state.auth);
@@ -295,7 +293,7 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">BBL</span>
                   </button> */}
-                  {socialLink?.referral && (
+                  {settings?.referral && (
                     <button
                       onClick={() => {
                         token

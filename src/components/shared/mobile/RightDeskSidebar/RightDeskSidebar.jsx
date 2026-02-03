@@ -6,7 +6,6 @@ import { logout } from "../../../../redux/features/auth/authSlice";
 import useBalance from "../../../../hooks/useBalance";
 // import useBonusBalance from "../../../../hooks/useBonusBalance";
 import { settings } from "../../../../api";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import { useNavigate } from "react-router-dom";
 import Referral from "../../../modal/Referral/Referral";
 import useLanguage from "../../../../hooks/useLanguage";
@@ -20,7 +19,6 @@ const RightDeskSidebar = () => {
   const memberId = localStorage.getItem("memberId");
   const navigate = useNavigate();
   const [showReferral, setShowReferral] = useState(false);
-  const { socialLink } = useGetSocialLink();
   const { user } = useSelector((state) => state.auth);
   const { balance } = useBalance();
   // const { bonusBalance } = useBonusBalance();
@@ -391,10 +389,10 @@ const RightDeskSidebar = () => {
                 Statements
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
-                {socialLink?.branchWhatsapplink && (
+                {settings?.branchWhatsapplink && (
                   <div
                     onClick={() =>
-                      handleOpenSocialLink(socialLink?.branchWhatsapplink)
+                      handleOpenSocialLink(settings?.branchWhatsapplink)
                     }
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                   >
@@ -633,7 +631,7 @@ const RightDeskSidebar = () => {
                   </span>
                 </div>
 
-                {socialLink?.referral && (
+                {settings?.referral && (
                   <div
                     onClick={() => handleNavigate("/affiliate")}
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
@@ -815,10 +813,10 @@ const RightDeskSidebar = () => {
                     Referral Statement
                   </span>
                 </div> */}
-                {/* {socialLink?.whatsapplink && (
+                {/* {settings?.whatsapplink && (
                   <div
                     onClick={() =>
-                      handleOpenSocialLink(socialLink?.whatsapplink)
+                      handleOpenSocialLink(settings?.whatsapplink)
                     }
                     className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer"
                   >
@@ -1165,10 +1163,10 @@ const RightDeskSidebar = () => {
                   Contact Us
                 </span>
                 <div className="flex w-full items-center justify-center gap-1">
-                  {socialLink?.whatsapplink && (
+                  {settings?.whatsapplink && (
                     <a
                       onClick={() =>
-                        handleOpenSocialLink(socialLink?.whatsapplink)
+                        handleOpenSocialLink(settings?.whatsapplink)
                       }
                       title="whatsapp"
                       target="_blank"
@@ -1208,10 +1206,10 @@ const RightDeskSidebar = () => {
                     </a>
                   )}
 
-                  {socialLink?.instagramLink && (
+                  {settings?.instagramLink && (
                     <a
                       onClick={() =>
-                        handleOpenSocialLink(socialLink?.instagramLink)
+                        handleOpenSocialLink(settings?.instagramLink)
                       }
                       title="Instagram"
                       target="_blank"
@@ -1259,10 +1257,10 @@ const RightDeskSidebar = () => {
                     </a>
                   )}
 
-                  {socialLink?.telegramLink && (
+                  {settings?.telegramLink && (
                     <a
                       onClick={() =>
-                        handleOpenSocialLink(socialLink?.telegramLink)
+                        handleOpenSocialLink(settings?.telegramLink)
                       }
                       title="Telegram"
                       target="_blank"

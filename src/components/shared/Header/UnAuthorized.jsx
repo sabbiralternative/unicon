@@ -7,7 +7,6 @@ import {
 } from "../../../redux/features/stateSlice";
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
 import { settings } from "../../../api";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
 import useLanguage from "../../../hooks/useLanguage";
 import { useState } from "react";
 import Language from "../../modal/Language/Language";
@@ -17,16 +16,15 @@ import { LanguageKey } from "../../../const";
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
   const { language, valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
-  const { socialLink } = useGetSocialLink();
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
-    (state) => state.state
+    (state) => state.state,
   );
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
 
   const openWhatsapp = () => {
-    if (socialLink?.whatsapplink) {
-      window.open(socialLink?.whatsapplink, "_blank");
+    if (settings?.whatsapplink) {
+      window.open(settings?.whatsapplink, "_blank");
     }
   };
 
@@ -116,7 +114,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             )}
             {settings.registrationWhatsapp &&
               !token &&
-              socialLink?.whatsapplink && (
+              settings?.whatsapplink && (
                 <button
                   onClick={openWhatsapp}
                   className="flex rounded-full  gap-1 hover:opacity-100 w-max font-extrabold items-center justify-center px-5 py-2.5 bg-bg_Quaternary"
@@ -185,7 +183,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             )}
             {settings.registrationWhatsapp &&
               !token &&
-              socialLink?.whatsapplink && (
+              settings?.whatsapplink && (
                 <button
                   onClick={openWhatsapp}
                   className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"

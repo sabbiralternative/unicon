@@ -1,29 +1,23 @@
 import { useSelector } from "react-redux";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
-import { useEffect } from "react";
 import assets from "../../../../assets";
+import { settings } from "../../../../api";
 
 const WhatsApp = () => {
-  const { socialLink, refetch } = useGetSocialLink();
   const { token } = useSelector((state) => state.auth);
 
   const navigateWhatsApp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
+    if (token && settings?.branchWhatsapplink) {
+      window.open(settings?.branchWhatsapplink, "_blank");
     } else {
-      window.open(socialLink?.whatsapplink, "_blank");
+      window.open(settings?.whatsapplink, "_blank");
     }
   };
 
-  useEffect(() => {
-    refetch();
-  }, [token, refetch]);
-
   return (
     <>
-      {socialLink?.instagramLink ? (
+      {settings?.instagramLink ? (
         <div
-          onClick={() => window.open(socialLink?.instagramLink, "_blank")}
+          onClick={() => window.open(settings?.instagramLink, "_blank")}
           title="WhatsAppContact"
           className="fixed cursor-pointer top-[calc(100dvh-180px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
@@ -32,9 +26,9 @@ const WhatsApp = () => {
           </div>
         </div>
       ) : null}
-      {socialLink?.telegramLink ? (
+      {settings?.telegramLink ? (
         <div
-          onClick={() => window.open(socialLink?.telegramLink, "_blank")}
+          onClick={() => window.open(settings?.telegramLink, "_blank")}
           title="WhatsAppContact"
           className="fixed cursor-pointer top-[calc(100dvh-120px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
@@ -43,7 +37,7 @@ const WhatsApp = () => {
           </div>
         </div>
       ) : null}
-      {socialLink?.whatsapplink || socialLink?.branchWhatsapplink ? (
+      {settings?.whatsapplink || settings?.branchWhatsapplink ? (
         <div
           onClick={navigateWhatsApp}
           title="WhatsAppContact"

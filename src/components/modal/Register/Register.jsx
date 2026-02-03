@@ -18,12 +18,11 @@ import {
 import useContextState from "../../../hooks/useContextState";
 import useBalance from "../../../hooks/useBalance";
 // import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
+
 import assets from "../../../assets";
 
 const Register = () => {
   const { token } = useSelector((state) => state.auth);
-  const { socialLink } = useGetSocialLink();
   const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
   const [passType, setPassType] = useState(true);
@@ -109,8 +108,8 @@ const Register = () => {
   // };
 
   const openWhatsapp = () => {
-    if (socialLink?.whatsapplink) {
-      window.open(socialLink?.whatsapplink, "_blank");
+    if (settings?.whatsapplink) {
+      window.open(settings?.whatsapplink, "_blank");
     }
   };
 
@@ -450,7 +449,7 @@ const Register = () => {
                 </div>
 
                 {settings.registrationWhatsapp &&
-                  socialLink?.whatsapplink &&
+                  settings?.whatsapplink &&
                   !token && (
                     <Fragment>
                       <div className="w-full flex items-center gap-4 py-3 px-1">

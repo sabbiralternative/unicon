@@ -9,9 +9,8 @@ import useLanguage from "../../../hooks/useLanguage";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useEffect } from "react";
-import useGetSocialLink from "../../../hooks/useGetSocialLink";
+
 const MobileHeader = ({ handleNavigateToIFrame }) => {
-  const { socialLink } = useGetSocialLink();
   const location = useLocation();
   const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
@@ -68,7 +67,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             <span className="font font-lato text-[12px]">BBL</span>
           </button>
         </a> */}
-        {socialLink?.referral && (
+        {settings?.referral && (
           <a
             onClick={() => {
               token

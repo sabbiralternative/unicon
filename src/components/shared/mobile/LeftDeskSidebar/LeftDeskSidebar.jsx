@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 import WarningCondition from "../../WarningCondition/WarningCondition";
-import useGetSocialLink from "../../../../hooks/useGetSocialLink";
 import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
@@ -21,7 +20,6 @@ import { KABBADI } from "../../../../assets/Icon";
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
   const [hideNavList, setHideNavList] = useState("");
-  const { socialLink } = useGetSocialLink();
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
@@ -60,10 +58,10 @@ const LeftDeskSidebar = () => {
   };
 
   const openWhatsapp = () => {
-    if (token && socialLink?.branchWhatsapplink) {
-      window.open(socialLink?.branchWhatsapplink, "_blank");
+    if (token && settings?.branchWhatsapplink) {
+      window.open(settings?.branchWhatsapplink, "_blank");
     } else {
-      window.open(socialLink?.whatsapplink, "_blank");
+      window.open(settings?.whatsapplink, "_blank");
     }
   };
 
@@ -590,17 +588,17 @@ const LeftDeskSidebar = () => {
                     </span>
                   </li>
                 )}
-                {socialLink?.whatsapplink ||
-                socialLink?.instagramLink ||
-                socialLink?.telegramLink ? (
+                {settings?.whatsapplink ||
+                settings?.instagramLink ||
+                settings?.telegramLink ? (
                   <li className="p-1">
                     <div className="flex flex-col gap-1 p-3 items-center  rounded">
                       <span className="text-primary font-semibold text-primary">
                         Contact Us
                       </span>
                       <div className="flex w-full items-center justify-center gap-1">
-                        {socialLink?.whatsapplink ||
-                        socialLink?.branchWhatsapplink ? (
+                        {settings?.whatsapplink ||
+                        settings?.branchWhatsapplink ? (
                           <a
                             onClick={openWhatsapp}
                             title="whatsapp"
@@ -641,10 +639,10 @@ const LeftDeskSidebar = () => {
                           </a>
                         ) : null}
 
-                        {socialLink?.instagramLink && (
+                        {settings?.instagramLink && (
                           <a
                             onClick={() =>
-                              handleOpenSocialLink(socialLink?.instagramLink)
+                              handleOpenSocialLink(settings?.instagramLink)
                             }
                             title="Instagram"
                             target="_blank"
@@ -692,10 +690,10 @@ const LeftDeskSidebar = () => {
                           </a>
                         )}
 
-                        {socialLink?.telegramLink && (
+                        {settings?.telegramLink && (
                           <a
                             onClick={() =>
-                              handleOpenSocialLink(socialLink?.telegramLink)
+                              handleOpenSocialLink(settings?.telegramLink)
                             }
                             title="Telegram"
                             target="_blank"
