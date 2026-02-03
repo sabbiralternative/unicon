@@ -50,7 +50,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           </button>
         </a>
 
-        <a
+        {/* <a
           onClick={() => {
             navigate("/game-details/4/27996014");
           }}
@@ -67,7 +67,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">BBL</span>
           </button>
-        </a>
+        </a> */}
         {socialLink?.referral && (
           <a
             onClick={() => {
