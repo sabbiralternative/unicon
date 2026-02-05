@@ -26,12 +26,13 @@ const BannerSlider = () => {
               maxHeight: "350px",
             }}
           >
-            <div className="w-full  h-full z-10 rounded-md flex flex-row">
+            <div className="w-full  h-full z-10  flex flex-row">
               {bannerImage?.banner?.map((image, i) => {
                 return (
                   <SwiperSlide key={i}>
                     <div className="w-full h-full swiper-slide">
                       <img
+                        className="rounded-[10px]"
                         // className="min-w-full min-h-full bg-bg_Primary md:h-full bg-[null] absolute top-0 left-0 transition-all ease-in-out duration-500 transform -translate-x-full z-0 translate-x-0 z-10"
                         src={image}
                         alt=""
