@@ -20,7 +20,6 @@
       "casinoCurrency": "INR",
       "mac88": true,
       "aura": true,
-      "balanceApiLoop": false,
       "betFairCashOut": true,
       "bookmakerCashOut": true,
 

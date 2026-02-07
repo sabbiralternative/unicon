@@ -49,9 +49,9 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           </button>
         </a>
 
-        {/* <a
+        <a
           onClick={() => {
-            navigate("/game-details/4/27996014");
+            navigate("/game-details/4/33439271");
           }}
         >
           <button
@@ -59,14 +59,14 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
    
     w-max px-3  py-1     
  lg:hidden ${
-   pathname === "/game-details/4/27996014"
+   pathname === "/game-details/4/33439271"
      ? "text-secondary border border-secondary"
      : ""
  }`}
           >
-            <span className="font font-lato text-[12px]">BBL</span>
+            <span className="font font-lato text-[12px]">T20 World Cup</span>
           </button>
-        </a> */}
+        </a>
         {settings?.referral && (
           <a
             onClick={() => {
