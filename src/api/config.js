@@ -1,13 +1,14 @@
 import axios from "axios";
 import { API, settings as Settings } from "./index";
 import notice from "../../notice.json";
+import { AxiosSecure } from "../lib/AxiosSecure";
 
 export const getSetApis = async (setNoticeLoaded, baseUrl) => {
   const url = baseUrl ? `${baseUrl}/notice.json` : "/notice.json";
   const { data: settingsResponse } = await axios.get(url);
   const site = notice?.result?.settings?.siteUrl;
 
-  const { data: dataResponse } = await axios.post(
+  const { data: dataResponse } = await AxiosSecure.post(
     "https://api7.live/api/exchange/diamond/settings",
     { site },
   );
