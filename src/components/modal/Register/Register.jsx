@@ -20,10 +20,8 @@ import useBalance from "../../../hooks/useBalance";
 // import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
 
 import assets from "../../../assets";
-import { useSettingsMutation } from "../../../hooks/settings";
 
 const Register = () => {
-  const { mutate } = useSettingsMutation();
   const { token } = useSelector((state) => state.auth);
   const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
@@ -76,7 +74,6 @@ const Register = () => {
 
     const result = await handleRegister(registerData).unwrap();
     if (result.success) {
-      mutate();
       if (window?.fbq) {
         window.fbq("track", "CompleteRegistration", {
           content_name: "User Signup",

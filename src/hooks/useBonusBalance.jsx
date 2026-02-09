@@ -6,10 +6,8 @@ import handleEncryptData from "../utils/handleEncryptData";
 import { logout } from "../redux/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import useLanguage from "./useLanguage";
-import { useSettingsMutation } from "./settings";
 
 const useBonusBalance = () => {
-  const { mutate } = useSettingsMutation();
   const { language } = useLanguage();
   const dispatch = useDispatch();
   const bonusToken = localStorage.getItem("bonusToken");
@@ -34,7 +32,6 @@ const useBonusBalance = () => {
 
       if (res?.data?.success === false && bonusToken) {
         dispatch(logout());
-        mutate();
       }
       if (res?.data?.success && bonusToken) {
         const data = res.data?.result;
