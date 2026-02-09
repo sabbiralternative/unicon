@@ -161,7 +161,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data[keys]?.[0]?.ex
-                                            ?.availableToBack[0]?.price
+                                            ?.availableToBack[0]?.price,
                                         )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                       >
                                         <span
@@ -192,7 +192,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data[keys]?.[0]?.ex?.availableToLay[0]
-                                            ?.price
+                                            ?.price,
                                         )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-backBtn undefined`}
                                       >
                                         <span
@@ -226,7 +226,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data[keys]?.[2]?.ex
-                                            ?.availableToBack[0]?.price
+                                            ?.availableToBack[0]?.price,
                                         )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                                       >
                                         <span
@@ -256,7 +256,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data[keys]?.[2]?.ex?.availableToLay[0]
-                                            ?.price
+                                            ?.price,
                                         )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-backBtn undefined`}
                                       >
                                         <span
@@ -288,7 +288,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data[keys]?.[1]?.ex
-                                            ?.availableToBack[0]?.price
+                                            ?.availableToBack[0]?.price,
                                         )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined 
                                  
                                 `}
@@ -320,7 +320,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                                       <div
                                         className={`${isPriceAvailable(
                                           data?.[keys]?.[1]?.ex
-                                            ?.availableToLay?.[0]?.price
+                                            ?.availableToLay?.[0]?.price,
                                         )}overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                                       >
                                         <span
