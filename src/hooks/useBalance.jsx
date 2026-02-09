@@ -3,8 +3,10 @@ import { API } from "../api";
 import { logout, userToken } from "../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AxiosSecure } from "../lib/AxiosSecure";
+import { useSettingsMutation } from "./settings";
 
 const useBalance = () => {
+  const { mutate } = useSettingsMutation();
   const dispatch = useDispatch();
   const token = useSelector(userToken);
   const { data: balance = {}, refetch: refetchBalance } = useQuery({
@@ -15,6 +17,7 @@ const useBalance = () => {
 
       if (res?.data?.success === false && token) {
         dispatch(logout());
+        mutate();
       }
       if (res?.data?.success && token) {
         const data = res.data?.result;

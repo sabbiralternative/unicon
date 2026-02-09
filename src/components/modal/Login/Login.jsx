@@ -17,8 +17,10 @@ import useContextState from "../../../hooks/useContextState";
 import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowDown } from "react-icons/hi";
 import { GrAndroid } from "react-icons/gr";
+import { useSettingsMutation } from "../../../hooks/settings";
 
 const Login = () => {
+  const { mutate } = useSettingsMutation();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState(true);
@@ -41,6 +43,7 @@ const Login = () => {
     const result = await handleLogin(loginData).unwrap();
 
     if (result.success) {
+      mutate();
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
@@ -82,6 +85,7 @@ const Login = () => {
     const result = await handleLogin(loginData).unwrap();
 
     if (result.success) {
+      mutate();
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;

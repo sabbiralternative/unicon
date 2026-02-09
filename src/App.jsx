@@ -9,8 +9,10 @@ import Banner from "./components/modal/Banner/Banner";
 import { useLocation, useNavigate } from "react-router-dom";
 import BuildVersion from "./components/modal/BuildVersion/BuildVersion";
 import { settings } from "./api";
+import { useSettingsMutation } from "./hooks/settings";
 
 const App = () => {
+  const { mutate } = useSettingsMutation();
   const [showBuildVersion, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
   const navigate = useNavigate();
@@ -43,6 +45,7 @@ const App = () => {
             const info = "devtool opened!; type =" + type;
             if (info) {
               dispatch(logout());
+              mutate();
               window.location.href = "https://www.google.com/";
             }
           },

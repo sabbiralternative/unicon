@@ -12,8 +12,10 @@ import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 import assets from "../../../../assets";
+import { useSettingsMutation } from "../../../../hooks/settings";
 
 const RightDeskSidebar = () => {
+  const { mutate } = useSettingsMutation();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { valueByLanguage } = useLanguage();
   const memberId = localStorage.getItem("memberId");
@@ -1123,6 +1125,7 @@ const RightDeskSidebar = () => {
                 <div
                   onClick={() => {
                     dispatch(logout());
+                    mutate();
                     dispatch(setShowRightSidebar(false));
                     navigate("/");
                   }}
