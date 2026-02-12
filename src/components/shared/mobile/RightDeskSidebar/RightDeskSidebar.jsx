@@ -41,8 +41,8 @@ const RightDeskSidebar = () => {
 
   const handleDownloadAPK = (e) => {
     e.preventDefault();
-    if (settings.apkLink) {
-      const fileUrl = settings.apkLink;
+    if (settings.apk_link) {
+      const fileUrl = settings.apk_link;
       const link = document.createElement("a");
       link.href = fileUrl;
       link.setAttribute("download", "site.apk");

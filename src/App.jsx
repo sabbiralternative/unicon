@@ -9,6 +9,7 @@ import Banner from "./components/modal/Banner/Banner";
 import { useLocation, useNavigate } from "react-router-dom";
 import BuildVersion from "./components/modal/BuildVersion/BuildVersion";
 import { settings } from "./api";
+import MaintenanceMessage from "./components/ui/MaintenanceMessage/MaintenanceMessage";
 
 const App = () => {
   const [showBuildVersion, setShowBuildVersion] = useState(false);
@@ -110,6 +111,10 @@ const App = () => {
       }
     }
   }, [stored_build_version]);
+
+  if (settings.maintenance_message) {
+    return <MaintenanceMessage />;
+  }
 
   return (
     <div>
