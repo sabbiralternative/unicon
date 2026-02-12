@@ -18,14 +18,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <QueryClientProvider client={queryClient}>
-        <SettingsLayout>
-          <ApiProvider>
+        <ApiProvider>
+          <SettingsLayout>
             <LanguageProvider>
               <MainRouter />
               <Toaster />
             </LanguageProvider>
-          </ApiProvider>
-        </SettingsLayout>
+          </SettingsLayout>
+        </ApiProvider>
       </QueryClientProvider>
     </PersistGate>
   </Provider>,
