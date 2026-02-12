@@ -560,7 +560,7 @@ const LeftDeskSidebar = () => {
                     Aviator
                   </span>
                 </li>
-                {settings?.apkLink && (
+                {settings.apk_link && (
                   <li
                     onClick={handleDownloadAPK}
                     className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-4 cursor-pointer"

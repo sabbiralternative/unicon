@@ -912,7 +912,7 @@ const RightDeskSidebar = () => {
                 </div>
               </div>
             </li>
-            {settings?.apkLink && (
+            {settings.apk_link && (
               <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
                   Android App

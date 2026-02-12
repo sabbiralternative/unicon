@@ -72,7 +72,7 @@ const Header = () => {
         const expiryTime = localStorage.getItem("installPromptExpiryTime");
         const currentTime = new Date().getTime();
 
-        if ((!expiryTime || currentTime > expiryTime) && settings?.apkLink) {
+        if ((!expiryTime || currentTime > expiryTime) && settings.apk_link) {
           localStorage.removeItem("installPromptExpiryTime");
 
           dispatch(setShowAppPopUp(true));
@@ -118,10 +118,10 @@ const Header = () => {
         style={{ zIndex: 1000, backgroundColor: "white" }}
       >
         <Notification />
-        {settings?.apkLink && showAppPopUp && windowWidth < 1040 && (
+        {settings.apk_link && showAppPopUp && windowWidth < 1040 && (
           <AppPopup />
         )}
-        {settings?.apkLink && showAPKModal && <DownloadAPK />}
+        {settings.apk_link && showAPKModal && <DownloadAPK />}
         <header>
           <div className="flex flex-col">
             <div className=" flex flex-col shadow-lg autoAnimate">
