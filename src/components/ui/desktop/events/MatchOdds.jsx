@@ -178,7 +178,7 @@ const MatchOdds = ({ match_odds }) => {
                 <span className="capitalize font-bold text-xs sm:text-sm md:text-[15px]">
                   {games?.name}
                 </span>
-                {settings.betFairCashOut &&
+                {settings.cashout &&
                   games?.runners?.length !== 3 &&
                   games?.status === "OPEN" &&
                   !speedCashOut && (
@@ -220,7 +220,7 @@ const MatchOdds = ({ match_odds }) => {
                       )}
                     </button>
                   )}
-                {settings.betFairCashOut &&
+                {settings.cashout &&
                   games?.runners?.length !== 3 &&
                   games?.status === "OPEN" &&
                   speedCashOut && (

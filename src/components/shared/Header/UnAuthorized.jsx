@@ -112,7 +112,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </span>
               </button>
             )}
-            {settings.registrationWhatsapp &&
+            {settings.registration_whatsapp &&
               !token &&
               settings?.whatsapplink && (
                 <button
@@ -181,7 +181,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </span>
               </button>
             )}
-            {settings.registrationWhatsapp &&
+            {settings.registration_whatsapp &&
               !token &&
               settings?.whatsapplink && (
                 <button

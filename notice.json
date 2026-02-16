@@ -9,31 +9,13 @@
       "siteTitle": "lotus365",
       "siteUrl": "magicwin.zip",
       "interval": "900",
-      "casino": "aura",
-      "registration": true,
-      "registrationWhatsapp": true,
-      "forceLogin": false,
       "demoLogin": true,
-      "deposit": true,
-
-      "withdraw": true,
       "casinoCurrency": "INR",
       "mac88": true,
       "aura": true,
-      "betFairCashOut": true,
-      "bookmakerCashOut": true,
-
       "b2c": true,
-      "language": true,
-      "complaint": true,
-      "logo": {
-        "height": 55,
-        "width": 125,
-        "format": "png"
-      },
       "baseUrl": "",
       "build": "development",
-      "betDelay": true,
       "otpWhatsapp": true,
       "appOnly": false
     },

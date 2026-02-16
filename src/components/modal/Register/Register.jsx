@@ -448,7 +448,7 @@ const Register = () => {
                   </button>
                 </div>
 
-                {settings.registrationWhatsapp &&
+                {settings.registration_whatsapp &&
                   settings?.whatsapplink &&
                   !token && (
                     <Fragment>

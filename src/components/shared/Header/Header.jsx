@@ -172,8 +172,8 @@ cursor-pointer
                   >
                     <div className="   cursor-pointer">
                       <img
-                        height={settings.logoHeight}
-                        width={settings.logoWidth}
+                        height={settings.logo_height}
+                        width={settings.logo_width}
                         src={logo}
                         alt=""
                       />

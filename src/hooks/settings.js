@@ -23,10 +23,10 @@ export const useSettingsMutation = () => {
           });
         }
         if (Settings.build === "production") {
-          const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logoFormat}`;
+          const logo = `${API.assets}/${Settings.siteUrl}/logo.${Settings.logo_format}`;
           setLogo(logo);
         } else {
-          setLogo(`/src/assets/images/logo.${Settings.logoFormat}`);
+          setLogo(`/src/assets/images/logo.${Settings.logo_format}`);
         }
 
         /* Theme css */

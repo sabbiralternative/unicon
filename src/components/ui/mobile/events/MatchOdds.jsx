@@ -186,7 +186,7 @@ const MatchOdds = ({ match_odds }) => {
                     Cashout
                   </div>
                 </button> */}
-                {settings.betFairCashOut &&
+                {settings.cashout &&
                   games?.runners?.length !== 3 &&
                   games?.status === "OPEN" &&
                   !speedCashOut && (
@@ -229,7 +229,7 @@ const MatchOdds = ({ match_odds }) => {
                     </button>
                   )}
 
-                {settings.betFairCashOut &&
+                {settings.cashout &&
                   games?.runners?.length !== 3 &&
                   games?.status === "OPEN" &&
                   speedCashOut && (
