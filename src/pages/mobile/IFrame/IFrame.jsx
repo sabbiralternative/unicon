@@ -24,7 +24,7 @@ const IFrame = () => {
         gameId: gameId,
         isHome: false,
         mobileOnly: true,
-        casinoCurrency: settings.casinoCurrency,
+        casinoCurrency: settings.casino_currency,
       };
 
       try {

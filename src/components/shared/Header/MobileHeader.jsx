@@ -225,44 +225,43 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           </button>
         </a>
 
-        {settings.casinoCurrency === "INR" && settings.mac88 && (
-          <a
-            onClick={() => {
-              navigate("/mac88");
-            }}
-          >
-            <button
-              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+        <a
+          onClick={() => {
+            navigate("/mac88");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
      
           w-max px-3  py-1     
        lg:hidden ${
          pathname === "/mac88" ? "text-secondary border border-secondary" : ""
        }`}
-            >
-              <span className="flex w-full items-center h-full gap-3">
-                <span className=" flex flex-row items-center justify-center">
-                  <span className="lg:hidden">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 15 16"
+          >
+            <span className="flex w-full items-center h-full gap-3">
+              <span className=" flex flex-row items-center justify-center">
+                <span className="lg:hidden">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 15 16"
+                    fill="var(--color-secondary)"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.7793 5.44C8.75526 3.192 7.71226 1.393 7.00526 0C6.29726 1.393 5.25526 3.192 2.23126 5.44C-2.92574 9.273 1.92826 14.622 6.19626 11.678C5.91826 13.505 4.96926 14.837 4.00526 15.411V16.001H10.0053V15.411C9.04126 14.837 8.09226 13.505 7.81426 11.678C12.0823 14.622 16.9363 9.273 11.7793 5.44Z"
                       fill="var(--color-secondary)"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.7793 5.44C8.75526 3.192 7.71226 1.393 7.00526 0C6.29726 1.393 5.25526 3.192 2.23126 5.44C-2.92574 9.273 1.92826 14.622 6.19626 11.678C5.91826 13.505 4.96926 14.837 4.00526 15.411V16.001H10.0053V15.411C9.04126 14.837 8.09226 13.505 7.81426 11.678C12.0823 14.622 16.9363 9.273 11.7793 5.44Z"
-                        fill="var(--color-secondary)"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="font font-lato text-[12px] ml-[4px]">
-                    {languageValue(valueByLanguage, LanguageKey.MAC88)}
-                  </span>
+                    ></path>
+                  </svg>
+                </span>
+                <span className="font font-lato text-[12px] ml-[4px]">
+                  {languageValue(valueByLanguage, LanguageKey.MAC88)}
                 </span>
               </span>
-            </button>
-          </a>
-        )}
+            </span>
+          </button>
+        </a>
+
         {/* 
         {settings.aura && (
           <a

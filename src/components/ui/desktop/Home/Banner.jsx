@@ -27,7 +27,7 @@ const Banner = () => {
       if (bonusToken) {
         return setError("Bonus wallet is available only on sports.");
       }
-      if (settings.casinoCurrency !== "AED") {
+      if (settings.casino_currency !== "AED") {
         navigate(`/casino/EvolutionGaming/200296`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });

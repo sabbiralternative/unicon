@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { settings } from "../../../api";
 import LeftDeskSidebar from "../../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import Bookmaker from "../../../components/ui/desktop/events/Bookmaker";
 import Fancy from "../../../components/ui/desktop/events/Fancy";
@@ -37,7 +36,7 @@ const Events = () => {
   // const [fancy1, setFancy1] = useState([]);
   // const [overByOver, setOverByOver] = useState([]);
   const { data } = useGetAllOddsEventsQuery(payload, {
-    pollingInterval: settings.interval,
+    pollingInterval: 900,
   });
 
   useEffect(() => {

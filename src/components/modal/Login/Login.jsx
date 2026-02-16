@@ -277,7 +277,7 @@ const Login = () => {
                 >
                   <span>Log In</span>
                 </button>
-                {settings.demoLogin && (
+                {settings.demo_login && (
                   <button
                     onClick={loginWithDemo}
                     type="button"

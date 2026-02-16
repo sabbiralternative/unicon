@@ -91,7 +91,7 @@ const Header = () => {
       if (bonusToken) {
         return toast.error("Bonus wallet is available only on sports.");
       }
-      if (settings.casinoCurrency !== "AED") {
+      if (settings.casino_currency !== "AED") {
         navigate(`/casino/${name}/${id}`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
@@ -103,7 +103,7 @@ const Header = () => {
     }
   };
 
-  if (settings.appOnly && !closePopupForForever) {
+  if (settings.app_only && !closePopupForForever) {
     return <Error />;
   }
   return (
@@ -399,18 +399,17 @@ cursor-pointer
                     GreyHound Racing
                   </span>
                 </button> */}
-                  {settings.mac88 && settings.casinoCurrency === "INR" && (
-                    <button
-                      onClick={() => {
-                        navigate("/mac88");
-                      }}
-                      className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                    >
-                      <span className="font font-lato text-[12px]">
-                        {languageValue(valueByLanguage, LanguageKey.MAC88)}
-                      </span>
-                    </button>
-                  )}
+
+                  <button
+                    onClick={() => {
+                      navigate("/mac88");
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      {languageValue(valueByLanguage, LanguageKey.MAC88)}
+                    </span>
+                  </button>
 
                   {/* <button
                     onClick={() => {

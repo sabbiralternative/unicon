@@ -5,19 +5,8 @@
   },
   "result": {
     "settings": {
-      "otp": true,
-      "siteTitle": "lotus365",
       "siteUrl": "magicwin.zip",
-      "interval": "900",
-      "demoLogin": true,
-      "casinoCurrency": "INR",
-      "mac88": true,
-      "aura": true,
-      "b2c": true,
-      "baseUrl": "",
-      "build": "development",
-      "otpWhatsapp": true,
-      "appOnly": false
+      "build": "development"
     },
 
     "endpoint": {

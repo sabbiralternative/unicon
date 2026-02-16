@@ -20,11 +20,11 @@ const RulesRegulation = () => {
             </h3>
             <div className="mt-1 mb-1 text-justify leading-tight">
               These Rules and Regulations (Rules) are part of the
-              <strong> {settings.siteTitle} </strong>terms and conditions.
+              <strong> {settings.site_name} </strong>terms and conditions.
             </div>
             <div className="mt-1 mb-1 text-justify leading-tight">
               The Rules apply to all bets placed on this online betting platform
-              (<b>{settings.siteTitle}</b>). The Rules consist of the following:
+              (<b>{settings.site_name}</b>). The Rules consist of the following:
             </div>
             <ul className="mt-1 mb-1 pl-6 list-disc text-justify leading-tight">
               <li>Introduction Section (Part A);</li>

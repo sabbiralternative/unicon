@@ -3,7 +3,6 @@ import Bookmaker from "../../../components/ui/mobile/events/Bookmaker";
 import Fancy from "../../../components/ui/mobile/events/Fancy";
 import MatchOdds from "../../../components/ui/mobile/events/MatchOdds";
 import { useEffect, useState } from "react";
-import { settings } from "../../../api";
 import { useGetAllOddsEventsQuery } from "../../../redux/features/events/events";
 import EventHeader from "../../../components/ui/mobile/events/EventHeader";
 import useBalance from "../../../hooks/useBalance";
@@ -39,7 +38,7 @@ const Events = () => {
   // const [fancy1, setFancy1] = useState([]);
   // const [overByOver, setOverByOver] = useState([]);
   const { data } = useGetAllOddsEventsQuery(payload, {
-    pollingInterval: settings.interval,
+    pollingInterval: 900,
   });
 
   useEffect(() => {
@@ -55,13 +54,13 @@ const Events = () => {
         (match_odd) =>
           match_odd.btype === "MATCH_ODDS" &&
           match_odd?.visible == true &&
-          match_odd?.name !== "tied match"
+          match_odd?.name !== "tied match",
       );
       setMatch_odds(filterMatch_odds);
 
       const bookmarkerFilter = events?.filter(
         (bookmaker) =>
-          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true
+          bookmaker.btype === "BOOKMAKER" && bookmaker?.visible == true,
       );
       setBookmaker(bookmarkerFilter);
 
@@ -74,7 +73,7 @@ const Events = () => {
         (normal) =>
           normal.btype === "FANCY" &&
           normal.tabGroupName === "Normal" &&
-          normal?.visible == true
+          normal?.visible == true,
       );
       setFancy(normalFilter);
 
@@ -96,7 +95,7 @@ const Events = () => {
     (match_odd) =>
       match_odd.btype === "MATCH_ODDS" &&
       match_odd?.visible == true &&
-      match_odd?.name === "tied match"
+      match_odd?.name === "tied match",
   );
 
   useEffect(() => {

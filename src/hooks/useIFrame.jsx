@@ -11,7 +11,7 @@ const useIFrame = (eventTypeId, eventId) => {
         eventId: eventId,
         type: "video",
         site: settings.siteUrl,
-        casinoCurrency: settings.casinoCurrency,
+        casinoCurrency: settings.casino_currency,
       };
       const res = await AxiosSecure.post(API.accessToken, payload);
       const data = res?.data;
