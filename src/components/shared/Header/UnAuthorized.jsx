@@ -12,6 +12,7 @@ import { useState } from "react";
 import Language from "../../modal/Language/Language";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import assets from "../../../assets";
 
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
   const { language, valueByLanguage } = useLanguage();
@@ -144,7 +145,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                       height: "20px",
                       width: "20px",
                     }}
-                    src="/src/assets/images/globe.gif"
+                    src={assets.globe}
                     alt=""
                   />
                   <p
@@ -213,7 +214,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                       height: "20px",
                       width: "20px",
                     }}
-                    src="/src/assets/images/globe.gif"
+                    src={assets.globe}
                     alt=""
                   />
                   <p

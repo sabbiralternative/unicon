@@ -66,8 +66,10 @@ import promotionBanner from "./images/promotionBanner.webp";
 import cashBundle from "./images/cash-bundle.webp";
 import giftCard from "./images/giftCard.webp";
 import redeemCardGift from "./images/redeemCardGift.svg";
+import globe from "./images/globe.gif";
 
 export default {
+  globe,
   cashBundle,
   giftCard,
   redeemCardGift,
