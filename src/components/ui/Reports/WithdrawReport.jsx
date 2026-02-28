@@ -3,8 +3,11 @@ import ShowImage from "../../modal/ShowImage/ShowImage";
 import useWithdrawStatement from "../../../hooks/useWithdrawStatement";
 import { settings } from "../../../api";
 import Complaint from "../../modal/Complaint/Complaint";
+import { useBankMutation } from "../../../redux/features/payment/payment.api";
+import toast from "react-hot-toast";
 
 const WithdrawReport = () => {
+  const [deleteWithdraw] = useBankMutation();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
   const { withdrawStatement } = useWithdrawStatement();
@@ -15,11 +18,25 @@ const WithdrawReport = () => {
   useEffect(() => {
     if (withdrawStatement?.length > 0) {
       const categories = Array.from(
-        new Set(withdrawStatement?.map((item) => item?.date?.split(" ")?.[0]))
+        new Set(withdrawStatement?.map((item) => item?.date?.split(" ")?.[0])),
       );
       setCategory(categories);
     }
   }, [withdrawStatement]);
+
+  const handleDeleteWithdraw = async (withdraw_id) => {
+    const payload = {
+      type: "withdrawDelete",
+      withdraw_id,
+    };
+    const res = await deleteWithdraw(payload).unwrap();
+
+    if (res?.success) {
+      toast.success(res?.result?.message);
+    } else {
+      toast.error(res?.error?.errorMessage);
+    }
+  };
 
   return (
     <>
@@ -56,14 +73,14 @@ const WithdrawReport = () => {
                                 ? "bg-bg_transactionSuccessBg"
                                 : ""
                             } ${
-                                data?.status === "REJECTED"
-                                  ? "bg-bg_transactionFailedBg "
-                                  : ""
-                              } ${
-                                data?.status === "PENDING"
-                                  ? "bg-bg_transactionPendingBg"
-                                  : ""
-                              }
+                              data?.status === "REJECTED"
+                                ? "bg-bg_transactionFailedBg "
+                                : ""
+                            } ${
+                              data?.status === "PENDING"
+                                ? "bg-bg_transactionPendingBg"
+                                : ""
+                            }
                             `}
                             >
                               {data?.status}
@@ -91,17 +108,34 @@ const WithdrawReport = () => {
                               <span className="font-bold px-3 mb-2">
                                 ₹ {data?.amount}{" "}
                               </span>
-                              {settings.complaint && (
-                                <button
-                                  style={{ backgroundColor: "rgb(255 131 46)" }}
-                                  onClick={() =>
-                                    setComplaintId(data?.referenceNo)
-                                  }
-                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
-                                >
-                                  Report Issue
-                                </button>
-                              )}
+                              <div className="flex gap-x-2">
+                                {data.status === "PENDING" && (
+                                  <button
+                                    style={{
+                                      backgroundColor: "rgb(255 131 46)",
+                                    }}
+                                    onClick={() =>
+                                      handleDeleteWithdraw(data?.withdraw_id)
+                                    }
+                                    className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
+                                  >
+                                    Delete Withdraw
+                                  </button>
+                                )}
+                                {settings.complaint && (
+                                  <button
+                                    style={{
+                                      backgroundColor: "rgb(255 131 46)",
+                                    }}
+                                    onClick={() =>
+                                      setComplaintId(data?.referenceNo)
+                                    }
+                                    className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
+                                  >
+                                    Report Issue
+                                  </button>
+                                )}
+                              </div>
                             </span>
                           </div>
                           <div className="text-xs py-1 text-center text-text_Quinary w-full border-t bg-bg_Ternary6">

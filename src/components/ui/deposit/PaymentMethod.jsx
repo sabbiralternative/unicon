@@ -67,6 +67,7 @@ const PaymentMethod = ({
       };
 
       const res = await handleBankPayment(depositDetail).unwrap();
+
       if (res?.success) {
         if (method?.type === "whatsapp") {
           window.location.href = res?.result?.link;
@@ -621,7 +622,7 @@ const PaymentMethod = ({
                     <span
                       onClick={() =>
                         handleCopyToClipBoard(
-                          depositData?.depositAmount?.toString()
+                          depositData?.depositAmount?.toString(),
                         )
                       }
                       className="relative float-right"

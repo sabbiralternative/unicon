@@ -28,7 +28,7 @@ const IFrame = () => {
       };
 
       try {
-        const res = await AxiosSecure.post(API.liveCasinoIFrame, payload);
+        const res = await AxiosSecure.post(API.liveCasinoIframe, payload);
         const data = res?.data;
         setIFrame(data?.gameUrl);
         setLoading(false);
