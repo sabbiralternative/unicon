@@ -10,7 +10,7 @@ const WithdrawReport = () => {
   const [deleteWithdraw] = useBankMutation();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
-  const { withdrawStatement } = useWithdrawStatement();
+  const { withdrawStatement, refetch } = useWithdrawStatement();
   const [category, setCategory] = useState([]);
   //   const [showModal, setShowModal] = useState(false);
   //   const [image, setImage] = useState("");
@@ -32,6 +32,7 @@ const WithdrawReport = () => {
     const res = await deleteWithdraw(payload).unwrap();
 
     if (res?.success) {
+      refetch();
       toast.success(res?.result?.message);
     } else {
       toast.error(res?.error?.errorMessage);
@@ -109,19 +110,27 @@ const WithdrawReport = () => {
                                 ₹ {data?.amount}{" "}
                               </span>
                               <div className="flex gap-x-2">
-                                {data.status === "PENDING" && (
-                                  <button
-                                    style={{
-                                      backgroundColor: "rgb(255 131 46)",
-                                    }}
-                                    onClick={() =>
-                                      handleDeleteWithdraw(data?.withdraw_id)
-                                    }
-                                    className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
-                                  >
-                                    Delete Withdraw
-                                  </button>
-                                )}
+                                {data.status === "PENDING" &&
+                                  data?.reject_request === 0 && (
+                                    <button
+                                      style={{
+                                        backgroundColor: "rgb(255 131 46)",
+                                      }}
+                                      onClick={() =>
+                                        handleDeleteWithdraw(data?.withdraw_id)
+                                      }
+                                      className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
+                                    >
+                                      Delete Withdraw
+                                    </button>
+                                  )}
+
+                                {data.status === "PENDING" &&
+                                  data?.reject_request === 1 && (
+                                    <p className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal">
+                                      Withdraw delete request sent.
+                                    </p>
+                                  )}
                                 {settings.complaint && (
                                   <button
                                     style={{

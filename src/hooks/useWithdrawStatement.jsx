@@ -11,7 +11,7 @@ const useWithdrawStatement = () => {
   /* current date */
   const toDate = new Date().toISOString().split("T")[0];
 
-  const { data: withdrawStatement = [] } = useQuery({
+  const { data: withdrawStatement = [], refetch } = useQuery({
     queryKey: ["withdraw-statement"],
     /* enable when token available */
 
@@ -31,7 +31,7 @@ const useWithdrawStatement = () => {
     },
     gcTime: 0,
   });
-  return { withdrawStatement };
+  return { withdrawStatement, refetch };
 };
 
 export default useWithdrawStatement;
