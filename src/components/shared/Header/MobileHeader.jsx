@@ -48,7 +48,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </span>
           </button>
         </a>
-
+        {/* 
         <a
           onClick={() => {
             navigate("/game-details/4/33439271");
@@ -66,7 +66,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">T20 World Cup</span>
           </button>
-        </a>
+        </a> */}
         {settings?.referral && (
           <a
             onClick={() => {
