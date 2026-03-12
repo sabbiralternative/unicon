@@ -3,7 +3,7 @@ import useGetAllPaymentMethods from "../../../hooks/useGetAllPaymentMethods";
 import { CiBank } from "react-icons/ci";
 import assets from "../../../assets";
 import { useEffect, useRef, useState } from "react";
-import { settings } from "../../../api";
+
 import {
   useBankMutation,
   usePgPaymentMutation,
@@ -40,7 +40,7 @@ const PaymentMethod = ({
     ) {
       const pgPayload = {
         paymentId: method?.paymentId,
-        site: settings.siteUrl,
+
         amount,
         method: method?.type,
       };
@@ -62,7 +62,7 @@ const PaymentMethod = ({
       const depositDetail = {
         type: "depositDetails",
         paymentId: method?.paymentId,
-        site: settings.siteUrl,
+
         amount,
       };
 
