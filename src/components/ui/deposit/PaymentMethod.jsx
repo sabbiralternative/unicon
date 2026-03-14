@@ -36,7 +36,8 @@ const PaymentMethod = ({
     if (
       method?.type === "upigateway" ||
       method?.type === "toitgateway" ||
-      method?.type === "i100gateway"
+      method?.type === "i100gateway" ||
+      method?.type === "upiclick"
     ) {
       const pgPayload = {
         paymentId: method?.paymentId,
@@ -45,6 +46,7 @@ const PaymentMethod = ({
         method: method?.type,
       };
       const res = await handlePgPayment(pgPayload).unwrap();
+
       if (res?.success) {
         window.location.href = res?.result?.link;
         // if (settings?.paymentIntent) {
@@ -85,7 +87,8 @@ const PaymentMethod = ({
       tabs &&
       tabs !== "upigateway" &&
       tabs !== "toitgateway" &&
-      tabs !== "i100gateway"
+      tabs !== "i100gateway" &&
+      tabs !== "upiclick"
     ) {
       paymentMethodRef.current.scrollIntoView({
         block: "center",
@@ -193,7 +196,8 @@ const PaymentMethod = ({
                           ) : null}
                           {method?.type == "upigateway" ||
                           method?.type === "toitgateway" ||
-                          method?.type === "i100gateway" ? (
+                          method?.type === "i100gateway" ||
+                          method?.type === "upiclick" ? (
                             <img
                               style={{
                                 height: "17px",
