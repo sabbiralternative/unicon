@@ -121,7 +121,7 @@ const WithdrawReport = () => {
                                       }
                                       className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
                                     >
-                                      Delete Withdraw
+                                      Cancel Withdraw
                                     </button>
                                   )}
 
