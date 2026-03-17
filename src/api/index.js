@@ -57,6 +57,7 @@ export const API = {
 };
 
 export const settings = {
+  site: "",
   site_name: "",
   force_login: "",
   casino_currency: "",
