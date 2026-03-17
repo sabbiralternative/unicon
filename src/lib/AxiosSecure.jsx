@@ -21,8 +21,10 @@ AxiosSecure.interceptors.request.use(
         ...config.data,
         token: generatedToken,
       };
-      if (settings.siteUrl) {
-        payload.site = settings.siteUrl;
+      if (!config.data?.site) {
+        if (settings.site) {
+          payload.site = settings.site;
+        }
       }
       if (settings.language) {
         payload.language = localStorage.getItem("language") || "english";
