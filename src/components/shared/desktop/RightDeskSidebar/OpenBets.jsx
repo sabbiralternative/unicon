@@ -14,6 +14,7 @@ const OpenBets = () => {
   const navigate = useNavigate();
   const { eventId, eventTypeId } = useParams();
   const { myBets, refetchCurrentBets } = useCurrentBets(eventId);
+
   const { mutate: cashOut } = useSBCashOut();
   const { data: eventData } = useGetAllOddsEventsQuery(
     { eventTypeId, eventId },
@@ -21,7 +22,7 @@ const OpenBets = () => {
     {
       pollingInterval: 1000,
       skip: !pathname.includes("/game-details"),
-    }
+    },
   );
   const [openBets, setOpenBets] = useState(true);
   const orderedBets = [
@@ -40,7 +41,7 @@ const OpenBets = () => {
       (group) =>
         group?.Name !== "Bet Builder" &&
         group?.Name !== "Fast Markets" &&
-        group?.Name !== "Player Specials"
+        group?.Name !== "Player Specials",
     );
 
   const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
@@ -54,7 +55,7 @@ const OpenBets = () => {
     });
 
     const column = item?.Items?.find(
-      (col) => col?.Id === betHistory?.selectionId
+      (col) => col?.Id === betHistory?.selectionId,
     );
 
     const payload = {
@@ -131,7 +132,7 @@ const OpenBets = () => {
                     group?.Items?.forEach((data) => {
                       if (bet?.marketId == data?.Id) {
                         column = data?.Items?.find(
-                          (col) => col?.Id === bet?.selectionId
+                          (col) => col?.Id === bet?.selectionId,
                         );
                       }
                     });

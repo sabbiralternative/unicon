@@ -48,25 +48,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </span>
           </button>
         </a>
-        {/* 
-        <a
-          onClick={() => {
-            navigate("/game-details/4/33439271");
-          }}
-        >
-          <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
-   
-    w-max px-3  py-1     
- lg:hidden ${
-   pathname === "/game-details/4/33439271"
-     ? "text-secondary border border-secondary"
-     : ""
- }`}
-          >
-            <span className="font font-lato text-[12px]">T20 World Cup</span>
-          </button>
-        </a> */}
+
         {settings?.referral && (
           <a
             onClick={() => {
@@ -87,7 +69,42 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </button>
           </a>
         )}
-
+        <a
+          onClick={() => {
+            navigate("/game-details/4/28127348");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+    w-max px-3  py-1     
+ lg:hidden ${
+   pathname === "/game-details/4/28127348"
+     ? "text-secondary border border-secondary"
+     : ""
+ }`}
+          >
+            <span className="font font-lato text-[12px]">IPL</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
+            navigate("/game-details/4/28102621");
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+    w-max px-3  py-1     
+ lg:hidden ${
+   pathname === "/game-details/4/28102621"
+     ? "text-secondary border border-secondary"
+     : ""
+ }`}
+          >
+            <span className="font font-lato text-[12px]">PSL</span>
+          </button>
+        </a>
         <a
           onClick={() => {
             navigate("/");
