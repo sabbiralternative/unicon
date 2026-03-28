@@ -104,10 +104,15 @@ const ScoreHome = ({ data, keys }) => {
                   </span>
                   <span className=" text-text_color_primary1 ">
                     {" "}
-                    {data?.[keys]?.score?.set1
+                    {/* {data?.[keys]?.score?.set1
                       .map((item) => Number(item))
                       .filter((item) => !isNaN(item))
-                      .pop()}
+                      .pop()} */}
+                    {data?.[keys]?.score?.set1?.length > 0 &&
+                      Array.isArray(data?.[keys]?.score?.set1) &&
+                      data?.[keys]?.score?.set1[
+                        data?.[keys]?.score?.set1?.length - 1
+                      ]}
                   </span>
                 </span>
                 <span className=" text-text_color_InPlayEventsScoreAndTime text-[9px] font-medium w-full flex items-center justify-center gap-x-2">
@@ -117,10 +122,11 @@ const ScoreHome = ({ data, keys }) => {
                   </span>
                   <span className=" text-text_color_primary1 ">
                     {" "}
-                    {data?.[keys]?.score?.set2
-                      .map((item) => Number(item))
-                      .filter((item) => !isNaN(item))
-                      .pop()}
+                    {data?.[keys]?.score?.set2?.length > 0 &&
+                      Array.isArray(data?.[keys]?.score?.set2) &&
+                      data?.[keys]?.score?.set2[
+                        data?.[keys]?.score?.set2?.length - 1
+                      ]}
                   </span>
                 </span>
               </span>
