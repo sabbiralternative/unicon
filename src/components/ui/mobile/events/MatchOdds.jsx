@@ -224,7 +224,7 @@ const MatchOdds = ({ match_odds }) => {
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-primary whitespace-nowrap font-semibold">
                           <span> : </span>
                           <span className="font-roboto">₹ </span>
-                          <span> {teamProfitForGame?.profit?.toFixed(2)}</span>
+                          <span> {teamProfitForGame?.profit?.toFixed(0)}</span>
                         </div>
                       )}
                     </button>
