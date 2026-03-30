@@ -241,6 +241,9 @@ const Bookmaker = ({ bookmaker }) => {
                       <div className="text-[10px] md:text-sm text-primary whitespace-nowrap font-semibold">
                         Cashout
                       </div>
+                      {teamProfitForGame?.profit?.toString()?.length > 2 && (
+                        <br className="lg:hidden" />
+                      )}
                       {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-primary whitespace-nowrap font-semibold">
                           <span> : </span>
@@ -275,7 +278,7 @@ const Bookmaker = ({ bookmaker }) => {
                 {/* <span className="text-xs font-light">
                   Min: {games?.minLiabilityPerBet}
                 </span> */}
-                <span className="text-xs font-light">
+                <span className="text-[9px] font-light">
                   Max: {games?.maxLiabilityPerBet}
                 </span>
               </div>
