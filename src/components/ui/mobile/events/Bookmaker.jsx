@@ -232,7 +232,7 @@ const Bookmaker = ({ bookmaker }) => {
                         teamProfitForGame?.profit === 0
                       }
                       type="button"
-                      className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer ${
+                      className={` leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center ${teamProfitForGame?.profit?.toString()?.length > 2 ? "flex-col" : "flex-row"}  h-max max-w-[74%] mr-1 cursor-pointer ${
                         teamProfitForGame?.profit > 0
                           ? "bg-primary"
                           : "bg-primary"
@@ -241,9 +241,7 @@ const Bookmaker = ({ bookmaker }) => {
                       <div className="text-[10px] md:text-sm text-primary whitespace-nowrap font-semibold">
                         Cashout
                       </div>
-                      {teamProfitForGame?.profit?.toString()?.length > 2 && (
-                        <br className="lg:hidden" />
-                      )}
+
                       {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-primary whitespace-nowrap font-semibold">
                           <span> : </span>
