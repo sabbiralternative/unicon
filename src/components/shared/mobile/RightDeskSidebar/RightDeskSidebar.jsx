@@ -400,7 +400,7 @@ const RightDeskSidebar = () => {
                       <img src={assets.whatsApp} alt="" />
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Deposit Support
+                      Customer Support
                     </span>
                   </div>
                 )}

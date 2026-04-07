@@ -22,17 +22,25 @@ const Promotions = () => {
   };
 
   const claimCoupon = async () => {
-    const data = await mutateAsync({
-      type: "claimCoupon",
-      coupon_code: coupon,
-    });
+    if (token) {
+      if (!coupon) {
+        return toast.error("Please enter a coupon code");
+      }
+      const data = await mutateAsync({
+        type: "claimCoupon",
+        coupon_code: coupon,
+      });
 
-    if (data?.success) {
-      refetchBalance();
-      toast.success(data?.result);
-      setCoupon(null);
-    } else {
-      toast.error(data?.error);
+      if (data?.success) {
+        refetchBalance();
+        toast.success(data?.result);
+        setCoupon(null);
+      } else {
+        toast.error(data?.error);
+      }
+    }
+    {
+      dispatch(setShowLoginModal(true));
     }
   };
   return (
@@ -267,15 +275,18 @@ const Promotions = () => {
               </div>
               <div className="md:w-0.5 w-[96%] h-0.5 md:h-8 rounded-full bg-cm_primary" />
               <div className="flex items-center gap-1.5 w-full lg:w-fit flex-1 px-2 py-2 md:py-0">
-                <div className="flex flex-1 flex-col text-white leading-normal tracking-wider z-50">
-                  <div className="text-base flex items-center gap-1 text-text_color_lossback_amt font-black w-full">
-                    <div className="flex-1 bg-bg_color_avlnowLossback animate-pulse text-text_color_lossback_amt px-3 py-1 text-x font-bold flex items-center gap-1 rounded-full">
-                      Login to view claims
+                {!token && (
+                  <div className="flex flex-1 flex-col text-white leading-normal tracking-wider z-50">
+                    <div className="text-base flex items-center gap-1 text-text_color_lossback_amt font-black w-full">
+                      <div className="flex-1 bg-bg_color_avlnowLossback animate-pulse text-text_color_lossback_amt px-3 py-1 text-x font-bold flex items-center gap-1 rounded-full">
+                        Login to view claims
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
+
                 <button
-                  onClick={() => handleNavigate("/lossback-claims")}
+                  onClick={() => handleNavigate("/lossback-bonus")}
                   className="relative overflow-hidden bg-bg_color_lossbackSeeAll ml-auto active:scale-[99%] transition-all duration-300 text-white whitespace-nowrap text-sm font-bold rounded px-4 py-2"
                   type="button"
                 >
@@ -332,7 +343,6 @@ const Promotions = () => {
                   />
                   <div className="flex-shrink-0 w-max">
                     <button
-                      disabled={!coupon}
                       onClick={claimCoupon}
                       className="relative overflow-hidden w-max px-2 py-1 font-lato text-black bg-primary text-xs md:text-sm font-bold leading-4 rounded-md flex items-center justify-center relative cursor-pointer disabled:opacity-70 flex items-center gap-x-1 shadow-sm"
                       type="button"
