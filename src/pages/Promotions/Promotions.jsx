@@ -4,14 +4,33 @@ import { setShowLoginModal } from "../../redux/features/stateSlice";
 import assets from "../../assets";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
+import { useBonusMutation } from "../../hooks/bonus";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Promotions = () => {
+  const [coupon, setCoupon] = useState(null);
+  const { mutateAsync } = useBonusMutation();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const handleNavigate = (link) => {
     token ? navigate(link) : dispatch(setShowLoginModal(true));
+  };
+
+  const claimCoupon = async () => {
+    const data = await mutateAsync({
+      type: "claimCoupon",
+      coupon_code: coupon,
+    });
+
+    if (data?.success) {
+      setCoupon(null);
+      toast.success(data?.result);
+    } else {
+      toast.error(data?.error);
+    }
   };
   return (
     <div className="flex flex-col transition-all">
@@ -55,7 +74,7 @@ const Promotions = () => {
             </div>
           </div>
           <div className=" w-full h-max font-lato py-3 px-2.5 flex flex-col gap-y-[15px]">
-            <section
+            {/* <section
               title="Bonus Balance"
               className="w-full bg-bg_color_bonusInfo rounded-[10px] px-1.5 py-1 relative overflow-hidden"
             >
@@ -224,7 +243,7 @@ const Promotions = () => {
                   </p>
                 </button>
               </div>
-            </section>
+            </section> */}
             <div className=" flex md:flex-row flex-col ring-1 ring-lossback_1 items-center w-full rounded-lg  bg-bg_color_lossback_card_bg font-lato">
               <div className="px-4 relative py-3 w-full md:w-fit overflow-hidden">
                 <div className="relative text-center z-20 text-white font-black leading-normal text-base tracking-wider uppercase">
@@ -292,24 +311,27 @@ const Promotions = () => {
                 </div>
                 <div className="flex flex-col items-start text-white gap-[0.5px]">
                   <div className="text-sm md:text-base font-bold  font-lato">
-                    GIFT CARD
+                    Coupon Code
                   </div>
                   <div className="leading-4 text-x sm:text-xs md:text-sm tracking-wide font-normal opacity-80 font-lato text-white">
-                    Type or Paste your promocode and get rewards in your wallet.
+                    Type or Paste your coupon code and get rewards in your
+                    wallet.
                   </div>
                 </div>
               </div>
               <div className="flex flex-col w-full">
                 <div className="flex items-center w-full text-sm text-white font-normal font-lato bg-bg_color_giftCardInputBg py-1 pl-[10px] pr-[6px] rounded-md border  focus-within:outline-none placeholder:text-white focus-within:shadow-sm cursor-text border-transparent focus-within:border-transparent ">
                   <input
+                    value={coupon || ""}
+                    onChange={(e) => setCoupon(e.target.value)}
                     className="undefined flex-grow min-w-0 border-none focus:outline-none bg-transparent"
-                    placeholder="Enter Promo Code"
-                    defaultValue
+                    placeholder="Enter coupon code here"
                   />
                   <div className="flex-shrink-0 w-max">
                     <button
-                      onClick={() => handleNavigate("/")}
-                      className="relative overflow-hidden w-max px-2 py-1 font-lato text-white bg-bg_color_redeemBtnBg text-xs md:text-sm font-bold leading-4 rounded-md flex items-center justify-center relative cursor-pointer disabled:opacity-70 flex items-center gap-x-1 shadow-sm"
+                      disabled={!coupon}
+                      onClick={claimCoupon}
+                      className="relative overflow-hidden w-max px-2 py-1 font-lato text-black bg-primary text-xs md:text-sm font-bold leading-4 rounded-md flex items-center justify-center relative cursor-pointer disabled:opacity-70 flex items-center gap-x-1 shadow-sm"
                       type="button"
                     >
                       <div className="flex items-center gap-x-1">
