@@ -38,8 +38,7 @@ const Promotions = () => {
       } else {
         toast.error(data?.error);
       }
-    }
-    {
+    } else {
       dispatch(setShowLoginModal(true));
     }
   };
