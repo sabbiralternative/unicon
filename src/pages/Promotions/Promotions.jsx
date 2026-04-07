@@ -7,8 +7,10 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import { useBonusMutation } from "../../hooks/bonus";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useBalance from "../../hooks/useBalance";
 
 const Promotions = () => {
+  const { refetchBalance } = useBalance();
   const [coupon, setCoupon] = useState(null);
   const { mutateAsync } = useBonusMutation();
   const dispatch = useDispatch();
@@ -26,8 +28,9 @@ const Promotions = () => {
     });
 
     if (data?.success) {
-      setCoupon(null);
+      refetchBalance();
       toast.success(data?.result);
+      setCoupon(null);
     } else {
       toast.error(data?.error);
     }
