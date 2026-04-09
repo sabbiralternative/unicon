@@ -47,7 +47,7 @@ const LoggedIn = ({
               bonusBalance?.availBalance &&
               (
                 bonusBalance?.availBalance + bonusBalance?.deductedExposure
-              ).tofixed(2)}
+              ).toFixed(2)}
             {!bonusToken &&
               balance &&
               balance?.availBalance &&
@@ -262,7 +262,7 @@ cursor-pointer
                 bonusBalance?.availBalance &&
                 (
                   bonusBalance?.availBalance + bonusBalance?.deductedExposure
-                ).tofixed(2)}
+                ).toFixed(2)}
               {!bonusToken &&
                 balance &&
                 balance?.availBalance &&
