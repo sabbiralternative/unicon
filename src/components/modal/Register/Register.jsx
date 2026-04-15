@@ -22,6 +22,7 @@ import useBalance from "../../../hooks/useBalance";
 import assets from "../../../assets";
 
 const Register = () => {
+  const affnook_token = localStorage.getItem("affnook_token");
   const { token } = useSelector((state) => state.auth);
   const referralCode = localStorage.getItem("referralCode");
   const { refetchBalance } = useBalance();
@@ -70,6 +71,7 @@ const Register = () => {
       referralCode: referralCode || data?.referralCode,
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
+      affnook_token: affnook_token || null,
     };
 
     const result = await handleRegister(registerData).unwrap();
