@@ -4,7 +4,6 @@ import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import useExposer from "../../../../hooks/useExposure";
 import { useDispatch, useSelector } from "react-redux";
 import { handleDesktopBetSlip } from "../../../../utils/handleDesktopBetSlip";
-
 import { useState } from "react";
 import { useGetLadderMutation } from "../../../../redux/features/events/events";
 import Ladder from "../../../modal/Ladder/Ladder";
