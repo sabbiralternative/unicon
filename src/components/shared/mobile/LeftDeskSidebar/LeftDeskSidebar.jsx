@@ -269,6 +269,17 @@ const LeftDeskSidebar = () => {
                   </span>
                 </li>
                 <li
+                  onClick={() => handleNavigate(6)}
+                  className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-2 cursor-pointer"
+                >
+                  <span className="">
+                    <img className="size-4" src="/icon/poll.svg" alt="" />
+                  </span>
+                  <span className="font-medium text-sm xs:text-base">
+                    Politics
+                  </span>
+                </li>
+                <li
                   onClick={() => {
                     navigate("/horse-racing");
                     dispatch(setShowLeftSidebar(false));

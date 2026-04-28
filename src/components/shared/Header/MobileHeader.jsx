@@ -203,6 +203,25 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
         </a>
         <a
           onClick={() => {
+            navigate("/");
+            dispatch(setGroupType(6));
+          }}
+        >
+          <button
+            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       group === 6 && pathname === "/"
+         ? "text-secondary border border-secondary"
+         : ""
+     }`}
+          >
+            <span className="font font-lato text-[12px]">Politics</span>
+          </button>
+        </a>
+        <a
+          onClick={() => {
             navigate("/horse-racing");
           }}
         >
