@@ -237,7 +237,12 @@ const LeftDeskSidebar = () => {
             className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
           >
             <span className="flex w-full items-center h-full px-6 justify-start gap-3">
-              <img className="size-4" src="/icon/poll.svg" alt="" />
+              <img
+                style={{ filter: "invert(1)" }}
+                className="size-4"
+                src="/icon/poll.svg"
+                alt=""
+              />
               <span className="font-medium text-start text-text_Ternary">
                 Politics
               </span>
