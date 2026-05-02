@@ -79,7 +79,11 @@ const Home = () => {
           </>
         )}
 
-        {group === 2 || group === 4 || group === 1 || group === 5 ? (
+        {group === 2 ||
+        group === 4 ||
+        group === 1 ||
+        group === 5 ||
+        group === 6 ? (
           <Group data={data} />
         ) : null}
 
