@@ -67,13 +67,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Evolution-1705911275808?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/evolution.avif")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Evolution-1705911275817?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/evolution1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -97,13 +96,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/e-Cricket-1705911799120?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/crashgames.png")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/e-Cricket-1705911799122?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/crashgames1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -128,13 +126,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/LiveCasinos-1705911704269?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/casino.png")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/LiveCasinos-1705911704279?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/casino1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -160,13 +157,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/CardGames-1705911853715?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/aura.avif")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/CardGames-1705911853726?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/aura1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -191,13 +187,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Fishinggames-1705912252625?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/fishing.avif")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Fishinggames-1705912252627?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/fishing1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -221,13 +216,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/SlotGames-1705912015298?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/slot.png")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/SlotGames-1705912015300?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/slot1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -255,13 +249,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/MultiplayerGames-1705912077487?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/towerlegend.png")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/MultiplayerGames-1705912077489?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/towerlegend1.png"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
@@ -284,13 +277,12 @@ const Banner = () => {
                 <div
                   className="relative w-full active:scale-95 cursor-pointer  bg-bg_SkeletonBgLoaderColor transition-all ease-in-out duration-150 shadow-quickAccessBtnBoxShadows min-h-9 bg-cover bg-center bg-no-repeat rounded-[4px] overflow-hidden undefined"
                   style={{
-                    backgroundImage:
-                      "url('https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aura-1705912199645?q=65&amp;w=600&amp;px=auto&amp;auto=format')",
+                    backgroundImage: 'url("/aura.avif")',
                   }}
                 >
                   <div className="flex justify-center w-full h-full min-h-9 relative z-10 items-center min-w-[175px] sm:min-w-[240px] md:min-w-[280px] pl-[5px] pt-[2px] pb-[2px] pr-1  opacity-100">
                     <img
-                      src="https://promotions-material.s3.ap-south-1.amazonaws.com/quickButtons/Aura-1705912199647?q=65&amp;w=640&amp;px=auto&amp;auto=format"
+                      src="/aura1.svg"
                       width="16"
                       height="16"
                       className="  w-4 h-4 sm:w-5 sm:h-5  ml-1 autoAnimate  "
