@@ -31,6 +31,7 @@ import toast from "react-hot-toast";
 import WarningCondition from "../WarningCondition/WarningCondition";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK";
 import Error from "../../modal/Error/Error";
+import { latestEvent } from "../../../static/latest-event";
 
 const Header = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -300,23 +301,23 @@ cursor-pointer
                       </span>
                     </button>
                   )}
-
-                  {/* <button
-                    onClick={() => {
-                      navigate("/game-details/4/28127348");
-                    }}
-                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                  >
-                    <span className="font font-lato text-[12px]">IPL</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      navigate("/game-details/4/28102621");
-                    }}
-                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
-                  >
-                    <span className="font font-lato text-[12px]">PSL</span>
-                  </button> */}
+                  {latestEvent
+                    ?.filter((item) => item?.show)
+                    ?.map((item) => {
+                      return (
+                        <button
+                          key={item?.eventName}
+                          onClick={() => {
+                            navigate(item?.pathname);
+                          }}
+                          className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                        >
+                          <span className="font font-lato text-[12px]">
+                            {item?.eventName}
+                          </span>
+                        </button>
+                      );
+                    })}
 
                   <button
                     onClick={() => {
