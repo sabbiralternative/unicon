@@ -10,8 +10,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import BuildVersion from "./components/modal/BuildVersion/BuildVersion";
 import { settings } from "./api";
 import MaintenanceMessage from "./components/ui/MaintenanceMessage/MaintenanceMessage";
+import useLanguage from "./hooks/useLanguage";
 
 const App = () => {
+  const { setLanguage } = useLanguage();
   const [showBuildVersion, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
   const navigate = useNavigate();
@@ -117,6 +119,10 @@ const App = () => {
       }
     }
   }, [stored_build_version]);
+
+  useEffect(() => {
+    setLanguage(localStorage.getItem("language") || "english");
+  }, [setLanguage]);
 
   if (settings.maintenance_message) {
     return <MaintenanceMessage />;
