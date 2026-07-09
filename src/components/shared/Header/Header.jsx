@@ -136,7 +136,7 @@ const Header = () => {
                 >
                   <div
                     onClick={() => dispatch(setShowLeftSidebar(true))}
-                    className=" flex items-center w-[40px] md:w-fit justify-center  lg:hidden "
+                    className=" flex items-center w-[40px] min-w-[40px] md:w-fit justify-center  lg:hidden "
                   >
                     <button
                       className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-none border-none h-full flex items-center justify-center active:scale-150  w-[100%] shadow-none px-1  
@@ -167,7 +167,7 @@ cursor-pointer
                       navigate("/");
                       dispatch(setGroupType(0));
                     }}
-                    className={`ml-[2px] md:ml-[0px]  flex items-center ${
+                    className={`ml-[2px] md:ml-[0px] min-w-fit  flex items-center ${
                       showMobileSearch ? "hidden" : ""
                     }`}
                   >
