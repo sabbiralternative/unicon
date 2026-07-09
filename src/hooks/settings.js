@@ -41,10 +41,10 @@ export const useSettingsMutation = () => {
           const logo = `${API.assets}/${Settings.site}/logo.${Settings.logo_format}`;
           setLogo(logo);
         } else {
-          // setLogo(`/src/assets/images/logo.${Settings.logo_format}`);
-          setLogo(
-            `${API.assets}/${Settings.site}/logo.${Settings.logo_format}`,
-          );
+          setLogo(`/src/assets/images/logo.${Settings.logo_format}`);
+          // setLogo(
+          //   `${API.assets}/${Settings.site}/logo.${Settings.logo_format}`,
+          // );
         }
 
         /* Theme css */

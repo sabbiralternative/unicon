@@ -21,13 +21,13 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
     (state) => state.state,
   );
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  // const { token } = useSelector((state) => state.auth);
 
-  const openWhatsapp = () => {
-    if (settings?.whatsapplink) {
-      window.open(settings?.whatsapplink, "_blank");
-    }
-  };
+  // const openWhatsapp = () => {
+  //   if (settings?.whatsapplink) {
+  //     window.open(settings?.whatsapplink, "_blank");
+  //   }
+  // };
 
   return (
     <>
@@ -113,7 +113,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </span>
               </button>
             )}
-            {settings.registration_whatsapp &&
+            {/* {settings.registration_whatsapp &&
               !token &&
               settings?.whatsapplink && (
                 <button
@@ -124,7 +124,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                     Get ID
                   </span>
                 </button>
-              )}
+              )} */}
 
             {settings.language && (
               <button
@@ -182,7 +182,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </span>
               </button>
             )}
-            {settings.registration_whatsapp &&
+            {/* {settings.registration_whatsapp &&
               !token &&
               settings?.whatsapplink && (
                 <button
@@ -193,7 +193,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                     Get ID
                   </span>
                 </button>
-              )}
+              )} */}
 
             {settings.language && (
               <button
