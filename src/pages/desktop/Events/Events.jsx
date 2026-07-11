@@ -16,6 +16,7 @@ import IframeVideoTab from "../../../components/ui/mobile/events/IframeVideoTab"
 import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound";
 import Score from "../../../components/ui/desktop/events/Score";
 import SportsBook from "../../../components/ui/SportsBook/SportsBook";
+import Premium from "../../../components/ui/desktop/events/Premium";
 
 const Events = () => {
   const [tab, setTab] = useState("");
@@ -141,6 +142,7 @@ const Events = () => {
   };
   // console.log(match_odds);
 
+  console.log(data);
   return (
     <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
@@ -233,10 +235,13 @@ const Events = () => {
               setBetType={setTab}
             />
 
-            <div className="w-full text-selection-none pb-3 lg:pb-0">
-              <div className="px-2 font-helvetica-neue">
+            <div className="w-full text-selection-none pb-3 lg:pb-0 h-full">
+              <div className="px-2 font-helvetica-neue h-full">
                 {match_odds?.length > 0 && (
                   <MatchOdds match_odds={match_odds} />
+                )}
+                {data?.premium && data?.premium?.eventId && (
+                  <Premium premium={data?.premium} />
                 )}
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
 

@@ -16,6 +16,7 @@ import HorseGreyhound from "../../../components/ui/mobile/events/HorseGreyhound"
 // import Score from "../../../components/ui/desktop/events/Score";
 import SportsBook from "../../../components/ui/SportsBook/SportsBook";
 import ScoreBottomPart from "../../../components/ui/Score/ScoreBottomPart";
+import Premium from "../../../components/ui/desktop/events/Premium";
 
 const Events = () => {
   const [iFrame, setIframe] = useState("");
@@ -208,6 +209,9 @@ const Events = () => {
               <div className="px-2 font-helvetica-neue">
                 {match_odds?.length > 0 && (
                   <MatchOdds match_odds={match_odds} />
+                )}
+                {data?.premium && data?.premium?.eventId && (
+                  <Premium premium={data?.premium} />
                 )}
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
                 {fancy?.length > 0 && <Fancy fancy={fancy} />}

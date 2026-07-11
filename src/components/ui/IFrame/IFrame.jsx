@@ -60,7 +60,7 @@ const IFrameScore = ({ score, betType, setBetType, iFrame }) => {
             className="
                       w-full flex items-center justify-center overflow-y-auto bg-transparent relative z-10 transition-all ease-in-out duration-100"
           >
-            {score && score?.tracker !== null && (
+            {score && score?.tracker && score?.tracker !== null && (
               <div className="w-full overflow-hidden h-[125px]">
                 <iframe
                   id="videoComponent"
