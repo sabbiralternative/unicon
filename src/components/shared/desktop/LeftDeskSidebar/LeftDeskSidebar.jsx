@@ -16,6 +16,7 @@ import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 import { KABBADI } from "../../../../assets/Icon";
+import { eventNameList } from "../../../../static/event-name-list";
 
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -311,6 +312,25 @@ const LeftDeskSidebar = () => {
               </span>
             </span>
           </li>
+          {eventNameList.map((item) => {
+            return (
+              <li
+                key={item.id}
+                onClick={() => {
+                  navigate("/");
+                  dispatch(setGroupType(item.id));
+                }}
+                className="text-sm cursor-pointer py-4 text-nowrap whitespace-nowrap autoAnimate font-semibold w-full border-b hover:bg-bg_MenuHoverColor hover:scale-[102%]"
+              >
+                <span className="flex w-full items-center h-full px-6 justify-start gap-3">
+                  <img src={item.image} alt={item.name} className="size-5" />
+                  <span className="font-medium text-start text-text_Ternary">
+                    {item.name}
+                  </span>
+                </span>
+              </li>
+            );
+          })}
 
           <li
             onClick={() => {

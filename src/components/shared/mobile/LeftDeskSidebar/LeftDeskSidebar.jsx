@@ -16,6 +16,7 @@ import useLanguage from "../../../../hooks/useLanguage";
 import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 import { KABBADI } from "../../../../assets/Icon";
+import { eventNameList } from "../../../../static/event-name-list";
 
 const LeftDeskSidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -334,7 +335,27 @@ const LeftDeskSidebar = () => {
                     {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
                   </span>
                 </li>
-
+                {eventNameList.map((item) => {
+                  return (
+                    <li
+                      key={item.id}
+                      onClick={() => handleNavigate(item.id)}
+                      className="px-3 py-2 transition-all rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] flex items-center justify-start gap-x-2 cursor-pointer"
+                    >
+                      <span className="">
+                        <img
+                          // style={{ filter: "invert(1)" }}
+                          className="size-4"
+                          src={item.image}
+                          alt=""
+                        />
+                      </span>
+                      <span className="font-medium text-sm xs:text-base">
+                        {item.name}
+                      </span>
+                    </li>
+                  );
+                })}
                 <li
                   onClick={() => {
                     navigate("/mac88");

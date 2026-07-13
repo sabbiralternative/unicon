@@ -288,6 +288,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
                               >
                                 <div className="w-full flex gap-[8px] py-1">
                                   {filteredByName?.map((game, i) => {
+                                    console.log(game);
                                     return (
                                       <div
                                         key={i}

@@ -10,6 +10,7 @@ import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useEffect } from "react";
 import { latestEvent } from "../../../static/latest-event";
+import { eventNameList } from "../../../static/event-name-list";
 
 const MobileHeader = ({ handleNavigateToIFrame }) => {
   const location = useLocation();
@@ -252,6 +253,30 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </span>
           </button>
         </a>
+        {eventNameList.map((item) => {
+          return (
+            <a
+              key={item.id}
+              onClick={() => {
+                navigate("/");
+                dispatch(setGroupType(item.id));
+              }}
+            >
+              <button
+                className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+        w-max px-3  py-1     
+     lg:hidden ${
+       group === item.id && pathname === "/"
+         ? "text-secondary border border-secondary"
+         : ""
+     }`}
+              >
+                <span className="font font-lato text-[12px]">{item.name}</span>
+              </button>
+            </a>
+          );
+        })}
 
         <a
           onClick={() => {

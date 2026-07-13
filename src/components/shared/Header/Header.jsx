@@ -32,6 +32,7 @@ import WarningCondition from "../WarningCondition/WarningCondition";
 import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK";
 import Error from "../../modal/Error/Error";
 import { latestEvent } from "../../../static/latest-event";
+import { eventNameList } from "../../../static/event-name-list";
 
 const Header = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -282,7 +283,7 @@ cursor-pointer
               </div>
               <MobileHeader handleNavigateToIFrame={handleNavigateToIFrame} />
               <div className="hidden lg:block">
-                <div className="flex w-full overflow-y-auto no-scrollbar gap-0.5 bg-bg_Quaternary items-center p-1 justify-center ">
+                <div className="flex w-full max-w-[90%] mx-auto  overflow-x-auto  gap-0.5 bg-bg_Quaternary items-center p-1 justify-start ">
                   {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
                   <span className="font font-lato text-[12px]">SportsBook</span>
                 </button> */}
@@ -417,6 +418,22 @@ cursor-pointer
                     GreyHound Racing
                   </span>
                 </button> */}
+                  {eventNameList.map((item) => {
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          navigate("/");
+                          dispatch(setGroupType(item.id));
+                        }}
+                        className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                      >
+                        <span className="font font-lato text-[12px]">
+                          {item.name}
+                        </span>
+                      </button>
+                    );
+                  })}
 
                   <button
                     onClick={() => {
