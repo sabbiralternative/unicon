@@ -210,9 +210,7 @@ const Events = () => {
                 {match_odds?.length > 0 && (
                   <MatchOdds match_odds={match_odds} />
                 )}
-                {data?.premium && data?.premium?.eventId && (
-                  <Premium premium={data?.premium} />
-                )}
+
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
                 {fancy?.length > 0 && <Fancy fancy={fancy} />}
                 {eventTypeId == 7 || eventTypeId == 4339 ? (
@@ -222,6 +220,9 @@ const Events = () => {
                   <SportsBook sportsBook={data?.sportsbook?.Result} />
                 )}
                 {tiedMatch?.length > 0 && <MatchOdds match_odds={tiedMatch} />}
+                {data?.premium && data?.premium?.eventId && (
+                  <Premium premium={data?.premium} />
+                )}
               </div>
             </div>
           </div>
