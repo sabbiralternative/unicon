@@ -15,7 +15,7 @@ import { LanguageKey } from "../../../const";
 import assets from "../../../assets";
 
 const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
-  const { language, valueByLanguage } = useLanguage();
+  const { valueByLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state,
@@ -156,7 +156,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                       textTransform: "capitalize",
                     }}
                   >
-                    {language || "EN"}
+                    {/* {language || "EN"} */}
                   </p>
                 </div>
               </button>
@@ -225,7 +225,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                       textTransform: "capitalize",
                     }}
                   >
-                    {language || "EN"}
+                    {/* {language || "EN"} */}
                   </p>
                 </div>
               </button>
