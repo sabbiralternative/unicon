@@ -57,6 +57,7 @@ export const API = {
 };
 
 export const settings = {
+  apk_banner: "",
   site: "",
   site_name: "",
   force_login: "",
