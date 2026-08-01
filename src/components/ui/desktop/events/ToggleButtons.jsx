@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 const styles = `
 .tb-wrap {
@@ -78,14 +78,21 @@ export default function ToggleButtons({
   setFancyPremiumTab,
   fancyPremiumTab,
 }) {
-  //   useEffect(() => {
-  //     if (fancy?.length > 0) {
-  //       setFancyPremiumTab("fancy");
-  //     }
-  //     if (data?.premium && data?.premium?.eventId) {
-  //       setFancyPremiumTab("premium");
-  //     }
-  //   }, []);
+  useEffect(() => {
+    const fancy = data?.result?.filter(
+      (normal) =>
+        normal.btype === "FANCY" &&
+        normal.tabGroupName === "Normal" &&
+        normal?.visible == true,
+    );
+
+    if (fancy?.length > 0) {
+      setFancyPremiumTab("fancy");
+    }
+    if (data?.premium && data?.premium?.eventId && fancy?.length === 0) {
+      setFancyPremiumTab("premium");
+    }
+  }, []);
 
   return (
     <div className="tb-wrap">

@@ -20,7 +20,7 @@ import Premium from "../../../components/ui/desktop/events/Premium";
 import ToggleButtons from "../../../components/ui/desktop/events/ToggleButtons";
 
 const Events = () => {
-  const [fancyPremiumTab, setFancyPremiumTab] = useState("fancy");
+  const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const [tab, setTab] = useState("");
   const [iFrame, setIframe] = useState("");
   const dispatch = useDispatch();
@@ -256,7 +256,11 @@ const Events = () => {
                 {fancy?.length > 0 && fancyPremiumTab === "fancy" && (
                   <Fancy fancy={fancy} />
                 )}
-
+                {data?.premium &&
+                  data?.premium?.eventId &&
+                  fancyPremiumTab === "premium" && (
+                    <Premium premium={data?.premium} />
+                  )}
                 {eventTypeId == 7 || eventTypeId == 4339 ? (
                   <HorseGreyhound data={data} />
                 ) : null}
@@ -264,11 +268,6 @@ const Events = () => {
                   <SportsBook sportsBook={data?.sportsbook?.Result} />
                 )}
                 {tiedMatch?.length > 0 && <MatchOdds match_odds={tiedMatch} />}
-                {data?.premium &&
-                  data?.premium?.eventId &&
-                  fancyPremiumTab === "premium" && (
-                    <Premium premium={data?.premium} />
-                  )}
               </div>
             </div>
           </div>
