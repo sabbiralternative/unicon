@@ -17,8 +17,10 @@ import HorseGreyhound from "../../../components/ui/desktop/events/HorseGreyhound
 import Score from "../../../components/ui/desktop/events/Score";
 import SportsBook from "../../../components/ui/SportsBook/SportsBook";
 import Premium from "../../../components/ui/desktop/events/Premium";
+import ToggleButtons from "../../../components/ui/desktop/events/ToggleButtons";
 
 const Events = () => {
+  const [fancyPremiumTab, setFancyPremiumTab] = useState("fancy");
   const [tab, setTab] = useState("");
   const [iFrame, setIframe] = useState("");
   const dispatch = useDispatch();
@@ -242,8 +244,18 @@ const Events = () => {
                 )}
 
                 {bookmaker?.length > 0 && <Bookmaker bookmaker={bookmaker} />}
+                {data && (
+                  <ToggleButtons
+                    data={data}
+                    fancy={fancy}
+                    setFancyPremiumTab={setFancyPremiumTab}
+                    fancyPremiumTab={fancyPremiumTab}
+                  />
+                )}
 
-                {fancy?.length > 0 && <Fancy fancy={fancy} />}
+                {fancy?.length > 0 && fancyPremiumTab === "fancy" && (
+                  <Fancy fancy={fancy} />
+                )}
 
                 {eventTypeId == 7 || eventTypeId == 4339 ? (
                   <HorseGreyhound data={data} />
@@ -252,9 +264,11 @@ const Events = () => {
                   <SportsBook sportsBook={data?.sportsbook?.Result} />
                 )}
                 {tiedMatch?.length > 0 && <MatchOdds match_odds={tiedMatch} />}
-                {data?.premium && data?.premium?.eventId && (
-                  <Premium premium={data?.premium} />
-                )}
+                {data?.premium &&
+                  data?.premium?.eventId &&
+                  fancyPremiumTab === "premium" && (
+                    <Premium premium={data?.premium} />
+                  )}
               </div>
             </div>
           </div>
