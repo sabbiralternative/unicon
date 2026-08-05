@@ -5,8 +5,16 @@ import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import assets from "../../../../assets";
 import { useSelector } from "react-redux";
 import Score from "./Score";
+import LiveVirtual from "./LiveVirtual";
 
-const SingleGroup = ({ data, filterData, title, margin }) => {
+const SingleGroup = ({
+  data,
+  filterData,
+  title,
+  margin,
+  setLiveVirtual,
+  liveVirtual,
+}) => {
   const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football", 5: "Kabbadi" };
   const { group } = useSelector((state) => state.state);
   const navigate = useNavigate();
@@ -68,6 +76,12 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                   )}
 
                   <span>{title}</span>
+                  <LiveVirtual
+                    category={group}
+                    setLiveVirtual={setLiveVirtual}
+                    color="#fff"
+                    liveVirtual={liveVirtual}
+                  />
                 </div>
               </div>
               <div className="bg-bg_Quaternary rounded-b border border-ternary4 border-t-0 border-b-0 shadow-lg">
@@ -98,7 +112,7 @@ const SingleGroup = ({ data, filterData, title, margin }) => {
                   </div>
 
                   {data &&
-                    filterData.map((keys) => {
+                    filterData.map(([keys]) => {
                       return (
                         <>
                           <div

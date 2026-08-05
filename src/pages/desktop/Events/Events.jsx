@@ -144,7 +144,6 @@ const Events = () => {
   };
   // console.log(match_odds);
 
-  console.log(data);
   return (
     <div className={`flex flex-col transition-all ease-in-out duration-100 `}>
       <div className="flex items-start justify-start w-full lg:px-12 xl:px-20 xlg:px-24">
