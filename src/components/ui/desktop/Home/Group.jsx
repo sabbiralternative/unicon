@@ -30,31 +30,30 @@ const Group = ({ data }) => {
     >
       <div className="w-full h-full">
         <div className="w-full mt-[15px] px-[2px]">
-          <SingleGroup
-            data={data}
-            filterData={groupedInPlay}
-            title="In Play"
-            setLiveVirtual={setLiveVirtualInPlay}
-            liveVirtual={liveVirtualInPlay}
-          />
-
-          {groupedInPlay?.length === 0 && (
-            <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-              No inplay event available right now!
-            </div>
+          {groupedInPlay?.length > 0 && (
+            <SingleGroup
+              data={data}
+              filterData={groupedInPlay}
+              title="In Play"
+              setLiveVirtual={setLiveVirtualInPlay}
+              liveVirtual={liveVirtualInPlay}
+            />
           )}
-          <SingleGroup
-            margin={true}
-            data={data}
-            filterData={groupedUpcoming}
-            title="Upcoming Events"
-            setLiveVirtual={setLiveVirtualUpcoming}
-            liveVirtual={liveVirtualUpcoming}
-          />
 
-          {groupedUpcoming?.length === 0 && (
+          {groupedUpcoming?.length > 0 && (
+            <SingleGroup
+              margin={true}
+              data={data}
+              filterData={groupedUpcoming}
+              title="Upcoming Events"
+              setLiveVirtual={setLiveVirtualUpcoming}
+              liveVirtual={liveVirtualUpcoming}
+            />
+          )}
+
+          {groupedUpcoming?.length === 0 && groupedInPlay?.length === 0 && (
             <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-              No upcoming event available right now!
+              No event available right now!
             </div>
           )}
         </div>

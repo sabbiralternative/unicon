@@ -1,7 +1,5 @@
-import { useSelector } from "react-redux";
 import "./liveVirtual.css";
-const LiveVirtual = ({ setLiveVirtual, category, color, liveVirtual }) => {
-  const { group } = useSelector((state) => state.state);
+const LiveVirtual = ({ setLiveVirtual, category, liveVirtual }) => {
   const onChangeLiveVirtual = (type, eventTypeId, isChecked) => {
     const obj = { type, eventTypeId, isChecked };
 
@@ -35,22 +33,17 @@ const LiveVirtual = ({ setLiveVirtual, category, color, liveVirtual }) => {
           className="ng-untouched ng-pristine ng-valid"
           checked={
             liveVirtual?.find(
-              (item) => item.eventTypeId == group && item.type === "live",
+              (item) => item.eventTypeId == category && item.type === "live",
             )?.isChecked ?? false
           }
         />
-        <label
-          htmlFor={`checkboxOnein_play-inplay-4-${category}`}
-          style={{ color: color }}
-        >
-          LIVE
-        </label>
+        <label htmlFor={`checkboxOnein_play-inplay-4-${category}`}>LIVE</label>
       </li>
       <li>
         <input
           checked={
             liveVirtual?.find(
-              (item) => item.eventTypeId == group && item.type === "virtual",
+              (item) => item.eventTypeId == category && item.type === "virtual",
             )?.isChecked ?? false
           }
           onChange={(e) =>
@@ -61,10 +54,7 @@ const LiveVirtual = ({ setLiveVirtual, category, color, liveVirtual }) => {
           id={`checkboxTwoin_play--inplay--4-${category}`}
           className="ng-untouched ng-pristine ng-valid"
         />
-        <label
-          htmlFor={`checkboxTwoin_play--inplay--4-${category}`}
-          style={{ color: color }}
-        >
+        <label htmlFor={`checkboxTwoin_play--inplay--4-${category}`}>
           VIRTUAL
         </label>
       </li>

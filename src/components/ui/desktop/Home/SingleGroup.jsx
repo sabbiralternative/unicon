@@ -76,12 +76,6 @@ const SingleGroup = ({
                   )}
 
                   <span>{title}</span>
-                  <LiveVirtual
-                    category={group}
-                    setLiveVirtual={setLiveVirtual}
-                    color="#fff"
-                    liveVirtual={liveVirtual}
-                  />
                 </div>
               </div>
               <div className="bg-bg_Quaternary rounded-b border border-ternary4 border-t-0 border-b-0 shadow-lg">
@@ -95,8 +89,14 @@ const SingleGroup = ({
                         <img className="size-7" src={assets.kabbadi} alt="" />
                       )}
                     </span>
-                    <div className="text-text_Ternary md:text-[18px] text-base font-semibold leading-3 tracking-wide text-center">
+                    <div className="text-text_Ternary md:text-[18px] text-base font-semibold leading-3 tracking-wide text-center flex items-center gap-x-2">
                       {eventName[group]}
+                      <LiveVirtual
+                        category={group}
+                        setLiveVirtual={setLiveVirtual}
+                        color="#fff"
+                        liveVirtual={liveVirtual}
+                      />
                     </div>
                   </div>
                   <div className="col-span-6 py-2.5 lg:col-span-7 grid grid-cols-12 h-full">
