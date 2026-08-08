@@ -68,6 +68,7 @@ const RightDeskSidebar = () => {
       window.open(link, "_blank");
     }
   };
+
   return (
     <>
       {showReferral && <Referral setShowReferral={setShowReferral} />}
@@ -183,7 +184,10 @@ const RightDeskSidebar = () => {
                   </svg>
                 </span>
                 <span className="font-lato-bold font-semibold text-sm xs:text-base text-text_Ternary">
-                  Balance Information
+                  {languageValue(
+                    valueByLanguage,
+                    LanguageKey.BALANCE_INFORMATION,
+                  )}
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-0.5 w-full">
@@ -205,7 +209,7 @@ const RightDeskSidebar = () => {
                 </div> */}
                 <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                   <span className="uppercase font-normal text-xxs">
-                    Net Exposure
+                    {languageValue(valueByLanguage, LanguageKey.EXPOSURE)}
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Success">
                     ₹ {balance?.deductedExposure}
@@ -386,7 +390,7 @@ const RightDeskSidebar = () => {
 
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                Statements
+                {languageValue(valueByLanguage, LanguageKey.STATEMENTS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 {settings?.branchWhatsapplink && (
@@ -431,7 +435,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Deposit Report
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.DEPOSIT_STATEMENT,
+                    )}
                   </span>
                 </div>
                 <div
@@ -460,7 +467,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Withdraw Report
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.WITHDRAW_STATMENT,
+                    )}
                   </span>
                 </div>
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -510,7 +520,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Open Bets
+                    {languageValue(valueByLanguage, LanguageKey.OPEN_BETS)}
                   </span>
                 </div>
                 <div
@@ -542,7 +552,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Betting Profit &amp; Loss
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.BETTING_PROFIT_AND_LOSS,
+                    )}
                   </span>
                 </div>
 
@@ -597,7 +610,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    My Bank Details
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.MY_BANK_DETAILS,
+                    )}
                   </span>
                 </div>
                 <div
@@ -660,7 +676,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Affiliate
+                      {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
                     </span>
                   </div>
                 )}
@@ -681,7 +697,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Promos & Bonus
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.PROMOTION_AND_BONUSES,
+                    )}
                   </span>
                 </div>
                 <div
@@ -710,7 +729,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Lossback Bonus
+                    {languageValue(valueByLanguage, LanguageKey.LOSSBACK_BONUS)}
                   </span>
                 </div>
                 {closePopupForForever && (
@@ -744,7 +763,10 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      App Only Bonus
+                      {languageValue(
+                        valueByLanguage,
+                        LanguageKey.APP_ONLY_BONUS,
+                      )}
                     </span>
                   </div>
                 )}
@@ -856,7 +878,7 @@ const RightDeskSidebar = () => {
             </li>
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                Account Settings
+                {languageValue(valueByLanguage, LanguageKey.ACCOUNT_SETTINGS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -907,7 +929,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Stake Settings
+                    {languageValue(valueByLanguage, LanguageKey.STAKE_SETTINGS)}
                   </span>
                 </div>
               </div>
@@ -915,7 +937,7 @@ const RightDeskSidebar = () => {
             {settings.apk_link && (
               <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                  Android App
+                  {languageValue(valueByLanguage, LanguageKey.ANDROID_APP)}
                 </span>
                 <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                   {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -967,7 +989,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Download APK
+                      {languageValue(valueByLanguage, LanguageKey.DOWNLOAD_APK)}
                     </span>
                   </div>
                 </div>
@@ -975,7 +997,10 @@ const RightDeskSidebar = () => {
             )}
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                Legal &amp; Compliance
+                {languageValue(
+                  valueByLanguage,
+                  LanguageKey.LEGAL_AND_COMPLIANCE,
+                )}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 <div
@@ -1002,7 +1027,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Rules &amp; Regulations
+                    {languageValue(valueByLanguage, LanguageKey.RULES)}
                   </span>
                 </div>
                 <div
@@ -1029,7 +1054,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Exclusion Policy
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.EXCLUSION_POLICY,
+                    )}
                   </span>
                 </div>
                 <div
@@ -1054,7 +1082,10 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Responsible Gambling
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.RESPONSIBLE_GAMBLING,
+                    )}
                   </span>
                 </div>
                 <div
@@ -1080,14 +1111,14 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Privacy Policy
+                    {languageValue(valueByLanguage, LanguageKey.PRIVACY_POLICY)}
                   </span>
                 </div>
               </div>
             </li>
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                Account actions
+                {languageValue(valueByLanguage, LanguageKey.ACCOUNT_ACTIONS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 <div
@@ -1153,11 +1184,11 @@ const RightDeskSidebar = () => {
                 </div>
               </div>
             </li>
-            <li className="px-3 py-2">
+            {/* <li className="px-3 py-2">
               <span className="flex text-center text-text_Primary text-sm xs:text-base font-medium">
                 Register online and play online
               </span>
-            </li>
+            </li> */}
             {/* <li className="p-1">
               <div className="flex flex-col gap-1 p-3 items-center bg-bg_contactUsCard rounded">
                 <span className="text-primary font-semibold">

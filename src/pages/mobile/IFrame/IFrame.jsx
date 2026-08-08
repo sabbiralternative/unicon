@@ -6,8 +6,12 @@ import { API, settings } from "../../../api";
 import toast from "react-hot-toast";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
 import Loader from "../../../components/shared/Loader/Loader";
+import useLanguage from "../../../hooks/useLanguage";
+import { LanguageKey } from "../../../const";
+import { languageValue } from "../../../utils/language";
 
 const IFrame = () => {
+  const { valueByLanguage } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [iFrame, setIFrame] = useState("");
   const { gameId } = useParams();
@@ -116,7 +120,7 @@ const IFrame = () => {
                     </svg>
                   </span>
                   <span className="text-xxs text-primary md:text-text_LoginTextColor font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
-                    Account
+                    {languageValue(valueByLanguage, LanguageKey.ACCOUNT)}
                   </span>
                 </button>
               </div>

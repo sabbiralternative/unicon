@@ -6,8 +6,12 @@ import { useRef, useState } from "react";
 // import toast from "react-hot-toast";
 // import { settings } from "../../../api";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const CasinoProvider = ({ casinoProviders }) => {
+  const { valueByLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -77,7 +81,9 @@ const CasinoProvider = ({ casinoProviders }) => {
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
                   type="button"
                 >
-                  {showSeeAll ? "See Less" : "See All"}
+                  {showSeeAll
+                    ? languageValue(valueByLanguage, LanguageKey.SEE_LESS)
+                    : languageValue(valueByLanguage, LanguageKey.SEE_ALL)}
                 </button>
                 <button
                   onClick={() => scrollToLeft(ref)}

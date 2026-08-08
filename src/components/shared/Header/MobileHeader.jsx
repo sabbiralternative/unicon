@@ -67,7 +67,10 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
    pathname === "/affiliate" ? "text-secondary border border-secondary" : ""
  }`}
             >
-              <span className="font font-lato text-[12px]">Affiliate</span>
+              <span className="font font-lato text-[12px]">
+                {" "}
+                {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
+              </span>
             </button>
           </a>
         )}
@@ -156,7 +159,10 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Tennis</span>
+            <span className="font font-lato text-[12px]">
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+            </span>
           </button>
         </a>
         <a onClick={() => handleNavigateToIFrame("sportsbook", "550000")}>
@@ -170,7 +176,10 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Sportsbook</span>
+            <span className="font font-lato text-[12px]">
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
+            </span>
           </button>
         </a>
         <a
@@ -210,7 +219,10 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
          : ""
      }`}
           >
-            <span className="font font-lato text-[12px]">Politics</span>
+            <span className="font font-lato text-[12px]">
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.POLITICS)}
+            </span>
           </button>
         </a>
         <a
@@ -272,7 +284,10 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
          : ""
      }`}
               >
-                <span className="font font-lato text-[12px]">{item.name}</span>
+                <span className="font font-lato text-[12px]">
+                  {" "}
+                  {languageValue(valueByLanguage, item.name)}
+                </span>
               </button>
             </a>
           );
@@ -479,7 +494,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  Slots
+                  {languageValue(valueByLanguage, LanguageKey.SLOTS)}
                 </span>
               </span>
             </span>
@@ -519,7 +534,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  crash-games
+                  {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
                 </span>
               </span>
             </span>
@@ -561,7 +576,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  fishing-games
+                  {languageValue(valueByLanguage, LanguageKey.FISHING_GAMES)}
                 </span>
               </span>
             </span>

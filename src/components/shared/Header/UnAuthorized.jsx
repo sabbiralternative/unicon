@@ -136,7 +136,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   justifyContent: "end",
                   background: "transparent",
                   border: "none",
-                  marginTop: "14px",
+                  // marginTop: "14px",
                 }}
               >
                 <div className="flex flex-col justify-center items-center">
@@ -205,7 +205,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   justifyContent: "end",
                   background: "transparent",
                   border: "none",
-                  marginTop: "14px",
+                  // marginTop: "14px",
                 }}
               >
                 <div className="flex flex-col justify-center items-center">

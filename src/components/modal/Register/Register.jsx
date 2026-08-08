@@ -20,8 +20,12 @@ import useBalance from "../../../hooks/useBalance";
 // import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
 
 import assets from "../../../assets";
+import useLanguage from "../../../hooks/useLanguage";
+import { LanguageKey } from "../../../const";
+import { languageValue } from "../../../utils/language";
 
 const Register = () => {
+  const { valueByLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const { token } = useSelector((state) => state.auth);
   const referralCode = localStorage.getItem("referralCode");
@@ -231,7 +235,10 @@ const Register = () => {
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                         type="button"
                       >
-                        <span className=" ">Get OTP Message</span>
+                        <span className=" ">
+                          {" "}
+                          {languageValue(valueByLanguage, LanguageKey.GET_OTP)}
+                        </span>
                         <span className="shimmer"></span>
                       </button>
                     )}
@@ -445,7 +452,7 @@ const Register = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_Primary rounded-lg font-medium border text-[12px] xs:text-[15px] py-2 flex items-center justify-center gap-x-2 disabled:bg-bg_Quinary cursor-pointer"
                   >
                     <span className="font-lato-bold font-semibold text-base">
-                      Register
+                      {languageValue(valueByLanguage, LanguageKey.REGISTER)}
                     </span>
                   </button>
                 </div>
@@ -493,7 +500,7 @@ const Register = () => {
                       }}
                       className="text-text_Primary cursor-pointer"
                     >
-                      Login
+                      {languageValue(valueByLanguage, LanguageKey.LOGIN)}
                     </span>
                   </div>
                 </div>

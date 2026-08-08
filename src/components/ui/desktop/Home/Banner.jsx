@@ -11,7 +11,11 @@ import { useEffect, useState } from "react";
 import { settings } from "../../../../api";
 import toast from "react-hot-toast";
 import WarningCondition from "../../../shared/WarningCondition/WarningCondition";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 const Banner = () => {
+  const { valueByLanguage } = useLanguage();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [showWarning, setShowWarning] = useState(false);
@@ -77,7 +81,7 @@ const Banner = () => {
                       title="Evolution"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Evolution
+                      {languageValue(valueByLanguage, LanguageKey.EVOLUTION)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -106,7 +110,7 @@ const Banner = () => {
                       title="e-Cricket"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Crash Games
+                      {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -136,7 +140,7 @@ const Banner = () => {
                       title="Live Casinos"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Live Casinos
+                      {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -167,7 +171,7 @@ const Banner = () => {
                       title="Card Games"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Card Games
+                      {languageValue(valueByLanguage, LanguageKey.CARD_GAMES)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -197,7 +201,10 @@ const Banner = () => {
                       title="Fishing games"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Fishing games
+                      {languageValue(
+                        valueByLanguage,
+                        LanguageKey.FISHING_GAMES,
+                      )}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -226,7 +233,7 @@ const Banner = () => {
                       title="Slot Games"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Slot Games
+                      {languageValue(valueByLanguage, LanguageKey.SLOTS)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -259,7 +266,7 @@ const Banner = () => {
                       title="Multiplayer Games"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Game Shows
+                      {languageValue(valueByLanguage, LanguageKey.GAME_SHOW)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>
@@ -287,7 +294,7 @@ const Banner = () => {
                       title="Aura"
                     />
                     <span className=" ml-1 autoAnimate text-white text-xs capitalize pr-[2px] md:text-sm text-nowrap w-full truncate font-lato-bold  font-semibold md:font-semibold">
-                      Mac88
+                      {languageValue(valueByLanguage, LanguageKey.MAC88)}
                     </span>
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full  min-h-9 rounded-[4px] "></div>

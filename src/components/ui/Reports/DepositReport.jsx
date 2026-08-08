@@ -3,8 +3,12 @@ import useDepositStatement from "../../../hooks/useDepositStatement";
 import ShowImage from "../../modal/ShowImage/ShowImage";
 import { settings } from "../../../api";
 import Complaint from "../../modal/Complaint/Complaint";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const DepositReport = () => {
+  const { valueByLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
   const { accountStatement } = useDepositStatement();
@@ -15,7 +19,7 @@ const DepositReport = () => {
   useEffect(() => {
     if (accountStatement?.length > 0) {
       const categories = Array.from(
-        new Set(accountStatement?.map((item) => item?.date?.split(" ")?.[0]))
+        new Set(accountStatement?.map((item) => item?.date?.split(" ")?.[0])),
       );
       setCategory(categories);
     }
@@ -51,7 +55,13 @@ const DepositReport = () => {
                           className="flex  flex-col  border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
                         >
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
-                            <div className="text-base px-3 py-1">Deposit</div>
+                            <div className="text-base px-3 py-1">
+                              {" "}
+                              {languageValue(
+                                valueByLanguage,
+                                LanguageKey.DEPOSIT,
+                              )}
+                            </div>
                             <div
                               className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-primary rounded-bl h-full   
                             
@@ -60,17 +70,18 @@ const DepositReport = () => {
                                 ? "bg-bg_transactionSuccessBg"
                                 : ""
                             } ${
-                                data?.status === "REJECTED"
-                                  ? "bg-bg_transactionFailedBg "
-                                  : ""
-                              } ${
-                                data?.status === "PENDING"
-                                  ? "bg-bg_transactionPendingBg"
-                                  : ""
-                              }
+                              data?.status === "REJECTED"
+                                ? "bg-bg_transactionFailedBg "
+                                : ""
+                            } ${
+                              data?.status === "PENDING"
+                                ? "bg-bg_transactionPendingBg"
+                                : ""
+                            }
                             `}
                             >
-                              {data?.status}
+                              {languageValue(valueByLanguage, data?.status)}
+                              {/* {data?.status} */}
                             </div>
                           </div>
                           <div className="flex  justify-between mt-2">
@@ -104,7 +115,10 @@ const DepositReport = () => {
                                   }
                                   className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
                                 >
-                                  Report Issue
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.REPORT_ISSUE,
+                                  )}
                                 </button>
                               )}
                             </span>
@@ -121,7 +135,10 @@ const DepositReport = () => {
           </>
         ) : (
           <div className="flex items-center justify-center pt-20">
-            <p>No transaction yet!</p>
+            <p>
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.NO_TRANSACTION_YET)}
+            </p>
           </div>
         )}
       </div>

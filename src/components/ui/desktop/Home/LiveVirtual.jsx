@@ -1,5 +1,9 @@
+import { LanguageKey } from "../../../../const";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
 import "./liveVirtual.css";
 const LiveVirtual = ({ setLiveVirtual, category, liveVirtual }) => {
+  const { valueByLanguage } = useLanguage();
   const onChangeLiveVirtual = (type, eventTypeId, isChecked) => {
     const obj = { type, eventTypeId, isChecked };
 
@@ -37,7 +41,10 @@ const LiveVirtual = ({ setLiveVirtual, category, liveVirtual }) => {
             )?.isChecked ?? false
           }
         />
-        <label htmlFor={`checkboxOnein_play-inplay-4-${category}`}>LIVE</label>
+        <label htmlFor={`checkboxOnein_play-inplay-4-${category}`}>
+          {" "}
+          {languageValue(valueByLanguage, LanguageKey.LIVE)}
+        </label>
       </li>
       <li>
         <input
@@ -55,7 +62,7 @@ const LiveVirtual = ({ setLiveVirtual, category, liveVirtual }) => {
           className="ng-untouched ng-pristine ng-valid"
         />
         <label htmlFor={`checkboxTwoin_play--inplay--4-${category}`}>
-          VIRTUAL
+          {languageValue(valueByLanguage, LanguageKey.VIRTUAL)}
         </label>
       </li>
     </ul>

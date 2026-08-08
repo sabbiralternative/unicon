@@ -7,12 +7,22 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import ScoreHome from "../../desktop/Home/ScoreHome";
 import { filterLiveVirtual } from "../../../../utils/filter-live-virtual";
 import LiveVirtual from "../../desktop/Home/LiveVirtual";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 
 const InPlay = ({ data }) => {
+  const { valueByLanguage } = useLanguage();
   const [liveVirtual, setLiveVirtual] = useState([]);
   const { myBets } = useCurrentBets();
   const [categories, setCategories] = useState([]);
-  const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football" };
+
+  const eventName = {
+    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
+    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
+    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
+    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
+  };
   const navigate = useNavigate();
   const navigateGameList = (keys) => {
     navigate(`/game-details/${data[keys]?.eventTypeId}/${keys}`);
@@ -65,14 +75,17 @@ const InPlay = ({ data }) => {
                   </clipPath>
                 </defs>
               </svg>
-              <span>In Play</span>
+              <span>
+                {" "}
+                {languageValue(valueByLanguage, LanguageKey.IN_PLAY)}
+              </span>
             </div>
             <div
               onClick={() => navigate("/open-bets")}
               className="w-max text-nowrap cursor-pointer"
             >
               <span className="text-xs tracking-wide text-white text-nowrap whitespace-nowrap font-normal">
-                Open Bets
+                {languageValue(valueByLanguage, LanguageKey.OPEN_BETS)}
               </span>
               <sup className="font-features sups">
                 <span className="text-x font-normal tracking-wide text-primary bg-bg_Warning min-w-4 min-h-4 text-center px-1 py-0.5 font-lato rounded-full">

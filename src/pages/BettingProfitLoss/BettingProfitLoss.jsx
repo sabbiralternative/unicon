@@ -5,8 +5,12 @@ import useBettingProfitLoss from "../../hooks/useBettingProfitLoss";
 import { useSelector } from "react-redux";
 import { userToken } from "../../redux/features/auth/authSlice";
 import moment from "moment";
+import useLanguage from "../../hooks/useLanguage";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 
 const BettingProfitLoss = () => {
+  const { valueByLanguage } = useLanguage();
   const { passbook } = useBettingProfitLoss();
   const navigate = useNavigate();
   const token = useSelector(userToken);
@@ -17,7 +21,7 @@ const BettingProfitLoss = () => {
   };
 
   const getUniqueDate = Array.from(
-    new Set(passbook?.map((item) => item?.settledTime))
+    new Set(passbook?.map((item) => item?.settledTime)),
   );
 
   return (
@@ -212,7 +216,7 @@ const BettingProfitLoss = () => {
               {token && getUniqueDate?.length > 0 ? (
                 getUniqueDate?.map((date) => {
                   const filterByDate = passbook?.filter(
-                    (item) => item?.settledTime === date
+                    (item) => item?.settledTime === date,
                   );
                   const totalPnl = filterByDate?.reduce((acc, curr) => {
                     return acc + curr.memberWin;
@@ -236,8 +240,8 @@ const BettingProfitLoss = () => {
                               totalPnl > 0
                                 ? "text-text_Success"
                                 : totalPnl < 0
-                                ? "text-red-400"
-                                : "text-white"
+                                  ? "text-red-400"
+                                  : "text-white"
                             }`}
                           >
                             {totalPnl?.toFixed(2)}
@@ -270,8 +274,8 @@ const BettingProfitLoss = () => {
                                       item?.memberWin > 0
                                         ? "text-text_Success"
                                         : item?.memberWin < 0
-                                        ? "text-text_Danger"
-                                        : "text-black"
+                                          ? "text-text_Danger"
+                                          : "text-black"
                                     } `}
                                   >
                                     ₹ {item?.memberWin}
@@ -302,7 +306,10 @@ const BettingProfitLoss = () => {
               ) : (
                 <div className="flex items-center justify-center w-full pt-20">
                   <h2 className="text-base ">
-                    No betting profit and loss yet!
+                    {languageValue(
+                      valueByLanguage,
+                      LanguageKey.NO_BETTING_PROFIT_LOSS_YET,
+                    )}
                   </h2>
                 </div>
               )}

@@ -20,8 +20,12 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { AxiosJSEncrypt } from "../../../../lib/AxiosJSEncrypt";
 import { isBetDelay, isDelay } from "../../../../utils/isBetDelay";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 
 const RightDeskSidebar = ({ data }) => {
+  const { valueByLanguage } = useLanguage();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
@@ -410,7 +414,10 @@ const RightDeskSidebar = ({ data }) => {
                           className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent  text-text_BetSlipCancelBtnColor font-medium border border-primary rounded-md cursor-pointer"
                         >
                           <span className="text-text_Primary font-bold text-xs leading-5">
-                            Cancel Bet
+                            {languageValue(
+                              valueByLanguage,
+                              LanguageKey.CANCEL_BET,
+                            )}
                           </span>
                         </button>
                         <div className="w-[50%] max-w-[156px] h-max">
@@ -422,7 +429,10 @@ const RightDeskSidebar = ({ data }) => {
                           >
                             <div className="flex items-start justify-start flex-col">
                               <span className="font-bold text-xs sm:text-sm">
-                                Place Bet
+                                {languageValue(
+                                  valueByLanguage,
+                                  LanguageKey.PLACE_BET,
+                                )}
                               </span>
                               {/* <span className="font-semibold text-[10px] sm:text-xs">
                             <div>
@@ -474,12 +484,15 @@ const RightDeskSidebar = ({ data }) => {
           ) : (
             <div className="w-full flex flex-col gap-y-1 py-2">
               <h4 className="text-sm font-lato text-center py-4">
-                Please login to see your open bets.{" "}
+                {languageValue(
+                  valueByLanguage,
+                  LanguageKey.LOGIN_TO_SEE_YOUR_OPEN_BETS,
+                )}
                 <span
                   onClick={() => dispatch(setShowLoginModal(true))}
                   className="text-text_Secondary cursor-pointer hover:underline"
                 >
-                  Login
+                  {languageValue(valueByLanguage, LanguageKey.LOGIN)}
                 </span>
               </h4>
             </div>

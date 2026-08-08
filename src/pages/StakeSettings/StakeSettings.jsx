@@ -4,8 +4,12 @@ import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/R
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useEditButtonValuesMutation } from "../../redux/features/events/events";
+import useLanguage from "../../hooks/useLanguage";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 
 const StakeSettings = () => {
+  const { valueByLanguage } = useLanguage();
   const [editButtonValue] = useEditButtonValuesMutation();
   const navigate = useNavigate();
   const buttonGameValues = JSON.parse(localStorage.getItem("buttonValue"));
@@ -108,7 +112,7 @@ const StakeSettings = () => {
                     type="submit"
                   >
                     <span className="text-base text-primary font-lato font-[400] space-x-1">
-                      EDIT
+                      {languageValue(valueByLanguage, LanguageKey.EDIT)}
                     </span>
                   </button>
                 </div>

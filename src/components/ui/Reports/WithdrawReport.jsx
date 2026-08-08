@@ -5,8 +5,12 @@ import { settings } from "../../../api";
 import Complaint from "../../modal/Complaint/Complaint";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
 import toast from "react-hot-toast";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const WithdrawReport = () => {
+  const { valueByLanguage } = useLanguage();
   const [deleteWithdraw] = useBankMutation();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
@@ -65,7 +69,13 @@ const WithdrawReport = () => {
                           className="flex  flex-col  border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
                         >
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
-                            <div className="text-base px-3 py-1">Withdraw</div>
+                            <div className="text-base px-3 py-1">
+                              {" "}
+                              {languageValue(
+                                valueByLanguage,
+                                LanguageKey.WITHDRAW,
+                              )}
+                            </div>
                             <div
                               className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-primary rounded-bl h-full   
                             
@@ -84,7 +94,8 @@ const WithdrawReport = () => {
                             }
                             `}
                             >
-                              {data?.status}
+                              {languageValue(valueByLanguage, data?.status)}
+                              {/* {data?.status} */}
                             </div>
                           </div>
                           <div className="flex  justify-between  mt-2">
@@ -121,7 +132,10 @@ const WithdrawReport = () => {
                                       }
                                       className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
                                     >
-                                      Cancel Withdraw
+                                      {languageValue(
+                                        valueByLanguage,
+                                        LanguageKey.CANCEL_WITHDRAW,
+                                      )}
                                     </button>
                                   )}
 
@@ -141,7 +155,10 @@ const WithdrawReport = () => {
                                     }
                                     className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
                                   >
-                                    Report Issue
+                                    {languageValue(
+                                      valueByLanguage,
+                                      LanguageKey.REPORT_ISSUE,
+                                    )}
                                   </button>
                                 )}
                               </div>
@@ -159,7 +176,10 @@ const WithdrawReport = () => {
           </>
         ) : (
           <div className="flex items-center justify-center pt-20">
-            <p>No transaction yet!</p>
+            <p>
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.NO_TRANSACTION_YET)}
+            </p>
           </div>
         )}
       </div>

@@ -8,8 +8,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useSBCashOut from "../../../../hooks/sb_cashout";
 import { useGetAllOddsEventsQuery } from "../../../../redux/features/events/events";
 import toast from "react-hot-toast";
+import useLanguage from "../../../../hooks/useLanguage";
+import { languageValue } from "../../../../utils/language";
+import { LanguageKey } from "../../../../const";
 
 const OpenBets = () => {
+  const { valueByLanguage } = useLanguage();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { eventId, eventTypeId } = useParams();
@@ -97,7 +101,10 @@ const OpenBets = () => {
           id="matched_1"
           className="px-3 py-2 cursor-pointer w-full flex items-center justify-between bg-primary rounded "
         >
-          <span className=" text-primary text-xs">Matched Bets</span>
+          <span className=" text-primary text-xs">
+            {" "}
+            {languageValue(valueByLanguage, LanguageKey.MATCHED_BETS)}
+          </span>
           <div className=" flex items-center justify-center autoAnimate text-primary">
             {openBets ? (
               <MdOutlineKeyboardArrowUp size={20} />
@@ -224,7 +231,10 @@ const OpenBets = () => {
         {openBets && myBets?.length === 0 && orderedBets?.length === 0 && (
           <div className={`w-full origin-top scaleVerticalOpen`}>
             <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4  py-3 shadow text-text_Ternary ">
-              You have no Matched Bets.
+              {languageValue(
+                valueByLanguage,
+                LanguageKey.YOU_HAVE_NO_MATCHED_BETS,
+              )}
             </div>
           </div>
         )}

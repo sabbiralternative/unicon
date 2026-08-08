@@ -2,8 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 import assets from "../../../assets";
+import useLanguage from "../../../hooks/useLanguage";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const CryptoReferTab = () => {
+  const { valueByLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -16,7 +20,7 @@ const CryptoReferTab = () => {
         <div
           onClick={() => {
             window.open(
-              "https://onramp.money/main/buy/?appId=1&mode=overlay&origin=https://onramp.money&defaultCoinCode=USDT"
+              "https://onramp.money/main/buy/?appId=1&mode=overlay&origin=https://onramp.money&defaultCoinCode=USDT",
             );
           }}
           id="add Crypto"
@@ -40,7 +44,7 @@ const CryptoReferTab = () => {
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-bold text-text_color_primary leading-tight truncate">
-                Buy Crypto
+                {languageValue(valueByLanguage, LanguageKey.BUY_CRYPTO)}
               </div>
               <div className="text-x  xs1:text-xs text-text_color_primary truncate">
                 USDT, BTC, etc.
@@ -78,10 +82,10 @@ const CryptoReferTab = () => {
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-bold text-text_Quaternary1 leading-tight truncate">
-                Refer &amp; Earn
+                {languageValue(valueByLanguage, LanguageKey.REFER_AND_EARN)}
               </div>
               <div className="text-x  xs1:text-xs text-text_Quaternary1 truncate">
-                Earn commissions
+                {languageValue(valueByLanguage, LanguageKey.EARN_COMMISSIONS)}
               </div>
             </div>
           </div>

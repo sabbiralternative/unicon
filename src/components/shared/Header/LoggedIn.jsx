@@ -231,7 +231,7 @@ cursor-pointer
               </svg>
             </span>
             <span className=" text-xxs text-primary  md:text-text_LoginTextColor  font-normal font-lato md:font-semibold md:text-xs xs:text-xs ">
-              Account
+              {languageValue(valueByLanguage, LanguageKey.ACCOUNT)}
             </span>
           </button>
         </div>
@@ -243,7 +243,10 @@ cursor-pointer
 "
           >
             <span className="  font-semibold flex flex-row font-lato md:font-normal sm:text-base xs:text-sm">
-              <span>Deposit</span>
+              <span>
+                {" "}
+                {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+              </span>
             </span>
             <span className="shimmer"></span>
           </button>

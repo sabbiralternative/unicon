@@ -255,7 +255,7 @@ const LeftDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Sportsbok
+                    {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
                   </span>
                 </li>
                 <li
@@ -282,7 +282,7 @@ const LeftDeskSidebar = () => {
                     />
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Politics
+                    {languageValue(valueByLanguage, LanguageKey.POLITICS)}
                   </span>
                 </li>
                 <li
@@ -351,7 +351,7 @@ const LeftDeskSidebar = () => {
                         />
                       </span>
                       <span className="font-medium text-sm xs:text-base">
-                        {item.name}
+                        {languageValue(valueByLanguage, item.name)}
                       </span>
                     </li>
                   );
@@ -507,7 +507,7 @@ const LeftDeskSidebar = () => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    Slots
+                    {languageValue(valueByLanguage, LanguageKey.SLOTS)}
                   </span>
                 </li>
                 <li
@@ -535,7 +535,7 @@ const LeftDeskSidebar = () => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    Crash Games
+                    {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
                   </span>
                 </li>
                 <li
@@ -565,7 +565,7 @@ const LeftDeskSidebar = () => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    Fishing Games
+                    {languageValue(valueByLanguage, LanguageKey.FISHING_GAMES)}
                   </span>
                 </li>
 
@@ -592,7 +592,7 @@ const LeftDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    Aviator
+                    {languageValue(valueByLanguage, LanguageKey.AVIATOR)}
                   </span>
                 </li>
                 {settings.apk_link && (
@@ -619,7 +619,7 @@ const LeftDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      Download APK
+                      {languageValue(valueByLanguage, LanguageKey.DOWNLOAD_APK)}
                     </span>
                   </li>
                 )}
@@ -629,7 +629,7 @@ const LeftDeskSidebar = () => {
                   <li className="p-1">
                     <div className="flex flex-col gap-1 p-3 items-center  rounded">
                       <span className="text-primary font-semibold text-primary">
-                        Contact Us
+                        {languageValue(valueByLanguage, LanguageKey.CONTACT_US)}
                       </span>
                       <div className="flex w-full items-center justify-center gap-1">
                         {settings?.whatsapplink ||

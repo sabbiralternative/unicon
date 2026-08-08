@@ -1,7 +1,10 @@
 export const languageValue = (valueByLanguage, key) => {
   const language = localStorage.getItem("language") || "english";
-  return valueByLanguage
-    ? valueByLanguage[key][language]
+
+  if (!key) return "";
+
+  return valueByLanguage && valueByLanguage?.[key]?.[language]
+    ? valueByLanguage?.[key]?.[language]
     : key
         .split("_") // Split by underscores
         .map(

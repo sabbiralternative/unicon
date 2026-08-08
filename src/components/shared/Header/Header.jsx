@@ -298,7 +298,7 @@ cursor-pointer
                       className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                     >
                       <span className="font font-lato text-[12px]">
-                        Affiliate
+                        {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
                       </span>
                     </button>
                   )}
@@ -364,7 +364,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      Sportsbook
+                      {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
                     </span>
                   </button>
                   <button
@@ -385,7 +385,10 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
-                    <span className="font font-lato text-[12px]">Politics</span>
+                    <span className="font font-lato text-[12px]">
+                      {" "}
+                      {languageValue(valueByLanguage, LanguageKey.POLITICS)}
+                    </span>
                   </button>
                   <button
                     onClick={() => {
@@ -429,7 +432,7 @@ cursor-pointer
                         className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                       >
                         <span className="font font-lato text-[12px]">
-                          {item.name}
+                          {languageValue(valueByLanguage, item.name)}
                         </span>
                       </button>
                     );
@@ -495,7 +498,10 @@ cursor-pointer
                     }}
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
-                    <span className="font font-lato text-[12px]">Slots</span>
+                    <span className="font font-lato text-[12px]">
+                      {" "}
+                      {languageValue(valueByLanguage, LanguageKey.SLOTS)}
+                    </span>
                   </button>
                   <button
                     onClick={() => {
@@ -504,7 +510,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      Crash Games
+                      {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
                     </span>
                   </button>
                   <button
@@ -514,7 +520,10 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      Fishing Games
+                      {languageValue(
+                        valueByLanguage,
+                        LanguageKey.FISHING_GAMES,
+                      )}
                     </span>
                   </button>
                 </div>
