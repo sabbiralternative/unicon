@@ -1,4 +1,4 @@
-export const filterLiveVirtual = (liveVirtual, category, data) => {
+export const filterLiveVirtual = (liveVirtual, category, data, inPlay) => {
   if (!data) return [];
   const categorySettings = liveVirtual.filter(
     (item) => item.eventTypeId === category,
@@ -14,7 +14,7 @@ export const filterLiveVirtual = (liveVirtual, category, data) => {
   const groupedData = Object.entries(data)
     .filter(([, value]) => {
       if (value.eventTypeId !== category) return false;
-      // if (value.inPlay !== inPlay) return false;
+      if (value.inPlay !== inPlay) return false;
       if (!value.visible) return false;
 
       const isSRL = value.eventName?.toLowerCase().includes("srl") ?? false;

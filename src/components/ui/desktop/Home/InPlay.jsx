@@ -92,7 +92,12 @@ const InPlay = ({ data }) => {
             </div>
           </div>
           {categories?.map((category) => {
-            const groupedData = filterLiveVirtual(liveVirtual, category, data);
+            const groupedData = filterLiveVirtual(
+              liveVirtual,
+              category,
+              data,
+              1,
+            );
             return (
               <div
                 key={category}

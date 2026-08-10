@@ -38,7 +38,7 @@ const Home = () => {
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: 1000,
   });
-
+  console.log(data);
   useEffect(() => {
     refetchBalance();
   }, [refetchBalance]);
