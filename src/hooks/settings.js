@@ -37,7 +37,7 @@ export const useSettingsMutation = () => {
         } else {
           document.title = Settings.site_name;
         }
-        if (!isLocalhost) {
+        if (isLocalhost) {
           const logo = `${API.assets}/${Settings.site}/logo.${Settings.logo_format}`;
           setLogo(logo);
         } else {

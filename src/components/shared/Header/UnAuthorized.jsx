@@ -8,15 +8,18 @@ import {
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
 import { settings } from "../../../api";
 import useLanguage from "../../../hooks/useLanguage";
-import { useState } from "react";
-import Language from "../../modal/Language/Language";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import assets from "../../../assets";
 
-const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
+const UnAuthorized = ({
+  setShowMobileSearch,
+  showMobileSearch,
+
+  setShowLanguage,
+}) => {
   const { valueByLanguage } = useLanguage();
-  const [showLanguage, setShowLanguage] = useState(false);
+
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state,
   );
@@ -34,7 +37,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
       {showLoginModal && <Login />}
       {showRegisterModal && <Register />}
       {showForgetModal && <ForgetPassword />}
-      {showLanguage && <Language setShowLanguage={setShowLanguage} />}
+
       {!showMobileSearch && (
         <div className="w-full lg:w-max flex items-center justify-end">
           <div
@@ -166,7 +169,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             <button
               onClick={() => dispatch(setShowLoginModal(true))}
               id="loginButton"
-              className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-primary"
+              className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-2.5 py-2 bg-primary"
             >
               <span className="text-x text-primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
                 {languageValue(valueByLanguage, LanguageKey.LOGIN)}
@@ -175,7 +178,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
             {settings.registration && (
               <button
                 onClick={() => dispatch(setShowRegisterModal(true))}
-                className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-2 bg-bg_Quaternary"
+                className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-2.5 py-2 bg-bg_Quaternary"
               >
                 <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
                   {languageValue(valueByLanguage, LanguageKey.REGISTER)}
@@ -195,7 +198,7 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                 </button>
               )} */}
 
-            {settings.language && (
+            {/* {settings.language && (
               <button
                 onClick={() => setShowLanguage((prev) => !prev)}
                 style={{
@@ -205,7 +208,6 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                   justifyContent: "end",
                   background: "transparent",
                   border: "none",
-                  // marginTop: "14px",
                 }}
               >
                 <div className="flex flex-col justify-center items-center">
@@ -224,12 +226,10 @@ const UnAuthorized = ({ setShowMobileSearch, showMobileSearch }) => {
                       color: "white",
                       textTransform: "capitalize",
                     }}
-                  >
-                    {/* {language || "EN"} */}
-                  </p>
+                  ></p>
                 </div>
               </button>
-            )}
+            )} */}
           </div>
         </div>
       )}

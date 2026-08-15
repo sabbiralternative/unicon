@@ -130,6 +130,8 @@ const App = () => {
 
   return (
     <div>
+      <meta name="description" content={settings.metaDescription} />
+      <meta name="keywords" content={settings.metaKeywords} />
       {showBuildVersion && !showAPKModal && (
         <BuildVersion
           build_version={settings?.build_version}

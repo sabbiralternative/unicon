@@ -100,4 +100,6 @@ export const settings = {
   build_version: "",
   disabledDevtool: "",
   referral: "",
+  metaKeywords: "",
+  metaDescription: "",
 };

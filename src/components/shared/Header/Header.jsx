@@ -33,6 +33,7 @@ import DownloadAPK from "../../modal/DownloadAPK/DownloadAPK";
 import Error from "../../modal/Error/Error";
 import { latestEvent } from "../../../static/latest-event";
 import { eventNameList } from "../../../static/event-name-list";
+import Language from "../../modal/Language/Language";
 
 const Header = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -45,6 +46,7 @@ const Header = () => {
   const { balance } = useBalance();
   const { bonusBalance } = useBonusBalance();
   const { logo } = useContextState();
+  const [showLanguage, setShowLanguage] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -113,6 +115,7 @@ const Header = () => {
       {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
       )}
+      {showLanguage && <Language setShowLanguage={setShowLanguage} />}
       <div
         id="header"
         title="header"
@@ -278,6 +281,7 @@ cursor-pointer
                   <UnAuthorized
                     setShowMobileSearch={setShowMobileSearch}
                     showMobileSearch={showMobileSearch}
+                    setShowLanguage={setShowLanguage}
                   />
                 )}
               </div>
@@ -530,7 +534,7 @@ cursor-pointer
               </div>
             </div>
 
-            <LeftDeskSidebar />
+            <LeftDeskSidebar setShowLanguage={setShowLanguage} />
             <RightDeskSidebar />
           </div>
         </header>
