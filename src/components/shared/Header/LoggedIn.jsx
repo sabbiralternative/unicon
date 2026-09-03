@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowRightSidebar } from "../../../redux/features/stateSlice";
 import { useNavigate } from "react-router-dom";
 import { settings } from "../../../api";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const LoggedIn = ({
   balance,
@@ -12,7 +11,7 @@ const LoggedIn = ({
   setShowMobileSearch,
   showMobileSearch,
 }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { user, bonusToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const LoggedIn = ({
         className=" text-primary text-[10px] lg:text-[12px] xl:flex flex-col px-2 "
       >
         <div className="flex gap-0.5 text-white/80  text-nowrap whitespace-nowrap hidden lg:block">
-          {languageValue(valueByLanguage, LanguageKey.LOGIN)} as{" "}
+          {getLanguage(LanguageKey.LOGIN)} as{" "}
           <span className="font-medium text-white">{user}</span>
         </div>
         {/* <div className="flex  gap-0.5 text-white/80  text-nowrap whitespace-nowrap">
@@ -39,7 +38,7 @@ const LoggedIn = ({
         className=" text-primary text-[10px] lg:text-[12px] lg:flex flex-col px-2 hidden"
       >
         <div className="flex gap-0.5 text-white/80  xl:text-nowrap whitespace-nowrap">
-          Available balance:{" "}
+          {getLanguage(LanguageKey.AVAILABLE_BALANCE)}:{" "}
           <span className="font-medium text-white">
             ₹{" "}
             {bonusToken &&
@@ -104,7 +103,7 @@ cursor-pointer
                   fill="var(--color-quaternary)"
                 ></path>
               </svg>
-              {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+              {getLanguage(LanguageKey.DEPOSIT)}
             </span>
           </button>
         )}
@@ -153,7 +152,7 @@ cursor-pointer
                   fill="var(--color-quaternary)"
                 ></path>
               </svg>
-              {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+              {getLanguage(LanguageKey.WITHDRAW)}
             </span>
           </button>
         )}
@@ -231,7 +230,7 @@ cursor-pointer
               </svg>
             </span>
             <span className=" text-xxs text-primary  md:text-text_LoginTextColor  font-normal font-lato md:font-semibold md:text-xs xs:text-xs ">
-              {languageValue(valueByLanguage, LanguageKey.ACCOUNT)}
+              {getLanguage(LanguageKey.ACCOUNT)}
             </span>
           </button>
         </div>
@@ -243,10 +242,7 @@ cursor-pointer
 "
           >
             <span className="  font-semibold flex flex-row font-lato md:font-normal sm:text-base xs:text-sm">
-              <span>
-                {" "}
-                {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
-              </span>
+              <span> {getLanguage(LanguageKey.DEPOSIT)}</span>
             </span>
             <span className="shimmer"></span>
           </button>

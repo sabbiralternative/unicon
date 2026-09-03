@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const BetLoading = ({ setBetDelay, betDelay, absolute }) => {
+  const { getLanguage } = useLanguage();
   useEffect(() => {
     if (betDelay > 0) {
       setTimeout(() => {
@@ -30,9 +33,11 @@ const BetLoading = ({ setBetDelay, betDelay, absolute }) => {
             </span> */}
           </span>
           <span className="font-semibold mt-[4px]">
-            Your bet is being processed...
+            {getLanguage(LanguageKey.YOUR_BET_IS_BEING_PROCESSED)}...
           </span>
-          <span className="font-semibold">Please Wait...</span>
+          <span className="font-semibold">
+            {getLanguage(LanguageKey.PLEASE_WAIT)}...
+          </span>
         </div>
       </div>
     </div>

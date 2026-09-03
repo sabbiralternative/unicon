@@ -23,9 +23,7 @@ import MobileSearch from "./MobileSearch";
 // import { MobileView, isMobile } from "react-device-detect";
 import AppPopup from "./AppPopUp";
 import MobileHeader from "./MobileHeader";
-import useLanguage from "../../../hooks/useLanguage";
 import { LanguageKey } from "../../../const";
-import { languageValue } from "../../../utils/language";
 import Notification from "./Notification";
 import toast from "react-hot-toast";
 import WarningCondition from "../WarningCondition/WarningCondition";
@@ -34,12 +32,13 @@ import Error from "../../modal/Error/Error";
 import { latestEvent } from "../../../static/latest-event";
 import { eventNameList } from "../../../static/event-name-list";
 import Language from "../../modal/Language/Language";
+import useLanguage from "../../../hooks/use-language";
 
 const Header = () => {
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const { token, bonusToken } = useSelector((state) => state.auth);
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const location = useLocation();
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [time, setTime] = useState();
@@ -302,7 +301,7 @@ cursor-pointer
                       className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                     >
                       <span className="font font-lato text-[12px]">
-                        {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
+                        {getLanguage(LanguageKey.AFFILIATE)}
                       </span>
                     </button>
                   )}
@@ -333,7 +332,7 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       {" "}
-                      {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                      {getLanguage(LanguageKey.CRICKET)}
                     </span>
                   </button>
                   <button
@@ -345,7 +344,7 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       {" "}
-                      {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                      {getLanguage(LanguageKey.FOOTBALL)}
                     </span>
                   </button>
 
@@ -357,7 +356,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                      {getLanguage(LanguageKey.TENNIS)}
                     </span>
                   </button>
 
@@ -368,7 +367,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
+                      {getLanguage(LanguageKey.SPORTSBOOK)}
                     </span>
                   </button>
                   <button
@@ -379,7 +378,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                      {getLanguage(LanguageKey.KABADDI)}
                     </span>
                   </button>
                   <button
@@ -391,7 +390,7 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       {" "}
-                      {languageValue(valueByLanguage, LanguageKey.POLITICS)}
+                      {getLanguage(LanguageKey.POLITICS)}
                     </span>
                   </button>
                   <button
@@ -401,7 +400,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                      {getLanguage(LanguageKey.HORSE)}
                     </span>
                   </button>
                   <button
@@ -411,7 +410,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                      {getLanguage(LanguageKey.GREYHOUND)}
                     </span>
                   </button>
 
@@ -436,7 +435,7 @@ cursor-pointer
                         className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                       >
                         <span className="font font-lato text-[12px]">
-                          {languageValue(valueByLanguage, item.name)}
+                          {getLanguage(item.name)}
                         </span>
                       </button>
                     );
@@ -449,7 +448,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.MAC88)}
+                      {getLanguage(LanguageKey.MAC88)}
                     </span>
                   </button>
 
@@ -482,7 +481,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
+                      {getLanguage(LanguageKey.LIVE_CASINO)}
                     </span>
                   </button>
                   {/* {settings.aura && (
@@ -504,7 +503,7 @@ cursor-pointer
                   >
                     <span className="font font-lato text-[12px]">
                       {" "}
-                      {languageValue(valueByLanguage, LanguageKey.SLOTS)}
+                      {getLanguage(LanguageKey.SLOTS)}
                     </span>
                   </button>
                   <button
@@ -514,7 +513,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
+                      {getLanguage(LanguageKey.CRASH_GAMES)}
                     </span>
                   </button>
                   <button
@@ -524,10 +523,7 @@ cursor-pointer
                     className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu  "
                   >
                     <span className="font font-lato text-[12px]">
-                      {languageValue(
-                        valueByLanguage,
-                        LanguageKey.FISHING_GAMES,
-                      )}
+                      {getLanguage(LanguageKey.FISHING_GAMES)}
                     </span>
                   </button>
                 </div>

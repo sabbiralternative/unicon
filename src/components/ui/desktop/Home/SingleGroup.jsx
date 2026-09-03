@@ -6,9 +6,8 @@ import assets from "../../../../assets";
 import { useSelector } from "react-redux";
 import Score from "./Score";
 import LiveVirtual from "./LiveVirtual";
-import useLanguage from "../../../../hooks/useLanguage";
-import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
+import useLanguage from "../../../../hooks/use-language";
 
 const SingleGroup = ({
   data,
@@ -18,12 +17,12 @@ const SingleGroup = ({
   setLiveVirtual,
   liveVirtual,
 }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const eventName = {
-    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
-    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
-    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
-    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
+    4: getLanguage(LanguageKey.CRICKET),
+    2: getLanguage(LanguageKey.TENNIS),
+    1: getLanguage(LanguageKey.FOOTBALL),
+    5: getLanguage(LanguageKey.KABADDI),
   };
   const { group } = useSelector((state) => state.state);
   const navigate = useNavigate();

@@ -5,12 +5,11 @@ import { settings } from "../../../api";
 import Complaint from "../../modal/Complaint/Complaint";
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
 import toast from "react-hot-toast";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const WithdrawReport = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [deleteWithdraw] = useBankMutation();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
@@ -71,10 +70,7 @@ const WithdrawReport = () => {
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
                             <div className="text-base px-3 py-1">
                               {" "}
-                              {languageValue(
-                                valueByLanguage,
-                                LanguageKey.WITHDRAW,
-                              )}
+                              {getLanguage(LanguageKey.WITHDRAW)}
                             </div>
                             <div
                               className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-primary rounded-bl h-full   
@@ -94,7 +90,7 @@ const WithdrawReport = () => {
                             }
                             `}
                             >
-                              {languageValue(valueByLanguage, data?.status)}
+                              {getLanguage(data?.status)}
                               {/* {data?.status} */}
                             </div>
                           </div>
@@ -132,17 +128,17 @@ const WithdrawReport = () => {
                                       }
                                       className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal"
                                     >
-                                      {languageValue(
-                                        valueByLanguage,
-                                        LanguageKey.CANCEL_WITHDRAW,
-                                      )}
+                                      {getLanguage(LanguageKey.CANCEL_WITHDRAW)}
                                     </button>
                                   )}
 
                                 {data.status === "PENDING" &&
                                   data?.reject_request === 1 && (
                                     <p className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl rounded-tr h-fit tracking-normal">
-                                      Withdraw delete request sent.
+                                      {getLanguage(
+                                        LanguageKey.WITHDRAW_DELETE_REQUEST_SENT,
+                                      )}
+                                      .
                                     </p>
                                   )}
                                 {settings.complaint && (
@@ -155,10 +151,7 @@ const WithdrawReport = () => {
                                     }
                                     className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
                                   >
-                                    {languageValue(
-                                      valueByLanguage,
-                                      LanguageKey.REPORT_ISSUE,
-                                    )}
+                                    {getLanguage(LanguageKey.REPORT_ISSUE)}
                                   </button>
                                 )}
                               </div>
@@ -176,10 +169,7 @@ const WithdrawReport = () => {
           </>
         ) : (
           <div className="flex items-center justify-center pt-20">
-            <p>
-              {" "}
-              {languageValue(valueByLanguage, LanguageKey.NO_TRANSACTION_YET)}
-            </p>
+            <p> {getLanguage(LanguageKey.NO_TRANSACTION_YET)}</p>
           </div>
         )}
       </div>

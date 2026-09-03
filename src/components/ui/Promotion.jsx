@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import assets from "../../assets";
-import useLanguage from "../../hooks/useLanguage";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Promotion = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   return (
     <div
@@ -19,7 +18,7 @@ const Promotion = () => {
         }}
       >
         <h3 className="w-full text-white font-bold text-[13px] tracking-[0.219px] leading-normal">
-          {languageValue(valueByLanguage, LanguageKey.PROMOTION_AND_BONUSES)}
+          {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
         </h3>
       </div>
     </div>

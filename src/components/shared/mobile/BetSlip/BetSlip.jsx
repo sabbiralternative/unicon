@@ -16,12 +16,11 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { AxiosJSEncrypt } from "../../../../lib/AxiosJSEncrypt";
 import { isBetDelay, isDelay } from "../../../../utils/isBetDelay";
-import useLanguage from "../../../../hooks/useLanguage";
 import { LanguageKey } from "../../../../const";
-import { languageValue } from "../../../../utils/language";
+import useLanguage from "../../../../hooks/use-language";
 
 const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const [isCashOut, setIsCashOut] = useState(false);
   const { eventTypeId } = useParams();
@@ -235,11 +234,11 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
               className="grid grid-cols-12 pt-[2px] gap-x-[15px]"
             >
               <span className="col-span-6 text-[10px] text-text_Ternary font-normal">
-                ODDS
+                {getLanguage(LanguageKey.ODDS)}
               </span>
               <div className="col-span-6 w-full flex items-center justify-between">
                 <span className="text-[10px] text-text_Ternary font-normal text-start pl-1">
-                  STAKE
+                  {getLanguage(LanguageKey.STAKE)}
                 </span>
                 <span className="text-[10px] float-right capitalize text-text_Ternary 5 font-normal text-center">
                   Max Mkt : {placeBetValues?.maxLiabilityPerMarket}
@@ -364,7 +363,7 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
                 className="leading-normal relative overflow-hidden transition duration-150 ease-in-out px-5 py-2.5 w-[50%] max-w-[156px] flex items-center justify-center min-h-[46px] text-sm bg-transparent text-text_BetSlipCancelBtnColor font-medium border border-primary rounded-md cursor-pointer"
               >
                 <span className="text-text_Primary font-bold text-xs leading-5">
-                  {languageValue(valueByLanguage, LanguageKey.CANCEL_BET)}
+                  {getLanguage(LanguageKey.CANCEL_BET)}
                 </span>
               </button>
               <div className="w-[50%] max-w-[156px] h-max">
@@ -382,7 +381,7 @@ const BetSlip = ({ setRunnerId, currentPlacedBetEvent }) => {
                 >
                   <div className=" flex items-start justify-start flex-col">
                     <span className="  font-bold text-xs sm:text-sm">
-                      {languageValue(valueByLanguage, LanguageKey.PLACE_BET)}
+                      {getLanguage(LanguageKey.PLACE_BET)}
                     </span>
                     <span className="font-semibold text-[10px] sm:text-xs">
                       <div></div>

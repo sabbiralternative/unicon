@@ -2,12 +2,11 @@ import { Fragment, useState } from "react";
 import assets from "../../../assets";
 import ShareAffiliateLink from "../../modal/Affiliate/ShareAffiliateLink";
 import { useLocation, useNavigate } from "react-router-dom";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Footer = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const tab = params.get("tab");
@@ -43,7 +42,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              {languageValue(valueByLanguage, LanguageKey.DASHBOARD)}
+              {getLanguage(LanguageKey.DASHBOARD)}
             </span>
           </a>
           <a
@@ -62,7 +61,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className=" ">
-              {languageValue(valueByLanguage, LanguageKey.USER_LIST)}
+              {getLanguage(LanguageKey.USER_LIST)}
             </span>
           </a>
           <a
@@ -76,7 +75,7 @@ const Footer = () => {
               alt="affi-footer-share"
             />
             <span data-v-066114c4 className="">
-              {languageValue(valueByLanguage, LanguageKey.SHARE)}
+              {getLanguage(LanguageKey.SHARE)}
             </span>
           </a>
           <a
@@ -95,7 +94,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              {languageValue(valueByLanguage, LanguageKey.PROFIT_LOSS)}
+              {getLanguage(LanguageKey.PROFIT_LOSS)}
             </span>
           </a>
           <a
@@ -114,7 +113,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              {languageValue(valueByLanguage, LanguageKey.REPORTS)}
+              {getLanguage(LanguageKey.REPORTS)}
             </span>
           </a>
         </nav>

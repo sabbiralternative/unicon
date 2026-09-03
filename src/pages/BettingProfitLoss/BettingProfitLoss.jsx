@@ -5,12 +5,11 @@ import useBettingProfitLoss from "../../hooks/useBettingProfitLoss";
 import { useSelector } from "react-redux";
 import { userToken } from "../../redux/features/auth/authSlice";
 import moment from "moment";
-import useLanguage from "../../hooks/useLanguage";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const BettingProfitLoss = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { passbook } = useBettingProfitLoss();
   const navigate = useNavigate();
   const token = useSelector(userToken);
@@ -306,10 +305,7 @@ const BettingProfitLoss = () => {
               ) : (
                 <div className="flex items-center justify-center w-full pt-20">
                   <h2 className="text-base ">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.NO_BETTING_PROFIT_LOSS_YET,
-                    )}
+                    {getLanguage(LanguageKey.NO_BETTING_PROFIT_LOSS_YET)}
                   </h2>
                 </div>
               )}

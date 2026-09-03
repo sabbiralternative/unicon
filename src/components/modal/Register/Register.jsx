@@ -20,12 +20,11 @@ import useBalance from "../../../hooks/useBalance";
 // import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
 
 import assets from "../../../assets";
-import useLanguage from "../../../hooks/useLanguage";
 import { LanguageKey } from "../../../const";
-import { languageValue } from "../../../utils/language";
+import useLanguage from "../../../hooks/use-language";
 
 const Register = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const { token } = useSelector((state) => state.auth);
   const referralCode = localStorage.getItem("referralCode");
@@ -225,7 +224,9 @@ const Register = () => {
                         className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
                         type="button"
                       >
-                        <span className=" ">Retry in {timer}</span>
+                        <span className=" ">
+                          {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                        </span>
                         {/* <span className="shimmer"></span> */}
                       </button>
                     ) : (
@@ -237,7 +238,7 @@ const Register = () => {
                       >
                         <span className=" ">
                           {" "}
-                          {languageValue(valueByLanguage, LanguageKey.GET_OTP)}
+                          {getLanguage(LanguageKey.GET_OTP)}
                         </span>
                         <span className="shimmer"></span>
                       </button>
@@ -452,7 +453,7 @@ const Register = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_Primary rounded-lg font-medium border text-[12px] xs:text-[15px] py-2 flex items-center justify-center gap-x-2 disabled:bg-bg_Quinary cursor-pointer"
                   >
                     <span className="font-lato-bold font-semibold text-base">
-                      {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                      {getLanguage(LanguageKey.REGISTER)}
                     </span>
                   </button>
                 </div>
@@ -464,7 +465,7 @@ const Register = () => {
                       <div className="w-full flex items-center gap-4 py-3 px-1">
                         <div className="h-px flex-1 bg-neutral-200" />
                         <span className="text-neutral-500 text-sm font-medium">
-                          OR
+                          {getLanguage(LanguageKey.OR)}
                         </span>
                         <div className="h-px flex-1 bg-neutral-200" />
                       </div>
@@ -480,7 +481,7 @@ const Register = () => {
                             alt=""
                           />
                           <span className="font-medium text-base">
-                            Get ID on Whatsapp
+                            {getLanguage(LanguageKey.GET_ID_ON_WHATSAPP)}
                           </span>
                         </button>
                       </div>
@@ -500,7 +501,7 @@ const Register = () => {
                       }}
                       className="text-text_Primary cursor-pointer"
                     >
-                      {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                      {getLanguage(LanguageKey.LOGIN)}
                     </span>
                   </div>
                 </div>

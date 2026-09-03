@@ -7,12 +7,11 @@ import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { Lock } from "../../assets/Icon";
-import useLanguage from "../../hooks/useLanguage";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const ChangePassword = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [handleChangePassword] = useChangePasswordMutation();
   window.scrollTo(0, 0);
   const [showPassword, setShowPassword] = useState(true);
@@ -60,7 +59,7 @@ const ChangePassword = () => {
                 <div className="flex flex-col w-full">
                   <div className="ml-1 text-sm">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.OLD_PASSWORD)}
+                    {getLanguage(LanguageKey.OLD_PASSWORD)}
                   </div>
                   <div className="relative">
                     <span className="px-2 absolute top-1/2 -translate-y-1/2 w-max">
@@ -70,10 +69,7 @@ const ChangePassword = () => {
                       {...register("password", { required: true })}
                       label="Old Password"
                       id="oldPassword"
-                      placeholder={languageValue(
-                        valueByLanguage,
-                        LanguageKey.OLD_PASSWORD,
-                      )}
+                      placeholder={getLanguage(LanguageKey.OLD_PASSWORD)}
                       className="block w-full focus:outline-none py-2 bg-bg_DepositBoxBg border rounded-lg pl-10 pr-8 ml-0 mr-0"
                       type={`${showPassword ? "password" : "text"}`}
                     />
@@ -104,10 +100,7 @@ const ChangePassword = () => {
                     <div className="flex flex-col w-full">
                       <div className="ml-1 text-sm">
                         {" "}
-                        {languageValue(
-                          valueByLanguage,
-                          LanguageKey.NEW_PASSWORD,
-                        )}
+                        {getLanguage(LanguageKey.NEW_PASSWORD)}
                       </div>
                       <div className="relative">
                         <span className="px-2 absolute top-1/2 -translate-y-1/2 w-max">
@@ -121,10 +114,7 @@ const ChangePassword = () => {
                           id="newPassword"
                           label="New Password"
                           className="rounded h-10 col-span-8 md:col-span-10 bg-bg_DepositBoxBg w-full placeholder:text-sm font-lato font-[400] pl-10 pr-8 ml-0 mr-0"
-                          placeholder={languageValue(
-                            valueByLanguage,
-                            LanguageKey.NEW_PASSWORD,
-                          )}
+                          placeholder={getLanguage(LanguageKey.NEW_PASSWORD)}
                           type={`${showNewPassword ? "password" : "text"}`}
                         />
                         <span className="px-2 absolute top-1/2 -translate-y-1/2 right-0">
@@ -155,10 +145,7 @@ const ChangePassword = () => {
                   <div className="w-full h-full">
                     <div className="flex flex-col w-full">
                       <div className="ml-1 text-sm">
-                        {languageValue(
-                          valueByLanguage,
-                          LanguageKey.CONFIRM_PASSWORD,
-                        )}
+                        {getLanguage(LanguageKey.CONFIRM_PASSWORD)}
                       </div>
                       <div className="relative">
                         <span className="px-2 absolute top-1/2 -translate-y-1/2 w-max">
@@ -170,8 +157,7 @@ const ChangePassword = () => {
                             minLength: 5,
                           })}
                           label="Confirm Password"
-                          placeholder={languageValue(
-                            valueByLanguage,
+                          placeholder={getLanguage(
                             LanguageKey.CONFIRM_PASSWORD,
                           )}
                           className="rounded h-10 col-span-8 md:col-span-10 w-full bg-bg_DepositBoxBg placeholder:text-sm font-lato font-[400] pl-10 pr-8 ml-0 mr-0"
@@ -212,15 +198,13 @@ const ChangePassword = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] p-2 bg-bg_Quaternary mt-2 w-full rounded-lg font-semibold text-text_Primary border border-[var(--color-bg-primary)] cursor-pointer"
                     type="button"
                   >
-                    {languageValue(valueByLanguage, LanguageKey.CANCEL)}
+                    {getLanguage(LanguageKey.CANCEL)}
                   </button>
                   <button
                     type="submit"
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out max-w-[180px] cursor-pointer disabled:cursor-not-allowed p-2 bg-bg_Primary mt-2 w-full rounded-lg font-semibold text-primary disabled:opacity-40 flex items-center justify-center "
                   >
-                    <span>
-                      {languageValue(valueByLanguage, LanguageKey.SAVE)}
-                    </span>
+                    <span>{getLanguage(LanguageKey.SAVE)}</span>
                   </button>
                 </div>
               </div>

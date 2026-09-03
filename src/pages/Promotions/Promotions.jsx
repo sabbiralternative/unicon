@@ -8,12 +8,11 @@ import { useBonusMutation } from "../../hooks/bonus";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useBalance from "../../hooks/useBalance";
-import useLanguage from "../../hooks/useLanguage";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Promotions = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { refetchBalance } = useBalance();
   const [coupon, setCoupon] = useState(null);
   const { mutateAsync } = useBonusMutation();
@@ -261,7 +260,7 @@ const Promotions = () => {
             <div className=" flex md:flex-row flex-col ring-1 ring-lossback_1 items-center w-full rounded-lg  bg-bg_color_lossback_card_bg font-lato">
               <div className="px-4 relative py-3 w-full md:w-fit overflow-hidden">
                 <div className="relative text-center z-20 text-white font-black leading-normal text-base tracking-wider uppercase">
-                  {languageValue(valueByLanguage, LanguageKey.LOSSBACK_BONUS)}
+                  {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                 </div>
                 <div className="h-[120%] aspect-square absolute bottom-0 translate-y-1/3 md:translate-y-1/2 left-0 z-10">
                   <div className="relative overflow-hidden w-full h-full">
@@ -282,10 +281,7 @@ const Promotions = () => {
                   <div className="flex flex-1 flex-col text-white leading-normal tracking-wider z-50">
                     <div className="text-base flex items-center gap-1 text-text_color_lossback_amt font-black w-full">
                       <div className="flex-1 bg-bg_color_avlnowLossback animate-pulse text-text_color_lossback_amt px-3 py-1 text-x font-bold flex items-center gap-1 rounded-full">
-                        {languageValue(
-                          valueByLanguage,
-                          LanguageKey.LOGIN_TO_VIEW_CLAIM,
-                        )}
+                        {getLanguage(LanguageKey.LOGIN_TO_VIEW_CLAIM)}
                       </div>
                     </div>
                   </div>
@@ -296,7 +292,7 @@ const Promotions = () => {
                   className="relative overflow-hidden bg-bg_color_lossbackSeeAll ml-auto active:scale-[99%] transition-all duration-300 text-white whitespace-nowrap text-sm font-bold rounded px-4 py-2"
                   type="button"
                 >
-                  {languageValue(valueByLanguage, LanguageKey.VIEW_ALL)}
+                  {getLanguage(LanguageKey.VIEW_ALL)}
                 </button>
               </div>
             </div>
@@ -331,13 +327,10 @@ const Promotions = () => {
                 </div>
                 <div className="flex flex-col items-start text-white gap-[0.5px]">
                   <div className="text-sm md:text-base font-bold  font-lato">
-                    {languageValue(valueByLanguage, LanguageKey.COUPON_CODE)}
+                    {getLanguage(LanguageKey.COUPON_CODE)}
                   </div>
                   <div className="leading-4 text-x sm:text-xs md:text-sm tracking-wide font-normal opacity-80 font-lato text-white">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.TYPE_OR_PASTE_COUPON_CODE,
-                    )}
+                    {getLanguage(LanguageKey.TYPE_OR_PASTE_COUPON_CODE)}
                   </div>
                 </div>
               </div>
@@ -347,8 +340,7 @@ const Promotions = () => {
                     value={coupon || ""}
                     onChange={(e) => setCoupon(e.target.value)}
                     className="undefined flex-grow min-w-0 border-none focus:outline-none bg-transparent"
-                    placeholder={languageValue(
-                      valueByLanguage,
+                    placeholder={getLanguage(
                       LanguageKey.ENTER_COUPON_CODE_HERE,
                     )}
                   />
@@ -375,10 +367,7 @@ const Promotions = () => {
                           <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
                           <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
                         </svg>
-                        <span>
-                          {" "}
-                          {languageValue(valueByLanguage, LanguageKey.REDEEM)}
-                        </span>
+                        <span> {getLanguage(LanguageKey.REDEEM)}</span>
                       </div>
                     </button>
                   </div>

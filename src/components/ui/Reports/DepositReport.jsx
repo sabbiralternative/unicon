@@ -3,12 +3,11 @@ import useDepositStatement from "../../../hooks/useDepositStatement";
 import ShowImage from "../../modal/ShowImage/ShowImage";
 import { settings } from "../../../api";
 import Complaint from "../../modal/Complaint/Complaint";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const DepositReport = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
   const { accountStatement } = useDepositStatement();
@@ -57,10 +56,7 @@ const DepositReport = () => {
                           <div className="flex justify-between items-start text-[10px] font-bold h-full">
                             <div className="text-base px-3 py-1">
                               {" "}
-                              {languageValue(
-                                valueByLanguage,
-                                LanguageKey.DEPOSIT,
-                              )}
+                              {getLanguage(LanguageKey.DEPOSIT)}
                             </div>
                             <div
                               className={`px-3 py-1 text-x xs:text-xs sm:text-sm font-semibold text-primary rounded-bl h-full   
@@ -80,7 +76,7 @@ const DepositReport = () => {
                             }
                             `}
                             >
-                              {languageValue(valueByLanguage, data?.status)}
+                              {getLanguage(data?.status)}
                               {/* {data?.status} */}
                             </div>
                           </div>
@@ -115,10 +111,7 @@ const DepositReport = () => {
                                   }
                                   className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-semibold text-primary rounded-tl h-fit tracking-normal"
                                 >
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.REPORT_ISSUE,
-                                  )}
+                                  {getLanguage(LanguageKey.REPORT_ISSUE)}
                                 </button>
                               )}
                             </span>
@@ -135,10 +128,7 @@ const DepositReport = () => {
           </>
         ) : (
           <div className="flex items-center justify-center pt-20">
-            <p>
-              {" "}
-              {languageValue(valueByLanguage, LanguageKey.NO_TRANSACTION_YET)}
-            </p>
+            <p> {getLanguage(LanguageKey.NO_TRANSACTION_YET)}</p>
           </div>
         )}
       </div>

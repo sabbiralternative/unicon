@@ -18,11 +18,10 @@ import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowDown } from "react-icons/hi";
 import { GrAndroid } from "react-icons/gr";
 import { LanguageKey } from "../../../const";
-import { languageValue } from "../../../utils/language";
-import useLanguage from "../../../hooks/useLanguage";
+import useLanguage from "../../../hooks/use-language";
 
 const Login = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState(true);
@@ -190,20 +189,14 @@ const Login = () => {
             >
               <div title="loginFormMonileUserIdInput" className="w-full">
                 <div className="font-lato uppercase text-[10px] md:text-xs lg:text-sm ml-1">
-                  {languageValue(
-                    valueByLanguage,
-                    LanguageKey.USERNAME_MOBILE_NO,
-                  )}
+                  {getLanguage(LanguageKey.USERNAME_MOBILE_NO)}
                 </div>
                 <div className="flex w-full items-center py-3.5 bg-auth rounded-lg border">
                   <input
                     {...register("username", { required: true })}
                     id="mobile-no-input"
                     className="px-2 block w-full focus:outline-none w-full font-lato bg-auth text-text_Ternary pr-2 text-sm xs:text-md"
-                    placeholder={languageValue(
-                      valueByLanguage,
-                      LanguageKey.USERNAME_MOBILE_NO,
-                    )}
+                    placeholder={getLanguage(LanguageKey.USERNAME_MOBILE_NO)}
                   />
                   <span className="h-fit"> </span>
                 </div>
@@ -214,17 +207,14 @@ const Login = () => {
                   className="w-full font-lato uppercase"
                 >
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
-                    {languageValue(valueByLanguage, LanguageKey.PASSWORD)}
+                    {getLanguage(LanguageKey.PASSWORD)}
                   </div>
                   <div className="flex w-full items-center py-2 px-2 bg-auth rounded-lg border">
                     <input
                       {...register("password", { required: true })}
                       id="password-input"
                       className="block w-full focus:outline-none w-full pr-2 rounded-none text-text_Ternary bg-auth text-sm xs:text-md"
-                      placeholder={languageValue(
-                        valueByLanguage,
-                        LanguageKey.PASSWORD,
-                      )}
+                      placeholder={getLanguage(LanguageKey.PASSWORD)}
                       type={passwordType ? "password" : "text"}
                     />
                     <span
@@ -280,10 +270,7 @@ const Login = () => {
                     title="forgotPassword"
                     className="w-full text-start text-xs cursor-pointer underline text-text_Primary font-lato md:text-xs lg:text-sm"
                   >
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.FORGOT_PASSWORD,
-                    )}
+                    {getLanguage(LanguageKey.FORGOT_PASSWORD)}
                   </div>
                 )}
               </div>
@@ -293,10 +280,7 @@ const Login = () => {
                   type="submit"
                   className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
                 >
-                  <span>
-                    {" "}
-                    {languageValue(valueByLanguage, LanguageKey.LOGIN)}
-                  </span>
+                  <span> {getLanguage(LanguageKey.LOGIN)}</span>
                 </button>
                 {settings.demo_login && (
                   <button
@@ -304,10 +288,7 @@ const Login = () => {
                     type="button"
                     className="inline-block mt-3 leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-bg_LoginButtonColor shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2 font-lato-bold font-semibold text-base cursor-pointer"
                   >
-                    <span>
-                      {" "}
-                      {languageValue(valueByLanguage, LanguageKey.DEMO_LOGIN)}
-                    </span>
+                    <span> {getLanguage(LanguageKey.DEMO_LOGIN)}</span>
                   </button>
                 )}
                 {settings.apk_link && (
@@ -318,11 +299,7 @@ const Login = () => {
                   >
                     <span className="flex items-center gap-2">
                       {" "}
-                      <GrAndroid />{" "}
-                      {languageValue(
-                        valueByLanguage,
-                        LanguageKey.DOWNLOAD_APK,
-                      )}{" "}
+                      <GrAndroid /> {getLanguage(LanguageKey.DOWNLOAD_APK)}{" "}
                       <HiArrowNarrowDown />
                     </span>
                   </button>
@@ -344,7 +321,7 @@ const Login = () => {
                     }}
                     className="text-text_Primary cursor-pointer"
                   >
-                    {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                    {getLanguage(LanguageKey.REGISTER)}
                   </span>
                 </div>
               </div>

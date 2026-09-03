@@ -15,6 +15,7 @@ const EventHeader = ({
 }) => {
   // console.log(score);
   // console.log(score2);
+
   const navigate = useNavigate();
   const [sportsVideo] = useVideoMutation();
   const { eventId, eventTypeId } = useParams();

@@ -6,8 +6,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../../redux/features/auth/authSlice";
 import useBonusBalance from "../../../../hooks/useBonusBalance";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const BalanceInfo = ({ balance }) => {
+  const { getLanguage } = useLanguage();
   const { bonusBalance } = useBonusBalance();
   const { token, user, bonusToken } = useSelector((state) => state.auth);
   const [showBalance, setShowBalance] = useState(false);
@@ -30,7 +33,7 @@ const BalanceInfo = ({ balance }) => {
       >
         <div className="flex flex-col items-start">
           <span className="uppercase text-primary font-normal text-xxs">
-            Available Credit
+            {getLanguage(LanguageKey.AVAILABLE_CREDIT)}
           </span>
           <span className="text-primary font-lato text-sm">
             ₹ {balance?.availBalance}
@@ -52,18 +55,22 @@ const BalanceInfo = ({ balance }) => {
         <div className="flex flex-col gap-1 border autoAnimate rounded-lg opacity-100">
           <div className="grid grid-cols-2 gap-1 w-full p-1">
             <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
-              <span className="uppercase font-normal text-xxs">Balance</span>
+              <span className="uppercase font-normal text-xxs">
+                {getLanguage(LanguageKey.BALANCE)}
+              </span>
               <span className="font-lato text-sm">
                 ₹ {balance?.availBalance}
               </span>
             </div>
             <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
-              <span className="uppercase font-normal text-xxs">Free Cash</span>
+              <span className="uppercase font-normal text-xxs">
+                {getLanguage(LanguageKey.FREE_CASH)}
+              </span>
               <span className="font-lato text-sm">₹ 0.00</span>
             </div>
             <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
               <span className="uppercase font-normal text-xxs">
-                Net Exposure
+                {getLanguage(LanguageKey.NET_EXPOSURE)}
               </span>
               <span className="font-lato text-sm">
                 ₹ {balance?.deductedExposure}
@@ -118,12 +125,12 @@ const BalanceInfo = ({ balance }) => {
                   </defs>
                 </svg>
                 <span className="font-lato-bold font-semibold text-sm text-text_Ternary">
-                  Bonus Information
+                  {getLanguage(LanguageKey.BONUS_INFORMATION)}
                 </span>
               </div>
               <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
                 <span className="uppercase font-normal text-xxs">
-                  Bonus Balance
+                  {getLanguage(LanguageKey.BONUS_BALANCE)}
                 </span>
                 <span className="font-lato text-sm">
                   ₹ {bonusBalance?.availBalance}
@@ -131,14 +138,16 @@ const BalanceInfo = ({ balance }) => {
               </div>
               <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
                 <span className="uppercase font-normal text-xxs">
-                  Net Exposure
+                  {getLanguage(LanguageKey.NET_EXPOSURE)}
                 </span>
                 <span className="font-lato text-sm">
                   ₹ {bonusBalance?.deductedExposure}
                 </span>
               </div>
               <div className="flex w-full col-span-2 rounded items-center justify-between bg-bg_Ternary8 border px-2 py-2">
-                <span className="font-semibold text-xs">Play With Bonus</span>
+                <span className="font-semibold text-xs">
+                  {getLanguage(LanguageKey.PLAY_WITH_BONUS)}
+                </span>
                 <label className="inline-flex items-center cursor-pointer relative">
                   <input
                     onChange={handleToggleBalance}

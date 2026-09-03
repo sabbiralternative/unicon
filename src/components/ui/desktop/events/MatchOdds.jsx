@@ -12,8 +12,11 @@ import { useEffect } from "react";
 import { settings } from "../../../../api";
 import { handleCashOutPlaceBet } from "../../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../../modal/SpeedCashOut/SpeedCashOut";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const MatchOdds = ({ match_odds }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const { exposer } = useExposer(eventId);
@@ -209,7 +212,7 @@ const MatchOdds = ({ match_odds }) => {
                       }`}
                     >
                       <div className="text-[10px] md:text-sm text-primary whitespace-nowrap font-semibold">
-                        Cashout
+                        {getLanguage(LanguageKey.CASHOUT)}
                       </div>
                       {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-primary whitespace-nowrap font-semibold">
@@ -237,7 +240,7 @@ const MatchOdds = ({ match_odds }) => {
                       className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  rounded-md px-2.5 py-1.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-row h-max max-w-[74%] mr-1 cursor-pointer bg-[#82371b]`}
                     >
                       <div className="text-[10px] md:text-sm text-white whitespace-nowrap font-semibold">
-                        Speed Cashout
+                        {getLanguage(LanguageKey.SPEED_CASHOUT)}
                       </div>
                     </button>
                   )}
@@ -245,7 +248,7 @@ const MatchOdds = ({ match_odds }) => {
                   Min: {games?.minLiabilityPerBet}
                 </span> */}
                 <span className="text-xs font-light">
-                  Max: {games?.maxLiabilityPerBet}
+                  {getLanguage(LanguageKey.MAX)}: {games?.maxLiabilityPerBet}
                 </span>
               </div>
               <div className="col-span-5 md:col-span-7 grid grid-cols-2 md:grid-cols-6 pb-[2px]">

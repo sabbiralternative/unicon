@@ -8,8 +8,11 @@ import { useEffect, useState } from "react";
 import BetSlip from "../../../shared/mobile/BetSlip/BetSlip";
 import { isHorseGreyhoundOddSuspended } from "../../../../utils/isOddSuspended";
 import { handleHorseMobileBetSlip } from "../../../../utils/handleHorseMobileBetslip";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const HorseGreyhound = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [runnerId, setRunnerId] = useState("");
   const { token } = useSelector((state) => state?.auth);
   const [timeDiff, setTimeDiff] = useState({
@@ -31,7 +34,7 @@ const HorseGreyhound = ({ data }) => {
       runner,
       exposer,
       dispatch,
-      token
+      token,
     );
   };
 
@@ -58,7 +61,7 @@ const HorseGreyhound = ({ data }) => {
 
         const day = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
         const hour = Math.floor(
-          (diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         );
         const minute = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
         const second = Math.floor((diffInMs % (1000 * 60)) / 1000);
@@ -81,7 +84,7 @@ const HorseGreyhound = ({ data }) => {
           className="img-fluid"
         />
         <div className="horse-banner-detail">
-          <div className="text-success">OPEN</div>
+          <div className="text-success">{getLanguage(LanguageKey.OPEN)}</div>
           {timeDiff?.day ||
           timeDiff?.hour ||
           timeDiff?.minute ||
@@ -90,26 +93,30 @@ const HorseGreyhound = ({ data }) => {
               <span style={{ display: "flex", gap: "5px" }}>
                 {timeDiff?.day > 0 && (
                   <span>
-                    {timeDiff?.day} <small>Day</small>
+                    {timeDiff?.day}{" "}
+                    <small>{getLanguage(LanguageKey.DAY)}</small>
                   </span>
                 )}
                 {timeDiff?.hour > 0 && (
                   <span>
-                    {timeDiff?.hour} <small>Hour</small>
+                    {timeDiff?.hour}{" "}
+                    <small>{getLanguage(LanguageKey.HOUR)}</small>
                   </span>
                 )}
                 {timeDiff?.minute > 0 && (
                   <span>
-                    {timeDiff?.minute} <small>Minutes</small>
+                    {timeDiff?.minute}{" "}
+                    <small>{getLanguage(LanguageKey.MINUTE)}</small>
                   </span>
                 )}
                 {timeDiff?.hour === 0 && timeDiff?.minute < 60 && (
                   <span>
-                    {timeDiff?.second} <small>Seconds</small>
+                    {timeDiff?.second}{" "}
+                    <small>{getLanguage(LanguageKey.SECOND)}</small>
                   </span>
                 )}
               </span>
-              <span>Remaining</span>
+              <span>{getLanguage(LanguageKey.REMAINING)}</span>
             </div>
           ) : null}
 
@@ -231,7 +238,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[2]?.price
+                                  runner?.back?.[2]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -255,7 +262,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[1]?.price
+                                  runner?.back?.[1]?.price,
                                 )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -284,7 +291,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.back?.[0]?.price
+                                  runner?.back?.[0]?.price,
                                 )} overflow-hidden relative w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                               >
                                 <span
@@ -313,7 +320,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[0]?.price
+                                  runner?.lay?.[0]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span
@@ -337,7 +344,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[1]?.price
+                                  runner?.lay?.[1]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span
@@ -361,7 +368,7 @@ const HorseGreyhound = ({ data }) => {
                             <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                               <div
                                 className={`${isPriceAvailable(
-                                  runner?.lay?.[2]?.price
+                                  runner?.lay?.[2]?.price,
                                 )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                               >
                                 <span

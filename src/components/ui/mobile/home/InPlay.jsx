@@ -7,21 +7,20 @@ import useCurrentBets from "../../../../hooks/useCurrentBets";
 import ScoreHome from "../../desktop/Home/ScoreHome";
 import { filterLiveVirtual } from "../../../../utils/filter-live-virtual";
 import LiveVirtual from "../../desktop/Home/LiveVirtual";
-import useLanguage from "../../../../hooks/useLanguage";
-import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
+import useLanguage from "../../../../hooks/use-language";
 
 const InPlay = ({ data }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [liveVirtual, setLiveVirtual] = useState([]);
   const { myBets } = useCurrentBets();
   const [categories, setCategories] = useState([]);
 
   const eventName = {
-    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
-    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
-    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
-    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
+    4: getLanguage(LanguageKey.CRICKET),
+    2: getLanguage(LanguageKey.TENNIS),
+    1: getLanguage(LanguageKey.FOOTBALL),
+    5: getLanguage(LanguageKey.KABADDI),
   };
   const navigate = useNavigate();
   const navigateGameList = (keys) => {
@@ -75,17 +74,14 @@ const InPlay = ({ data }) => {
                   </clipPath>
                 </defs>
               </svg>
-              <span>
-                {" "}
-                {languageValue(valueByLanguage, LanguageKey.IN_PLAY)}
-              </span>
+              <span> {getLanguage(LanguageKey.IN_PLAY)}</span>
             </div>
             <div
               onClick={() => navigate("/open-bets")}
               className="w-max text-nowrap cursor-pointer"
             >
               <span className="text-xs tracking-wide text-white text-nowrap whitespace-nowrap font-normal">
-                {languageValue(valueByLanguage, LanguageKey.OPEN_BETS)}
+                {getLanguage(LanguageKey.OPEN_BETS)}
               </span>
               <sup className="font-features sups">
                 <span className="text-x font-normal tracking-wide text-primary bg-bg_Warning min-w-4 min-h-4 text-center px-1 py-0.5 font-lato rounded-full">

@@ -5,6 +5,8 @@ import { API, settings } from "../../../../api";
 import { AxiosSecure } from "../../../../lib/AxiosSecure";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "../../../../redux/features/stateSlice";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const OriginalCrashThumb = ({
   setShowGame,
@@ -16,6 +18,7 @@ const OriginalCrashThumb = ({
   openAnimation,
   setOpenAnimation,
 }) => {
+  const { getLanguage } = useLanguage();
   const [gameTitle, setGameTitle] = useState("");
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
@@ -87,7 +90,7 @@ const OriginalCrashThumb = ({
                   <span>
                     <span>🔥</span>
                   </span>
-                  ORIGINALS
+                  {getLanguage(LanguageKey.ORIGINALS)}
                 </button>
                 <button
                   onClick={() => setTab("crashGames")}
@@ -112,7 +115,7 @@ const OriginalCrashThumb = ({
                       ></path>
                     </svg>
                   </span>
-                  CRASH GAMES
+                  {getLanguage(LanguageKey.CRASH_GAMES)}
                 </button>
                 <div
                   style={{ zIndex: 9, width: "50%", bottom: "0px" }}

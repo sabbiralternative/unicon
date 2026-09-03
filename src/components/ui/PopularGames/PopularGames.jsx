@@ -6,12 +6,11 @@ import { settings } from "../../../api";
 import toast from "react-hot-toast";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const PopularGames = ({ popularGames }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -66,7 +65,7 @@ const PopularGames = ({ popularGames }) => {
             </svg>
             <div className="w-[100%] flex flex-row justify-between">
               <span className="text-text_Ternary font-semibold capitalize">
-                Popular Games
+                {getLanguage(LanguageKey.POPULAR_GAMES)}
               </span>
               <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                 <button
@@ -75,8 +74,8 @@ const PopularGames = ({ popularGames }) => {
                   type="button"
                 >
                   {showSeeAll
-                    ? languageValue(valueByLanguage, LanguageKey.SEE_LESS)
-                    : languageValue(valueByLanguage, LanguageKey.SEE_ALL)}
+                    ? getLanguage(LanguageKey.SEE_LESS)
+                    : getLanguage(LanguageKey.SEE_ALL)}
                 </button>
                 <button
                   onClick={() => scrollToLeft(ref)}

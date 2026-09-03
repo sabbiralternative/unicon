@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { API, settings } from "../api";
 import { logout } from "../redux/features/auth/authSlice";
 import { useDispatch } from "react-redux";
-import useLanguage from "./useLanguage";
+
 import { AxiosSecure } from "../lib/AxiosSecure";
+import useLanguage from "./use-language";
 
 const useBonusBalance = () => {
   const { language } = useLanguage();

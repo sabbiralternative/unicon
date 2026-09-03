@@ -4,8 +4,11 @@ import { useState } from "react";
 import SingleGroup from "../../mobile/home/SingleGroup";
 import { useSelector } from "react-redux";
 import { filterLiveVirtual } from "../../../../utils/filter-live-virtual";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const Group = ({ data }) => {
+  const { getLanguage } = useLanguage();
   // let inPlay = [];
   // let upComing = [];
   // if (data) {
@@ -44,7 +47,7 @@ const Group = ({ data }) => {
 
             {groupedInPlay?.length === 0 && (
               <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-                No inplay event available right now!
+                {getLanguage(LanguageKey.NO_INPLAY_EVENT_AVAILABLE)}
               </div>
             )}
             {groupedUpcoming?.length > 0 && (
@@ -60,7 +63,7 @@ const Group = ({ data }) => {
 
             {groupedUpcoming?.length === 0 && (
               <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-                No upcoming event available right now!
+                {getLanguage(LanguageKey.NO_UPCOMING_EVENT_AVAILABLE)}
               </div>
             )}
           </div>

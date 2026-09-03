@@ -6,8 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const AuraWolf = () => {
+  const { getLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -75,7 +78,7 @@ const AuraWolf = () => {
           </svg>
           <div className="w-[100%] flex flex-row justify-between">
             <span className="text-text_Ternary font-semibold capitalize">
-              Indian Card Games
+              {getLanguage(LanguageKey.INDIAN_CARD_GAMES)}
             </span>
             <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
               <button
@@ -83,7 +86,9 @@ const AuraWolf = () => {
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato text-text_DepositTextColor font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200 cursor-pointer"
                 type="button"
               >
-                {showSeeAll ? "See Less" : "See All"}
+                {showSeeAll
+                  ? getLanguage(LanguageKey.SEE_LESS)
+                  : getLanguage(LanguageKey.SEE_ALL)}
               </button>
               <button
                 onClick={() => scrollToLeft(ref)}

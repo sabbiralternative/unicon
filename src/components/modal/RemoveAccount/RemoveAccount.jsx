@@ -3,8 +3,11 @@ import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside"
 import { useBankMutation } from "../../../redux/features/payment/payment.api";
 import toast from "react-hot-toast";
 import useGetAllBankAccount from "../../../hooks/useGetAllBankAccount";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const RemoveAccount = ({ setRemoveBank, removeBank }) => {
+  const { getLanguage } = useLanguage();
   const { refetchBankAccounts } = useGetAllBankAccount();
   const [deleteBank] = useBankMutation();
   const deleteBankRef = useRef();
@@ -67,7 +70,9 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
         </div>
         <div className="w-full flex items-center justify-center flex-col gap-y-4 mt-2">
           <span className="text-sm font-lato font-[400] leading-5">
-            Are you sure you want to delete this account?
+            {getLanguage(
+              LanguageKey.ARE_YOU_SURE_YOU_WANT_TO_REMOVE_THIS_ACCOUNT,
+            )}
           </span>
           <div className="w-full flex items-center justify-center gap-x-2">
             <button
@@ -75,7 +80,7 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
               className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-transparent text-base font-semibold font-lato text-text_Primary border border-primary h-10 w-32 rounded-md cursor-pointer"
               type="button"
             >
-              Cancel
+              {getLanguage(LanguageKey.CANCEL)}
             </button>
             <button
               onClick={handleDeleteBank}
@@ -83,7 +88,8 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
               type="button"
             >
               <span className="font-lato font-normal text-[16px]">
-                Yes, Remove
+                {getLanguage(LanguageKey.YES)},{" "}
+                {getLanguage(LanguageKey.REMOVE)}
               </span>
             </button>
           </div>

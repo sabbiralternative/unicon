@@ -14,8 +14,11 @@ import {
   setShowLoginModal,
 } from "../../../redux/features/stateSlice";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const ForgetPassword = () => {
+  const { getLanguage } = useLanguage();
   const [handleForgotPassword] = useForgotPasswordMutation();
   const [passType, setPassType] = useState(true);
   const [confirmPassType, setConfirmPassType] = useState(true);
@@ -179,7 +182,9 @@ const ForgetPassword = () => {
                             className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center !cursor-text"
                             type="button"
                           >
-                            <span className=" ">Retry in {timer}</span>
+                            <span className=" ">
+                              {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                            </span>
                           </button>
                         ) : (
                           <button
@@ -188,7 +193,9 @@ const ForgetPassword = () => {
                             className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
                             type="button"
                           >
-                            <span className=" ">Get OTP Message</span>
+                            <span className=" ">
+                              {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                            </span>
                           </button>
                         )}
                       </span>
@@ -369,7 +376,7 @@ const ForgetPassword = () => {
                     className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out py-2.5 w-full mb-2 text-sm text-primary font-lato font-bold focus:outline-none bg-primary rounded-lg hover:opacity-95 disabled:bg-bg_Slate500 cursor-pointer"
                     disabled=""
                   >
-                    <span>Update Password</span>
+                    <span>{getLanguage(LanguageKey.CHANGE_PASSWORD)}</span>
                   </button>
                 </div>
               </form>

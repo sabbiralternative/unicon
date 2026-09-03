@@ -12,14 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 import WarningCondition from "../../WarningCondition/WarningCondition";
-import useLanguage from "../../../../hooks/useLanguage";
-import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 import { KABBADI } from "../../../../assets/Icon";
 import { eventNameList } from "../../../../static/event-name-list";
+import useLanguage from "../../../../hooks/use-language";
 
 const LeftDeskSidebar = ({ setShowLanguage }) => {
-  const { valueByLanguage, language } = useLanguage();
+  const { getLanguage, language } = useLanguage();
   const [hideNavList, setHideNavList] = useState("");
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
@@ -148,7 +147,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                    {getLanguage(LanguageKey.CRICKET)}
                   </span>
                 </li>
                 <li
@@ -210,7 +209,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                    {getLanguage(LanguageKey.FOOTBALL)}
                   </span>
                 </li>
                 <li
@@ -240,7 +239,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                    {getLanguage(LanguageKey.TENNIS)}
                   </span>
                 </li>
                 <li
@@ -259,7 +258,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
+                    {getLanguage(LanguageKey.SPORTSBOOK)}
                   </span>
                 </li>
                 <li
@@ -270,7 +269,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     <KABBADI height={13} width={13} />
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                    {getLanguage(LanguageKey.KABADDI)}
                   </span>
                 </li>
                 <li
@@ -286,7 +285,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     />
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.POLITICS)}
+                    {getLanguage(LanguageKey.POLITICS)}
                   </span>
                 </li>
                 <li
@@ -311,7 +310,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                    {getLanguage(LanguageKey.HORSE)}
                   </span>
                 </li>
                 <li
@@ -336,7 +335,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                    {getLanguage(LanguageKey.GREYHOUND)}
                   </span>
                 </li>
                 {eventNameList.map((item) => {
@@ -355,7 +354,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                         />
                       </span>
                       <span className="font-medium text-sm xs:text-base">
-                        {languageValue(valueByLanguage, item.name)}
+                        {getLanguage(item.name)}
                       </span>
                     </li>
                   );
@@ -382,7 +381,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.MAC88)}
+                    {getLanguage(LanguageKey.MAC88)}
                   </span>
                 </li>
 
@@ -449,7 +448,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
+                    {getLanguage(LanguageKey.LIVE_CASINO)}
                   </span>
                 </li>
                 {/* {settings.aura && (
@@ -511,7 +510,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.SLOTS)}
+                    {getLanguage(LanguageKey.SLOTS)}
                   </span>
                 </li>
                 <li
@@ -539,7 +538,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
+                    {getLanguage(LanguageKey.CRASH_GAMES)}
                   </span>
                 </li>
                 <li
@@ -569,7 +568,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                   </span>
                   <span className="font-medium text-sm xs:text-base">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.FISHING_GAMES)}
+                    {getLanguage(LanguageKey.FISHING_GAMES)}
                   </span>
                 </li>
 
@@ -596,7 +595,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.AVIATOR)}
+                    {getLanguage(LanguageKey.AVIATOR)}
                   </span>
                 </li>
                 {settings.apk_link && (
@@ -623,7 +622,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      {languageValue(valueByLanguage, LanguageKey.DOWNLOAD_APK)}
+                      {getLanguage(LanguageKey.DOWNLOAD_APK)}
                     </span>
                   </li>
                 )}
@@ -658,7 +657,7 @@ const LeftDeskSidebar = ({ setShowLanguage }) => {
                   <li className="p-1">
                     <div className="flex flex-col gap-1 p-3 items-center  rounded">
                       <span className="text-primary font-semibold text-primary">
-                        {languageValue(valueByLanguage, LanguageKey.CONTACT_US)}
+                        {getLanguage(LanguageKey.CONTACT_US)}
                       </span>
                       <div className="flex w-full items-center justify-center gap-1">
                         {settings?.whatsapplink ||

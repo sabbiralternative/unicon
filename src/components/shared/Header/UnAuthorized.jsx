@@ -7,10 +7,9 @@ import {
 } from "../../../redux/features/stateSlice";
 import ForgetPassword from "../../modal/ForgetPassword/ForgetPassword";
 import { settings } from "../../../api";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import assets from "../../../assets";
+import useLanguage from "../../../hooks/use-language";
 
 const UnAuthorized = ({
   setShowMobileSearch,
@@ -18,7 +17,7 @@ const UnAuthorized = ({
 
   setShowLanguage,
 }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
 
   const { showLoginModal, showRegisterModal, showForgetModal } = useSelector(
     (state) => state.state,
@@ -84,7 +83,7 @@ const UnAuthorized = ({
                 </svg>
               </span>
               <span className="text-xxs text-primary  font-normal font-lato md:font-semibold md:text-xs xs:text-xs">
-                {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                {getLanguage(LanguageKey.LOGIN)}
               </span>
             </button>
             {settings.registration && (
@@ -112,7 +111,7 @@ const UnAuthorized = ({
             </svg>
           </span> */}
                 <span className="text-xxs text-text_Primary  font-lato md:font-semibold md:text-xs xs:text-xs">
-                  {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                  {getLanguage(LanguageKey.REGISTER)}
                 </span>
               </button>
             )}
@@ -172,7 +171,7 @@ const UnAuthorized = ({
               className="flex rounded-full border border-quaternary hover:opacity-100 w-max font-extrabold items-center justify-center px-2.5 py-2 bg-primary"
             >
               <span className="text-x text-primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
-                {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                {getLanguage(LanguageKey.LOGIN)}
               </span>
             </button>
             {settings.registration && (
@@ -181,7 +180,7 @@ const UnAuthorized = ({
                 className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-2.5 py-2 bg-bg_Quaternary"
               >
                 <span className="text-x text-text_Primary font-lato md:font-semibold xs:text-xs md:text-sm font-[800]">
-                  {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                  {getLanguage(LanguageKey.REGISTER)}
                 </span>
               </button>
             )}

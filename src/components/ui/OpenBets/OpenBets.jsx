@@ -5,12 +5,11 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const OpenBets = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { myBets } = useCurrentBets();
   const [openBets, setOpenBets] = useState(true);
@@ -33,7 +32,7 @@ const OpenBets = () => {
           >
             <span className="text-primary text-xs">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.OPEN_BETS)}
+              {getLanguage(LanguageKey.OPEN_BETS)}
             </span>
             <div className="flex items-center justify-center autoAnimate text-primary">
               {openBets ? (
@@ -98,10 +97,7 @@ const OpenBets = () => {
           {openBets && myBets?.length === 0 && orderedBets?.length === 0 && (
             <div className="w-full origin-top scaleVerticalOpen">
               <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4 py-3 shadow text-text_Ternary">
-                {languageValue(
-                  valueByLanguage,
-                  LanguageKey.YOU_HAVE_NO_OPEN_BETS,
-                )}
+                {getLanguage(LanguageKey.YOU_HAVE_NO_OPEN_BETS)}
               </div>
             </div>
           )}

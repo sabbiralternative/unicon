@@ -11,8 +11,11 @@ import {
 import toast from "react-hot-toast";
 import { settings } from "../../../api";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const LiveSlotCrashFishing = ({ casinoType }) => {
+  const { getLanguage } = useLanguage();
   const { token, bonusToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const { selectedCategory } = useSelector((state) => state.state);
@@ -100,7 +103,7 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
             </button>
           </div>
           <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary font-lato font-bold text-[16px] leading-5">
-            <span>Casino</span>
+            <span>{getLanguage(LanguageKey.CASINO)}</span>
           </span>
         </div>
       </div>
@@ -113,7 +116,9 @@ const LiveSlotCrashFishing = ({ casinoType }) => {
             className="w-full md:mt-[0px] lg:overflow-auto lg:w-full"
             style={{ minHeight: "calc(-110px + 100dvh)" }}
           >
-            <h1 className="hidden">Play Online games</h1>
+            <h1 className="hidden">
+              {getLanguage(LanguageKey.PLAY_ONLINE_GAMES)}
+            </h1>
             <div className="w-full px-2">
               {/* <div className="w-full pb-1">
                 <img

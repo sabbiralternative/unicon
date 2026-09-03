@@ -8,14 +8,13 @@ import useBalance from "../../../../hooks/useBalance";
 import { settings } from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import Referral from "../../../modal/Referral/Referral";
-import useLanguage from "../../../../hooks/useLanguage";
-import { languageValue } from "../../../../utils/language";
 import { LanguageKey } from "../../../../const";
 import assets from "../../../../assets";
+import useLanguage from "../../../../hooks/use-language";
 
 const RightDeskSidebar = () => {
   const closePopupForForever = localStorage.getItem("closePopupForForever");
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const memberId = localStorage.getItem("memberId");
   const navigate = useNavigate();
   const [showReferral, setShowReferral] = useState(false);
@@ -153,8 +152,7 @@ const RightDeskSidebar = () => {
                   </svg>
                 </span>
                 <span className="font-lato-bold font-semibold text-sm xs:text-base text-text_Ternary">
-                  {languageValue(valueByLanguage, LanguageKey.USER_ID)} :{" "}
-                  {memberId}
+                  {getLanguage(LanguageKey.USER_ID)} : {memberId}
                 </span>
               </div>
             </li>
@@ -184,16 +182,13 @@ const RightDeskSidebar = () => {
                   </svg>
                 </span>
                 <span className="font-lato-bold font-semibold text-sm xs:text-base text-text_Ternary">
-                  {languageValue(
-                    valueByLanguage,
-                    LanguageKey.BALANCE_INFORMATION,
-                  )}
+                  {getLanguage(LanguageKey.BALANCE_INFORMATION)}
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-0.5 w-full">
                 <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                   <span className="uppercase font-normal text-xxs">
-                    {languageValue(valueByLanguage, LanguageKey.BALANCE)}
+                    {getLanguage(LanguageKey.BALANCE)}
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Success">
                     ₹ {balance?.availBalance}
@@ -209,7 +204,7 @@ const RightDeskSidebar = () => {
                 </div> */}
                 <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
                   <span className="uppercase font-normal text-xxs">
-                    {languageValue(valueByLanguage, LanguageKey.EXPOSURE)}
+                    {getLanguage(LanguageKey.EXPOSURE)}
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Success">
                     ₹ {balance?.deductedExposure}
@@ -265,7 +260,7 @@ const RightDeskSidebar = () => {
                             fill="var(--color-quaternary)"
                           ></path>
                         </svg>
-                        {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+                        {getLanguage(LanguageKey.DEPOSIT)}
                       </span>
                     </button>
                   )}
@@ -312,7 +307,7 @@ const RightDeskSidebar = () => {
                             fill="var(--color-quaternary)"
                           ></path>
                         </svg>
-                        {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+                        {getLanguage(LanguageKey.WITHDRAW)}
                       </span>
                     </button>
                   )}
@@ -390,7 +385,7 @@ const RightDeskSidebar = () => {
 
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                {languageValue(valueByLanguage, LanguageKey.STATEMENTS)}
+                {getLanguage(LanguageKey.STATEMENTS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 {settings?.branchWhatsapplink && (
@@ -435,10 +430,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.DEPOSIT_STATEMENT,
-                    )}
+                    {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
                   </span>
                 </div>
                 <div
@@ -467,10 +459,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.WITHDRAW_STATMENT,
-                    )}
+                    {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
                   </span>
                 </div>
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -520,7 +509,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.OPEN_BETS)}
+                    {getLanguage(LanguageKey.OPEN_BETS)}
                   </span>
                 </div>
                 <div
@@ -552,10 +541,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.BETTING_PROFIT_AND_LOSS,
-                    )}
+                    {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
                   </span>
                 </div>
 
@@ -610,10 +596,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.MY_BANK_DETAILS,
-                    )}
+                    {getLanguage(LanguageKey.MY_BANK_DETAILS)}
                   </span>
                 </div>
                 <div
@@ -640,10 +623,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.BONUS_STATEMENT,
-                    )}
+                    {getLanguage(LanguageKey.BONUS_STATEMENT)}
                   </span>
                 </div>
 
@@ -676,7 +656,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
+                      {getLanguage(LanguageKey.AFFILIATE)}
                     </span>
                   </div>
                 )}
@@ -697,10 +677,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.PROMOTION_AND_BONUSES,
-                    )}
+                    {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
                   </span>
                 </div>
                 <div
@@ -729,7 +706,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.LOSSBACK_BONUS)}
+                    {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                   </span>
                 </div>
                 {closePopupForForever && (
@@ -763,10 +740,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      {languageValue(
-                        valueByLanguage,
-                        LanguageKey.APP_ONLY_BONUS,
-                      )}
+                      {getLanguage(LanguageKey.APP_ONLY_BONUS)}
                     </span>
                   </div>
                 )}
@@ -878,7 +852,7 @@ const RightDeskSidebar = () => {
             </li>
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                {languageValue(valueByLanguage, LanguageKey.ACCOUNT_SETTINGS)}
+                {getLanguage(LanguageKey.ACCOUNT_SETTINGS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -929,7 +903,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.STAKE_SETTINGS)}
+                    {getLanguage(LanguageKey.STAKE_SETTINGS)}
                   </span>
                 </div>
               </div>
@@ -937,7 +911,7 @@ const RightDeskSidebar = () => {
             {settings.apk_link && (
               <li className="divide-y flex items-start justify-start flex-col">
                 <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                  {languageValue(valueByLanguage, LanguageKey.ANDROID_APP)}
+                  {getLanguage(LanguageKey.ANDROID_APP)}
                 </span>
                 <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                   {/* <div className="flex transition-all px-0.5 rounded-sm ease-in-out duration-150 hover:bg-bg_Ternary6 active:scale-[99%] items-center justify-start gap-3 w-full py-2 cursor-pointer">
@@ -989,7 +963,7 @@ const RightDeskSidebar = () => {
                       </svg>
                     </span>
                     <span className="font-medium text-sm xs:text-base">
-                      {languageValue(valueByLanguage, LanguageKey.DOWNLOAD_APK)}
+                      {getLanguage(LanguageKey.DOWNLOAD_APK)}
                     </span>
                   </div>
                 </div>
@@ -997,10 +971,7 @@ const RightDeskSidebar = () => {
             )}
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                {languageValue(
-                  valueByLanguage,
-                  LanguageKey.LEGAL_AND_COMPLIANCE,
-                )}
+                {getLanguage(LanguageKey.LEGAL_AND_COMPLIANCE)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 <div
@@ -1027,7 +998,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.RULES)}
+                    {getLanguage(LanguageKey.RULES)}
                   </span>
                 </div>
                 <div
@@ -1054,10 +1025,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.EXCLUSION_POLICY,
-                    )}
+                    {getLanguage(LanguageKey.EXCLUSION_POLICY)}
                   </span>
                 </div>
                 <div
@@ -1082,10 +1050,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.RESPONSIBLE_GAMBLING,
-                    )}
+                    {getLanguage(LanguageKey.RESPONSIBLE_GAMBLING)}
                   </span>
                 </div>
                 <div
@@ -1111,14 +1076,14 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.PRIVACY_POLICY)}
+                    {getLanguage(LanguageKey.PRIVACY_POLICY)}
                   </span>
                 </div>
               </div>
             </li>
             <li className="divide-y flex items-start justify-start flex-col">
               <span className="font-lato-bold font-semibold px-3 py-1 w-full bg-bg_Ternary8 text-xs xs:text-sm text-text_Ternary">
-                {languageValue(valueByLanguage, LanguageKey.ACCOUNT_ACTIONS)}
+                {getLanguage(LanguageKey.ACCOUNT_ACTIONS)}
               </span>
               <div className="divide-y pl-5 flex items-start justify-start w-full flex-col">
                 <div
@@ -1144,10 +1109,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(
-                      valueByLanguage,
-                      LanguageKey.CHANGE_PASSWORD,
-                    )}
+                    {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                   </span>
                 </div>
 
@@ -1179,7 +1141,7 @@ const RightDeskSidebar = () => {
                     </svg>
                   </span>
                   <span className="font-medium text-sm xs:text-base">
-                    {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
+                    {getLanguage(LanguageKey.LOGOUT)}
                   </span>
                 </div>
               </div>

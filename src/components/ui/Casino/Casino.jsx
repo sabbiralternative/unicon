@@ -7,8 +7,11 @@ import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setGroupType } from "../../../redux/features/stateSlice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Casino = () => {
+  const { getLanguage } = useLanguage();
   /* get casino data */
   const dispatch = useDispatch();
   const { data } = useCasino();
@@ -51,7 +54,7 @@ const Casino = () => {
       )}
 
       <div _ngcontent-ng-c943649379="" className="game-play-heading">
-        <h2 _ngcontent-ng-c943649379="">Casino</h2>
+        <h2 _ngcontent-ng-c943649379="">{getLanguage(LanguageKey.CASINO)}</h2>
         <a
           _ngcontent-ng-c943649379=""
           routerlink="/live-casino-lobby/live_casino"
@@ -59,7 +62,7 @@ const Casino = () => {
           className="view-all-link ng-star-inserted"
           onClick={() => dispatch(setGroupType("casinoWolf"))}
         >
-          View All
+          {getLanguage(LanguageKey.VIEW_ALL)}
         </a>
       </div>
       <div

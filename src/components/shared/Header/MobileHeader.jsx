@@ -5,16 +5,15 @@ import {
   setShowLoginModal,
 } from "../../../redux/features/stateSlice";
 import { settings } from "../../../api";
-import useLanguage from "../../../hooks/useLanguage";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { useEffect } from "react";
 import { latestEvent } from "../../../static/latest-event";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const MobileHeader = ({ handleNavigateToIFrame }) => {
   const location = useLocation();
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { group } = useSelector((state) => state.state);
@@ -46,7 +45,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.HOME)}
+              {getLanguage(LanguageKey.HOME)}
             </span>
           </button>
         </a>
@@ -69,7 +68,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             >
               <span className="font font-lato text-[12px]">
                 {" "}
-                {languageValue(valueByLanguage, LanguageKey.AFFILIATE)}
+                {getLanguage(LanguageKey.AFFILIATE)}
               </span>
             </button>
           </a>
@@ -118,7 +117,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
        }`}
           >
             <span className="font font-lato text-[12px]">
-              {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+              {getLanguage(LanguageKey.CRICKET)}
             </span>
           </button>
         </a>
@@ -139,7 +138,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
              }`}
           >
             <span className="font font-lato text-[12px]">
-              {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+              {getLanguage(LanguageKey.FOOTBALL)}
             </span>
           </button>
         </a>
@@ -161,7 +160,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+              {getLanguage(LanguageKey.TENNIS)}
             </span>
           </button>
         </a>
@@ -178,7 +177,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.SPORTSBOOK)}
+              {getLanguage(LanguageKey.SPORTSBOOK)}
             </span>
           </button>
         </a>
@@ -199,7 +198,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
      }`}
           >
             <span className="font font-lato text-[12px]">
-              {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+              {getLanguage(LanguageKey.KABADDI)}
             </span>
           </button>
         </a>
@@ -221,7 +220,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
           >
             <span className="font font-lato text-[12px]">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.POLITICS)}
+              {getLanguage(LanguageKey.POLITICS)}
             </span>
           </button>
         </a>
@@ -241,7 +240,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
      }`}
           >
             <span className="font font-lato text-[12px]">
-              {languageValue(valueByLanguage, LanguageKey.HORSE)}
+              {getLanguage(LanguageKey.HORSE)}
             </span>
           </button>
         </a>
@@ -261,7 +260,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
      }`}
           >
             <span className="font font-lato text-[12px]">
-              {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+              {getLanguage(LanguageKey.GREYHOUND)}
             </span>
           </button>
         </a>
@@ -286,7 +285,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
               >
                 <span className="font font-lato text-[12px]">
                   {" "}
-                  {languageValue(valueByLanguage, item.name)}
+                  {getLanguage(item.name)}
                 </span>
               </button>
             </a>
@@ -323,7 +322,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  {languageValue(valueByLanguage, LanguageKey.MAC88)}
+                  {getLanguage(LanguageKey.MAC88)}
                 </span>
               </span>
             </span>
@@ -444,7 +443,7 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  {languageValue(valueByLanguage, LanguageKey.LIVE_CASINO)}
+                  {getLanguage(LanguageKey.LIVE_CASINO)}
                 </span>
               </span>
             </span>
@@ -494,7 +493,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  {languageValue(valueByLanguage, LanguageKey.SLOTS)}
+                  {getLanguage(LanguageKey.SLOTS)}
                 </span>
               </span>
             </span>
@@ -534,7 +533,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  {languageValue(valueByLanguage, LanguageKey.CRASH_GAMES)}
+                  {getLanguage(LanguageKey.CRASH_GAMES)}
                 </span>
               </span>
             </span>
@@ -576,7 +575,7 @@ lg:hidden ${
                   </svg>
                 </span>
                 <span className="font font-lato text-[12px] ml-[4px]">
-                  {languageValue(valueByLanguage, LanguageKey.FISHING_GAMES)}
+                  {getLanguage(LanguageKey.FISHING_GAMES)}
                 </span>
               </span>
             </span>

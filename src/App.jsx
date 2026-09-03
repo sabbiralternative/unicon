@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import BuildVersion from "./components/modal/BuildVersion/BuildVersion";
 import { settings } from "./api";
 import MaintenanceMessage from "./components/ui/MaintenanceMessage/MaintenanceMessage";
-import useLanguage from "./hooks/useLanguage";
+import useLanguage from "./hooks/use-language";
 
 const App = () => {
   const { setLanguage } = useLanguage();

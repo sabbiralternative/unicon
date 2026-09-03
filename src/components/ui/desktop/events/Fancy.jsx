@@ -8,8 +8,11 @@ import { useState } from "react";
 import { useGetLadderMutation } from "../../../../redux/features/events/events";
 import Ladder from "../../../modal/Ladder/Ladder";
 import { userToken } from "../../../../redux/features/auth/authSlice";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const Fancy = ({ fancy }) => {
+  const { getLanguage } = useLanguage();
   const token = useSelector(userToken);
   const [eventName, setEventName] = useState("");
   const [ladderData, setLadderData] = useState([]);
@@ -31,7 +34,7 @@ const Fancy = ({ fancy }) => {
       exposer,
       dispatch,
       price,
-      token
+      token,
     );
   };
   const handleGetLadder = async (marketId, games) => {
@@ -356,7 +359,7 @@ const Fancy = ({ fancy }) => {
                   {isOddSuspended(games) ? (
                     <span className="col-span-4 text-center min-h-12 py-[1px] px-[1px]">
                       <span className="text-center bg-bg_ballRunning cursor-not-allowed w-full h-full rounded-sm flex text-xs flex-col items-center justify-center">
-                        Suspended
+                        {getLanguage(LanguageKey.SUSPENDED)}
                       </span>
                     </span>
                   ) : (
@@ -367,7 +370,7 @@ const Fancy = ({ fancy }) => {
                             "lay",
                             games,
                             games?.runners?.[0],
-                            games?.runners?.[0]?.lay?.[0]?.line
+                            games?.runners?.[0]?.lay?.[0]?.line,
                           )
                         }
                         className="text-center min-h-12 cols-span-1 md:col-span-2"
@@ -375,7 +378,7 @@ const Fancy = ({ fancy }) => {
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
                             className={`${isPriceAvailable(
-                              games?.runners?.[0]?.lay?.[0]?.line
+                              games?.runners?.[0]?.lay?.[0]?.line,
                             )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_LayBtnBg border border-layBtn undefined`}
                           >
                             <span
@@ -402,7 +405,7 @@ const Fancy = ({ fancy }) => {
                             "back",
                             games,
                             games?.runners?.[0],
-                            games?.runners?.[0]?.back?.[0]?.line
+                            games?.runners?.[0]?.back?.[0]?.line,
                           )
                         }
                         className="text-center min-h-12 cols-span-1 md:col-span-2"
@@ -410,7 +413,7 @@ const Fancy = ({ fancy }) => {
                         <span className="flex items-center justify-center w-full h-full p-[1px] md:p-[2px] overflow-hidden">
                           <div
                             className={`${isPriceAvailable(
-                              games?.runners?.[0]?.back?.[0]?.line
+                              games?.runners?.[0]?.back?.[0]?.line,
                             )} overflow-hidden relative  w-full h-full px-1 py-[1px] rounded-sm flex flex-col items-center justify-center bg-bg_BackBtnBg border border-backBtn undefined`}
                           >
                             <span
@@ -438,7 +441,7 @@ const Fancy = ({ fancy }) => {
                     <div className="flex flex-col gap-y-1 items-center h-full w-full justify-center px-1">
                       <div className="flex items-center justify-center">
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          Max Bet :
+                          {getLanguage(LanguageKey.MAX)} :
                         </span>
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
                           {games?.maxLiabilityPerBet}
@@ -446,7 +449,7 @@ const Fancy = ({ fancy }) => {
                       </div>
                       <div className="flex items-center justify-start">
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
-                          Min :
+                          {getLanguage(LanguageKey.MIN)} :
                         </span>
                         <span className="text-[10px] text-center text-text_MaxMarketTextColor">
                           {games?.minLiabilityPerBet}

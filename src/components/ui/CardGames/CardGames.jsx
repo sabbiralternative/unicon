@@ -6,8 +6,11 @@ import { setGroupType } from "../../../redux/features/stateSlice";
 import useCardGames from "../../../hooks/useCardGames";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import toast from "react-hot-toast";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const CardGames = () => {
+  const { getLanguage } = useLanguage();
   /* get aura casino (go casino) */
   const dispatch = useDispatch();
   const { data } = useCardGames();
@@ -38,12 +41,12 @@ const CardGames = () => {
     <>
       {showWarning && <WarningCondition setShowWarning={setShowWarning} />}
       <div className="flex items-center justify-between w-full pt-5 pb-2 px-3">
-        <h2>Card Games</h2>
+        <h2>{getLanguage(LanguageKey.CARD_GAMES)}</h2>
         <a
           className="cursor-pointer"
           onClick={() => dispatch(setGroupType("auraWolf"))}
         >
-          View All
+          {getLanguage(LanguageKey.VIEW_ALL)}
         </a>
       </div>
       <div className=" page-body" _ngcontent-ng-c1965075897="">

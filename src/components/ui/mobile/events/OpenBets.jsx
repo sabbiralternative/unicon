@@ -6,8 +6,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import useSBCashOut from "../../../../hooks/sb_cashout";
 import toast from "react-hot-toast";
+import useLanguage from "../../../../hooks/use-language";
+import { LanguageKey } from "../../../../const";
 
 const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
+  const { getLanguage } = useLanguage();
   const [activeTab, setActiveTab] = useState(true);
   const navigate = useNavigate();
   const { mutate: cashOut } = useSBCashOut();
@@ -18,7 +21,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
       (group) =>
         group?.Name !== "Bet Builder" &&
         group?.Name !== "Fast Markets" &&
-        group?.Name !== "Player Specials"
+        group?.Name !== "Player Specials",
     );
 
   const handleCashOut = ({ betHistory, sportsBook, price, cashout_value }) => {
@@ -32,7 +35,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
     });
 
     const column = item?.Items?.find(
-      (col) => col?.Id === betHistory?.selectionId
+      (col) => col?.Id === betHistory?.selectionId,
     );
 
     const payload = {
@@ -76,7 +79,9 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
           className="w-full flex items-center justify-between bg-primary transition-all ease-in-out my-1 py-1 rounded-[6px] origin-center active:opacity-95 cursor-pointer"
         >
           <div className="head pl-2">
-            <span className="text-primary site-font text-sm">Open Bets</span>
+            <span className="text-primary site-font text-sm">
+              {getLanguage(LanguageKey.OPEN_BETS)}
+            </span>
           </div>
           <div className="cursor-pointer mr-2 transform transition-transform ease-in-out flex items-center justify-center w-max origin-center active:scale-90 active:opacity-85 text-primary">
             {activeTab ? (
@@ -98,7 +103,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
                 group?.Items?.forEach((data) => {
                   if (item?.marketId == data?.Id) {
                     column = data?.Items?.find(
-                      (col) => col?.Id === item?.selectionId
+                      (col) => col?.Id === item?.selectionId,
                     );
                   }
                 });
@@ -121,7 +126,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
                       onClick={() => {
                         setActiveTab((prev) => !prev);
                         navigate(
-                          `/game-details/${item?.eventTypeId}/${item?.eventId}`
+                          `/game-details/${item?.eventTypeId}/${item?.eventId}`,
                         );
                       }}
                       className="font-medium underline capitalize text-sm text-text_ChangeAnimationBack "
@@ -153,7 +158,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
                         }}
                       >
                         <span style={{ fontSize: "10px", color: "black" }}>
-                          Cashout
+                          {getLanguage(LanguageKey.CASHOUT)}
                         </span>
                         {price && (
                           <span style={{ color: "black", fontSize: "10px" }}>
@@ -181,7 +186,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
                     id="tiem_Date_of_order_0_1724640350689"
                     className="text-xs font-lato font-normal"
                   >
-                    <strong>Placed : </strong>
+                    <strong>{getLanguage(LanguageKey.PLACED_DATE)} : </strong>
                     <span>{item?.placeDate}</span>
                   </div>
                 </div>
@@ -189,7 +194,7 @@ const OpenBets = ({ myBets, sportsBook, refetchCurrentBets }) => {
             })
           ) : (
             <div className="flex items-center bg-white py-2 mb-3 mt-1 rounded-sm pl-2">
-              You have no Matched Bets.
+              {getLanguage(LanguageKey.YOU_HAVE_NO_MATCHED_BETS)}.
             </div>
           )}
 
