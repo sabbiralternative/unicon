@@ -24,6 +24,9 @@ import { LanguageKey } from "../../../const";
 import useLanguage from "../../../hooks/use-language";
 
 const Register = () => {
+  const [tab, setTab] = useState(
+    settings.registration_mobile ? "mobile" : "username",
+  );
   const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const { token } = useSelector((state) => state.auth);
@@ -65,7 +68,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const registerData = {
-      username: "",
+      username: data?.username,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
       mobile: mobile,
@@ -75,6 +78,8 @@ const Register = () => {
       orderId: OTP.orderId,
       otpMethod: OTP.otpMethod,
       affnook_token: affnook_token || null,
+      registration_mobile: settings.registration_mobile,
+      registration_username: settings.registration_username,
     };
 
     const result = await handleRegister(registerData).unwrap();
@@ -191,24 +196,62 @@ const Register = () => {
               className="w-full gap-y-4 flex flex-col"
             >
               <div title="signUpForm" className="w-full">
-                <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
-                  {/* <span
+                {settings.registration_mobile &&
+                  settings.registration_username && (
+                    <div className="px-2 w-full pb-3">
+                      <div className="flex flex-row items-center justify-start gap-6 relative">
+                        <div
+                          onClick={() => setTab("mobile")}
+                          className="cursor-pointer flex flex-row items-center justify-center"
+                        >
+                          <span
+                            className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
+                              tab === "mobile"
+                                ? "text-primary bg-bg_Primary"
+                                : "bg-bg_Quaternary"
+                            }`}
+                          >
+                            By Phone
+                          </span>
+                        </div>
+                        <div
+                          onClick={() => setTab("username")}
+                          className="cursor-pointer flex flex-row items-center justify-center"
+                        >
+                          <span
+                            className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 font-lato ${
+                              tab === "username"
+                                ? "text-primary bg-bg_Primary"
+                                : "bg-bg_Quaternary"
+                            }`}
+                          >
+                            By Username
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                {tab === "mobile" && settings.registration_mobile && (
+                  <Fragment>
+                    <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
+                      {/* <span
                     id="dropdown-phone-button"
                     className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
                   >
                     +91
                   </span> */}
-                  <input
-                    maxLength={10}
-                    onChange={(e) => handleMobileInputChange(e)}
-                    id="mobile-no-input"
-                    className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
-                    placeholder="Phone Number"
-                    type="number"
-                    value={mobile}
-                  />
-                  <div className="w-max flex items-center gap-2">
-                    {/* {settings.otpWhatsapp && (
+                      <input
+                        maxLength={10}
+                        onChange={(e) => handleMobileInputChange(e)}
+                        id="mobile-no-input"
+                        className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                        placeholder="Phone Number"
+                        type="number"
+                        value={mobile}
+                      />
+                      <div className="w-max flex items-center gap-2">
+                        {/* {settings.otpWhatsapp && (
                       <button
                         onClick={handleGetOtpOnWhatsapp}
                         disabled={mobile?.length < 10}
@@ -219,51 +262,68 @@ const Register = () => {
                         <span className="shimmer"></span>
                       </button>
                     )} */}
-                    {timer ? (
-                      <button
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
-                        type="button"
-                      >
-                        <span className=" ">
-                          {getLanguage(LanguageKey.RETRY_IN)} {timer}
-                        </span>
-                        {/* <span className="shimmer"></span> */}
-                      </button>
-                    ) : (
-                      <button
-                        disabled={mobile?.length < 10}
-                        onClick={handleOTP}
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                        type="button"
-                      >
-                        <span className=" ">
-                          {" "}
-                          {getLanguage(LanguageKey.GET_OTP)}
-                        </span>
-                        <span className="shimmer"></span>
-                      </button>
-                    )}
+                        {timer ? (
+                          <button
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
+                            type="button"
+                          >
+                            <span className=" ">
+                              {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                            </span>
+                            {/* <span className="shimmer"></span> */}
+                          </button>
+                        ) : (
+                          <button
+                            disabled={mobile?.length < 10}
+                            onClick={handleOTP}
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                            type="button"
+                          >
+                            <span className=" ">
+                              {" "}
+                              {getLanguage(LanguageKey.GET_OTP)}
+                            </span>
+                            <span className="shimmer"></span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    <div
+                      id="phoneNumberValidations"
+                      className="flex w-full items-center justify-between mt-1 px-1"
+                    >
+                      <span className="text-xs text-text_Primary"></span>
+                      <span className="text-xs text-text_Primary">
+                        {mobile.length}/10
+                      </span>
+                    </div>
+                  </Fragment>
+                )}
+                {settings.registration_mobile && tab === "mobile" && (
+                  <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
+                    <input
+                      {...register("otp", { required: true })}
+                      id="otpSignUp"
+                      className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
+                      placeholder="OTP"
+                      type="text"
+                      maxLength={6}
+                    />
                   </div>
-                </div>
-                <div
-                  id="phoneNumberValidations"
-                  className="flex w-full items-center justify-between mt-1 px-1"
-                >
-                  <span className="text-xs text-text_Primary"></span>
-                  <span className="text-xs text-text_Primary">
-                    {mobile.length}/10
-                  </span>
-                </div>
-                <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
-                  <input
-                    {...register("otp", { required: true })}
-                    id="otpSignUp"
-                    className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
-                    placeholder="OTP"
-                    type="text"
-                    maxLength={6}
-                  />
-                </div>
+                )}
+                {settings.registration_username && tab === "username" && (
+                  <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
+                    <input
+                      {...register("username", { required: true })}
+                      id="otpSignUp"
+                      className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
+                      placeholder="Enter Username"
+                      type="text"
+                      maxLength={6}
+                    />
+                  </div>
+                )}
+
                 <div
                   id="otpTimeCount"
                   className="flex w-full items-center justify-start mt-1 px-1"
