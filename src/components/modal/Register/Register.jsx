@@ -17,6 +17,9 @@ import {
 } from "../../../redux/features/stateSlice";
 import useContextState from "../../../hooks/useContextState";
 import useBalance from "../../../hooks/useBalance";
+import { FaMobileAlt } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
+
 // import getOtpOnWhatsapp from "../../../utils/getOtpOnWhatsapp";
 
 import assets from "../../../assets";
@@ -198,35 +201,27 @@ const Register = () => {
               <div title="signUpForm" className="w-full">
                 {settings.registration_mobile &&
                   settings.registration_username && (
-                    <div className="px-2 w-full pb-3">
-                      <div className="flex flex-row items-center justify-start gap-6 relative">
+                    <div className=" w-full bg-[color-mix(in_srgb,var(--color-bg-primary)_30%,transparent)] mb-3">
+                      <div className="flex flex-row items-center justify-start gap-6 relative w-full">
                         <div
                           onClick={() => setTab("mobile")}
-                          className="cursor-pointer flex flex-row items-center justify-center"
+                          className={`cursor-pointer flex flex-row items-center justify-center px-[25px] py-2 text-[13px] md:text-sm lg:text-base  font-bold leading-4 active:scale-95 z-10 w-full gap-x-1.5 ${
+                            tab === "mobile" ? "text-primary bg-bg_Primary" : ""
+                          }`}
                         >
-                          <span
-                            className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
-                              tab === "mobile"
-                                ? "text-primary bg-bg_Primary"
-                                : "bg-bg_Quaternary"
-                            }`}
-                          >
-                            By Phone
-                          </span>
+                          <FaMobileAlt />
+                          <span className={`   `}>By Phone</span>
                         </div>
                         <div
                           onClick={() => setTab("username")}
-                          className="cursor-pointer flex flex-row items-center justify-center"
+                          className={`w-full cursor-pointer flex flex-row items-center justify-center px-[25px] py-2 text-[13px] md:text-sm lg:text-base  font-bold leading-4 active:scale-95 z-10 gap-x-1.5  ${
+                            tab === "username"
+                              ? "text-primary bg-bg_Primary"
+                              : ""
+                          }`}
                         >
-                          <span
-                            className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 font-lato ${
-                              tab === "username"
-                                ? "text-primary bg-bg_Primary"
-                                : "bg-bg_Quaternary"
-                            }`}
-                          >
-                            By Username
-                          </span>
+                          <FaRegUser />
+                          <span className={`   `}> By Username</span>
                         </div>
                       </div>
                     </div>
