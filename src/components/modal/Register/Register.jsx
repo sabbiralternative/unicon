@@ -210,7 +210,9 @@ const Register = () => {
                           }`}
                         >
                           <FaMobileAlt />
-                          <span className={`   `}>By Phone</span>
+                          <span className={`   `}>
+                            {getLanguage(LanguageKey.BY_PHONE)}
+                          </span>
                         </div>
                         <div
                           onClick={() => setTab("username")}
@@ -221,7 +223,10 @@ const Register = () => {
                           }`}
                         >
                           <FaRegUser />
-                          <span className={`   `}> By Username</span>
+                          <span className={`   `}>
+                            {getLanguage(LanguageKey.BY_USERNAME)}
+                            By Username
+                          </span>
                         </div>
                       </div>
                     </div>

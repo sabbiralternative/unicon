@@ -497,5 +497,7 @@ export const LanguageKey = {
   NO_INPLAY_EVENT_AVAILABLE: "NO_INPLAY_EVENT_AVAILABLE",
   NO_UPCOMING_EVENT_AVAILABLE: "NO_UPCOMING_EVENT_AVAILABLE",
   POPULAR_GAMES: "POPULAR_GAMES",
+  BY_PHONE: "BY_PHONE",
+  BY_USERNAME: "BY_USERNAME",
 };
 export const settingsAPI = "https://api7.live/api/exchange/diamond/settings";
