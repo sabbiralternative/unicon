@@ -225,7 +225,6 @@ const Register = () => {
                           <FaRegUser />
                           <span className={`   `}>
                             {getLanguage(LanguageKey.BY_USERNAME)}
-                            By Username
                           </span>
                         </div>
                       </div>
