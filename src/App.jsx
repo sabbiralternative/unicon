@@ -130,8 +130,17 @@ const App = () => {
 
   return (
     <div>
-      <meta name="description" content={settings.metaDescription} />
-      <meta name="keywords" content={settings.metaKeywords} />
+      {settings.metaDescription && (
+        <meta name="description" content={settings.metaDescription} />
+      )}
+      {settings.metaKeywords && (
+        <meta name="keywords" content={settings.metaKeywords} />
+      )}
+      {settings.gscTag && (
+        <meta name="google-site-verification" content={settings.gscTag} />
+      )}
+      {settings.metaTitle && <title>{settings.metaTitle}</title>}
+      <meta name="robots" content="index, follow" />
       {showBuildVersion && !showAPKModal && (
         <BuildVersion
           build_version={settings?.build_version}
