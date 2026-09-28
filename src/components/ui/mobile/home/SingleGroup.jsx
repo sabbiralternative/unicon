@@ -95,12 +95,14 @@ const SingleGroup = ({
                     </span>
                     <div className="text-text_Ternary md:text-[18px] text-base font-semibold leading-3 tracking-wide text-center flex items-center gap-x-2">
                       {eventName[group]}
-                      <LiveVirtual
-                        category={group}
-                        setLiveVirtual={setLiveVirtual}
-                        color="#fff"
-                        liveVirtual={liveVirtual}
-                      />
+                      {group == 4 && (
+                        <LiveVirtual
+                          category={group}
+                          setLiveVirtual={setLiveVirtual}
+                          color="#fff"
+                          liveVirtual={liveVirtual}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="col-span-6 py-2.5 lg:col-span-7 grid grid-cols-12 h-full">

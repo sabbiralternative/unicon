@@ -23,7 +23,7 @@ import Promotion from "../../../components/ui/Promotion";
 import { settings } from "../../../api";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
 import { Fragment } from "react";
-import FootballUpcoming from "../../../components/ui/mobile/home/FootballUpcoming";
+import FootballEvent from "../../../components/ui/mobile/home/FootballEvent";
 
 const Home = () => {
   const { lotusLobby } = useLotusHomeLobby();
@@ -67,7 +67,7 @@ const Home = () => {
               )}
 
               {data && settings.currency !== "GMD" && <InPlay data={data} />}
-              {settings.currency === "GMD" && <FootballUpcoming />}
+              {settings.currency === "GMD" && <FootballEvent />}
               <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
               <AuraWolf />
               <PopularGames popularGames={lotusLobby?.popularGames} />

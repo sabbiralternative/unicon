@@ -25,7 +25,7 @@ import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 import CryptoReferTab from "../../../components/ui/CryptoReferTab/CryptoReferTab";
 import Promotion from "../../../components/ui/Promotion";
 import { settings } from "../../../api";
-import FootballUpcoming from "../../../components/ui/desktop/Home/FootballUpcoming";
+import FootballEvent from "../../../components/ui/desktop/Home/FootballEvent";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -73,7 +73,7 @@ const Home = () => {
 
                 {/* <WithdrawAndDepositButton /> */}
                 {data && settings.currency !== "GMD" && <InPlay data={data} />}
-                {settings.currency === "GMD" && <FootballUpcoming />}
+                {settings.currency === "GMD" && <FootballEvent />}
                 <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
                 <AuraWolf />
                 <PopularGames popularGames={lotusLobby?.popularGames} />

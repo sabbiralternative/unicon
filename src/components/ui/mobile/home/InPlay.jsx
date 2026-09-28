@@ -123,11 +123,13 @@ const InPlay = ({ data }) => {
                     </span>
                     <div className="text-text_Ternary md:text-[18px] text-sm font-semibold leading-3 tracking-wide text-center flex items-center gap-x-1">
                       {eventName[category]}
-                      <LiveVirtual
-                        setLiveVirtual={setLiveVirtual}
-                        category={category}
-                        liveVirtual={liveVirtual}
-                      />
+                      {category == 4 && (
+                        <LiveVirtual
+                          setLiveVirtual={setLiveVirtual}
+                          category={category}
+                          liveVirtual={liveVirtual}
+                        />
+                      )}
                     </div>
                   </div>
 
