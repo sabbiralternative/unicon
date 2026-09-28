@@ -4,11 +4,8 @@ import { useSelector } from "react-redux";
 import SingleGroup from "./SingleGroup";
 import { useState } from "react";
 import { filterLiveVirtual } from "../../../../utils/filter-live-virtual";
-import useLanguage from "../../../../hooks/use-language";
-import { LanguageKey } from "../../../../const";
 
 const Group = ({ data }) => {
-  const { getLanguage } = useLanguage();
   // let inPlay = [];
   // let upComing = [];
   // if (data) {
@@ -33,32 +30,33 @@ const Group = ({ data }) => {
     >
       <div className="w-full h-full">
         <div className="w-full mt-[15px] px-[2px]">
-          {groupedInPlay?.length > 0 && (
-            <SingleGroup
-              data={data}
-              filterData={groupedInPlay}
-              title="In Play"
-              setLiveVirtual={setLiveVirtualInPlay}
-              liveVirtual={liveVirtualInPlay}
-            />
-          )}
-
-          {groupedUpcoming?.length > 0 && (
-            <SingleGroup
-              margin={true}
-              data={data}
-              filterData={groupedUpcoming}
-              title="Upcoming Events"
-              setLiveVirtual={setLiveVirtualUpcoming}
-              liveVirtual={liveVirtualUpcoming}
-            />
-          )}
-
-          {groupedUpcoming?.length === 0 && groupedInPlay?.length === 0 && (
-            <div className="flex items-center pl-5 bg-white py-3 rounded-sm font-[500]">
-              {getLanguage(LanguageKey.NO_BET_AVAILABLE)} !
+          <SingleGroup
+            data={data}
+            filterData={groupedInPlay}
+            title="In Play"
+            setLiveVirtual={setLiveVirtualInPlay}
+            liveVirtual={liveVirtualInPlay}
+            group={group}
+          />
+          {groupedInPlay?.length === 0 && (
+            <div className="flex items-center pl-5 bg-white py-3 rounded-md mx-0.5 mt-1 font-[500]">
+              No inplay event available right now!
             </div>
-          )}
+          )}{" "}
+          <SingleGroup
+            margin={true}
+            data={data}
+            filterData={groupedUpcoming}
+            title="Upcoming Events"
+            setLiveVirtual={setLiveVirtualUpcoming}
+            liveVirtual={liveVirtualUpcoming}
+            group={group}
+          />
+          {groupedUpcoming?.length === 0 && (
+            <div className="flex items-center pl-5 bg-white py-3 rounded-md mx-0.5 mt-1 font-[500]">
+              No upcoming event available right now!
+            </div>
+          )}{" "}
         </div>
       </div>
     </div>

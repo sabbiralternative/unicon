@@ -57,6 +57,7 @@ export const API = {
 };
 
 export const settings = {
+  country: "",
   gscTag: "",
   metaTitle: "",
   registration_mobile: "",
@@ -66,6 +67,7 @@ export const settings = {
   site_name: "",
   force_login: "",
   casino_currency: "",
+  currency: "",
   logo_format: "",
   logo_height: "",
   logo_width: "",

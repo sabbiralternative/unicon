@@ -40,6 +40,7 @@ const InPlay = ({ data }) => {
         const order = { 4: 0, 1: 1, 2: 2 };
         return order[a] - order[b];
       });
+
       setCategories(sortedCategories);
     }
   }, [data]);

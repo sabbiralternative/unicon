@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import isOddSuspended from "../../../../utils/isOddSuspended";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
-import { useSelector } from "react-redux";
 import assets from "../../../../assets";
 import Score from "../../desktop/Home/Score";
 import LiveVirtual from "../../desktop/Home/LiveVirtual";
@@ -14,9 +13,9 @@ const SingleGroup = ({
   title,
   setLiveVirtual,
   liveVirtual,
+  group,
 }) => {
   const { getLanguage } = useLanguage();
-  const { group } = useSelector((state) => state.state);
   const eventName = {
     4: getLanguage(LanguageKey.CRICKET),
     2: getLanguage(LanguageKey.TENNIS),

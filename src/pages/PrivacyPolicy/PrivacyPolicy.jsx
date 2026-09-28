@@ -1,3 +1,4 @@
+import { settings } from "../../api";
 import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/LeftDeskSidebar";
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 
@@ -257,7 +258,7 @@ const PrivacyPolicy = () => {
               posting to the discussion areas will be available to anyone with
               internet access. By using the Platform, you understand and agree
               that Your information may be used in or transferred to countries
-              other than India.
+              other than {settings.country}.
             </div>
             <h6 className="mt-2 font-lato font-bold text-xl">Advertising:</h6>
             <div className="mt-1 text-justify">
@@ -374,10 +375,10 @@ const PrivacyPolicy = () => {
             </h6>
             <div className="mt-1 text-justify">
               By visiting this Platform, you agree that the laws of the Republic
-              of India without regard to its conflict of laws principles, govern
-              this Privacy Policy and any dispute arising in respect hereof
-              shall be subject to and governed by the dispute resolution process
-              set out in the Terms.
+              of {settings.country} without regard to its conflict of laws
+              principles, govern this Privacy Policy and any dispute arising in
+              respect hereof shall be subject to and governed by the dispute
+              resolution process set out in the Terms.
             </div>
             <h6 className="mt-2 font-lato font-bold text-xl">
               Updating Information:

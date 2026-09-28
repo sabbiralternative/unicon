@@ -3,7 +3,6 @@ import isOddSuspended from "../../../../utils/isOddSuspended";
 import { isPriceAvailable } from "../../../../utils/isPriceAvailable";
 import SuspendedOdd from "../../../shared/SuspendedOdd/SuspendedOdd";
 import assets from "../../../../assets";
-import { useSelector } from "react-redux";
 import Score from "./Score";
 import LiveVirtual from "./LiveVirtual";
 import { LanguageKey } from "../../../../const";
@@ -16,6 +15,7 @@ const SingleGroup = ({
   margin,
   setLiveVirtual,
   liveVirtual,
+  group,
 }) => {
   const { getLanguage } = useLanguage();
   const eventName = {
@@ -24,7 +24,7 @@ const SingleGroup = ({
     1: getLanguage(LanguageKey.FOOTBALL),
     5: getLanguage(LanguageKey.KABADDI),
   };
-  const { group } = useSelector((state) => state.state);
+
   const navigate = useNavigate();
   const navigateGameList = (keys) => {
     navigate(`/game-details/${data[keys]?.eventTypeId}/${keys}`);

@@ -40,6 +40,12 @@ const InPlay = ({ data }) => {
         const order = { 4: 0, 1: 1, 2: 2 };
         return order[a] - order[b];
       });
+
+      // const filtered =
+      //   settings.currency === "GMD"
+      //     ? sortedCategories.filter((item) => item === 1)
+      //     : sortedCategories;
+
       setCategories(sortedCategories);
     }
   }, [data]);

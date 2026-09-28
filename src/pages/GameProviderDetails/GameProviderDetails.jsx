@@ -120,7 +120,7 @@ const GameProviderDetails = () => {
                 <h2>
                   Play live casino games on 10sports. Enjoy classic games like
                   roulette, blackjack, and baccarat with top-notch online casino
-                  games in India.
+                  games in {settings.country}.
                 </h2>
               </div>
               <div className="w-full px-2 pb-[45px] mt-2" />

@@ -16,7 +16,7 @@ import Group from "../../../components/ui/desktop/Home/Group";
 // import IndianCardGames from "../../../components/ui/IndianCardGames/IndianCardGames";
 import LiveCasino from "../../../components/ui/LiveCasino/LiveCasino";
 import useBalance from "../../../hooks/useBalance";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import AuraWolf from "../../../components/ui/AuraWolf/AuraWolf";
 import Originals from "../../../components/ui/desktop/Home/Originals";
 import CasinoProvider from "../../../components/ui/CasinoProvider/CasinoProvider";
@@ -25,6 +25,7 @@ import useLotusHomeLobby from "../../../hooks/useLotusHomeLobby";
 import CryptoReferTab from "../../../components/ui/CryptoReferTab/CryptoReferTab";
 import Promotion from "../../../components/ui/Promotion";
 import { settings } from "../../../api";
+import FootballUpcoming from "../../../components/ui/desktop/Home/FootballUpcoming";
 
 // import CardGames from "../../../components/ui/CardGames/CardGames";
 // import IndianLiveCasino from "../../../components/ui/IndianLiveCasino/IndianLiveCasino";
@@ -37,8 +38,9 @@ const Home = () => {
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: 1000,
+    skip: group === 0 && settings.currency === "GMD",
   });
-  console.log(data);
+
   useEffect(() => {
     refetchBalance();
   }, [refetchBalance]);
@@ -61,11 +63,17 @@ const Home = () => {
                 id="home"
                 className="py-1 flex flex-col items-start justify-start"
               >
-                <Promotion />
-                {settings?.referral && <CryptoReferTab />}
-                <Originals trendingGames={lotusLobby?.trendingGames} />
+                {settings.currency !== "GMD" && (
+                  <Fragment>
+                    <Promotion />
+                    {settings?.referral && <CryptoReferTab />}
+                    <Originals trendingGames={lotusLobby?.trendingGames} />
+                  </Fragment>
+                )}
+
                 {/* <WithdrawAndDepositButton /> */}
-                {data && <InPlay data={data} />}
+                {data && settings.currency !== "GMD" && <InPlay data={data} />}
+                {settings.currency === "GMD" && <FootballUpcoming />}
                 <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
                 <AuraWolf />
                 <PopularGames popularGames={lotusLobby?.popularGames} />

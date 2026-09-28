@@ -94,12 +94,14 @@ const Register = () => {
         });
       }
       localStorage.removeItem("referralCode");
+
       const token = result?.result?.token;
       const bonusToken = result?.result?.bonusToken;
       const user = result?.result?.loginName;
       const game = result?.result?.buttonValue?.game;
       const banner = result?.result?.banner;
       dispatch(setUser({ user, token }));
+      localStorage.setItem("token", token);
       localStorage.setItem("buttonValue", JSON.stringify(game));
       localStorage.setItem("bonusToken", bonusToken);
       if (banner) {
@@ -318,7 +320,6 @@ const Register = () => {
                       className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
                       placeholder="Enter Username"
                       type="text"
-                      maxLength={6}
                     />
                   </div>
                 )}

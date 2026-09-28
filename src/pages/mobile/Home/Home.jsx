@@ -22,6 +22,8 @@ import CryptoReferTab from "../../../components/ui/CryptoReferTab/CryptoReferTab
 import Promotion from "../../../components/ui/Promotion";
 import { settings } from "../../../api";
 import WhatsApp from "../../../components/ui/desktop/Home/WhatsApp";
+import { Fragment } from "react";
+import FootballUpcoming from "../../../components/ui/mobile/home/FootballUpcoming";
 
 const Home = () => {
   const { lotusLobby } = useLotusHomeLobby();
@@ -30,6 +32,7 @@ const Home = () => {
   const { group } = useSelector((state) => state.state);
   const { data } = useGetAllGroupEventsQuery(group, {
     pollingInterval: 1000,
+    skip: group === 0 && settings.currency === "GMD",
   });
 
   useEffect(() => {
@@ -55,10 +58,16 @@ const Home = () => {
               className="py-1 flex flex-col items-start justify-start"
             >
               {token && <WithdrawDepositButton />}
-              <Promotion />
-              {settings?.referral && <CryptoReferTab />}
-              <Originals trendingGames={lotusLobby?.trendingGames} />
-              {data && <InPlay data={data} />}
+              {settings.currency !== "GMD" && (
+                <Fragment>
+                  <Promotion />
+                  {settings?.referral && <CryptoReferTab />}
+                  <Originals trendingGames={lotusLobby?.trendingGames} />
+                </Fragment>
+              )}
+
+              {data && settings.currency !== "GMD" && <InPlay data={data} />}
+              {settings.currency === "GMD" && <FootballUpcoming />}
               <CasinoProvider casinoProviders={lotusLobby?.casinoProviders} />
               <AuraWolf />
               <PopularGames popularGames={lotusLobby?.popularGames} />

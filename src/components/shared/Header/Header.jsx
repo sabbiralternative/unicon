@@ -288,8 +288,22 @@ cursor-pointer
               <div className="hidden lg:block">
                 <div className="flex w-full max-w-[90%] mx-auto  overflow-x-auto  gap-0.5 bg-bg_Quaternary items-center p-1 justify-start ">
                   {/* <button className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenuHover ">
-                  <span className="font font-lato text-[12px]">SportsBook</span>
-                </button> */}
+                    <span className="font font-lato text-[12px]">
+                      SportsBook
+                    </span>
+                  </button> */}
+
+                  <button
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(setGroupType(0));
+                    }}
+                    className="text-xs cursor-pointer uppercase    rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9  border  w-max px-3  py-1 text-text_HeaderDeskNavMenu "
+                  >
+                    <span className="font font-lato text-[12px]">
+                      {getLanguage(LanguageKey.HOME)}
+                    </span>
+                  </button>
 
                   {settings?.referral && (
                     <button

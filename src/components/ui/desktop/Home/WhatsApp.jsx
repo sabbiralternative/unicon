@@ -20,7 +20,7 @@ const WhatsApp = () => {
       {showMiniGamesModal && (
         <MiniGames setShowMiniGamesModal={setShowMiniGamesModal} />
       )}
-      <div className="fixed cursor-pointer top-[calc(100dvh-230px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500 flex-col gap-4">
+      <div className="fixed cursor-pointer bottom-3 left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500 flex-col gap-4">
         {settings?.instagramLink ? (
           <div
             onClick={() => window.open(settings?.instagramLink, "_blank")}

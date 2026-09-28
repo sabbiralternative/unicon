@@ -1,6 +1,9 @@
 import { formatDate } from "../../../../utils/formateDate";
 
 const Score = ({ group, data, keys }) => {
+  // console.log(group);
+  // console.log(data[keys]?.inPlay);
+  // console.log(data[keys]?.score);
   return (
     <>
       {group == 4 && (
