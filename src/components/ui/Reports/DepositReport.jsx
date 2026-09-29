@@ -101,7 +101,8 @@ const DepositReport = () => {
 
                             <span className="text-start text-lg flex items-end flex-col justify-end tracking-tighter  flex-1">
                               <span className="font-bold px-3 mb-2">
-                                ₹ {data?.amount}{" "}
+                                {settings.currency !== "GMD" && "₹"}{" "}
+                                {data?.amount}{" "}
                               </span>
                               {settings.complaint && (
                                 <button

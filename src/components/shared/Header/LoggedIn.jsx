@@ -40,7 +40,7 @@ const LoggedIn = ({
         <div className="flex gap-0.5 text-white/80  xl:text-nowrap whitespace-nowrap">
           {getLanguage(LanguageKey.AVAILABLE_BALANCE)}:{" "}
           <span className="font-medium text-white">
-            ₹{" "}
+            {settings.currency !== "GMD" && "₹"}{" "}
             {bonusToken &&
               bonusBalance &&
               bonusBalance?.availBalance &&
@@ -255,7 +255,7 @@ cursor-pointer
             type="button"
           >
             <span className="text-xs sm:text-base font-semibold bg-transparent">
-              ₹
+              {settings.currency !== "GMD" && "₹"}
               {bonusToken &&
                 bonusBalance &&
                 bonusBalance?.availBalance &&

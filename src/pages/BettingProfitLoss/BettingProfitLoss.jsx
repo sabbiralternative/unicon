@@ -7,6 +7,7 @@ import { userToken } from "../../redux/features/auth/authSlice";
 import moment from "moment";
 import { LanguageKey } from "../../const";
 import useLanguage from "../../hooks/use-language";
+import { settings } from "../../api";
 
 const BettingProfitLoss = () => {
   const { getLanguage } = useLanguage();
@@ -277,13 +278,15 @@ const BettingProfitLoss = () => {
                                           : "text-black"
                                     } `}
                                   >
-                                    ₹ {item?.memberWin}
+                                    {settings.currency !== "GMD" && "₹"}{" "}
+                                    {item?.memberWin}
                                   </span>
                                 </span>
                                 <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
                                   <span>Balance:</span>
                                   <span className={`font-semibold `}>
-                                    ₹ {item?.balance}
+                                    {settings.currency !== "GMD" && "₹"}{" "}
+                                    {item?.balance}
                                   </span>
                                 </span>
                               </div>

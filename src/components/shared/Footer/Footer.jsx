@@ -209,9 +209,9 @@ const Footer = () => {
             </div>
             <div
               id="mobileIcons"
-              className="w-full py-[29px] px-2 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-x-[12px] sm:gap-x-[18px] gap-y-[18px]"
+              className="w-full py-[29px] px-2 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-x-[12px] sm:gap-x-[18px] gap-y-[18px]"
             >
-              <div className="p-1 flex justify-center items-center">
+              {/* <div className="p-1 flex justify-center items-center">
                 <img
                   alt="Upi"
                   loading="eager"
@@ -223,8 +223,8 @@ const Footer = () => {
                   src={assets.upi}
                   style={{ color: "transparent" }}
                 />
-              </div>
-              <div className="p-1 flex justify-center items-center">
+              </div> */}
+              {/* <div className="p-1 flex justify-center items-center">
                 <img
                   alt="Bank Transfer"
                   loading="eager"
@@ -236,7 +236,7 @@ const Footer = () => {
                   src={assets.bankTransfer}
                   style={{ color: "transparent" }}
                 />
-              </div>
+              </div> */}
               <div className="p-1 flex justify-center items-center">
                 <img
                   alt="BeGamble Aware"

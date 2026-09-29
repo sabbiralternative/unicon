@@ -114,7 +114,8 @@ const WithdrawReport = () => {
                             )}
                             <span className="text-start text-lg flex flex-col items-end justify-end tracking-tighter  flex-1 ">
                               <span className="font-bold px-3 mb-2">
-                                ₹ {data?.amount}{" "}
+                                {settings.currency !== "GMD" && "₹"}{" "}
+                                {data?.amount}{" "}
                               </span>
                               <div className="flex gap-x-2">
                                 {data.status === "PENDING" &&

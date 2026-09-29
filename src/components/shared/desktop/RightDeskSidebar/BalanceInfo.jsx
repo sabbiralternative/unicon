@@ -8,6 +8,7 @@ import { setUser } from "../../../../redux/features/auth/authSlice";
 import useBonusBalance from "../../../../hooks/useBonusBalance";
 import useLanguage from "../../../../hooks/use-language";
 import { LanguageKey } from "../../../../const";
+import { settings } from "../../../../api";
 
 const BalanceInfo = ({ balance }) => {
   const { getLanguage } = useLanguage();
@@ -36,7 +37,7 @@ const BalanceInfo = ({ balance }) => {
             {getLanguage(LanguageKey.AVAILABLE_CREDIT)}
           </span>
           <span className="text-primary font-lato text-sm">
-            ₹ {balance?.availBalance}
+            {settings.currency !== "GMD" && "₹"} {balance?.availBalance}
           </span>
         </div>
         <div className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer mr-2 flex items-center justify-center autoAnimate -rotate-180 text-primary">
@@ -59,21 +60,23 @@ const BalanceInfo = ({ balance }) => {
                 {getLanguage(LanguageKey.BALANCE)}
               </span>
               <span className="font-lato text-sm">
-                ₹ {balance?.availBalance}
+                {settings.currency !== "GMD" && "₹"} {balance?.availBalance}
               </span>
             </div>
             <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
               <span className="uppercase font-normal text-xxs">
                 {getLanguage(LanguageKey.FREE_CASH)}
               </span>
-              <span className="font-lato text-sm">₹ 0.00</span>
+              <span className="font-lato text-sm">
+                {settings.currency !== "GMD" && "₹"} 0.00
+              </span>
             </div>
             <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
               <span className="uppercase font-normal text-xxs">
                 {getLanguage(LanguageKey.NET_EXPOSURE)}
               </span>
               <span className="font-lato text-sm">
-                ₹ {balance?.deductedExposure}
+                {settings.currency !== "GMD" && "₹"} {balance?.deductedExposure}
               </span>
             </div>
           </div>
@@ -133,7 +136,8 @@ const BalanceInfo = ({ balance }) => {
                   {getLanguage(LanguageKey.BONUS_BALANCE)}
                 </span>
                 <span className="font-lato text-sm">
-                  ₹ {bonusBalance?.availBalance}
+                  {settings.currency !== "GMD" && "₹"}{" "}
+                  {bonusBalance?.availBalance}
                 </span>
               </div>
               <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
@@ -141,7 +145,8 @@ const BalanceInfo = ({ balance }) => {
                   {getLanguage(LanguageKey.NET_EXPOSURE)}
                 </span>
                 <span className="font-lato text-sm">
-                  ₹ {bonusBalance?.deductedExposure}
+                  {settings.currency !== "GMD" && "₹"}{" "}
+                  {bonusBalance?.deductedExposure}
                 </span>
               </div>
               <div className="flex w-full col-span-2 rounded items-center justify-between bg-bg_Ternary8 border px-2 py-2">

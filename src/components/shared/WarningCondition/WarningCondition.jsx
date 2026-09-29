@@ -6,6 +6,7 @@ import { userToken } from "../../../redux/features/auth/authSlice";
 import { setShowLoginModal } from "../../../redux/features/stateSlice";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
 import assets from "../../../assets";
+import { settings } from "../../../api";
 
 const WarningCondition = ({ setShowWarning, gameInfo }) => {
   /* Close modal click out side */
@@ -20,7 +21,7 @@ const WarningCondition = ({ setShowWarning, gameInfo }) => {
   /* Handle navigate casino video in new tab */
   const handleNavigateNewTab = async () => {
     navigate(
-      `/casino/${gameInfo?.gameName.replace(/ /g, "")}/${gameInfo?.gameId}`
+      `/casino/${gameInfo?.gameName.replace(/ /g, "")}/${gameInfo?.gameId}`,
     );
     /* Close warning modal */
     setShowWarning(false);
@@ -54,7 +55,7 @@ const WarningCondition = ({ setShowWarning, gameInfo }) => {
           id="swal2-title"
           style={{ display: "block" }}
         >
-          {token && "(1 Point = ₹ 100)"}
+          {token && `(1 Point = ${settings.currency !== "GMD" && "₹"} 100)`}
         </h2>
         <div
           className="swal2-html-container"

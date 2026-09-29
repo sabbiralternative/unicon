@@ -3,6 +3,7 @@ import LeftDeskSidebar from "../../components/shared/desktop/LeftDeskSidebar/Lef
 import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/RightDeskSidebar";
 import useSingleProfitLoss from "../../hooks/useSingleProfitLoss";
 import { useEffect, useState } from "react";
+import { settings } from "../../api";
 
 const SingleProfitLoss = () => {
   const navigate = useNavigate();
@@ -114,7 +115,7 @@ const SingleProfitLoss = () => {
                                   : "text-text_Loss"
                               }`}
                             >
-                              ₹ {item?.win}
+                              {settings.currency !== "GMD" && "₹"} {item?.win}
                             </span>
                           </div>
                           <div>
@@ -178,7 +179,7 @@ const SingleProfitLoss = () => {
                       backTotal > 0 ? "text-text_Profit" : "text-text_Loss"
                     }`}
                   >
-                    ₹ {backTotal}
+                    {settings.currency !== "GMD" && "₹"} {backTotal}
                   </div>
                 </div>
                 <div className="flex justify-between border-dashed">
@@ -188,7 +189,7 @@ const SingleProfitLoss = () => {
                       layTotal > 0 ? "text-text_Profit" : "text-text_Loss"
                     }`}
                   >
-                    ₹ {layTotal}
+                    {settings.currency !== "GMD" && "₹"} {layTotal}
                   </div>
                 </div>
                 <div className="flex justify-between border-dashed">
@@ -200,12 +201,14 @@ const SingleProfitLoss = () => {
                         : "text-text_Loss"
                     }`}
                   >
-                    ₹ {backTotal + layTotal}
+                    {settings.currency !== "GMD" && "₹"} {backTotal + layTotal}
                   </div>
                 </div>
                 <div className="flex justify-between border-dashed">
                   <div>Commission</div>
-                  <div className="font-bold">₹ 0.0</div>
+                  <div className="font-bold">
+                    {settings.currency !== "GMD" && "₹"} 0.0
+                  </div>
                 </div>
                 <div className="flex justify-between border-t border-dashed">
                   <div className="relative top-[3px]">Net Market Total</div>
@@ -214,7 +217,7 @@ const SingleProfitLoss = () => {
                       total > 0 ? "text-text_Profit" : "text-text_Loss"
                     }`}
                   >
-                    ₹ {total}
+                    {settings.currency !== "GMD" && "₹"} {total}
                   </div>
                 </div>
               </div>

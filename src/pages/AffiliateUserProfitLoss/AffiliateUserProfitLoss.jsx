@@ -4,6 +4,7 @@ import RightDeskSidebar from "../../components/shared/desktop/RightDeskSidebar/R
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { useGetIndex } from "../../hooks";
+import { settings } from "../../api";
 
 const AffiliateUserProfitLoss = () => {
   const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
@@ -23,7 +24,7 @@ const AffiliateUserProfitLoss = () => {
   });
 
   const getUniqueDate = Array.from(
-    new Set(data?.result?.map((item) => item?.settledTime))
+    new Set(data?.result?.map((item) => item?.settledTime)),
   );
   return (
     <>
@@ -217,7 +218,7 @@ const AffiliateUserProfitLoss = () => {
               {token && getUniqueDate?.length > 0 ? (
                 getUniqueDate?.map((date) => {
                   const filterByDate = data?.result?.filter(
-                    (item) => item?.settledTime === date
+                    (item) => item?.settledTime === date,
                   );
                   const totalPnl = filterByDate?.reduce((acc, curr) => {
                     return acc + curr.memberWin;
@@ -241,8 +242,8 @@ const AffiliateUserProfitLoss = () => {
                               totalPnl > 0
                                 ? "text-text_Success"
                                 : totalPnl < 0
-                                ? "text-red-400"
-                                : "text-white"
+                                  ? "text-red-400"
+                                  : "text-white"
                             }`}
                           >
                             {totalPnl}
@@ -272,17 +273,19 @@ const AffiliateUserProfitLoss = () => {
                                       item?.memberWin > 0
                                         ? "text-text_Success"
                                         : item?.memberWin < 0
-                                        ? "text-text_Danger"
-                                        : "text-black"
+                                          ? "text-text_Danger"
+                                          : "text-black"
                                     } `}
                                   >
-                                    ₹ {item?.memberWin}
+                                    {settings.currency !== "GMD" && "₹"}{" "}
+                                    {item?.memberWin}
                                   </span>
                                 </span>
                                 <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
                                   <span>Balance:</span>
                                   <span className={`font-semibold `}>
-                                    ₹ {item?.balance}
+                                    {settings.currency !== "GMD" && "₹"}{" "}
+                                    {item?.balance}
                                   </span>
                                 </span>
                               </div>

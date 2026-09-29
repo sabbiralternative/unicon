@@ -78,7 +78,7 @@ const AuraWolf = () => {
           </svg>
           <div className="w-[100%] flex flex-row justify-between">
             <span className="text-text_Ternary font-semibold capitalize">
-              {getLanguage(LanguageKey.INDIAN_CARD_GAMES)}
+              {getLanguage(LanguageKey.CARD_GAMES)}
             </span>
             <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
               <button

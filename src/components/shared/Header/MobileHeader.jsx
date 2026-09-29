@@ -99,15 +99,15 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
               </a>
             );
           })}
-
-        <a
-          onClick={() => {
-            navigate("/");
-            dispatch(setGroupType(4));
-          }}
-        >
-          <button
-            className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+        {settings.currency !== "GMD" && (
+          <a
+            onClick={() => {
+              navigate("/");
+              dispatch(setGroupType(4));
+            }}
+          >
+            <button
+              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
    
           w-max px-3  py-1     
        lg:hidden ${
@@ -115,12 +115,14 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
            ? "text-secondary border border-secondary"
            : ""
        }`}
-          >
-            <span className="font font-lato text-[12px]">
-              {getLanguage(LanguageKey.CRICKET)}
-            </span>
-          </button>
-        </a>
+            >
+              <span className="font font-lato text-[12px]">
+                {getLanguage(LanguageKey.CRICKET)}
+              </span>
+            </button>
+          </a>
+        )}
+
         <a
           onClick={() => {
             navigate("/");
@@ -164,6 +166,29 @@ const MobileHeader = ({ handleNavigateToIFrame }) => {
             </span>
           </button>
         </a>
+        {settings.currency === "GMD" && (
+          <a
+            onClick={() => {
+              navigate("/");
+              dispatch(setGroupType(4));
+            }}
+          >
+            <button
+              className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9
+   
+          w-max px-3  py-1     
+       lg:hidden ${
+         group === 4 && pathname === "/"
+           ? "text-secondary border border-secondary"
+           : ""
+       }`}
+            >
+              <span className="font font-lato text-[12px]">
+                {getLanguage(LanguageKey.CRICKET)}
+              </span>
+            </button>
+          </a>
+        )}
         <a onClick={() => handleNavigateToIFrame("sportsbook", "550000")}>
           <button
             className={`text-xs cursor-pointer uppercase mr-1 active:border-secondary rounded-full text-nowrap whitespace-nowrap font-semibold bg-bg_Ternary8 hover:bg-bg_Ternary9

@@ -10,6 +10,7 @@ import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside"
 import { useIndex } from "../../../hooks";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { settings } from "../../../api";
 
 const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
   const { getLanguage } = useLanguage();
@@ -167,7 +168,10 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                             <span style={{ fontWeight: "bold" }}>
                               {speedCashOut?.runner1?.name}
                             </span>
-                            <span>₹ {speedCashOut?.exposureA}</span>
+                            <span>
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {speedCashOut?.exposureA}
+                            </span>
                           </div>
                         </div>
                         <div
@@ -191,7 +195,10 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                             <span style={{ fontWeight: "bold" }}>
                               {speedCashOut?.runner2?.name}
                             </span>
-                            <span>₹ {speedCashOut?.exposureB}</span>
+                            <span>
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {speedCashOut?.exposureB}
+                            </span>
                           </div>
                         </div>
                       </div>

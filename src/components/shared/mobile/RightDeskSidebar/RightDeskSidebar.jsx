@@ -191,7 +191,7 @@ const RightDeskSidebar = () => {
                     {getLanguage(LanguageKey.BALANCE)}
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Success">
-                    ₹ {balance?.availBalance}
+                    {settings.currency !== "GMD" && "₹"} {balance?.availBalance}
                   </span>
                 </div>
                 {/* <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-1">
@@ -199,7 +199,7 @@ const RightDeskSidebar = () => {
                     Free Cash
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Ternary">
-                    ₹ 0
+                    {settings.currency !== "GMD" && "₹"} 0
                   </span>
                 </div> */}
                 <div className="flex w-full flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1 col-span-2">
@@ -207,7 +207,8 @@ const RightDeskSidebar = () => {
                     {getLanguage(LanguageKey.EXPOSURE)}
                   </span>
                   <span className="font-lato text-sm font-medium text-text_Success">
-                    ₹ {balance?.deductedExposure}
+                    {settings.currency !== "GMD" && "₹"}{" "}
+                    {balance?.deductedExposure}
                   </span>
                 </div>
               </div>
@@ -343,7 +344,7 @@ const RightDeskSidebar = () => {
                     Bonus Balance
                   </span>
                   <span className="font-lato text-sm text-text_Ternary">
-                    ₹ {bonusBalance?.availBalance}
+                    {settings.currency !== "GMD" && "₹"} {bonusBalance?.availBalance}
                   </span>
                 </div>
                 <div className="flex w-full col-span-1 flex-col rounded items-start bg-bg_Ternary8 border px-2 py-1">
@@ -351,7 +352,7 @@ const RightDeskSidebar = () => {
                     Net Exposure
                   </span>
                   <span className="font-lato text-sm text-text_Danger">
-                    ₹ {bonusBalance?.deductedExposure}
+                    {settings.currency !== "GMD" && "₹"} {bonusBalance?.deductedExposure}
                   </span>
                 </div>
                 <div className="flex col-span-2 items-center justify-between w-full">

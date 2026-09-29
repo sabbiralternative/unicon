@@ -3,6 +3,7 @@ import { useIndex } from "../../../hooks";
 import moment from "moment";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { settings } from "../../../api";
 
 const ProfitLoss = () => {
   const { getLanguage } = useLanguage();
@@ -143,7 +144,8 @@ const ProfitLoss = () => {
                                     : "text-black"
                               }`}
                             >
-                              ₹ {item?.amount}
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {item?.amount}
                             </span>
                           </span>
                         </div>

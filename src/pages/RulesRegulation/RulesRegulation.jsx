@@ -1549,13 +1549,16 @@ const RulesRegulation = () => {
                 removed/adjusted by the system.
               </li>
               <li>
-                Example: Stake: ₹100 <br /> Game Result: 250× win (₹25,000){" "}
-                <br /> Maximum allowed win: 100× (₹10,000) <br /> Amount
-                credited: ₹10,000
+                Example: Stake: {settings.currency !== "GMD" && "₹"}100 <br />{" "}
+                Game Result: 250× win ({settings.currency !== "GMD" && "₹"}
+                25,000) <br /> Maximum allowed win: 100× (
+                {settings.currency !== "GMD" && "₹"}10,000) <br /> Amount
+                credited: {settings.currency !== "GMD" && "₹"}10,000
               </li>
               <li>
-                Remaining ₹15,000 will be voided. <br /> This rule applies to
-                all casino games unless otherwise stated.
+                Remaining {settings.currency !== "GMD" && "₹"}15,000 will be
+                voided. <br /> This rule applies to all casino games unless
+                otherwise stated.
               </li>
             </ul>
             <h4 className="text-text_Ternary font-[600] font-lato mt-2 mb-1.5 text-[17px]">

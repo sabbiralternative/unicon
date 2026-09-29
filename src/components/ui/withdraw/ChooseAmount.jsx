@@ -1,3 +1,4 @@
+import { settings } from "../../../api";
 import { LanguageKey } from "../../../const";
 import useLanguage from "../../../hooks/use-language";
 import useWithdrawBreakdown from "../../../hooks/useWithdrawBreakDown";
@@ -71,7 +72,8 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
         <div className="rounded-lg bg-bg_Quaternary py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
           <div className="w-full flex items-start justify-start gap-y-[0.5] flex-col">
             <span className="text-sm mt-1 bg-headerBg rounded  shadow-md text-white px-2 py-1 my-1">
-              {getLanguage(LanguageKey.AVAILABLE_TO_WITHDRAW)} : ₹{" "}
+              {getLanguage(LanguageKey.AVAILABLE_TO_WITHDRAW)} :{" "}
+              {settings.currency !== "GMD" && "₹"}{" "}
               {withdrawBreakdown?.mainWallet}
             </span>
             <div className="flex flex-col w-full">
@@ -81,7 +83,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
               </div>
               <div className="relative">
                 <span className="px-2 absolute top-1/2 -translate-y-1/2 w-max">
-                  ₹
+                  {settings.currency !== "GMD" && "₹"}
                 </span>
                 <input
                   onChange={(e) => setAmount(e.target.value)}

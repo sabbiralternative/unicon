@@ -248,7 +248,9 @@ const Bookmaker = ({ bookmaker }) => {
                       {teamProfitForGame?.profit && (
                         <div className="capitalize text-[10px] md:text-sm ml-1 text-primary whitespace-nowrap font-semibold">
                           <span> : </span>
-                          <span className="font-roboto">₹ </span>
+                          <span className="font-roboto">
+                            {settings.currency !== "GMD" && "₹"}{" "}
+                          </span>
                           <span> {teamProfitForGame?.profit?.toFixed(0)}</span>
                         </div>
                       )}

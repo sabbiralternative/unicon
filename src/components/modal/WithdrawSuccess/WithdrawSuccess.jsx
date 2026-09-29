@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { settings } from "../../../api";
 
 const WithdrawSuccess = ({ setWithdrawSuccess, amount }) => {
   const { getLanguage } = useLanguage();
@@ -485,7 +486,9 @@ const WithdrawSuccess = ({ setWithdrawSuccess, amount }) => {
             <span className="font-normal  text-gray/80">
               {getLanguage(LanguageKey.WE_HAVE_YOUR_REQUEST_TO_WITHDRAW)}{" "}
             </span>
-            <span className="font-semibold ">₹ {amount}.</span>
+            <span className="font-semibold ">
+              {settings.currency !== "GMD" && "₹"} {amount}.
+            </span>
           </span>
           <div className="w-full">
             <button

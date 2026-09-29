@@ -4,6 +4,7 @@ import useBonusStatement from "../../hooks/useBonusStatement";
 import { useBonusMutation } from "../../redux/features/payment/payment.api";
 import toast from "react-hot-toast";
 import moment from "moment";
+import { settings } from "../../api";
 
 const BonusStatement = () => {
   const { data, refetch } = useBonusStatement();
@@ -79,7 +80,8 @@ const BonusStatement = () => {
                           <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
                             <span>Bonus Amount:</span>
                             <span className="font-semibold text-text_Success">
-                              ₹ {item?.amount}
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {item?.amount}
                             </span>
                           </span>
                           <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
@@ -91,7 +93,8 @@ const BonusStatement = () => {
                                   : "text-text_Danger"
                               }`}
                             >
-                              ₹ {item?.wagering_amount}
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {item?.wagering_amount}
                             </span>
                           </span>
                         </div>
@@ -109,7 +112,8 @@ const BonusStatement = () => {
                                   : ""
                               }`}
                             >
-                              ₹ {item?.wagering_complete_amount}
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {item?.wagering_complete_amount}
                             </span>
                           </span>
                           <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
@@ -143,7 +147,8 @@ const BonusStatement = () => {
                           <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
                             <span>Bonus Amount:</span>
                             <span className="font-semibold text-text_Success">
-                              ₹ {item?.amount}
+                              {settings.currency !== "GMD" && "₹"}{" "}
+                              {item?.amount}
                             </span>
                           </span>
                           <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">

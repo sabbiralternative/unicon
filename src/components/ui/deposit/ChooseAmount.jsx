@@ -2,6 +2,7 @@ import useDepositBreakdown from "../../../hooks/depositBreakdown";
 import toast from "react-hot-toast";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { settings } from "../../../api";
 
 const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
   const { getLanguage } = useLanguage();
@@ -55,12 +56,12 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 }
                 value={amount !== null && amount !== undefined ? amount : ""}
                 className="block w-full focus:outline-none col-span-11 w-full h-max font-lato placeholder:font-lato placeholder:font-normal font-bold text-base"
-                placeholder="₹ Enter Amount"
+                placeholder="Enter Amount"
                 required=""
                 type="number"
               />
               <span className="font-lato font-bold leading-4 text-teranry text-base col-span-1 text-center">
-                INR
+                {settings.currency}
               </span>
             </div>
             <div className="w-full grid grid-cols-3 gap-[10px] mt-[18px]">
