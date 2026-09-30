@@ -499,5 +499,6 @@ export const LanguageKey = {
   POPULAR_GAMES: "POPULAR_GAMES",
   BY_PHONE: "BY_PHONE",
   BY_USERNAME: "BY_USERNAME",
+  FANTASY_11: "FANTASY_11",
 };
 export const settingsAPI = "https://api7.live/api/exchange/diamond/settings";
