@@ -7,7 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import useContextState from "../../../hooks/useContextState";
 import useCloseModalClickOutside from "../../../hooks/useCloseModalClickOutside";
-import { settings } from "../../../api";
+import { API, settings } from "../../../api";
 import toast from "react-hot-toast";
 import {
   setShowForgetModal,
@@ -16,6 +16,7 @@ import {
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const ForgetPassword = () => {
   const { getLanguage } = useLanguage();
@@ -86,6 +87,23 @@ const ForgetPassword = () => {
       setTimer(null);
     }
   }, [timer]);
+
+  const getOtpOnWhatsapp = async () => {
+    const otpData = {
+      mobile: mobile,
+      type: "otpsend",
+    };
+
+    const res = await AxiosSecure.post(API.otpless, otpData);
+    const data = res.data;
+
+    if (data?.success) {
+      setTimer(60);
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
+    }
+  };
   return (
     <div
       id="popup-modal"
@@ -167,12 +185,24 @@ const ForgetPassword = () => {
                 >
                   <div className="flex flex-col w-full">
                     <div className="ml-1 text-sm"></div>
-                    <div className="relative">
+                    <div className="relative flex items-center w-full">
+                      <select
+                        id="dropdown-phone-button"
+                        className="rounded-l-lg border py-2.5 bg-auth px-3"
+                      >
+                        {settings.country_code?.map((item) => {
+                          return (
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
                       <input
                         onChange={(e) => handleMobileInputChange(e)}
                         id="mobile-no-input"
                         placeholder="Username/Phone Number"
-                        className="block w-full focus:outline-none py-2 bg-auth border rounded-lg pl-4 pr-8 ml-0 mr-0"
+                        className="block w-full focus:outline-none py-2 bg-auth border rounded-r-lg pl-4 pr-8 ml-0 mr-0"
                         type="text"
                       />
 
@@ -187,16 +217,37 @@ const ForgetPassword = () => {
                             </span>
                           </button>
                         ) : (
-                          <button
-                            onClick={handleOTP}
-                            disabled=""
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-1.5 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 font-medium relative flex items-center justify-center cursor-pointer"
-                            type="button"
-                          >
-                            <span className=" ">
-                              {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                            </span>
-                          </button>
+                          <div className="flex items-center gap-2">
+                            {" "}
+                            {settings.otp_method?.includes("whatsapp") && (
+                              <button
+                                disabled={mobile?.length < 10}
+                                onClick={getOtpOnWhatsapp}
+                                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                type="button"
+                              >
+                                <span className=" ">
+                                  {" "}
+                                  {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                                </span>
+                                <span className="shimmer"></span>
+                              </button>
+                            )}
+                            {settings.otp_method?.includes("sms") && (
+                              <button
+                                disabled={mobile?.length < 10}
+                                onClick={handleOTP}
+                                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                type="button"
+                              >
+                                <span className=" ">
+                                  {" "}
+                                  {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                                </span>
+                                <span className="shimmer"></span>
+                              </button>
+                            )}
+                          </div>
                         )}
                       </span>
                     </div>

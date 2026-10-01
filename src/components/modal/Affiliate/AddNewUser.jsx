@@ -126,6 +126,7 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
     const data = res.data;
 
     if (data?.success) {
+      setTimer(60);
       toast.success(data?.result?.message);
     } else {
       toast.error(data?.error?.errorMessage);
@@ -190,61 +191,82 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
                     {getLanguage(LanguageKey.MOBILE_NUMBER)}
                   </div>
-                  <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
-                    {/* <span
+                  <div className="flex items-center">
+                    {" "}
+                    <select
+                      id="dropdown-phone-button"
+                      className="rounded-l-lg border py-2.5 bg-auth px-3"
+                    >
+                      {settings.country_code?.map((item) => {
+                        return (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <div className="flex w-full items-center py-2 bg-auth rounded-r-lg border">
+                      {/* <span
                id="dropdown-phone-button"
                className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
              >
                +91
              </span> */}
-                    <input
-                      onChange={(e) => {
-                        if (e.target.value.length <= 10) {
-                          setMobile(e.target.value);
-                        }
-                      }}
-                      id="mobile-no-input"
-                      className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
-                      placeholder="Phone Number"
-                      type="text"
-                      value={mobile}
-                    />
+                      <input
+                        onChange={(e) => {
+                          if (e.target.value.length <= 10) {
+                            setMobile(e.target.value);
+                          }
+                        }}
+                        id="mobile-no-input"
+                        className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                        placeholder="Phone Number"
+                        type="text"
+                        value={mobile}
+                      />
 
-                    <div className="w-max">
-                      {timer ? (
-                        <button
-                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
-                          type="button"
-                        >
-                          <span className=" ">
-                            {getLanguage(LanguageKey.RETRY_IN)} {timer}
-                          </span>
-                          {/* <span className="shimmer"></span> */}
-                        </button>
-                      ) : (
-                        <div className="flex items-center">
+                      <div className="w-max">
+                        {timer ? (
                           <button
-                            onClick={getOtpOnWhatsapp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
                             type="button"
                           >
                             <span className=" ">
-                              {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                              {getLanguage(LanguageKey.RETRY_IN)} {timer}
                             </span>
-                            <span className="shimmer"></span>
+                            {/* <span className="shimmer"></span> */}
                           </button>
-                          <button
-                            onClick={getOtp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                            type="button"
-                          >
-                            <span className=" ">
-                              {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                            </span>
-                            <span className="shimmer"></span>
-                          </button>
-                        </div>
-                      )}
+                        ) : (
+                          <div className="flex items-center">
+                            {settings.otp_method?.includes("whatsapp") && (
+                              <button
+                                disabled={mobile?.length < 10}
+                                onClick={getOtpOnWhatsapp}
+                                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                type="button"
+                              >
+                                <span className=" ">
+                                  {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                                </span>
+                                <span className="shimmer"></span>
+                              </button>
+                            )}
+                            {settings.otp_method?.includes("sms") && (
+                              <button
+                                disabled={mobile?.length < 10}
+                                onClick={getOtp}
+                                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                type="button"
+                              >
+                                <span className=" ">
+                                  {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                                </span>
+                                <span className="shimmer"></span>
+                              </button>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

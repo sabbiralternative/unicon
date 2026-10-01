@@ -307,26 +307,31 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                     </button>
                   ) : (
                     <div className="flex items-center">
-                      <button
-                        onClick={getOtpOnWhatsapp}
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                        type="button"
-                      >
-                        <span className=" ">
-                          {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
-                        </span>
-                        <span className="shimmer"></span>
-                      </button>
-                      <button
-                        onClick={getOtp}
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                        type="button"
-                      >
-                        <span className=" ">
-                          {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                        </span>
-                        <span className="shimmer"></span>
-                      </button>
+                      {settings.otp_method?.includes("whatsapp") && (
+                        <button
+                          onClick={getOtpOnWhatsapp}
+                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                          type="button"
+                        >
+                          <span className=" ">
+                            {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                          </span>
+                          <span className="shimmer"></span>
+                        </button>
+                      )}
+
+                      {settings.otp_method?.includes("sms") && (
+                        <button
+                          onClick={getOtp}
+                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                          type="button"
+                        >
+                          <span className=" ">
+                            {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                          </span>
+                          <span className="shimmer"></span>
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>

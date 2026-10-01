@@ -5,7 +5,7 @@ import {
   useGetOtpMutation,
   useRegisterMutation,
 } from "../../../redux/features/auth/authApi";
-import { settings } from "../../../api";
+import { API, settings } from "../../../api";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
@@ -25,6 +25,7 @@ import { FaRegUser } from "react-icons/fa";
 import assets from "../../../assets";
 import { LanguageKey } from "../../../const";
 import useLanguage from "../../../hooks/use-language";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const Register = () => {
   const [tab, setTab] = useState(
@@ -122,6 +123,23 @@ const Register = () => {
   //   await getOtpOnWhatsapp(mobile, setOTP);
   // };
 
+  const getOtpOnWhatsapp = async () => {
+    const otpData = {
+      mobile: mobile,
+      type: "otpsend",
+    };
+
+    const res = await AxiosSecure.post(API.otpless, otpData);
+    const data = res.data;
+
+    if (data?.success) {
+      setTimer(60);
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
+    }
+  };
+
   const openWhatsapp = () => {
     if (settings?.whatsapplink) {
       window.open(settings?.whatsapplink, "_blank");
@@ -137,6 +155,7 @@ const Register = () => {
       setTimer(null);
     }
   }, [timer]);
+
   return (
     <div
       id="popup-modal"
@@ -235,24 +254,32 @@ const Register = () => {
 
                 {tab === "mobile" && settings.registration_mobile && (
                   <Fragment>
-                    <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
-                      {/* <span
-                    id="dropdown-phone-button"
-                    className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
-                  >
-                    +91
-                  </span> */}
-                      <input
-                        maxLength={10}
-                        onChange={(e) => handleMobileInputChange(e)}
-                        id="mobile-no-input"
-                        className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
-                        placeholder="Phone Number"
-                        type="number"
-                        value={mobile}
-                      />
-                      <div className="w-max flex items-center gap-2">
-                        {/* {settings.otpWhatsapp && (
+                    <div className="flex items-center">
+                      {" "}
+                      <select
+                        id="dropdown-phone-button"
+                        className="rounded-l-lg border py-2.5 bg-auth px-3"
+                      >
+                        {settings.country_code?.map((item) => {
+                          return (
+                            <option key={item} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <div className="flex w-full items-center py-2 bg-auth rounded-r-lg border">
+                        <input
+                          maxLength={10}
+                          onChange={(e) => handleMobileInputChange(e)}
+                          id="mobile-no-input"
+                          className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                          placeholder="Phone Number"
+                          type="number"
+                          value={mobile}
+                        />
+                        <div className="w-max flex items-center gap-2">
+                          {/* {settings.otpWhatsapp && (
                       <button
                         onClick={handleGetOtpOnWhatsapp}
                         disabled={mobile?.length < 10}
@@ -263,30 +290,54 @@ const Register = () => {
                         <span className="shimmer"></span>
                       </button>
                     )} */}
-                        {timer ? (
-                          <button
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
-                            type="button"
-                          >
-                            <span className=" ">
-                              {getLanguage(LanguageKey.RETRY_IN)} {timer}
-                            </span>
-                            {/* <span className="shimmer"></span> */}
-                          </button>
-                        ) : (
-                          <button
-                            disabled={mobile?.length < 10}
-                            onClick={handleOTP}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                            type="button"
-                          >
-                            <span className=" ">
+                          {timer ? (
+                            <button
+                              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
+                              type="button"
+                            >
+                              <span className=" ">
+                                {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                              </span>
+                              {/* <span className="shimmer"></span> */}
+                            </button>
+                          ) : (
+                            <div className="flex items-center gap-2">
                               {" "}
-                              {getLanguage(LanguageKey.GET_OTP)}
-                            </span>
-                            <span className="shimmer"></span>
-                          </button>
-                        )}
+                              {settings.otp_method?.includes("whatsapp") && (
+                                <button
+                                  disabled={mobile?.length < 10}
+                                  onClick={getOtpOnWhatsapp}
+                                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                  type="button"
+                                >
+                                  <span className=" ">
+                                    {" "}
+                                    {getLanguage(
+                                      LanguageKey.GET_OTP_ON_WHATSAPP,
+                                    )}
+                                  </span>
+                                  <span className="shimmer"></span>
+                                </button>
+                              )}
+                              {settings.otp_method?.includes("sms") && (
+                                <button
+                                  disabled={mobile?.length < 10}
+                                  onClick={handleOTP}
+                                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out font-lato-bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                                  type="button"
+                                >
+                                  <span className=" ">
+                                    {" "}
+                                    {getLanguage(
+                                      LanguageKey.GET_OTP_ON_MESSAGE,
+                                    )}
+                                  </span>
+                                  <span className="shimmer"></span>
+                                </button>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div
