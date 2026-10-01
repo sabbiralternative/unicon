@@ -348,7 +348,7 @@ const Register = () => {
                     >
                       <span className="text-xs text-text_Primary"></span>
                       <span className="text-xs text-text_Primary">
-                        {mobile.length}/10
+                        {/* {mobile.length}/10 */}
                       </span>
                     </div>
                     <div className>
