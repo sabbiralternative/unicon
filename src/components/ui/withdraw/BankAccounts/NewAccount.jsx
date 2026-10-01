@@ -293,7 +293,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                   value={mobile}
                 />
 
-                <div className="w-max">
+                {/* <div className="w-max">
                   {timer ? (
                     <button
                       onClick={getOtp}
@@ -303,7 +303,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                       <span className=" ">
                         {getLanguage(LanguageKey.RETRY_IN)} {timer}
                       </span>
-                      {/* <span className="shimmer"></span> */}
+                      
                     </button>
                   ) : (
                     <div className="flex items-center">
@@ -334,7 +334,71 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                       )}
                     </div>
                   )}
-                </div>
+                </div> */}
+              </div>
+            </div>
+            <div className>
+              <div className="w-full flex gap-x-2 gap-y-2 mt-2">
+                {settings.otp_method?.includes("sms") && !timer && (
+                  <button
+                    disabled={mobile?.length < 10}
+                    onClick={getOtp}
+                    type="button"
+                    className="relative overflow-hidden w-full border min-h-[36px] transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-2 sm:py-2.5 px-3 rounded-md font-medium shadow-sm flex items-center justify-center gap-x-2 active:scale-[0.98] active:opacity-95 cursor-pointer bg-bg_color_loginInputBg  border-border_color_primary1 text-text_color_loginInputTextColor disabled:opacity-60 disabled:cursor-not-allowed relative"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke="var(--color-text-primary)"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M8 9h8" />
+                      <path d="M8 13h6" />
+                      <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" />
+                    </svg>
+                    {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                  </button>
+                )}
+
+                {settings.otp_method?.includes("whatsapp") && !timer && (
+                  <button
+                    disabled={mobile?.length < 10}
+                    onClick={getOtpOnWhatsapp}
+                    type="button"
+                    className="relative overflow-hidden w-full border min-h-[36px] transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-2 sm:py-2.5 px-3 rounded-md font-medium shadow-sm flex items-center justify-center gap-x-2 active:scale-[0.98] active:opacity-95 cursor-pointer  text-text_color_primary2  bg-bg_Primary border-border_color_brand_secondary1 disabled:opacity-60 disabled:cursor-not-allowed relative"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke="var(--color-text-primary)"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                    </svg>
+                    {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                  </button>
+                )}
+                {timer && (
+                  <button
+                    type="button"
+                    className="relative overflow-hidden w-full border min-h-[36px] transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-2 sm:py-2.5 px-3 rounded-md font-medium shadow-sm flex items-center justify-center gap-x-2 active:scale-[0.98] active:opacity-95 cursor-pointer  text-text_color_primary2  bg-bg_Primary border-border_color_brand_secondary1 disabled:opacity-60 disabled:cursor-not-allowed relative"
+                  >
+                    {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                  </button>
+                )}
               </div>
             </div>
           </div>
