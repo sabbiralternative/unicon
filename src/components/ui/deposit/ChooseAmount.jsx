@@ -47,7 +47,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span className="text-text_Danger">*</span>
               </p>
             </div>
-            <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] px-2 items-center justify-center border-[var(--color-bg-primary)]">
+            <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] pl-2 pr-5 items-center justify-center border-[var(--color-bg-primary)]">
               <input
                 onChange={(e) =>
                   setAmount(
@@ -60,7 +60,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 required=""
                 type="number"
               />
-              <span className="font-lato font-bold leading-4 text-teranry text-base col-span-1 text-center">
+              <span className="font-lato font-bold leading-4 text-teranry text-base col-span-1 text-center ">
                 {settings.currency}
               </span>
             </div>
