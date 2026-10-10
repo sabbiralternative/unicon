@@ -169,7 +169,7 @@ const MainRouter = () => {
         ],
       },
       {
-        path: "/register",
+        path: "/registration",
         element: (
           <SettingsLayout>
             <Register />

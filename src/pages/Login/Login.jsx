@@ -307,7 +307,7 @@ const Login = () => {
                   New User?{" "}
                   <span
                     onClick={() => {
-                      navigate("/register");
+                      navigate("/registration");
                     }}
                     className="text-text_Primary cursor-pointer"
                   >
