@@ -365,18 +365,20 @@ const Register = () => {
                     </div>
                   </Fragment>
                 )}
-                {settings.registration_mobile && tab === "mobile" && (
-                  <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
-                    <input
-                      {...register("otp", { required: true })}
-                      id="otpSignUp"
-                      className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
-                      placeholder="OTP"
-                      type="text"
-                      maxLength={6}
-                    />
-                  </div>
-                )}
+                {settings.registration_mobile &&
+                  tab === "mobile" &&
+                  settings.otp_method?.length > 0 && (
+                    <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
+                      <input
+                        {...register("otp", { required: true })}
+                        id="otpSignUp"
+                        className="block w-full focus:outline-none w-full font-lato rounded-none py-1 text-text_Ternary px-2 text-sm xs:text-md bg-auth"
+                        placeholder="OTP"
+                        type="text"
+                        maxLength={6}
+                      />
+                    </div>
+                  )}
                 {settings.registration_username && tab === "username" && (
                   <div className="flex w-full items-center border p-1 bg-auth rounded-lg mt-2">
                     <input
