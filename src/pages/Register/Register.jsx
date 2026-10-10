@@ -42,7 +42,10 @@ const Register = () => {
   const [timer, setTimer] = useState(null);
 
   const handleMobileInputChange = (e) => {
-    if (e.target.value.length <= 10) {
+    const number = e.target.value;
+    if (
+      settings.currency === "GMD" ? number.length <= 9 : number.length <= 10
+    ) {
       setMobile(e.target.value);
     }
   };
@@ -257,7 +260,7 @@ const Register = () => {
                       </select>
                       <div className="flex w-full items-center py-2 bg-auth rounded-r-lg border">
                         <input
-                          maxLength={10}
+                          maxLength={settings.currency === "GMD" ? 9 : 10}
                           onChange={(e) => handleMobileInputChange(e)}
                           id="mobile-no-input"
                           className="px-2 block w-full focus:outline-none w-full font-lato bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"

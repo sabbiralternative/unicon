@@ -60,7 +60,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 required=""
                 type="number"
               />
-              <span className="font-lato font-bold leading-4 text-teranry text-base col-span-1 text-center ">
+              <span className="font-lato font-bold leading-4 text-teranry text-[10px] col-span-1 text-center ">
                 {settings.currency}
               </span>
             </div>
@@ -170,6 +170,45 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
             </button>
           </div>
         </div>
+        {settings.currency === "GMD" && (
+          <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-bg_Quaternary">
+            <div className="w-full flex flex-col text-xs text-text_Ternary transition-all ease-in-out duration-100">
+              <div className="text-xs md:text-sm font-lato pt-1 font-semibold leading-4">
+                1. Ensure that you have the Wave - Mobile Money App installed on
+                your mobile device.
+              </div>
+              <div
+                className="overflow-hidden transition-height duration-100 ease-in-out"
+                style={{ height: "0px" }}
+              ></div>
+              <div
+                className="overflow-hidden transition-height duration-100 ease-in-out"
+                style={{ height: "20px" }}
+              >
+                <div className="text-xs pt-1 md:text-sm font-lato font-semibold leading-4">
+                  2. To make a successful deposit, make sure the{" "}
+                  {settings.site_name} and Wave number match.
+                </div>
+              </div>
+              <div
+                className="overflow-hidden transition-height duration-100 ease-in-out"
+                style={{ height: "20px" }}
+              >
+                <div className="text-xs pt-1 md:text-sm font-lato font-semibold leading-4">
+                  3. Chose a deposit amount and click on deposit.
+                </div>
+              </div>
+              <div
+                className="overflow-hidden transition-height duration-100 ease-in-out"
+                style={{ height: "20px" }}
+              >
+                <div className="text-xs pt-1 md:text-sm font-lato font-semibold leading-4">
+                  4. Confirm your depsoit request using the wave app.
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
