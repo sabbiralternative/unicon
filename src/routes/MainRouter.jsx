@@ -33,6 +33,9 @@ import AffiliateUserStatement from "../pages/AffiliateUserStatement/AffiliateUse
 import Promotions from "../pages/Promotions/Promotions.jsx";
 import LossBackClaims from "../pages/LossBackClaims/LossBackClaims.jsx";
 import AppOnlyBonus from "../pages/AppOnlyBonus/AppOnlyBonus.jsx";
+import SettingsLayout from "../components/layout/SettingsLayout.jsx";
+import Register from "../pages/Register/Register.jsx";
+import Login from "../pages/Login/Login.jsx";
 
 const MainRouter = () => {
   const windowWidth = useWindowWidth();
@@ -164,6 +167,22 @@ const MainRouter = () => {
             element: <AppOnlyBonus />,
           },
         ],
+      },
+      {
+        path: "/register",
+        element: (
+          <SettingsLayout>
+            <Register />
+          </SettingsLayout>
+        ),
+      },
+      {
+        path: "/login",
+        element: (
+          <SettingsLayout>
+            <Login />
+          </SettingsLayout>
+        ),
       },
     ],
     {
